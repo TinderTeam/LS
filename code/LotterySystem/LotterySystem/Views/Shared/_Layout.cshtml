@@ -1,69 +1,56 @@
-﻿<!DOCTYPE html>
-<html lang="zh-CN">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta charset="utf-8" />
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+﻿
+<!DOCTYPE html>
+<html lang="cn">
+	<head>
+		<title>@ViewBag.Title</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>@ViewBag.Title</title>
-
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
+        <link href="~/Content/icon/icon.ico" rel="shortcut icon" type="image/x-icon" />
+       	<link rel="stylesheet" href="css/bootstrap.css" />
         @Styles.Render("~/Content/bootstrap/css/bootstrap.min.css")
-        @Styles.Render("~/Content/bootstrap/css/bootstrap-responsive.min.css")
-        @Styles.Render("~/Content/bootstrap/css/uniform.css")
-        @Styles.Render("~/Content/bootstrap/css/css/tree.css")
-        @Styles.Render("~/Content/bootstrap/css/css/unicorn.main.css")
         @Scripts.Render("~/bundles/modernizr")
-        <script src="~/js/jquery.min.js"></script>
-        <script src="~/js/tree.js"></script>
-        <script src="~/js/jquery.ui.custom.js"></script>
-        <script src="~/js/bootstrap.min.js"></script>
-        <script src="~/js/jquery.uniform.js"></script>
-        <script src="~/js/jquery.dataTables.min.js"></script>
-        <script src="~/js/unicorn.js"></script>
-        <script src="~/js/unicorn.tables.js"></script>
-        <script src="~/js/unicorn.login.js"></script>
-        <script src="~/js/excanvas.min.js"></script>
-        <script src="~/js/jquery.flot.min.js"></script>
-        <script src="~/js/jquery.flot.pie.min.js"></script>
-        <script src="~/js/jquery.flot.resize.min.js"></script>
-        <script src="~/js/unicorn.charts.js"></script>
-         <style>
+        <style>
 			body{padding-top:70px}
-		 </style>
+		</style>
+	
+
     </head>
     <body>
-         <div class="container">
-            <div class="masthead">
-                <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                    <div class="container">
-                        <span class="text-muted">
-                          您好！用户：****
-                        </span>
-                        <span>
-                            <ul class="nav nav-justified" role="tablist">
-                                <li class="active"><a href="#">首页</a></li>
-                                <li><a href="#">游戏大厅</a></li>
-                                <li><a href="#">积分管理</a></li>
-                                <li><a href="#">借贷</a></li>
-                                <li><a href="#">日志</a></li>
-                                <li><a href="#">联系我们</a></li>
-                            </ul>
-                            </span>
-                    </div>
-                </nav>
-            </div>
-   
-        <div id="body">
-            @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
-            </section>
-        </div> 
-                </div> 
-          <hr/>
+        <!--navbar--->
+        <div class="container">
+
+
+		    <div class="container-fluid">
+			    <nav class="navbar nav-pills " role="navigation">
+				    <div class="container-fluid">
+					    <ul class="nav nav-pills nav-justified " role="tablist">
+					      <li class="active"><a href="#">首页</a></li>
+					      <li><a href="#">游戏大厅</a></li>
+					      <li><a href="#">积分管理</a></li>
+					      <li><a href="#">借贷</a></li>
+					      <li><a href="#">日志</a></li>
+					      <li><a href="#">联系我们</a></li>
+				       </ul>
+				    </div>
+		  	    </nav>
+		    </div><!--navbar--->      
+                
+             <!-- 用户信息 -->
+     		<div>
+                 @RenderPage("_LoginPartial.cshtml")
+			</div><!-- 用户信息 -->
+
+
+            <div id="body">
+                @RenderSection("featured", required: false)
+                <section class="content-wrapper main-content clear-fix">
+                    @RenderBody()
+                </section>
+            </div> 
+         </div>   
+             
+        <hr/>
         <div class="container">
             <footer class="bs-docs-footer" role="contentinfo">
                 <p>Designed by Fuego</p>
