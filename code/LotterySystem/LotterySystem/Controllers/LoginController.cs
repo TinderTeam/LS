@@ -19,6 +19,10 @@ namespace LotterySystem.Controllers
         /// 系统用户登陆
         /// </summary>
         /// <returns></returns>
+        ///   
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
 
@@ -34,5 +38,12 @@ namespace LotterySystem.Controllers
             return View(model);
         }
 
+
+        [AllowAnonymous]
+        public ActionResult Login(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
     }
 }

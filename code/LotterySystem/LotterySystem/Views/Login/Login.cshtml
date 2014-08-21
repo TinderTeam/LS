@@ -3,31 +3,41 @@
     ViewBag.Title = "登陆";
 }
 
-<h2>@ViewBag.Send</h2>
 
 
+ <div class="container">
+
+     
 <section id="loginForm">
-<h2>使用本地帐户登录。</h2>
-@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
+      <div class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input name ="UserName" type="email" class="form-control" placeholder="请输入用户名" required autofocus>          
+        <input name="Password" type="password" class="form-control" placeholder="Password" required />
+       <input type="submit" value="登录"  class="btn btn-lg btn-primary btn-block" />
+
+      </div>
+
 
     <fieldset>
         <legend>“登录”表单</legend>
         <ol>
             <li>
                
-                @Html.LabelFor(m => m.UserName)
-               <input  name ="UserName " value="@ViewBag.User.UserName" />
-                @Html.ValidationMessageFor(m => m.UserName)
+               
             </li>
             <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-                @Html.ValidationMessageFor(m => m.Password)
+               
             </li>
         </ol>
-        <input type="submit" value="登录" />
+      
     </fieldset>
 }
 </section>
+
+</div> 
+   
+
+ 

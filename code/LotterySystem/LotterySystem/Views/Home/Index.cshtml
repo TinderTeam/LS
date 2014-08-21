@@ -1,50 +1,204 @@
 ﻿@{
     ViewBag.Title = "主页";
 }
-@section featured {
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h1>@ViewBag.Title.</h1>
-                <h2>@ViewBag.Message</h2>
-            </hgroup>
-            <p>
-                若要了解有关 ASP.NET MVC 的详细信息，请访问
-                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>。
-                该页提供 <mark>视频、教程和示例</mark> 以帮助你充分利用 ASP.NET MVC。
-                如果你对 ASP.NET MVC 有任何疑问，请访问
-                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">我们的论坛</a>。
-            </p>
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="lead">广告栏，可设置左右滑动</div>
         </div>
-    </section>
-}
-<h3>下面是我们的建议:</h3>
-<ol class="round">
-    <li class="one">
-        <h5>开始使用</h5>
-        ASP.NET MVC 为你提供了一种用于生成动态网站的方式，
-        该方式基于模式，十分强大，使你可以清晰地分离各种考虑因素，让你能够完全控制标记，
-            以便进行灵活而有趣的开发。ASP.NET MVC 包括许多功能，你可以使用这些功能进行
-            TDD 友好的快速开发，以创建使用
-            最新 Web 标准的复杂应用程序。
-            <a href="http://go.microsoft.com/fwlink/?LinkId=245151">了解详细信息...</a>
-    </li>
+        <!-- 广告栏 -->
+        <div class="col-lg-6">
+            <div class="panel panel-danger">
+                <div class="panel-body">
+                    <div class="col-md-7">
+                        @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            <label class="email" for="email">
+                                <span>邮箱:</span>
+                                <input type="email" name="userID" class="text" size="30" placeholder="请输入用户名" required autofocus />
+                            </label>
+                            
+                            <label class="email" for="password">
+                                <span>密码:</span>
+                                <input type="password" name="password" class="password" size="30" placeholder="请输入密码" required />
+                            </label>
+                                                       
+                            <label class="pull-right">
+                                <input type="submit" value="登录" class="btn btn-lg btn-primary btn-block" />
+                            </label>                                            
+                        }
+                    </div>
 
-    <li class="two">
-        <h5>添加 NuGet 程序包并快速开始编码</h5>
-        通过 NuGet，可以轻松地安装和更新免费的库和工具。
-            <a href="http://go.microsoft.com/fwlink/?LinkId=245153">了解详细信息...</a>
-    </li>
+                    <div class="col-md-1">
+                        <table width="1" border="0" cellspacing="0" cellpadding="0" height="120">
+                            <tr>
+                                <td width="1" bgcolor="#666666"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-4">
+                        <p><font size="3px"><strong>还没有注册过？点击进入>>></strong></font></p>
+                        <p class="pull-center"><a class="btn btn-primary" href="#" role="button">注册</a></p>
+                    </div>
+                </div>
 
-    <li class="three">
-        <h5>查找 Web 宿主</h5>
-        你可以轻松找到所提供的功能和价格
-      都适合你应用程序的 Web 宿主公司。
-            <a href="http://go.microsoft.com/fwlink/?LinkId=245157">了解详细信息...</a>
-    </li>
-     <li class="three">
-        <h5>Test任务</h5>
-       进入Test页面
-            @Html.ActionLink("登陆", "Login", "Login")
-    </li>
-</ol>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Jumbotron -->
+
+<!-- Example row of columns -->
+<div class="row">
+    <div class="col-lg-3">
+
+
+        <div class="wrapper left-nav">
+            <div id="side-nav">
+                <h5>游戏选择</h5>
+                <ul id="nav">
+
+                    <li><a href="#"><i class="icon-desktop"></i>在线竞猜</a></li>
+                    <li>
+                        <ul class="sub-menu">
+                            <li><a href="#">房间001 </a></li>
+                            <li><a href="#">房间002 </a></li>
+                            <li><a href="#">房间003 </a></li>
+
+                        </ul>
+                    </li>
+                    <li><a href="#"><i class="icon-edit"></i>游戏2</a></li>
+                    <li><a href="#"><i class="icon-table"></i>游戏3</a> </li>
+                    <li><a href="#"><i class="icon-bar-chart"></i>更多》》 </a></li>
+
+
+
+                </ul>
+            </div>
+        </div>
+        <!-- 多级列表 -->
+
+        <div class="widget-box">
+            <div class="widget-title">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#tab1">今日排行</a></li>
+                    <li><a data-toggle="tab" href="#tab2">本周排行</a></li>
+                    <li><a data-toggle="tab" href="#tab3">本月排行</a></li>
+                </ul>
+            </div>
+            <div class="widget-content tab-content">
+                <div id="tab1" class="tab-pane active">
+                    <p>游戏排行榜</p>
+                    <p>最受欢迎排行榜</p>
+                    <p>收益率最高排行榜</p>
+                    <p>交易总量最高排行榜</p>
+                    <p></p>
+                </div>
+                <div id="tab2" class="tab-pane" height="100px">游戏排行榜，最受欢迎排行榜，收益率最高排行榜，交易总量最高排行榜</div>
+                <div id="tab3" class="tab-pane">游戏排行榜，最受欢迎排行榜，收益率最高排行榜，交易总量最高排行榜</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-5">
+
+        <div id="myCarousel" class="carousel slide">
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <!-- Carousel items -->
+            <div class="carousel-inner">
+                <div class="active item">
+                    <img src="img/gallery-photo/image-4.jpg" height="10" alt="">
+                </div>
+                <div class="item">
+                    <img src="img/gallery-photo/image-2.jpg" height="10" alt="">
+                </div>
+                <div class="item">
+                    <img src="img/gallery-photo/image-3.jpg" height="10" alt="">
+                </div>
+            </div>
+            <!-- Carousel nav -->
+            <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+            <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+        </div>
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon">
+                    <i class="icon-refresh"></i>
+                </span>
+                <h5>最新资讯</h5>
+            </div>
+
+            <div class="widget-content nopadding updates">
+                <div class="new-update clearfix">
+                    <i class="icon-ok-sign"></i>
+                    <div class="update-done">
+                        <a title="" href="#"><strong>新版游戏***上线了！！！</strong></a>
+                        <span>前1000名用户使用登录将获500积分！！</span>
+
+                    </div>
+                    <div><span class="pull-right">2014-08-24</span></div>
+
+                </div>
+
+                <div class="new-update clearfix">
+                    <i class="icon-exclamation-sign"></i>
+                    <div class="update-alert">
+                        <a title="" href="#"><strong>用户****今日设擂台，但求一败！！</strong></a>
+                        <span>请登录*****房间号*****桌号，或者直接搜索用户****，点击参与……</span>
+                    </div>
+                    <div><span class="pull-right">2014-08-23</span></div>
+                </div>
+
+                <div class="new-update clearfix">
+                    <i class="icon-ok-sign"></i>
+                    <div class="update-done">
+                        <a title="" href="#"><strong>本系统用户量突破100万了！！！</strong></a>
+                        <span>****在线游戏平台经过长时间的实践检验，深受广大爱好者的喜欢，目前用户统计量已经达到101.781万人次！！</span>
+                    </div>
+                    <div><span class="pull-right">2014-08-20</span></div>
+                </div>
+
+                <div class="new-update clearfix">
+                    <i class="icon-question-sign"></i>
+                    <div class="update-notice">
+                        <a title="" href="#"><strong>系统维护通知</strong></a>
+                        <span>由于系统更新，本平台将于2014年8月17日暂停服务一天（8:00-19:00），敬请谅解！</span>
+                    </div>
+                    <div><span class="pull-right">2014-08-16</span></div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-lg-4">
+
+        <div class="span4 pull-right">
+            <h4>趋势图</h4>
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon">
+                        <i class="icon-signal"></i>
+                    </span>
+                    <h5>Pie chart</h5>
+                </div>
+                <div class="widget-content">
+                    <div class="pie"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- 右列 -->
+</div>

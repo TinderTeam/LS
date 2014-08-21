@@ -1,49 +1,73 @@
 ﻿<!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
     <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - 我的 ASP.NET MVC 应用程序</title>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>@ViewBag.Title</title>
+
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/bootstrap/css/bootstrap.min.css")
+        @Styles.Render("~/Content/bootstrap/css/bootstrap-responsive.min.css")
+        @Styles.Render("~/Content/bootstrap/css/uniform.css")
+        @Styles.Render("~/Content/bootstrap/css/css/tree.css")
+        @Styles.Render("~/Content/bootstrap/css/css/unicorn.main.css")
         @Scripts.Render("~/bundles/modernizr")
+        <script src="~/js/jquery.min.js"></script>
+        <script src="~/js/tree.js"></script>
+        <script src="~/js/jquery.ui.custom.js"></script>
+        <script src="~/js/bootstrap.min.js"></script>
+        <script src="~/js/jquery.uniform.js"></script>
+        <script src="~/js/jquery.dataTables.min.js"></script>
+        <script src="~/js/unicorn.js"></script>
+        <script src="~/js/unicorn.tables.js"></script>
+        <script src="~/js/unicorn.login.js"></script>
+        <script src="~/js/excanvas.min.js"></script>
+        <script src="~/js/jquery.flot.min.js"></script>
+        <script src="~/js/jquery.flot.pie.min.js"></script>
+        <script src="~/js/jquery.flot.resize.min.js"></script>
+        <script src="~/js/unicorn.charts.js"></script>
+         <style>
+			body{padding-top:70px}
+		 </style>
     </head>
     <body>
-        <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("将你的徽标放置在此处", "Index", "Home")</p>
-                </div>
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("主页", "Index", "Home")</li>
-                            <li>@Html.ActionLink("关于", "About", "Home")</li>
-                            <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
-                        </ul>
-                    </nav>
-                </div>
+         <div class="container">
+            <div class="masthead">
+                <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                    <div class="container">
+                        <span class="text-muted">
+                          您好！用户：****
+                        </span>
+                        <span>
+                            <ul class="nav nav-justified" role="tablist">
+                                <li class="active"><a href="#">首页</a></li>
+                                <li><a href="#">游戏大厅</a></li>
+                                <li><a href="#">积分管理</a></li>
+                                <li><a href="#">借贷</a></li>
+                                <li><a href="#">日志</a></li>
+                                <li><a href="#">联系我们</a></li>
+                            </ul>
+                            </span>
+                    </div>
+                </nav>
             </div>
-        </header>
+   
         <div id="body">
             @RenderSection("featured", required: false)
             <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
             </section>
+        </div> 
+                </div> 
+          <hr/>
+        <div class="container">
+            <footer class="bs-docs-footer" role="contentinfo">
+                <p>Designed by Fuego</p>
+            </footer>
         </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - 我的 ASP.NET MVC 应用程序</p>
-                </div>
-            </div>
-        </footer>
-
-        @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
     </body>
 </html>

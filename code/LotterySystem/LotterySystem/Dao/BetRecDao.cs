@@ -5,7 +5,7 @@ using System.Web;
 
 namespace LotterySystem.Dao
 {
-    public class BetRecDao
+    public interface BetRecDao
     {
     }
 }
