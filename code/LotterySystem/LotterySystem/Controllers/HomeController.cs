@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using LotterySystem.Models;
 namespace LotterySystem.Controllers
 {
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "修改此模板以快速启动你的 ASP.NET MVC 应用程序。";
+
+            if ((UserModel)Session["SystemUser"] != null)
+            {
+                ViewBag.User = (UserModel)Session["SystemUser"];
+            }
 
             return View();
         }

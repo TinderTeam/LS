@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "RoomList";
+    
+}
+<!-- 房间列表 -->
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						房间列表
+					</div>
+					
+					<div class="panel-body" >
+						<div class="table-responsive">
+							<table class="table table-condensed">
+								<tr>
+								  <td>房号</td>
+								  <td>房间名称</td>
+								  <td>房主</td>
+								  <td>状态</td>
+								  <td>准入</td>
+								  <td>起投</td>
+								  <td>增幅</td>
+								  <td>进入</td>
+								</tr>
+
+                                @for(var i = 1; i < 21; i++)
+                                {
+								    <tr>
+								      <td>@i</td>
+								      <td><a href="">房间名称 @i</a></td>
+								      <td>房主_@i</td>
+								      <td>准备中</td>
+								      <td>>100</td>
+								      <td>10</td>
+								      <td>10%</td>
+								      <td>@Html.ActionLink("进入","EnterRoom","Game",null,new{ @class="btn btn-primary btn-xs"})</td>
+								    </tr>
+                                 }
+							</table>
+						</div>
+						
+					</div>
+				</div><!-- 游戏资讯-->

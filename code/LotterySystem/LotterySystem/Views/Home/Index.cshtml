@@ -1,176 +1,40 @@
-﻿@{
+﻿@model LotterySystem.Models.LoginModel
+@{
     ViewBag.Title = "主页";
 }
-<div class="jumbotron"  style="background-image:url(~/Content/img/3.jpg)">
-	
-				<div class="row">
-					<div class="col-lg-8">
-						<h1>广告栏</h1>
-						<p>广告标题</p>
-					</div>
-	   				<div class="col-lg-4">
-					 	<div class="panel panel-default">
-							<div class="panel-heading">
-								登陆游戏
-							</div>
-							<div class="panel-body">	
-					        	<div class="col-md-12">															
-									<div class="form-horizontal" role="form">
-										<div class="form-group">
-											<label class="col-sm-3 control-label">邮箱</label>
-											<div class="col-sm-9">
-										  		<input name="UserID" type="email" class="form-control" placeholder="邮箱">
-											</div>
-									  	</div>
-									  	<div class="form-group">
-											<label  class="col-sm-3 control-label">密码</label>
-											<div class="col-sm-9">
-												<input name="Password" type="password" class="form-control" placeholder="密码">
-											</div>
-									  	</div>
-										<div class="form-group">
-											<div class="col-sm-offset-3 col-sm-3" >
-												<button name="Login" type="submit" class="btn btn-primary ">登陆</button>
-											</div>
-											<div class="col-sm-6">
-                                                @Html.ActionLink("注册","Login","Login",null,new{ @class="btn btn-primary"})
-						
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>	      
-                       </div>
-					</div>
-	 			</div>
-	        </div><!-- 广告标题 -->
-    
-      
+       
+    <div id="head"> 
+         @RenderPage("LoginHead.cshtml")
+    </div>
 	 <!-- Main Context-->
 		<div class="row">
 			<!-- Left-->
 			<div class="col-lg-3">
-			
-
-                <!--进入游戏-->
-                <ul class="nav nav-pills nav-stacked" role="tablist">
-                    <li role="presentation" class="active"><a href="#">选择游戏</a></li>
-                    <li role="presentation"><a href="#" class="btn btn-default">在线竞猜</a></li>
-                    <li role="presentation"><a href="#" class="btn btn-default">德州扑克</a></li>
-					<li role="presentation"><a href="#" class="btn btn-default">十三水</a></li>
-					<li role="presentation"><a href="#" class="btn btn-default">四合</a></li>
-					<li role="presentation"><a href="#" class="btn btn-default">更多</a></li>
-               </ul>
-
-                <!--进入游戏-->
-				<!-- 用户信息-->	
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						用户信息
-					</div>
-					<div class="panel-body">
-						Panel content
-				 	</div>
-				</div><!-- 用户信息-->	
+			    
+                <div id="left1"> 
+				    @RenderPage("../Cbb/UserInfo.cshtml")
+				</div>
+                <div id="left2"> 
+				    @RenderPage("../User/UserHistory.cshtml")
+				</div>
+                <div id="left3"> 
+				    @RenderPage("Ranking.cshtml")
+				</div>
+				<div id="left4"> 
+				   
+				</div>
+                <div id="left5"> 
+				    
+				</div>
 				
-				<!-- 历史记录-->	
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						历史记录
-					</div>
-					<div class="panel-body">
-						Panel content
-				 	</div>
-				</div><!-- 历史记录-->	
-				
-				<!-- 风云榜-->	
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						风云榜
-					</div>
-					<div class="panel-body">
-						<h6>今日排行:</h6>
-						<div class="list-group">			
-							<a href="#" class="list-group-item">冠军: XXX 20000</a>
-						  	<a href="#" class="list-group-item">亚军: XXX 20000</a>
-						  	<a href="#" class="list-group-item">季军: XXX 20000</a>			
-						</div>
-						
-						<h6>本周排行:</h6>
-						<div class="list-group">
-							<a href="#" class="list-group-item">冠军: XXX 20000</a>
-						  	<a href="#" class="list-group-item">亚军: XXX 20000</a>
-						  	<a href="#" class="list-group-item">季军: XXX 20000</a>
-						</div>					
-						
-						<h6>本月排行:</h6>
-						<div class="list-group">
-							<a href="#" class="list-group-item">冠军: XXX 20000</a>
-						  	<a href="#" class="list-group-item">亚军: XXX 20000</a>
-						  	<a href="#" class="list-group-item">季军: XXX 20000</a>
-						</div>							                  
-				 	</div>
-				</div> <!-- 风云榜-->	                                  
+				                                
             </div><!-- Left-->
 			
 			<!-- Center-->
 			<div class="col-lg-5">
-			
-				<!-- 轮播-->				
-						<div id="myCarousel" class="carousel slide">
-				
-					<ol class="carousel-indicators">
-					  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					  <li data-target="#myCarousel" data-slide-to="1"></li>
-					  <li data-target="#myCarousel" data-slide-to="2"></li>
-					</ol>
-					
-					<div class="carousel-inner">
-						<div class="active item"><img  src="img/gallery-photo/1.png" height="10" alt="" ></div>
-						<div class="item"><img  src="img/gallery-photo/2.png" height="10"alt="" ></div>
-						<div class="item"><img src="img/gallery-photo/3.png" height="10"alt="" ></div>
-					</div>
-				   <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-				   <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-				</div>	<!-- 轮播-->
-
-				<!-- 游戏资讯-->
-					<div class="panel">
-					<div class="panel-heading">
-						游戏资讯
-					</div>
-					
-					<div class="panel-body">
-
-								<div class="new-update clearfix">
-									<i class="icon-exclamation-sign"></i>
-									<div class="update-alert">										
-										<a title="" href="#"></a>
-										<span>请登录*****房间号*****桌号，或者直接搜索用户****，点击参与……</span>
-									</div>
-									<div><span class="pull-right">2014-08-23</span></div>
-								</div>
-								
-								<div class="new-update clearfix">
-									<i class="icon-ok-sign"></i>
-									<div class="update-done">										
-										<a title="" href="#"><strong>本系统用户量突破100万了！！！</strong></a>
-										<span>****在线游戏平台经过长时间的实践检验，深受广大爱好者的喜欢，目前用户统计量已经达到101.781万人次！！</span>
-									</div>
-									<div><span class="pull-right">2014-08-20</span></div>
-								</div>
-								
-								<div class="new-update clearfix">
-									<i class="icon-question-sign"></i>
-									<div class="update-notice">										
-										<a title="" href="#"><strong>系统维护通知</strong></a>
-										<span>由于系统更新，本平台将于2014年8月17日暂停服务一天（8:00-19:00），敬请谅解！</span>
-									</div>
-									<div><span class="pull-right">2014-08-16</span></div>
-								</div>
-					</div>
-				</div><!-- 游戏资讯-->
-
+                <div id="pageCenter">
+			        @RenderPage("IndexInfo.cshtml")
+                </div>
 			</div><!-- Center-->
 			
 			<!-- right-->
@@ -186,13 +50,7 @@
 					</div><!-- 趋势图-->
 			
 			</div><!-- right-->
-		 </div><!-- Main Context-->
-		 
-     
-		
-				
+
         
       </div> <!-- row -->
    
-     
-    </div> <!-- /container -->

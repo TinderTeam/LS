@@ -26,11 +26,11 @@ namespace LotterySystem.Controllers
         public ActionResult Login(LoginModel model, string returnUrl)
         {
 
-            if (ModelState.IsValid && loginSerivce.Login(model.UserName, model.Password))
+            if (ModelState.IsValid && loginSerivce.Login(model.UserID, model.Password))
             {
-               
-                ViewBag.User =loginSerivce.getLoginUser(model.UserName);
-                return RedirectToAction("Index", "Home");
+
+                Session["SystemUser"] = loginSerivce.getLoginUser(model.UserID);
+                return RedirectToAction("Hall", "Game");
             }
 
             // 如果我们进行到这一步时某个地方出错，则重新显示表单
@@ -44,6 +44,24 @@ namespace LotterySystem.Controllers
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+
+        //
+        // POST: /Account/LogOff
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+        
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

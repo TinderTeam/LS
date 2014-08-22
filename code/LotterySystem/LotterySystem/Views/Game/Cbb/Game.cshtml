@@ -1,0 +1,152 @@
+﻿@{
+    ViewBag.Title = "GamePage";
+}
+
+<!-- 游戏界面-->
+<div class="panel">
+    <div class="row">
+        <div class="col-lg-2">
+            <p>当前局号*****</p>
+        </div>
+        <div class="col-lg-2">
+            <p>当前轮号 *****</p>
+        </div>
+        <div class="col-lg-2">
+            <p>当前庄家 *****</p>
+        </div>
+        <div class="col-lg-2">
+            <p>庄家积分****</p>
+        </div>
+        <div class="col-lg-2">
+            <p>我的积分****</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <p>当前闲家 ****，****，****</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-5">
+            <p>庄家选号：<span>正在选号/完成选号</span></p>
+        </div>
+        <div class="col-lg-5">
+            <p>系统开号： <span>32</span></p>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="bs-example">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                            <th>6</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>总投注</td>
+                            <td>XXX</td>
+                            <td>XXX</td>
+                            <td>XXX</td>
+                            <td>XXX</td>
+                            <td>XXX</td>
+                            <td>XXX</td>
+                        </tr>
+                        <tr>
+                            <td>我的投注</td>
+                            <td>XXX</td>
+                            <td>XXX</td>
+                            <td>XXX</td>
+                            <td>XXX</td>
+                            <td>XXX</td>
+                            <td>XXX</td>
+                        </tr>
+                        <tr>
+                            <td>请投注</td>
+                            <td colspan="6">-【****分】+  【】均投    添加投注  结束投注
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="well">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class=" panel panel-primary">
+                            <div class="panel-heading">
+                                倒计时
+                            </div>
+                            <div class="panel-body text-center">
+                                <h4>03</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <ul class="list-group">
+                            <li class="list-group-item row">
+                                <div class="col-lg-8">
+                                    【单投】【***分】2
+                                </div>
+                                <div class="col-lg-4">
+                                    删除该笔
+                                </div>
+                            </li>
+                            <li class="list-group-item row">
+                                <div class="col-lg-8">
+                                    【带二】【***分】2（3，5）
+                                </div>
+                                <div class="col-lg-4">
+                                    删除该笔
+                                </div>
+                            </li>
+                            <li class="list-group-item row">
+                                <div class="col-lg-8">
+                                    【均投】【***分】2，4，5
+                                </div>
+                                <div class="col-lg-4">
+                                    删除该笔
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 ">
+            <table class="table table-bordered">
+                <tbody class="text-center">
+                    <tr>
+                        <td>****庄胜***</td>
+                    </tr>
+                    <tr>
+
+                        <td>****闲负***</td>
+                    </tr>
+                    <tr>
+                        <td>****退出</td>
+                    </tr>
+                    <tr>
+                        <td>****加入</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="well">
+        <button class="btn btn-success btn-xs">图表更新</button>
+        <div style="height: 300px; overflow: auto; overflow-y: hidden">
+        </div>
+    </div>
+</div>

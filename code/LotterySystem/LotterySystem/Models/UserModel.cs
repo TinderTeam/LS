@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
+using System.Globalization;
+using System.Web.Security;
+
 namespace LotterySystem.Models
 {
     public class UserModel
@@ -36,5 +42,15 @@ namespace LotterySystem.Models
             set { status = value; }
         }
 
+       
+    }
+    public class LoginModel
+    {
+        [Required]
+        public string UserID { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
     }
 }

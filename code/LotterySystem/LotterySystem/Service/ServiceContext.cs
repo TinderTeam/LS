@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using LotterySystem.Service.Login;
+using LotterySystem.Service;
 
 namespace LotterySystem.Service
 {

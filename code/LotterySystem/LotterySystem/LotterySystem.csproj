@@ -327,14 +327,15 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
@@ -360,7 +361,7 @@
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Ranking.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
@@ -371,17 +372,22 @@
     <Content Include="Views\Login\Manager.cshtml" />
     <Content Include="Views\User\PasswordSet.cshtml" />
     <Content Include="Views\Cbb\Menu.cshtml" />
-    <Content Include="Views\Cbb\UserBar.cshtml" />
+    <Content Include="Views\Cbb\UserInfo.cshtml" />
     <Content Include="Views\Cbb\Footer.cshtml" />
     <Content Include="Views\Cbb\Ad.cshtml" />
-    <Content Include="Views\Game\GameSelect.cshtml" />
-    <Content Include="Views\Game\RoomList.cshtml" />
-    <Content Include="Views\Game\TabelList.cshtml" />
-    <Content Include="Views\Game\GamePage.cshtml" />
+    <Content Include="Views\Game\Hall.cshtml" />
+    <Content Include="Views\Game\Cbb\TabelList.cshtml" />
+    <Content Include="Views\Game\Cbb\Game.cshtml" />
     <Content Include="Views\User\UserInfor.cshtml" />
     <Content Include="Views\User\UserAccount.cshtml" />
     <Content Include="Views\Log\LoginLog.cshtml" />
     <Content Include="Views\Log\UserGameLog.cshtml" />
+    <Content Include="Views\Home\IndexInfo.cshtml" />
+    <Content Include="Views\Home\LoginHead.cshtml" />
+    <Content Include="Views\User\UserHistory.cshtml" />
+    <Content Include="Views\Game\Cbb\RoomList.cshtml" />
+    <Content Include="Views\Game\RoomPage.cshtml" />
+    <Content Include="Views\Game\GamePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
