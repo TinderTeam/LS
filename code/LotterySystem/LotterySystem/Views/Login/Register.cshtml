@@ -2,4 +2,71 @@
     ViewBag.Title = "Register";
 }
 
-<h2>Register</h2>
+
+      <div class="row-fluid">
+          <div class="row">
+              <div class="col-lg-3">
+
+              </div>
+              <div class="col-lg-6">
+
+
+
+           <form class="form-horizontal" role="form">
+               <div class="form-group">
+
+                   <label for="userID" class="col-sm-3 control-label"><font face="微软雅黑" size="3px" style="vertical-align:text-bottom "class="pull-right">用户名</font> </label>
+                   <div class="col-sm-9">
+                   <input type="email" class="form-control" id="userID" placeholder="请输入注册邮箱">
+                    </div>
+               </div>
+               <div class="form-group">
+                   <label for="userName" class="col-sm-3 control-label"><font face="微软雅黑" size="3px" style="vertical-align:auto "class="pull-right">昵&nbsp&nbsp&nbsp称</font></label>
+                   <div class="col-sm-9">
+                   <input type="email" class="form-control" id="userName" placeholder="请输入昵称">
+                   </div>
+               </div>
+               <div class="form-group">
+                   <label for="password1"class="col-sm-3  control-label"><font face="微软雅黑" size="3px" class="pull-right">请输入密码</font></label>
+                   <div class="col-sm-9">
+                   <input type="password" class="form-control" id="password1" placeholder="请输入6~12位英文或数字">
+                    </div>
+               </div>
+               <div class="form-group">
+                  <label for="password2" class="col-sm-3  control-label"><font face="微软雅黑" size="3px" class="pull-right">再次确认密码</font></label>
+                   <div class="col-sm-9">
+                  <input type="password" class="form-control" id="password2" placeholder="检验两者是否一致">
+                    </div>
+              </div>
+               <hr />
+               <div class="form-group">
+                    <div class="col-sm-3  " >
+                        <label class="checkbox control-label"><span class="pull-right"><input type="checkbox" id="readSure" ></span></label>
+                     </div>      
+                    <div class="col-sm-9" >
+                        <a><font face="微软雅黑" size="3px" class="pull-left" style="text-align:end"> 我已阅读相关协议</font></a>
+
+                     </div>
+                        
+                    
+               </div >
+  
+               <hr />
+            <!-- Button -->
+                <div class="control-group " style="text-align:center">
+                    <label class="control-label" for="accountSure"></label>
+                    <div class="controls">
+                        <button id="accountSure" name="accountSure" class="btn btn-success" type="submit">确认</button>
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	                    <button id="accountCancel" name="accountCancel" class="btn btn-inverse" type="submit">取消</button>
+                    </div>
+                </div>
+                                   
+           </form>
+		   </div>
+              <div class="col-lg-3">
+
+              </div>
+          </div>				
+					
+	</div><!-- row-fluid -->

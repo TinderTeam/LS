@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "主页";
 }
+
        
     <div id="head"> 
          @RenderPage("LoginHead.cshtml")
@@ -18,7 +19,7 @@
 				    @RenderPage("../User/UserHistory.cshtml")
 				</div>
                 <div id="left3"> 
-				    @RenderPage("Ranking.cshtml")
+				    
 				</div>
 				<div id="left4"> 
 				   
@@ -40,14 +41,11 @@
 			<!-- right-->
 			<div class="col-lg-4">
 			
-				<!-- 趋势图-->
-						<div class="panel panel-primary">
-						<div class="panel-heading">
-							趋势图
-						</div>
-						<div class="panel-body">
-						</div>	
-					</div><!-- 趋势图-->
+                <div id="right1">
+
+                     @RenderPage("Ranking.cshtml")
+                </div>
+               
 			
 			</div><!-- right-->
 
