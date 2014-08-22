@@ -1,17 +1,18 @@
 ﻿@{
     ViewBag.Title = "GameSelect";
-    
+  
 }
 
-     <div>
-              <!--游戏选择列表-->
-				<ul class="nav nav-pills nav-stacked" role="tablist">
-                    <li role="presentation" class="active"><a href="#">选择游戏</a></li>
-                    <li role="presentation">@Html.ActionLink("在线竞猜","RoomPage","Game",null,new{ @class="btn btn-default"})</li>
-                    <li role="presentation"><a href="#" class="btn btn-default">德州扑克</a></li>
-					<li role="presentation"><a href="#" class="btn btn-default">十三水</a></li>
-					<li role="presentation"><a href="#" class="btn btn-default">四合</a></li>
-					<li role="presentation"><a href="#" class="btn btn-default">更多</a></li>
-               </ul>
-                <!--游戏选择列表-->
-         </div>
+<div>
+    <!--游戏选择列表-->
+    <ul class="nav nav-pills nav-stacked" role="tablist">
+        <li role="presentation" class="active"><a href="#">选择游戏</a></li>
+        @for (var i = 0; i < @ViewBag.GameListCount; i++)
+        {
+            <li role="presentation">
+                @Html.ActionLink( (string)@ViewBag.GameList[i].GameName, "RoomPage", "Game", new { gameID = @ViewBag.GameList[i].GameID }, new { @class = "btn btn-default"})
+            </li>          
+        }
+    </ul>
+    <!--游戏选择列表-->
+</div>

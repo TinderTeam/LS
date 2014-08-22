@@ -18,17 +18,15 @@ namespace LotterySystem.Controllers
         /// </summary>
         /// <param name="gameID"></param>
         /// <returns></returns>
-        public ActionResult Hall(String gameID)
+        public ActionResult Hall()
         {
             if ((UserModel)Session["SystemUser"] != null)
             {
                 //验证用户
                 ViewBag.User = (UserModel)Session["SystemUser"];
-                //显示房间
-                RoomListModel roomList=platService.getRoomListByGameID(gameID);
 
-                ViewBag.roomSize = roomList.RoomList.Count;
-                ViewBag.roomList = roomList.RoomList;
+                ViewBag.GameList = platService.getGameList();
+                ViewBag.GameListCount = platService.getGameList().Count;
                 return View();
             }
             else
@@ -47,11 +45,26 @@ namespace LotterySystem.Controllers
             return RedirectToAction("GamePage", "Game");
         }
 
-        public ActionResult RoomPage()
+        public ActionResult RoomPage(String gameID)
         {
-            return View();
+
+            if ((UserModel)Session["SystemUser"] != null)
+            {
+                ViewBag.User = (UserModel)Session["SystemUser"];
+                //显示房间
+                RoomListModel roomList = platService.getRoomListByGameID(gameID);
+                ViewBag.roomSize = roomList.RoomList.Count;
+                ViewBag.roomList = roomList.RoomList;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Login");
+            }    
+
+            
         }
-        public ActionResult GamePage()
+        public ActionResult Game()
         {
             return View();
         }
@@ -64,7 +77,6 @@ namespace LotterySystem.Controllers
         public ActionResult TabelList(String roomID)
         {
             UserModel user=(UserModel)Session["SystemUser"];
-
             RoomModel room= platService.enterRoom(user, roomID);
             if (room != null)
             {

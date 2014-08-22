@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "TabelList";
-       Layout = null;
+    Layout = null;
 }
 <!-- 牌局列表-->
 <div class="panel panel-primary">
@@ -28,49 +28,11 @@
                         <td>用户_@i</td>
                         <td>22:10:23</td>
                         <td>3/6</td>
-                        <td>
-                        <td>@Html.ActionLink("加入", "EnterGame", "Game", null, new { @class = "btn btn-primary btn-xs" })</td>
+                         <td>@Ajax.ActionLink("进入", "Game", "Game", new { roomID ="" }, new AjaxOptions { UpdateTargetId = "pageCenter" }, new { @class = "btn btn-primary btn-xs" })</td>
      
                      </tr>
-                    
-                      
-                }
-                <tr>
-                    <td>1</td>
-                    <td><a href="">129382</a></td>
-                    <td>某某人</td>
-                    <td>22:10:23</td>
-                    <td>3/6</td>
-                    <td>
-                        <input type="submit" class="btn btn-primary btn-xs" value="进入" onclick="enterRoom()"/></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td><a href="">1291382</a></td>
-                    <td>某某人</td>
-                    <td>22:10:24</td>
-                    <td>1/6</td>
-                    <td>
-                        <input type="submit" class="btn btn-primary btn-xs" value="进入" /></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td><a href="">134282</a></td>
-                    <td>某某人</td>
-                    <td>22:10:23</td>
-                    <td>2/6</td>
-                    <td>
-                        <input type="submit" class="btn btn-primary btn-xs" value="进入" /></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td><a href="">129382</a></td>
-                    <td>某某人</td>
-                    <td>22:10:23</td>
-                    <td>3/6</td>
-                    <td>
-                        <input type="submit" class="btn btn-primary btn-xs" value="进入" /></td>
-                </tr>
+
+                }             
             </table>
         </div>
 

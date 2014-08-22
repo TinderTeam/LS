@@ -17,6 +17,10 @@ namespace LotterySystem.Service
         ConvertService converService = ServiceContext.getInstance().getConvertService();
         EntranceServcie entranceService = ServiceContext.getInstance().getEntranceServcie();
 
+        public List<GameInfoModel> getGameList()
+        {
+            return SysStub.getGameList();
+        }
 
         /// <summary>
         /// 根据游戏ID 查询房间
@@ -27,7 +31,7 @@ namespace LotterySystem.Service
         {
 
             //Test Stub
-            return RoomSrub.getRoomListModel();
+            return RoomStub.getRoomListModel();
         }
 
         /// <summary>
@@ -43,9 +47,15 @@ namespace LotterySystem.Service
             if(entranceService.enterRoomCheck(user,room))
             {
                 //用户加入
-                user.UserInfor.setPositionByRoomInfo(room.RoomID, room.RoomName);
-                return new RoomModel();
+                //user.UserInfor.setPositionByRoomInfo(room.RoomID, room.RoomName);
+
+
+
+                //Stub
+                room = RoomStub.getRoomModel(10);
+                return room;
             }else{
+                //无进入权限
                 return null;
             }
             

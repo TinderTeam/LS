@@ -11,6 +11,7 @@ namespace LotterySystem.Service
     {
         RoomListModel getRoomListByGameID(string id);
         RoomModel enterRoom(UserModel user,string roomID);
+        List<GameInfoModel> getGameList();
     }
     public interface ConvertService
     {

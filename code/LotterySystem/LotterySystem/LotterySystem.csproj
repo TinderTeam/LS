@@ -185,6 +185,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Constants\Constants.cs" />
     <Compile Include="Models\RoomModel.cs" />
+    <Compile Include="Models\SystemInfoModel.cs" />
     <Compile Include="Models\TabelModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Po\Account.cs" />
@@ -206,6 +207,7 @@
     <Compile Include="Service\ServiceContext.cs" />
     <Compile Include="Service\User\UserService.cs" />
     <Compile Include="Test\Stub\Stub.cs" />
+    <Compile Include="Util\DateTimeServcie.cs" />
     <Compile Include="Util\RandomService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -389,7 +391,7 @@
     <Content Include="Views\Cbb\Ad.cshtml" />
     <Content Include="Views\Game\Hall.cshtml" />
     <Content Include="Views\Game\TabelList.cshtml" />
-    <Content Include="Views\Game\Cbb\Game.cshtml" />
+    <Content Include="Views\Game\Game.cshtml" />
     <Content Include="Views\User\UserAccount.cshtml" />
     <Content Include="Views\Log\LoginLog.cshtml" />
     <Content Include="Views\Log\UserGameLog.cshtml" />
@@ -398,8 +400,8 @@
     <Content Include="Views\User\UserHistory.cshtml" />
     <Content Include="Views\Game\Cbb\RoomList.cshtml" />
     <Content Include="Views\Game\RoomPage.cshtml" />
-    <Content Include="Views\Game\GamePage.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
+    <Content Include="Views\Game\Cbb\GameSelect.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

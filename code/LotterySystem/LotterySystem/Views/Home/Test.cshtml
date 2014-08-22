@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Test";
+}
+<div id="div1">
+　　刷新此层
+　</div>
+　　
+<div id="div2">
+　　@Ajax.ActionLink("点此进行局部刷新","About","Home",new AjaxOptions{UpdateTargetId = "div1"})
+　</div>
