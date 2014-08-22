@@ -14,20 +14,22 @@
         @Scripts.Render("~/Scripts/jquery-1.8.3.min.js")
         @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
 
-
-
     </head>
     <body>
+
         <!--navbar--->
         <div class="container">
-
-
-		    <div class="container-fluid">
+        <div class="container-fluid">
 			    <nav class="navbar nav-pills " role="navigation">
 				    <div class="container-fluid">
 					    <ul class="nav nav-pills nav-justified " role="tablist">
-					      <li class="active"><a href="#"><font face="微软雅黑" size="4px">首页</font></a></li>
-					      <li><a href="#"><font face="微软雅黑" size="4px">游戏大厅</font></a></li>
+					      <li ><font face="微软雅黑" size="4px">
+                              
+                            @Html.ActionLink("首页", "Index", "Home", null, new { @class="active"})</font>	
+                            </li>
+					      <li><font face="微软雅黑" size="4px">
+                              
+                             @Html.ActionLink("游戏大厅","Hall","Game",null,null)  </font></li>
 					      <li><a href="#"><font face="微软雅黑" size="4px">积分管理</font></a></li>
 					      <li><a href="#"><font face="微软雅黑" size="4px">借贷</font></a></li>
 					      <li><a href="#"><font face="微软雅黑" size="4px">日志</font></a></li>
@@ -35,7 +37,13 @@
 				       </ul>
 				    </div>
 		  	    </nav>
-		    </div><!--navbar--->      
+		    </div>
+          </div>  
+            <!--navbar--->   
+        <div class="container">
+
+
+   
                 
              <!-- 用户信息 -->
      		<div>
