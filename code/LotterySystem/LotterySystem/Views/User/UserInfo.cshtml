@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "UserInfo";
+}
+
+<!-- 用户信息-->
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        个人信息
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-5">
+                <p class="pull-right">用户名：</p>
+            </div>
+            <div class="col-sm-7">
+                <p>@ViewBag.User.UserID</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5">
+                <p class="pull-right">昵称：</p>
+            </div>
+            <div class="col-sm-7">
+                <p>@ViewBag.User.UserName</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-5">
+                <p class="pull-right">积分：</p>
+            </div>
+            <div class="col-sm-7">
+                <p>@ViewBag.User.UserInfor.Points</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-5 ">
+                <p class="pull-right">当前位置：</p>
+            </div>
+            <div class="col-sm-7">
+                <p>@ViewBag.User.UserInfor.Position</p>
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-success">编辑信息</button>
+            <button type="button" class="btn btn-info">账户记录</button>
+            <button type="button" class="btn btn-info">充值</button>
+        </div>
+
+    </div>
+</div>
+
+<!-- 用户信息-->
+
+

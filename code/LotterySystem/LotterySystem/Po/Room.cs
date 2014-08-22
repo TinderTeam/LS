@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace LotterySystem.Domain
+namespace LotterySystem.Po
+
 {
     public class Room
     {

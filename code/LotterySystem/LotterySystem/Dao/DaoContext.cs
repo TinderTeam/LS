@@ -11,8 +11,8 @@ namespace LotterySystem.Dao
 
 
         private UserDao userDao;
-
-
+        private AccountDao accountDao;
+        private RoomDao roomDao;
         public static DaoContext getInstance()
         {
 
@@ -31,6 +31,26 @@ namespace LotterySystem.Dao
                 userDao = new UserDao();
             }
             return userDao;
+        }
+
+        public RoomDao getRoomDao()
+        {
+
+            if (roomDao == null)
+            {
+                roomDao = new RoomDaoImpl();
+            }
+            return roomDao;
+        }
+
+        public AccountDao getAccountDao()
+        {
+
+            if (accountDao == null)
+            {
+                accountDao = new AccountDaoImpl();
+            }
+            return accountDao;
         }
     }
 }

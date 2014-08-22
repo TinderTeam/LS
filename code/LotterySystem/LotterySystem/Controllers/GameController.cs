@@ -11,6 +11,8 @@ namespace LotterySystem.Controllers
     public class GameController : Controller
     {
         PlatService platService = ServiceContext.getInstance().getPlatService();
+
+
         /// <summary>
         /// 进入游戏大厅
         /// </summary>
@@ -54,9 +56,28 @@ namespace LotterySystem.Controllers
             return View();
         }
 
-        public ActionResult TabelList()
+        /// <summary>
+        /// 进入房间
+        /// </summary>
+        /// <param name="roomID"></param>
+        /// <returns></returns>
+        public ActionResult TabelList(String roomID)
         {
-            return View();
+            UserModel user=(UserModel)Session["SystemUser"];
+
+            RoomModel room= platService.enterRoom(user, roomID);
+            if (room != null)
+            {
+                ViewBag.User = user;
+                ViewBag.Room = room;
+                return View();
+            }
+            else
+            {
+                //权限不足
+                return RedirectToAction("RoomPage", "Game");
+            }
+            
         }
     }
 }

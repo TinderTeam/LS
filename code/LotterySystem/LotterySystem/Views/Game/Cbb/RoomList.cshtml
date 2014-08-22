@@ -24,16 +24,15 @@
 
                                 @for (var i = 0; i < @ViewBag.roomSize; i++)
                                 {
-								    <tr>
+								    <tr >
 								      <td>@ViewBag.roomList[i].RoomNum</td>
 								      <td><a href="">@ViewBag.roomList[i].RoomName</a></td>
 								      <td>@ViewBag.roomList[i].HostName</td>
 								      <td>@ViewBag.roomList[i].RoomStatus</td>
 								      <td>@ViewBag.roomList[i].PlayerLimit</td>
 								      <td>@ViewBag.roomList[i].BasicPoint</td>
-								      <td>@ViewBag.roomList[i].Amplification</td>
-								     
-                                      <td>@Ajax.ActionLink("进入", "TabelList", "Game", new AjaxOptions { UpdateTargetId = "pageCenter" },new { @class = "btn btn-primary btn-xs" })</td>
+								      <td>@ViewBag.roomList[i].Amplification</td>							     
+                                      <td>@Ajax.ActionLink("进入", "TabelList", "Game", new { roomID = @ViewBag.roomList[i].RoomID }, new AjaxOptions { UpdateTargetId = "pageCenter" }, new { @class = "btn btn-primary btn-xs" })</td>
 								    </tr>
                                  }
 							</table>

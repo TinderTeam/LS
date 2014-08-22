@@ -7,5 +7,6 @@ namespace LotterySystem.Dao
 {
     public interface AccountDao
     {
+        int getAccountByUserID(string id);
     }
 }

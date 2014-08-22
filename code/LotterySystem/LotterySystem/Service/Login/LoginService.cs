@@ -10,7 +10,7 @@ namespace LotterySystem.Service.Login
     public class LoginService
     {
         UserDao userDao = DaoContext.getInstance().getUserDao();
-
+        AccountDao accountDao = DaoContext.getInstance().getAccountDao();
         /// <summary>
         /// 系统登陆
         /// </summary>
@@ -42,6 +42,9 @@ namespace LotterySystem.Service.Login
             userModel.UserID = user.UserID;
             userModel.UserName = user.UserName;
             userModel.Status = user.Status;
+            userModel.UserInfor = new UserInforModel();
+            userModel.UserInfor.Points = accountDao.getAccountByUserID(userID);
+            userModel.UserInfor.Position = UserConstants.IN_THE_HALL;
             return userModel;
         }
 

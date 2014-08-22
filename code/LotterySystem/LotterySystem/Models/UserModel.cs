@@ -13,28 +13,39 @@ namespace LotterySystem.Models
 {
     public class UserModel
     {
+        private String userID;
+        private String userName;
+        private String status;
         private String permission;
+        private UserInforModel userInfor;
+
+        public UserInforModel UserInfor
+        {
+            get { return userInfor; }
+            set { userInfor = value; }
+        }
+
 
         public String Permission
         {
             get { return permission; }
             set { permission = value; }
         }
-        private String userID;
+       
 
         public String UserID
         {
             get { return userID; }
             set { userID = value; }
         }
-        private String userName;
+        
 
         public String UserName
         {
             get { return userName; }
             set { userName = value; }
         }
-        private String status;
+        
 
         public String Status
         {
@@ -52,5 +63,30 @@ namespace LotterySystem.Models
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+    }
+    public class UserInforModel
+    {
+        private int points;
+        private string position;
+
+
+        public void setPositionByRoomInfo(string roomID, string roomName)
+        {
+            this.position = roomID + "_" + roomName;
+        }
+
+        public string Position
+        {
+            get { return position; }
+            set { position = value; }
+        }
+
+        public int Points
+        {
+            get { return points; }
+            set { points = value; }
+        }
+
+
     }
 }

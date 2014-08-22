@@ -18,13 +18,22 @@ namespace LotterySystem.Models
         private string roomPassword;
         private string hostName;
 
+        private List<TabelModel> tabelModelList = new List<TabelModel>();
+
+
+
+        public List<TabelModel> TabelModelList
+        {
+            get { return tabelModelList; }
+            set { tabelModelList = value; }
+        }
+
         public int RoomNum
         {
             get { return roomNum; }
             set { roomNum = value; }
         }
-       
-
+      
         public string RoomID
         {
             get { return roomID; }
