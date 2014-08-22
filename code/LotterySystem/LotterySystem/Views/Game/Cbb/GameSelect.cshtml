@@ -4,10 +4,10 @@
 }
 
      <div>
-!--游戏选择列表-->
+              <!--游戏选择列表-->
 				<ul class="nav nav-pills nav-stacked" role="tablist">
                     <li role="presentation" class="active"><a href="#">选择游戏</a></li>
-                    <li role="presentation"><a href="#" class="btn btn-default">在线竞猜</a></li>
+                    <li role="presentation">@Html.ActionLink("在线竞猜","RoomPage","Game",null,new{ @class="btn btn-default"})</li>
                     <li role="presentation"><a href="#" class="btn btn-default">德州扑克</a></li>
 					<li role="presentation"><a href="#" class="btn btn-default">十三水</a></li>
 					<li role="presentation"><a href="#" class="btn btn-default">四合</a></li>

@@ -2,7 +2,9 @@
 @{
     ViewBag.Title = "主页";
 }
-       
+   
+
+     <script src="@Url.Content("~/Content/js/bootstrap.min.js")">  </script>
     <div id="head"> 
          @RenderPage("LoginHead.cshtml")
     </div>
@@ -12,12 +14,7 @@
 			<div class="col-lg-3">
 			    
                 <div id="left1"> 
-
-				   
-				</div>
-                <div id="left2"> 
-				   
-                   @RenderPage("Ranking.cshtml")
+                    @RenderPage("../Game/Cbb/GameSelect.cshtml")
 				   
 				</div>
                 <div id="left2"> 
@@ -47,8 +44,12 @@
 			<div class="col-lg-4">
 			
                 <div id="right1">
-
+                 @RenderPage("Ranking.cshtml")
                      
+                </div>
+                <div id="right2">
+
+
                 </div>
                
 			
