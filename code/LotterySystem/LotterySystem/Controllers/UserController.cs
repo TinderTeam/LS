@@ -10,12 +10,11 @@ namespace LotterySystem.Controllers
     {
         //
         // GET: /User/
-		//
+
         public ActionResult Index()
         {
-            return View() ; 
+            return View();
         }
 
     }
-	
 }

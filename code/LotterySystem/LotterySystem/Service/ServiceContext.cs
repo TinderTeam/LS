@@ -13,6 +13,7 @@ namespace LotterySystem.Service
 
 
         private LoginService loginService;
+        private PlatService platService;
 
         private ServiceContext()
         {
@@ -37,6 +38,15 @@ namespace LotterySystem.Service
                 loginService = new LoginService();
             }
             return loginService;
+        }
+        public PlatService getPlatService()
+        {
+
+            if (platService == null)
+            {
+                platService = new PlatServiceImpl();
+            }
+            return platService;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace LotterySystem.Domain
         private String roomID;
         private String roomName;
         private String roomPassword;
-        private String roomLeaderID;
+        private String roomHostID;
         private String status;
         private float accessAcountLimit;
         private float basicPoint;

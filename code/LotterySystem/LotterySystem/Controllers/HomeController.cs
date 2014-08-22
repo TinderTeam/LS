@@ -32,5 +32,12 @@ namespace LotterySystem.Controllers
 
             return View();
         }
+
+        public ActionResult Test()
+        {
+            ViewBag.Message = "你的联系方式页。";
+
+            return View();
+        }
     }
 }

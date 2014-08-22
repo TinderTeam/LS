@@ -22,17 +22,18 @@
 								  <td>进入</td>
 								</tr>
 
-                                @for(var i = 1; i < 21; i++)
+                                @for (var i = 0; i < @ViewBag.roomSize; i++)
                                 {
 								    <tr>
-								      <td>@i</td>
-								      <td><a href="">房间名称 @i</a></td>
-								      <td>房主_@i</td>
-								      <td>准备中</td>
-								      <td>>100</td>
-								      <td>10</td>
-								      <td>10%</td>
-								      <td>@Html.ActionLink("进入","EnterRoom","Game",null,new{ @class="btn btn-primary btn-xs"})</td>
+								      <td>@ViewBag.roomList[i].RoomNum</td>
+								      <td><a href="">@ViewBag.roomList[i].RoomName</a></td>
+								      <td>@ViewBag.roomList[i].HostName</td>
+								      <td>@ViewBag.roomList[i].RoomStatus</td>
+								      <td>@ViewBag.roomList[i].PlayerLimit</td>
+								      <td>@ViewBag.roomList[i].BasicPoint</td>
+								      <td>@ViewBag.roomList[i].Amplification</td>
+								     
+                                      <td>@Ajax.ActionLink("进入", "TabelList", "Game", new AjaxOptions { UpdateTargetId = "pageCenter" },new { @class = "btn btn-primary btn-xs" })</td>
 								    </tr>
                                  }
 							</table>
