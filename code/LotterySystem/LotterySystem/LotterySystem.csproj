@@ -369,6 +369,8 @@
     <Content Include="Views\Game\RoomPage.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Game\Cbb\GameSelect.cshtml" />
+    <Content Include="Views\Home\Nav.cshtml" />
+    <Content Include="Views\Game\NewRoom.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

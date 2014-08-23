@@ -91,5 +91,11 @@ namespace LotterySystem.Controllers
             }
             
         }
+
+        //新建房间
+        public ActionResult NewRoom()
+        {
+            return View();
+        }
     }
 }

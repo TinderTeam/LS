@@ -12,16 +12,10 @@ namespace LotterySystem.Controllers
     {
         PlatService platService = ServiceContext.getInstance().getPlatService();
 
-        public ActionResult Index()
+        public ActionResult Index(string msg)
         {
 
-            if ((UserModel)Session["SystemUser"] != null)
-            {
-                ViewBag.User = (UserModel)Session["SystemUser"];
-              
-            }
-            ViewBag.GameList = platService.getGameList();
-            ViewBag.GameListCount = platService.getGameList().Count;
+            ViewBag.Msg = msg;
             return View();
         }
 

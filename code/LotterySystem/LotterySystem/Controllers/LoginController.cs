@@ -34,8 +34,8 @@ namespace LotterySystem.Controllers
             }
 
             // 如果我们进行到这一步时某个地方出错，则重新显示表单
-            ModelState.AddModelError("", "提供的用户名或密码不正确。");
-            return View(model);
+            ViewBag.Msg = "密码错误";
+            return RedirectToAction("Index", "Home", new {Msg= "请输入正确的用户名和密码！" });
         }
 
 

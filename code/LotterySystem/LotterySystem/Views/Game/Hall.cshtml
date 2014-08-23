@@ -2,18 +2,34 @@
     ViewBag.Title = "Hall";
 }
 
-<div id="head">
+
+<div id="head" >
+    @RenderPage("../Home/Nav.cshtml")
 </div>
-<!-- Main Context-->
+<!-- operation menu-->
+             <!-- 用户信息 -->
+     		<div>
+                 @RenderPage("../Shared/_LoginPartial.cshtml")
+			</div><!-- 用户信息 -->
+
+<hr />
 <div class="row">
     <!-- Left-->
     <div class="col-lg-3">
 
         <div id="left1">
-            @RenderPage("../User/UserInfo.cshtml")
+           <select class="btn btn-default dropdown-toggle" >
+               <option value="" selected>请选择游戏进入</option>
+               <option value="">在线竞猜</option>
+               <option value="">德州扑克</option>
+               <option value="">六家统</option>
+               <option value="">十三水</option>
+               <option value="">更多</option>
+           </select>
         </div>
         <div id="left2">
-            @RenderPage("../User/UserHistory.cshtml")
+
+  
         </div>
         <div id="left3">
         </div>
@@ -29,16 +45,16 @@
     <!-- Center-->
     <div class="col-lg-5">
         <div id="pageCenter">
-            @RenderPage("../Home/IndexInfo.cshtml")
+          
         </div>
     </div>
     <!-- Center-->
 
     <!--right-->
     <div class="col-lg-4">
-        <div id="right1">
-            @RenderPage("../Game/Cbb/GameSelect.cshtml")
-
+        <div id="right1"  class="pull-right">
+            
+             @Html.ActionLink("创建房间", "NewRoom", "Game", null, new { @class = "btn btn-success" })
         </div>
 
         <div id="right2">
@@ -47,4 +63,15 @@
 
     <!--right-->
 </div>
-<!-- row -->
+
+<!-- operation menu-->
+
+<!--Hall-->
+<hr />
+<div class="row">
+
+     @RenderPage("../Game/Cbb/RoomList.cshtml")
+
+</div>
+<!--Hall-->
+  
