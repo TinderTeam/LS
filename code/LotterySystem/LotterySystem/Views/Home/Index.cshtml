@@ -2,58 +2,12 @@
 @{
     ViewBag.Title = "主页";
 }
-       
+   
 
-    <div id="head"> 
+     <script src="@Url.Content("~/Content/js/bootstrap.min.js")">  </script>
+
+    <div id="head"  style="text-align:center"> 
          @RenderPage("LoginHead.cshtml")
     </div>
-	 <!-- Main Context-->
-		<div class="row">
-			<!-- Left-->
-			<div class="col-lg-3">
-			    
-                <div id="left1"> 
-                    @RenderPage("Ranking.cshtml")
-				   
-				</div>
-                <div id="left2"> 
-				    
-				</div>
-                <div id="left3"> 
-				    
-				</div>
-				<div id="left4"> 
-				   
-				</div>
-                <div id="left5"> 
-				    
-				</div>
-				
-				                                
-            </div><!-- Left-->
-			
-			<!-- Center-->
-			<div class="col-lg-5">
-                <div id="pageCenter">
-			        @RenderPage("IndexInfo.cshtml")
-                </div>
-			</div><!-- Center-->
-			
-			<!-- right-->
-			<div class="col-lg-4">
-			
-                <div id="right1">
-               
-                   @RenderPage("../Game/Cbb/GameSelect.cshtml")    
-                </div>
-                <div id="right2">
 
-
-                </div>
-               
-			
-			</div><!-- right-->
-
-        
-      </div> <!-- row -->
    

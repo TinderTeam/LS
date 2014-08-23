@@ -1,0 +1,176 @@
+﻿@{
+    ViewBag.Title = "NewRoom";
+    
+}
+<div id="head" >
+    @RenderPage("../Home/Nav.cshtml")
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">创建房间</div>
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-lg-6">
+                <form class="form-horizontal" role="form">
+
+                    <div class="form-group">
+                        <label for="roomName" class="col-sm-4 control-label"><font face="微软雅黑" size="3px" style="vertical-align: auto" class="pull-right">房间名称</font></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="roomName" placeholder="请输入新建房间名称">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="roomPD1" class="col-sm-4  control-label"><font face="微软雅黑" size="3px" class="pull-right">请输入准入密码</font></label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" id="roomPD1" placeholder="请输入6~12位英文或数字">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="roomPD2" class="col-sm-4  control-label"><font face="微软雅黑" size="3px" class="pull-right">再次确认房间密码</font></label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" id="roomPD2" placeholder="检验两者是否一致">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="roomState" class="col-sm-4 control-label"><font face="微软雅黑" size="3px"  class="pull-right">房间状态</font></label>
+                        <div class="col-sm-8">
+                            
+                            <select class="btn btn-default dropdown-toggle"  id="roomState">
+                            <option value="" selected>开放</option>
+                            <option value="">关闭</option>
+                            <option value="">冻结</option>
+                            </select>
+                        </div>
+                    </div>  
+                    <div class="form-group">
+                        <label for="enterMin" class="col-sm-4 control-label"><font face="微软雅黑" size="3px" style="vertical-align: auto" class="pull-right">准入底值</font></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="enterMin" >
+                        </div>
+                    </div>                    
+                   
+                    <div class="form-group">
+                        <label for="throwMin" class="col-sm-4 control-label"><font face="微软雅黑" size="3px" style="vertical-align: auto" class="pull-right">起投分值</font></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="throwMin" >
+                        </div>
+                    </div>    
+                    <div class="form-group">
+                        <label for="growth" class="col-sm-4 control-label"><font face="微软雅黑" size="3px" style="vertical-align: auto" class="pull-right">增幅</font></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="growth" >
+                        </div>
+                    </div>  
+                    <div class="form-group">
+                        <label for="hostMin" class="col-sm-4 control-label"><font face="微软雅黑" size="3px"  class="pull-right">上庄底值</font></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="hostMin" >
+                        </div>
+                    </div>   
+              </form>
+            </div><!--左边信息-->
+
+
+
+            <div class="col-lg-6">
+
+                  <form class="form-horizontal" role="form">  
+                      <!--准入名单-->              
+                    <div class="form-group">
+                         <div class="col-sm-4" >
+                               <div class="pull-right">
+                               <label for="enterMenu"class="control-label" ><font face="微软雅黑" size="3px"  >准入名单</font></label>
+                                              
+                               </div>
+                                <div>&nbsp</div>
+                                <br />
+                              <div class="pull-right">
+                               <button id="newEnter" name="newforbid" class="btn btn-success" type="submit">新增准入名单</button>
+                              </div>
+                              
+                           </div>
+                        
+                        <div class="col-sm-8">
+                            <div >
+                             <span class="col-sm-8">
+                                    <input type="text" class="form-control" id="enter1" >
+                             </span>
+                              <span class="col-sm-2">
+                                  <button id="saveEnter" name="saveEnter" class="btn btn-success" type="submit">保存</button>
+                             </span>  
+                             <span class="col-sm-2">
+                                  <button id="deleteEnter" name="deleteEnter" class="btn btn-inverse" type="submit">删除</button>
+                             </span> 
+                             </div>
+                            
+                        <div >
+ 
+                                                
+                        </div>
+                    </div>  
+                     </div><!--准入名单-->
+                    <hr />                     
+                      <!--禁入名单-->
+                       <div class="form-group">
+                            <div class="col-sm-4" >
+                                <div class="pull-right">
+                               <label for="forbidMenu"class="control-label" ><font face="微软雅黑" size="3px"  >禁入名单</font></label>
+                                              
+                               </div>
+                                <div>&nbsp</div>
+                                <br />
+                              <div class="pull-right">
+                               <button id="newforbid" name="newForbid" class="btn btn-success" type="submit">新增禁入名单</button>
+                              </div>
+                              
+                           </div>
+                        <div class="col-sm-8">
+
+                             <span class="col-sm-8">
+                                    <input type="text" class="form-control" id="forbid1" >
+                             </span>
+                              <span class="col-sm-2">
+                                  <button id="saveForbid" name="saveForbid" class="btn btn-success" type="submit">保存</button>
+                             </span>  
+                             <span class="col-sm-2">
+                                  <button id="deleteForbid" name="deleteForbid" class="btn btn-inverse" type="submit">删除</button>
+                             </span>  
+
+
+                                                
+                        </div>
+                     </div>
+                <!--禁入名单-->
+
+                </form>
+            </div>
+
+        </div>
+
+        <!-- row -->
+        <hr />
+
+        <!--操作栏-->
+        <div class="row">
+            <div class="col-lg-4">
+            </div>
+            <div class="col-lg-4">
+                    <!-- Button -->
+                    <div class="control-group " style="text-align: center">
+                        
+                        <div class="controls">
+                            <button id="newRoomSure" name="newRoomSure" class="btn btn-success" type="submit">确认</button>
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	                        <button id="newRoomCancel" name="newRoomCancel" class="btn btn-inverse" type="submit">取消</button>
+                        </div>
+                    </div>
+            </div>
+            <div class="col-lg-4">
+            </div>
+        </div>
+        <!--操作栏-->
+    </div>
+</div>
+
