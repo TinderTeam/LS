@@ -39,13 +39,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.4.0.1.4000\lib\net40\Iesi.Collections.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MiniWebDeploy">
       <HintPath>..\packages\MiniWebDeploy.0.7.0\lib\net35\MiniWebDeploy.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.4.0.0.4000\lib\net40\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -153,10 +164,6 @@
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
     </Reference>
-    <Reference Include="Antlr3.Runtime">
-      <Private>True</Private>
-      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AuthConfig.cs" />
@@ -175,11 +182,16 @@
     <Compile Include="Dao\ChoiceDao.cs" />
     <Compile Include="Dao\DaoContext.cs" />
     <Compile Include="Dao\DoorDao.cs" />
+    <Compile Include="Dao\GamblingPartyDao.cs" />
+    <Compile Include="Dao\GameDao.cs" />
     <Compile Include="Dao\Impl\AccountDaoImpl.cs" />
+    <Compile Include="Dao\Impl\GameDaoImpl.cs" />
     <Compile Include="Dao\Impl\RoomDaoImpl.cs" />
+    <Compile Include="Dao\Impl\SysDaoImpl.cs" />
     <Compile Include="Dao\Impl\UserDaoImpl.cs" />
     <Compile Include="Dao\LoginLogDao.cs" />
     <Compile Include="Dao\RoomDao.cs" />
+    <Compile Include="Dao\SysDao.cs" />
     <Compile Include="Dao\UserDao.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -195,20 +207,24 @@
     <Compile Include="Po\BetRec.cs" />
     <Compile Include="Po\Choice.cs" />
     <Compile Include="Po\Door.cs" />
+    <Compile Include="Po\GamblingParty.cs" />
     <Compile Include="Po\Game.cs" />
     <Compile Include="Po\LoginLog.cs" />
     <Compile Include="Po\Room.cs" />
-    <Compile Include="Po\SystemUser.cs" />
+    <Compile Include="Po\Sys.cs" />
+    <Compile Include="Po\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\Catch.cs" />
     <Compile Include="Service\Convert\ConventServiceImpl.cs" />
     <Compile Include="Service\Entrance\EntranceServcieImpl.cs" />
     <Compile Include="Service\Game\AccountServcie.cs" />
     <Compile Include="Service\Game\GameService.cs" />
     <Compile Include="Service\Game\PlatServiceImpl.cs" />
-    <Compile Include="Service\Login\LoginService.cs" />
+    <Compile Include="Service\Login\LoginServiceImpl.cs" />
     <Compile Include="Service\ServiceInterface.cs" />
     <Compile Include="Service\ServiceContext.cs" />
     <Compile Include="Service\User\UserService.cs" />
+    <Compile Include="Test\Stub\DBStub.cs" />
     <Compile Include="Test\Stub\Stub.cs" />
     <Compile Include="Util\DateTimeServcie.cs" />
     <Compile Include="Util\RandomService.cs" />
@@ -292,6 +308,9 @@
     <Content Include="Content\bootstrap\css\bootstrap.css.map" />
     <None Include="Properties\PublishProfiles\config.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <EmbeddedResource Include="Po\User.hbm.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -309,6 +328,9 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="hibernate.cfg.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

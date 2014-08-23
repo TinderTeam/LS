@@ -9,7 +9,7 @@ namespace LotterySystem.Models
     {
     }
 
-    public class GameInfoModel
+    public class GameModel
     {
         private int gameID;
         private String gameName;

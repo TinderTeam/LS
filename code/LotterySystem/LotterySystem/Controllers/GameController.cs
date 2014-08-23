@@ -19,20 +19,41 @@ namespace LotterySystem.Controllers
         /// <param name="gameID"></param>
         /// <returns></returns>
         public ActionResult Hall()
-        {
-            if ((UserModel)Session["SystemUser"] != null)
-            {
+        {     
                 //验证用户
-                ViewBag.User = (UserModel)Session["SystemUser"];
-
                 ViewBag.GameList = platService.getGameList();
                 ViewBag.GameListCount = platService.getGameList().Count;
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login", "Login");
-            }               
+                return View();                   
+        }
+
+
+        public ActionResult RoomList(String gameName)
+        {     
+            //将Game放入Session
+            Session["CurrentGame"] = platService.getGameByName(gameName);
+            //获取当前登录用户
+            UserModel user=(UserModel)Session["SystemUser"];
+
+            //显示房间
+            List<RoomModel> roomList = platService.getOpenRoomListByGameName(gameName);
+            ViewBag.roomSize = roomList.Count;
+            ViewBag.roomList = roomList;
+            return View();
+        }
+
+        public ActionResult TableList(String roomName)
+        {
+            //将Room放入Session
+            Session["CurrentRoom"] = platService.getRoomByName(roomName);
+            //获取Session信息
+            UserModel user = (UserModel)Session["SystemUser"];
+            String gameName=(String)Session["CurrentGame"];
+
+            //显示桌子
+            List<TableModel> tableModelList = platService.getAllTableByGameAndRoom(roomName, gameName);
+            ViewBag.roomSize = tableModelList.Count;
+            ViewBag.roomList = tableModelList;
+            return View();
         }
 
         public ActionResult EnterRoom()
@@ -45,51 +66,11 @@ namespace LotterySystem.Controllers
             return RedirectToAction("GamePage", "Game");
         }
 
-        public ActionResult RoomPage(String gameID)
-        {
-
-            if ((UserModel)Session["SystemUser"] != null)
-            {
-                ViewBag.User = (UserModel)Session["SystemUser"];
-                //显示房间
-                RoomListModel roomList = platService.getRoomListByGameID(gameID);
-                ViewBag.roomSize = roomList.RoomList.Count;
-                ViewBag.roomList = roomList.RoomList;
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login", "Login");
-            }    
-
-            
-        }
+       
         public ActionResult Game()
         {
             return View();
         }
 
-        /// <summary>
-        /// 进入房间
-        /// </summary>
-        /// <param name="roomID"></param>
-        /// <returns></returns>
-        public ActionResult TabelList(String roomID)
-        {
-            UserModel user=(UserModel)Session["SystemUser"];
-            RoomModel room= platService.enterRoom(user, roomID);
-            if (room != null)
-            {
-                ViewBag.User = user;
-                ViewBag.Room = room;
-                return View();
-            }
-            else
-            {
-                //权限不足
-                return RedirectToAction("RoomPage", "Game");
-            }
-            
-        }
     }
 }

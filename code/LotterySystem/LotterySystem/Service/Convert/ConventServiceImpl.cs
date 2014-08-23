@@ -13,5 +13,10 @@ namespace LotterySystem.Service
         {
             return new RoomModel();
         }
+
+        public GameModel toGameModel(LotterySystem.Po.Game game)
+        {
+            return new GameModel();
+        }
     }
 }

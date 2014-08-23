@@ -5,10 +5,10 @@ using System.Web;
 using LotterySystem.Po;
 namespace LotterySystem.Dao
 {
-    public interface RoomDao
+    public interface GameDao
     {
-        Room getRoomByName(string roomName);
-        List<Room> getRoomByGameNameAndStatus(string roomName,string status);
-
+        List<Game> getAll();
+        Game getGameByName(String gameName);
+      
     }
 }

@@ -8,10 +8,10 @@ namespace LotterySystem.Test.Stub
 {
     public static class UserStub
     {
-        public static SystemUser getStubUser()
+        public static User getStubUser()
         {
-            SystemUser user = new SystemUser();
-            user.UserID = "test@163.com";
+            User user = new User();
+            user.UserID = 1;
             user.UserName = "测试用户—基本";
             user.Password = "1234";
             user.PayPassword = "1234";
@@ -20,13 +20,13 @@ namespace LotterySystem.Test.Stub
             return user;
         }
 
-        public static List<SystemUser> getStubUserList()
+        public static List<User> getStubUserList()
         {
-            List<SystemUser> list = new List<SystemUser>();
+            List<User> list = new List<User>();
             for (int i = 0; i < 10; i++)
             {
-                SystemUser user = new SystemUser();
-                user.UserID = "test_"+i+"@163.com";
+                User user = new User();
+                user.UserID = i;
                 user.UserName = "测试用户—"+i;
                 user.Password = "1234";
                 user.PayPassword = "1234";
@@ -42,13 +42,13 @@ namespace LotterySystem.Test.Stub
 
 
     public static class SysStub{
-        public static List<GameInfoModel> getGameList()
+        public static List<GameModel> getGameList()
         {
-            List<GameInfoModel> list = new List<GameInfoModel>();
-            GameInfoModel gameInfoModel = new GameInfoModel();
+            List<GameModel> list = new List<GameModel>();
+            GameModel gameInfoModel = new GameModel();
             gameInfoModel.GameID = 0;
             gameInfoModel.GameName = "竞猜游戏";
-            GameInfoModel gameInfoModel2 = new GameInfoModel();
+            GameModel gameInfoModel2 = new GameModel();
             gameInfoModel2.GameID = 1;
             gameInfoModel2.GameName = "德州扑克";
             list.Add(gameInfoModel);
@@ -56,7 +56,7 @@ namespace LotterySystem.Test.Stub
 
             for (int i = 0; i < 10; i++)
             {
-                GameInfoModel game = new GameInfoModel();
+                GameModel game = new GameModel();
                 game.GameID =i+2;
                 game.GameName = "其他游戏_"+i;
                 list.Add(game);
@@ -69,9 +69,9 @@ namespace LotterySystem.Test.Stub
     public static class TabelStub
     {
        
-        public static TabelModel getTabelModel(int i)
+        public static TableModel getTabelModel(int i)
         {
-            TabelModel tabel = new TabelModel();
+            TableModel tabel = new TableModel();
             tabel.StartTime = DateTime.Now;
             tabel.EndTime = DateTime.Now;
             tabel.BankerID = "admin@123.com";
@@ -80,12 +80,12 @@ namespace LotterySystem.Test.Stub
             return tabel;
         }
 
-        public static List<TabelModel> getStubTabelModelLsit()
+        public static List<TableModel> getStubTabelModelLsit()
         {
-            List<TabelModel> list = new List<TabelModel>();
+            List<TableModel> list = new List<TableModel>();
             for (int i = 0; i < 10; i++)
             {
-                TabelModel tabel = getTabelModel(i);
+                TableModel tabel = getTabelModel(i);
                 list.Add(tabel);
             }
             return list;

@@ -8,14 +8,14 @@ namespace LotterySystem.Po
 {
     public class Room
     {
-        private String roomID;
         private String roomName;
         private String roomPassword;
-        private String roomHostID;
+        private String roomHost;
         private String status;
-        private float accessAcountLimit;
-        private float basicPoint;
-        private float amplification;
+        private int accessAcountLimit;
+        private int basicPoint;
+        private int amplification;
+        private int newName;
 
     }
 }

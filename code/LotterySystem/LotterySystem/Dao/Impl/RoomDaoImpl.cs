@@ -8,9 +8,12 @@ namespace LotterySystem.Dao
 {
     public class RoomDaoImpl :RoomDao
     {
-        public Room getRoomByID(String roomID)
+        public Room getRoomByName(String roomName)
         {
             return new Room();
+        }
+        public List<Room> getRoomByGameNameAndStatus(string roomName,string status){
+            return null;
         }
     }
 }

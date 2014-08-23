@@ -5,7 +5,7 @@ using System.Web;
 using LotterySystem.Util;
 namespace LotterySystem.Models
 {
-    public class TabelModel
+    public class TableModel
     {
         private int gameID;
         private String gameName;

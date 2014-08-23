@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using LotterySystem.Po;
 namespace LotterySystem.Po
 
 {
@@ -10,54 +10,56 @@ namespace LotterySystem.Po
     /// <summary>
     /// 用户
     /// </summary>
-    public class SystemUser
+    public class User
     {
-        private String userID;
+        private int userID;
         private String userName;
         private String password;
         private String payPassword;
         private String permission;
         private String status;
-        private String recommendUserID;
+        private String recommendUserName;
 
-        public String RecommendUserID
+
+
+        public virtual String RecommendUserName
         {
-            get { return recommendUserID; }
-            set { recommendUserID = value; }
+            get { return recommendUserName; }
+            set { recommendUserName = value; }
         }
 
-        public String Status
+        public virtual String Status
         {
             get { return status; }
             set { status = value; }
         }
 
-        public String PayPassword
+        public virtual String PayPassword
         {
             get { return payPassword; }
             set { payPassword = value; }
         }
 
 
-        public String Permission
+        public virtual String Permission
         {
             get { return permission; }
             set { permission = value; }
         }
 
-        public String Password
+        public virtual String Password
         {
             get { return password; }
             set { password = value; }
         }
 
-        public String UserID
+        public virtual int UserID
         {
             get { return userID; }
             set { userID = value; }
         }
 
-        public String UserName
+        public virtual String UserName
         {
             get { return userName; }
             set { userName = value; }

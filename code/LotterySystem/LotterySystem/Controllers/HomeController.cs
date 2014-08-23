@@ -17,8 +17,7 @@ namespace LotterySystem.Controllers
 
             if ((UserModel)Session["SystemUser"] != null)
             {
-                ViewBag.User = (UserModel)Session["SystemUser"];
-              
+                ViewBag.User = (UserModel)Session["SystemUser"];            
             }
             ViewBag.GameList = platService.getGameList();
             ViewBag.GameListCount = platService.getGameList().Count;
