@@ -40,6 +40,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MiniWebDeploy">
+      <HintPath>..\packages\MiniWebDeploy.0.7.0\lib\net35\MiniWebDeploy.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -287,43 +290,8 @@
     <Content Include="Global.asax" />
     <Content Include="Content\bootstrap\css\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap\css\bootstrap.css.map" />
+    <None Include="Properties\PublishProfiles\config.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
-    <Content Include="js\bootstrap-colorpicker.js" />
-    <Content Include="js\bootstrap-datepicker.js" />
-    <Content Include="js\bootstrap.js" />
-    <Content Include="js\bootstrap.min.js" />
-    <Content Include="js\Chart.js" />
-    <Content Include="js\excanvas.min.js" />
-    <Content Include="js\fullcalendar.min.js" />
-    <Content Include="js\jquery.dataTables.min.js" />
-    <Content Include="js\jquery.dataTables.min_ch.js" />
-    <Content Include="js\jquery.flot.min.js" />
-    <Content Include="js\jquery.flot.pie.min.js" />
-    <Content Include="js\jquery.flot.resize.min.js" />
-    <Content Include="js\jquery.gritter.min.js" />
-    <Content Include="js\jquery.min.js" />
-    <Content Include="js\jquery.min_74e92c4.js" />
-    <Content Include="js\jquery.peity.min.js" />
-    <Content Include="js\jquery.ui.custom.js" />
-    <Content Include="js\jquery.ui.custom_a3d4650c.js" />
-    <Content Include="js\jquery.uniform.js" />
-    <Content Include="js\jquery.validate.js" />
-    <Content Include="js\jquery.wizard.js" />
-    <Content Include="js\line-charts.js" />
-    <Content Include="js\select2.min.js" />
-    <Content Include="js\smooth-sliding-menu.js" />
-    <Content Include="js\tree.js" />
-    <Content Include="js\unicorn.calendar.js" />
-    <Content Include="js\unicorn.charts.js" />
-    <Content Include="js\unicorn.chat.js" />
-    <Content Include="js\unicorn.dashboard.js" />
-    <Content Include="js\unicorn.form_common.js" />
-    <Content Include="js\unicorn.form_validation.js" />
-    <Content Include="js\unicorn.interface.js" />
-    <Content Include="js\unicorn.js" />
-    <Content Include="js\unicorn.login.js" />
-    <Content Include="js\unicorn.tables.js" />
-    <Content Include="js\unicorn.wizard.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -369,7 +337,6 @@
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
     <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
