@@ -72,5 +72,9 @@ namespace LotterySystem.Controllers
             return View();
         }
 
+        public ActionResult NewRoom()
+        {
+            return View();
+        }
     }
 }
