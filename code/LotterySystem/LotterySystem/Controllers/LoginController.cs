@@ -32,8 +32,9 @@ namespace LotterySystem.Controllers
                 {
                     if (loginSerivce.Login(model.UserName, model.Password))
                     {
-
+                        //Session中保存User
                         Session["SystemUser"] = loginSerivce.getLoginUser(model.UserName);
+
                         return RedirectToAction("Hall", "Game");
                     }
                     else

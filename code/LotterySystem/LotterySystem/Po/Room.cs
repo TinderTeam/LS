@@ -15,7 +15,7 @@ namespace LotterySystem.Po
         private int accessAcountLimit;
         private int basicPoint;
         private int amplification;
-        private int newName;
+        private int bankerPointLimited;
 
     }
 }

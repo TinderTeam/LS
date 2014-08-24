@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using LotterySystem.Po;
+using LotterySystem.Test.Stub;
 namespace LotterySystem.Dao
 {
     public class GameDaoImpl:GameDao
     {
         public List<Game> getAll(){
 
-            return new List<Game>();
+            return DBStub.getDBStub().getGameList();
         }
         public Game getGameByName(String gameName)
         {
