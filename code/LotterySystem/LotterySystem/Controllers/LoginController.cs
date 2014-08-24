@@ -30,10 +30,10 @@ namespace LotterySystem.Controllers
             {
                 if (loginSerivce.LoginCheck())
                 {
-                    if (loginSerivce.Login(model.UserID, model.Password))
+                    if (loginSerivce.Login(model.UserName, model.Password))
                     {
 
-                        Session["SystemUser"] = loginSerivce.getLoginUser(model.UserID);
+                        Session["SystemUser"] = loginSerivce.getLoginUser(model.UserName);
                         return RedirectToAction("Hall", "Game");
                     }
                     else
@@ -68,7 +68,6 @@ namespace LotterySystem.Controllers
             return View();
         }
 
-
         //
         // POST: /Account/LogOff
 
@@ -76,8 +75,6 @@ namespace LotterySystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-        
-
             return RedirectToAction("Index", "Home");
         }
     }

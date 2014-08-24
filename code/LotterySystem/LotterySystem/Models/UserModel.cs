@@ -58,7 +58,7 @@ namespace LotterySystem.Models
     public class LoginModel
     {
         [Required]
-        public string UserID { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
