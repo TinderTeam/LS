@@ -9,11 +9,11 @@ namespace LotterySystem.Dao
     {
         public List<Game> getAll(){
 
-            return null;
+            return new List<Game>();
         }
         public Game getGameByName(String gameName)
         {
-            return null;
+            return new Game();
         }
     }
 }

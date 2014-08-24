@@ -12,37 +12,12 @@ namespace LotterySystem.Controllers
     {
         PlatService platService = ServiceContext.getInstance().getPlatService();
 
-        public ActionResult Index()
+        public ActionResult Index(String msg)
         {
-
-            if ((UserModel)Session["SystemUser"] != null)
-            {
-                ViewBag.User = (UserModel)Session["SystemUser"];            
-            }
-            ViewBag.GameList = platService.getGameList();
-            ViewBag.GameListCount = platService.getGameList().Count;
+            ViewBag.Msg = msg;
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "你的应用程序说明页。";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "你的联系方式页。";
-
-            return View();
-        }
-
-        public ActionResult Test()
-        {
-            ViewBag.Message = "你的联系方式页。";
-
-            return View();
-        }
+       
     }
 }

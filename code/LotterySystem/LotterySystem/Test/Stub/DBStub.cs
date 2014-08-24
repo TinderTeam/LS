@@ -14,7 +14,9 @@ namespace LotterySystem.Test.Stub
         private static  DBStub dbStub;
 
         private Sys sys;
+        private List<Game> gameList;
 
+       
       
         public static DBStub getDBStub()
         {
@@ -41,6 +43,33 @@ namespace LotterySystem.Test.Stub
         {
             get { return sys; }
             set { sys = value; }
+        }
+
+        public List<Game> getGameList()
+        {
+            if (gameList == null)
+            {
+                gameList = new List<Game>();
+                Game game = new Game();
+                game.GameName="猜数字";
+                game.TaxRate=0.1f;
+                game.OneTablePersonLimit = 20;
+                game.OneRoomTableLimit = 20;
+                game.OnePersonRoomLimit = 5;
+                game.GameStatus = "开放";
+                game.AllRoomLimit = 60;
+                game.BankerSelectNumTimeLimit = 30;
+                game.PlayerSelectNumTimeLimit = 60;
+                gameList.Add(game);
+               
+            }
+            return gameList;
+        }
+
+        public List<Game> GameList
+        {
+            get { return gameList; }
+            set { gameList = value; }
         }
 
     }

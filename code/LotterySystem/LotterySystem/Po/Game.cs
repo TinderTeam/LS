@@ -11,6 +11,7 @@ namespace LotterySystem.Po
     /// </summary>
     public class Game
     {
+        private string gameName;
         private string gameStatus;
         private string os;
         private string browser;
@@ -28,7 +29,13 @@ namespace LotterySystem.Po
             set { gameStatus = value; }
         }
 
-        public string OperatingSystem
+
+        public string GameName
+        {
+            get { return gameName; }
+            set { gameName = value; }
+        }
+        public string Os
         {
             get { return os; }
             set { os = value; }

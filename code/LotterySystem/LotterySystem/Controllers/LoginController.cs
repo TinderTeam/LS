@@ -39,29 +39,19 @@ namespace LotterySystem.Controllers
                     else
                     {
                         // 如果我们进行到这一步时某个地方出错，则重新显示表单
-                        ModelState.AddModelError("", "提供的用户名或密码不正确。");
-                        return View(model);
+                        return RedirectToAction("Index", "Home", new { msg = "用户名或密码错误" });
                     }
                 }
                 else
                 {
                     // 如果我们进行到这一步时某个地方出错，则重新显示表单
-                    ModelState.AddModelError("", "服务器已经满员，请稍后再尝试");
-                    return View(model);
+                    return RedirectToAction("Index", "Home", new { msg = "服务器已经满员，请稍后再尝试" });
                 }
 
             }// 如果我们进行到这一步时某个地方出错，则重新显示表单
-            ModelState.AddModelError("", "请先登录系统");
-            return View(model); 
+            return RedirectToAction("Index", "Home", new { msg = "信息填写有误" });
         }
 
-
-        [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
-        {
-            ViewBag.ReturnUrl = returnUrl;
-            return View();
-        }
 
         public ActionResult Register()
         {
