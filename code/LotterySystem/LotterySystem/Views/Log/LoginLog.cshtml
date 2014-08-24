@@ -2,4 +2,62 @@
     ViewBag.Title = "LoginLog";
 }
 
-<h2>LoginLog</h2>
+<div id="head" >
+    @RenderPage("../Home/Nav.cshtml")
+</div>
+<!-- operation menu-->
+
+<hr />
+<!-- 登录日志 -->
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						登录日志查看
+					</div>
+					
+					<div class="panel-body" >
+						<div class="table-responsive">
+							<table class="table table-condensed">
+								<tr>
+								  <td>用户名</td>
+								  <td>登录时间</td>
+								  <td>登录结果</td>
+								  <td>操作系统</td>
+								  <td>浏览器</td>
+								  
+                                  								  
+								</tr>
+
+                              
+								    <tr >
+								      
+								      <td>A</td>
+								      <td>2014-08-22 17:30</td>
+								      <td>成功</td>
+								      <td>win8.1</td>
+								      <td>Google Chrome</td>
+
+								    </tr>
+								    <tr >
+								      
+								      <td>B</td>
+								      <td>2014-08-22 14:55</td>
+								      <td>失败</td>
+								      <td>win XP</td>
+								      <td>360安全浏览器<</td>
+
+								    </tr>
+								    <tr >
+								      
+								      <td>C</td>
+								      <td>2014-08-22 13:30</td>
+								      <td>成功</td>
+								      <td>OS X</td>
+								      <td>Safari</td>
+
+								    </tr>                             
+							</table>
+						</div>
+						
+					</div>
+				</div>
+<!--登录日志-->

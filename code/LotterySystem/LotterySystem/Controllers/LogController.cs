@@ -101,5 +101,9 @@ namespace LotterySystem.Controllers
                 return View();
             }
         }
+        public ActionResult Loginlog()
+        {
+            return View();
+        }
     }
 }

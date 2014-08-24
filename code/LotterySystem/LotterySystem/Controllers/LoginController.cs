@@ -68,6 +68,7 @@ namespace LotterySystem.Controllers
             return View();
         }
 
+
         //
         // POST: /Account/LogOff
 
@@ -75,6 +76,8 @@ namespace LotterySystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+        
+
             return RedirectToAction("Index", "Home");
         }
     }

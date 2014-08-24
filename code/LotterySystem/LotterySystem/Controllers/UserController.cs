@@ -15,6 +15,13 @@ namespace LotterySystem.Controllers
         {
             return View();
         }
-
+        public ActionResult UserAccount()
+        {
+            return View();
+        }
+        public ActionResult UserInfo()
+        {
+            return View();
+        }
     }
 }

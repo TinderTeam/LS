@@ -11,7 +11,10 @@ namespace LotterySystem.Test.Stub
         public static User getStubUser()
         {
             User user = new User();
-            user.UserID = 1;
+            user.UserID = "admin";
+
+
+
             user.UserName = "测试用户—基本";
             user.Password = "1234";
             user.PayPassword = "1234";

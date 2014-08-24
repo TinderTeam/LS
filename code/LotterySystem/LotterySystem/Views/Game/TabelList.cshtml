@@ -1,7 +1,13 @@
 ﻿@{
     ViewBag.Title = "TabelList";
-    Layout = null;
+   
 }
+<div id="head" >
+    @RenderPage("../Home/Nav.cshtml")
+</div>
+<!-- operation menu-->
+
+<hr />
 <!-- 牌局列表-->
 <div class="panel panel-primary">
     <div class="panel-heading">
@@ -19,12 +25,20 @@
                     <td>牌局人数</td>
                     <td>加入</td>
                 </tr>
+                 <tr>
+                    <td>0</td>
+                    <td>test1</td>
+                    <td>aaa</td>
+                    <td>17:30</td>
+                    <td>6</td>
+                    <td> @Html.ActionLink("加入", "Game", "Game", null,  new { @class = "btn btn-primary" })</td>
+                </tr>
 
                 @for (var i = 1; i < 21; i++)
                 {
                     <tr>
                         <td>@i</td>
-                        <td><a>129382</a></td>
+                        <td><a href="">129382</a></td>
                         <td>用户_@i</td>
                         <td>22:10:23</td>
                         <td>3/6</td>

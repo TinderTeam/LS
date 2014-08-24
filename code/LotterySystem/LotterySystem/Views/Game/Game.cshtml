@@ -1,153 +1,211 @@
 ﻿@{
     ViewBag.Title = "GamePage";
-    Layout = null;
+    
 }
+<div id="head">
+    @RenderPage("../Home/Nav.cshtml")
+</div>
+<!-- operation menu-->
+
+
+<hr />
 
 <!-- 游戏界面-->
-<div class="panel">
-    <div class="row">
-        <div class="col-lg-2">
-            <p>当前局号*****</p>
-        </div>
-        <div class="col-lg-2">
-            <p>当前轮号 *****</p>
-        </div>
-        <div class="col-lg-2">
-            <p>当前庄家 *****</p>
-        </div>
-        <div class="col-lg-2">
-            <p>庄家积分****</p>
-        </div>
-        <div class="col-lg-2">
-            <p>我的积分****</p>
-        </div>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        游戏厅
     </div>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <p>当前闲家 ****，****，****</p>
-        </div>
-    </div>
+    <div class="panel-body">
 
-    <div class="row">
-        <div class="col-lg-5">
-            <p>庄家选号：<span>正在选号/完成选号</span></p>
-        </div>
-        <div class="col-lg-5">
-            <p>系统开号： <span>32</span></p>
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col-lg-8">
-            <div class="bs-example">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>1</th>
-                            <th>2</th>
-                            <th>3</th>
-                            <th>4</th>
-                            <th>5</th>
-                            <th>6</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>总投注</td>
-                            <td>XXX</td>
-                            <td>XXX</td>
-                            <td>XXX</td>
-                            <td>XXX</td>
-                            <td>XXX</td>
-                            <td>XXX</td>
-                        </tr>
-                        <tr>
-                            <td>我的投注</td>
-                            <td>XXX</td>
-                            <td>XXX</td>
-                            <td>XXX</td>
-                            <td>XXX</td>
-                            <td>XXX</td>
-                            <td>XXX</td>
-                        </tr>
-                        <tr>
-                            <td>请投注</td>
-                            <td colspan="6">-【****分】+  【】均投    添加投注  结束投注
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
+        <div class="row">
+            <div class="col-lg-2 ">
+                <p>&nbsp&nbsp&nbsp当前局号：00023</p>
             </div>
-            <div class="well">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class=" panel panel-primary">
-                            <div class="panel-heading">
-                                倒计时
-                            </div>
-                            <div class="panel-body text-center">
-                                <h4>03</h4>
+            <div class="col-lg-2">
+                <p>当前轮号：第3轮</p>
+            </div>
+            <div class="col-lg-2">
+                <p>当前庄家：A</p>
+            </div>
+            <div class="col-lg-2">
+                <p>庄家积分：2700</p>
+            </div>
+            <div class="col-lg-2">
+                <p>我的积分:2700</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-2 ">
+                <p >&nbsp&nbsp&nbsp当前闲家：</p>
+            </div>
+            <div class="col-lg-1">
+                <p>B</p>
+            </div>
+            <div class="col-lg-1">
+                <p>C</p>
+            </div>
+            <div class="col-lg-1">
+                <p>D</p>
+            </div>
+            <div class="col-lg-1">
+                <p>E</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+             <p ><sapn>&nbsp&nbsp&nbsp当前游戏状态：</sapn>
+           <select class="btn btn-default dropdown-toggle" >
+               <option value="" selected>庄家选号</option>
+               
+               <option value="">正在选号</option>
+               <option value="">完成选号</option>
+
+           </select>
+            </p>
+ 
+            </div>
+            <div class="col-lg-6">
+                
+                <p>系统开号： <span>32</span></p>
+            </div>
+        </div>
+
+        <hr />
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="bs-example">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th style="text-align:center"><button type="button" class="btn btn-default" >1</button></th>
+                                <th style="text-align:center"><button type="button" class="btn btn-default">2</button></th>
+                                <th style="text-align:center"><button type="button" class="btn btn-default">3</button></th>
+                                <th style="text-align:center"><button type="button" class="btn btn-default">4</button></th>
+                                <th style="text-align:center"><button type="button" class="btn btn-default">5</button></th>
+                                <th style="text-align:center"><button type="button" class="btn btn-default">6</button></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>总投注</td>
+                                <td><span class="label label-danger">基数</span>
+                                    <span class="label label-success">带数</span>
+                                </td>
+                                <td><span class="label label-danger">基数</span>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td><span class="label label-success">带数</span>
+                                        <span class="label label-success">带数</span>
+                                </td>
+                                <td><span class="label label-success">带数</span></td>
+                                <td><span class="label label-danger">基数</span>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>我的投注</td>
+                                <td></td>
+                                <td><span class="label label-danger">基数</span>
+
+                                </td>
+                                <td></td>
+                                <td><span class="label label-success">带数</span>
+
+                                </td>
+                                <td><span class="label label-success">带数</span>
+
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>请投注</td>
+                                <td colspan="6">
+                                    <button id="decrease" name="decrease" class="btn btn-primary btn-xs" type="submit">-</button>
+                                    【35分】
+                                <button id="increase" name="increase" class="btn btn-primary btn-xs" type="submit">+</button>
+                                    【*****】
+                                <button id="allIn" name="allIn" class="btn btn-primary btn-xs" type="submit">均投</button>
+                                    <button id="addThrow" name="addThrow" class="btn btn-primary btn-xs" type="submit">添加投注 </button>
+                                    <button id="endThrow" name="endThrow" class="btn btn-primary btn-xs" type="submit">结束投注</button>
+
+
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="well">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class=" panel panel-primary">
+                                <div class="panel-heading">
+                                    倒计时
+                                </div>
+                                <div class="panel-body text-center">
+                                    <h4>03</h4>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <ul class="list-group">
-                            <li class="list-group-item row">
-                                <div class="col-lg-8">
-                                    【单投】【***分】2
-                                </div>
-                                <div class="col-lg-4">
-                                    删除该笔
-                                </div>
-                            </li>
-                            <li class="list-group-item row">
-                                <div class="col-lg-8">
-                                    【带二】【***分】2（3，5）
-                                </div>
-                                <div class="col-lg-4">
-                                    删除该笔
-                                </div>
-                            </li>
-                            <li class="list-group-item row">
-                                <div class="col-lg-8">
-                                    【均投】【***分】2，4，5
-                                </div>
-                                <div class="col-lg-4">
-                                    删除该笔
-                                </div>
-                            </li>
-                        </ul>
+                        <div class="col-lg-8">
+                            <ul class="list-group">
+                                <li class="list-group-item row">
+                                    <div class="col-lg-8">
+                                        【单投】【50分】2
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <button id="deleteThrow1" name="deleteThrow1" class="btn btn-default" type="submit">删除该笔</button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item row">
+                                    <div class="col-lg-8">
+                                        【带二】【75分】2（3，5）
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <button id="deleteThrow2" name="deleteThrow2" class="btn btn-default" type="submit">删除该笔</button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item row">
+                                    <div class="col-lg-8">
+                                        【均投】【30分】2，4，5
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <button id="deleteThrow3" name="deleteThrow3" class="btn btn-default" type="submit">删除该笔</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-4 ">
-            <table class="table table-bordered">
-                <tbody class="text-center">
-                    <tr>
-                        <td>****庄胜***</td>
-                    </tr>
-                    <tr>
+            <div class="col-lg-4 ">
+                   <div class=" panel panel-primary">
+                                <div class="panel-heading">
+                                    动态资讯
+                                </div>
+                                <div class="panel-body text-center">
+                                    <p>A庄胜700</p>
+                                    <p>闲家B负300</p>
+                                    <p>D退出</p>
+                                    <p>E加入</p>
+                                </div>
+                            </div>
 
-                        <td>****闲负***</td>
-                    </tr>
-                    <tr>
-                        <td>****退出</td>
-                    </tr>
-                    <tr>
-                        <td>****加入</td>
-                    </tr>
-                </tbody>
-            </table>
+            </div>
         </div>
-    </div>
-    <div class="well">
-        <button class="btn btn-success btn-xs">图表更新</button>
-        <div style="height: 300px; overflow: auto; overflow-y: hidden">
+        <div class="well">
+            <button class="btn btn-success">图表更新</button>
+            <div style="height: 300px; overflow: auto; overflow-y: hidden">
+            </div>
         </div>
     </div>
 </div>
+<!--游戏厅界面-->

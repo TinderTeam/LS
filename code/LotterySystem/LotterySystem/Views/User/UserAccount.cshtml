@@ -2,4 +2,69 @@
     ViewBag.Title = "UserAccount";
 }
 
-<h2>UserAccount</h2>
+<div id="head" >
+    @RenderPage("../Home/Nav.cshtml")
+</div>
+<!-- operation menu-->
+
+<hr />
+<!-- 积分表 -->
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						积分表
+					</div>
+					
+					<div class="panel-body" >
+						<div class="table-responsive">
+							<table class="table table-condensed">
+								<tr>
+								  <td>用户名</td>
+								  <td>发生时间</td>
+								  <td>发生额度</td>
+								  <td>当前余额</td>
+								  <td>方式</td>
+								  <td>牌局编号</td>	
+                                  <td>轮次号</td>
+                                  <td>对方用户</td>								  
+								</tr>
+
+                              
+								    <tr >
+								      
+								      <td>A</td>
+								      <td>2014-08-22 17:30</td>
+								      <td>+500</td>
+								      <td>2700</td>
+								      <td>庄胜</td>
+                                      <td>000021</td>
+                                      <td>第2轮</td>
+                                      <td>B</td>
+								    </tr>
+								    <tr >
+								      
+								      <td>A</td>
+								      <td>2014-08-22 17:25</td>
+								      <td>-200</td>
+								      <td>2200</td>
+								      <td>庄负</td>
+                                      <td>000021</td>
+                                      <td>第1轮</td>
+                                      <td>B</td>
+								    </tr>
+								    <tr >
+								      
+								      <td>A</td>
+								      <td>2014-08-21 12:35</td>
+								      <td>+100</td>
+								      <td>2400</td>
+								      <td>还款</td>
+                                      <td></td>
+                                      <td></td>
+                                      <td>C</td>
+								    </tr>                           
+							</table>
+						</div>
+						
+					</div>
+				</div>
+<!--登录日志-->

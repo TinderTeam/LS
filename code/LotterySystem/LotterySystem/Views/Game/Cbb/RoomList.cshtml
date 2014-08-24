@@ -21,19 +21,39 @@
                                   								  
 								</tr>
 
-                                @for (var i = 0; i < @ViewBag.roomSize; i++)
-                                {
+                              
 								    <tr >
-								      <td>@ViewBag.roomList[i].RoomNum</td>
-								      <td><a href="">@ViewBag.roomList[i].RoomName</a></td>
-								      <td>@ViewBag.roomList[i].HostName</td>
-								      <td>@ViewBag.roomList[i].RoomStatus</td>
-								      <td>@ViewBag.roomList[i].PlayerLimit</td>
-								      <td>@ViewBag.roomList[i].BasicPoint</td>
-								      <td>@ViewBag.roomList[i].Amplification</td>							     
-                                      <td>@Ajax.ActionLink("进入", "TabelList", "Game", new { roomID = @ViewBag.roomList[i].RoomID }, new AjaxOptions { UpdateTargetId = "pageCenter" }, new { @class = "btn btn-primary btn-xs" })</td>
+								      
+								      <td>A</td>
+								      <td>150</td>
+								      <td>10</td>
+								      <td>1</td>
+								      <td>400</td>
+								     							     
+                                      <td> @Html.ActionLink("进入房间", "TabelList", "Game", null,  new { @class = "btn btn-primary" })
+                                          </td>
 								    </tr>
-                                 }
+ 								    <tr >
+								      
+								      <td>B</td>
+								      <td>150</td>
+								      <td>10</td>
+								      <td>1</td>
+								      <td>400</td>
+								     							     
+                                      <td><button id="enter2" name="" class="btn btn-primary" type="submit">进入房间</button></td>
+								    </tr>
+
+                                     <tr >
+								      
+								      <td>C</td>
+								      <td>150</td>
+								      <td>10</td>
+								      <td>1</td>
+								      <td>400</td>
+								     							     
+                                      <td><button id="enter3" name="" class="btn btn-primary" type="submit">进入房间</button></td>
+								    </tr>                               
 							</table>
 						</div>
 						

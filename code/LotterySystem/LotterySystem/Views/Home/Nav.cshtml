@@ -8,16 +8,23 @@
         
           <div class="navbar-header">
 
-            <a class="navbar-brand" href="#">游戏名</a>
+            @Html.ActionLink("首页", "Hall", "Game", null, new { @class="navbar-brand"})
           </div>
           <div class="navbar-collapse collapse">
 
             <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="#">用户</a></li>
+              <li class="active">
+                   @Html.ActionLink("用户", "UserInfo", "User", null, null)
+                </li>
               <li><a href="#">房间</a></li>
-              <li><a href="#">积分</a></li>
-              <li><a href="#">日志</a></li>
-              <li><a href="#">密码</a></li>
+              <li>@Html.ActionLink("积分", "UserAccount", "User", null, null)
+
+              </li>
+              <li> @Html.ActionLink("日志", "Loginlog", "Log", null, null)
+                 </li>
+              <li>
+                  @Html.ActionLink("退出", "Index","Home",null, null)
+                 </li>
             </ul>
           </div>
         </div>
