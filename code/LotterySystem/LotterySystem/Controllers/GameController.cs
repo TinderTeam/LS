@@ -76,5 +76,17 @@ namespace LotterySystem.Controllers
         {
             return View();
         }
+        public ActionResult RoomPage()
+        {
+            return View();
+        }
+        public ActionResult TabelList()
+        {
+            return View();
+        }
+        public ActionResult RoomEdit()
+        {
+            return View();
+        }
     }
 }

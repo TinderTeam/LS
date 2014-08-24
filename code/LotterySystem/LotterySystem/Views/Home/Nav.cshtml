@@ -13,10 +13,12 @@
           <div class="navbar-collapse collapse">
 
             <ul class="nav navbar-nav navbar-right">
-              <li class="active">
+              <li >
                    @Html.ActionLink("用户", "UserInfo", "User", null, null)
                 </li>
-              <li><a href="#">房间</a></li>
+              <li>@Html.ActionLink("房间", "RoomEdit", "Game", null, null)
+
+              </li>
               <li>@Html.ActionLink("积分", "UserAccount", "User", null, null)
 
               </li>

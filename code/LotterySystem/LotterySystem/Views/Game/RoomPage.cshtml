@@ -2,42 +2,66 @@
     ViewBag.Title = "RoomPage";
 }
 
-  <div id="head"> 
-        
-  </div>
-	 <!-- Main Context-->
-		<div class="row">
-			<!-- Left-->
-			<div class="col-lg-3">
-			    
-                <div id="left1"> 
-				    @RenderPage("../User/UserInfo.cshtml")
-				</div>
-                <div id="left2"> 
-				   @RenderPage("../User/UserHistory.cshtml")
-				</div>
-                <div id="left3"> 
-				    
-				</div>
-				<div id="left4"> 
-				   
-				</div>
-                <div id="left5"> 
-				    
-				</div>
-				
-				                                
-            </div><!-- Left-->
-			
-			<!-- Center-->
-			<div class="col-lg-9">
-                <div id="pageCenter">
-			        @RenderPage("../Game/Cbb/RoomList.cshtml")
-                </div>
-			</div><!-- Center-->
+<div id="head" >
+    @RenderPage("../Home/Nav.cshtml")
+</div>
+<!-- operation menu-->
 
-            		
-			
-			
-        
-      </div> <!-- row -->
+
+<hr />
+<div class="row">
+    <!-- Left-->
+    <div class="col-lg-3">
+
+        <div id="left1">
+          <span>当前游戏</span>
+          <span class="label label-primary">在线竞猜</span>
+        </div>
+        <div id="left2">
+
+  
+        </div>
+        <div id="left3">
+        </div>
+        <div id="left4">
+        </div>
+        <div id="left5">
+        </div>
+
+
+    </div>
+    <!-- Left-->
+
+    <!-- Center-->
+    <div class="col-lg-5">
+        <div id="pageCenter">
+          
+        </div>
+    </div>
+    <!-- Center-->
+
+    <!--right-->
+    <div class="col-lg-4">
+        <div id="right1"  class="pull-right">
+            
+             @Html.ActionLink("创建房间", "NewRoom", "Game", null, new { @class = "btn btn-success" })
+        </div>
+
+        <div id="right2">
+        </div>
+    </div>
+
+    <!--right-->
+</div>
+
+<!-- operation menu-->
+
+<!--Hall-->
+<hr />
+<div class="row">
+
+     @RenderPage("../Game/Cbb/RoomList.cshtml")
+
+</div>
+<!--Hall-->
+  
