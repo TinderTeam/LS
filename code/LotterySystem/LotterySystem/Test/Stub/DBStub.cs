@@ -15,8 +15,9 @@ namespace LotterySystem.Test.Stub
 
         private Sys sys;
         private List<Game> gameList;
+        private List<Account> accountList;
+        private List<Room> roomList;
 
-       
       
         public static DBStub getDBStub()
         {
@@ -24,6 +25,30 @@ namespace LotterySystem.Test.Stub
                 dbStub=new DBStub();
             }
             return dbStub;
+        }
+
+
+        public List<Room> getRoomList()
+        {
+            if (roomList == null)
+            {
+               roomList = new List<Room>();
+            }
+            return roomList;
+        }
+
+
+        public List<Account> getAccountList()
+        {
+            if (accountList == null)
+            {
+                accountList = new List<Account>();
+                Account account = new Account();
+                account.UserName = "admin";
+                account.AccountValue=100;
+                accountList.Add(account);
+            }
+            return accountList;
         }
 
         public Sys getSys()

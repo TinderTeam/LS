@@ -14,7 +14,6 @@ namespace LotterySystem.Controllers
 
         //
         // GET: /Login/
-
         /// <summary>
         /// 系统用户登陆
         /// </summary>
@@ -25,7 +24,7 @@ namespace LotterySystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-
+                                         
             if (ModelState.IsValid )
             {
                 if (loginSerivce.LoginCheck())
@@ -66,6 +65,10 @@ namespace LotterySystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            Session["SystemUser"] = null;
+            Session["CurrentRoom"] = null;
+            Session["CurrentGame"] = null;
+            
             return RedirectToAction("Index", "Home");
         }
     }

@@ -19,8 +19,6 @@ namespace LotterySystem.Dao
            
         }
 
-   
-      
 
     }
 }

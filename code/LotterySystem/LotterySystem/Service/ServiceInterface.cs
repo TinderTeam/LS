@@ -16,14 +16,19 @@ namespace LotterySystem.Service
         RoomModel getRoomByName(string roomID);
         GameModel getGameByName(string gameName);
 
-      
+        String createRoom(String gameName, UserModel user,RoomForm model);
     }
+
     public interface ConvertService
     {
         RoomModel toRoomModel(Room room);
+        RoomModel toRoomModel(RoomForm form);
+        Room toRoom(RoomForm form);
         GameModel toGameModel(LotterySystem.Po.Game game);
-    }
 
+        List<Door> toDoor(RoomForm model);
+
+    }
 
     public interface EntranceServcie
     {
@@ -35,5 +40,9 @@ namespace LotterySystem.Service
         bool Login(string userID ,string password);
         UserModel getLoginUser(string userID);
         bool LoginCheck();
+    }
+    public interface UserService
+    {
+        bool CreateRoomCheck(UserModel user);
     }
 }

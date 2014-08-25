@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "NewRoom";
+    ViewBag.Title = "新建房间";
     
 }
 <div id="head" >
@@ -23,78 +23,87 @@
     </style>
 
 <!--字体样式-->
+
+@using (Html.BeginForm("CreateRoom", "Game", FormMethod.Post))
+{
+       @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true)
+
+
+
 <div class="panel panel-primary">
     <div class="panel-heading">创建房间</div>
     <div class="panel-body">
 
         <div class="row">
             <div class="col-lg-6">
-                <form class="form-horizontal" role="form">
-
+                <div class="form-horizontal">
+                     
                     <div class="form-group">
                         <label for="roomName" class="col-sm-4 control-label"><span class="pull-right font1">房间名称</span></label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="roomName" placeholder="请输入新建房间名称">
+                            <input id="RoomName" type="text" class="form-control"  placeholder="请输入新建房间名称">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="roomPD1" class="col-sm-4  control-label"><span class="pull-right font1">请输入准入密码</span></label>
+                        <label for="roomPassword" class="col-sm-4  control-label"><span class="pull-right font1">请输入准入密码</span></label>
                         <div class="col-sm-8">
-                            <input type="password" class="form-control" id="roomPD1" placeholder="请输入6~12位英文或数字">
+                            <input id="roomPassword" type="password" class="form-control"   placeholder="请输入6~12位英文或数字">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="roomPD2" class="col-sm-4  control-label"><span class="pull-right font1">再次确认房间密码</span></label>
                         <div class="col-sm-8">
-                            <input type="password" class="form-control" id="roomPD2" placeholder="检验两者是否一致">
+                            <input id="roomPassword2" type="password" class="form-control"  placeholder="检验两者是否一致">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="roomState" class="col-sm-4 control-label"><span class="pull-right font1">房间状态</span></label>
                         <div class="col-sm-8">
-                            
-                            <select class="btn btn-default dropdown-toggle"  id="roomState">
-                            <option value="" selected>开放</option>
-                            <option value="">关闭</option>
-                            <option value="">冻结</option>
+                            <select class="btn btn-default dropdown-toggle" id="status">
+                                <option value="" selected>开放</option>
+                                <option value="">关闭</option>
+                                <option value="">冻结</option>
                             </select>
                         </div>
                     </div>  
                     <div class="form-group">
                         <label for="enterMin" class="col-sm-4 control-label"><span class="pull-right font1">准入底值</sapn></label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="enterMin" >
+                            <input type="text" class="form-control" id="accessAcountLimit">
                         </div>
                     </div>                    
                    
                     <div class="form-group">
                         <label for="throwMin" class="col-sm-4 control-label"><span class="pull-right font1">起投分值</span></label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="throwMin" >
+                            <input type="text" class="form-control" id="basicPoint">
                         </div>
                     </div>    
                     <div class="form-group">
                         <label for="growth" class="col-sm-4 control-label"><span class="pull-right font1">增幅</span></label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="growth" >
+                            <input type="text" class="form-control" id="amplification">
                         </div>
-                    </div>  
+                    </div>
                     <div class="form-group">
                         <label for="hostMin" class="col-sm-4 control-label"><span class="pull-right font1">上庄底值</span></label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="hostMin" >
+                            <input type="text" class="form-control" id="bankerLimit">
                         </div>
-                    </div>   
-              </form>
-            </div><!--左边信息-->
+                    </div>
+                  
+               </div>
+            </div>
+            <!--左边信息-->
 
 
 
             <div class="col-lg-6">
-                 
-                  <form class="form-horizontal" role="form">  
-                      <!--准入名单-->              
+
+                <div class="form-horizontal" role="form">
+                    <!--准入名单-->
                     <div class="form-group">
                        <div >
                            <span class ="col-sm-2 " style="text-align:center">
@@ -184,7 +193,7 @@
 
                 <!--禁入名单-->
 
-                </form>
+                </div>
             </div>
 
         </div>
@@ -197,16 +206,17 @@
             <div class="col-lg-4">
             </div>
             <div class="col-lg-4">
-                    <!-- Button -->
-                    <div class="control-group " style="text-align: center">
-                        
-                        <div class="controls">
-                            <button id="newRoomSure" name="newRoomSure" class="btn btn-success" type="submit">确认</button>
-                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                 @Html.ActionLink("取消", "Hall", "Game", null, new { @class = "btn btn-default" })
-	                        
-                        </div>
+                <!-- Button -->
+                <div class="control-group " style="text-align: center">
+
+                    <div class="controls">
+                        <input name="submit" type="submit" class="btn btn-success" value="确认" />
+       
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        @Html.ActionLink("取消", "Hall", "Game", null, new { @class = "btn btn-default" })
+
                     </div>
+                </div>
             </div>
             <div class="col-lg-4">
             </div>
@@ -215,3 +225,4 @@
     </div>
 </div>
 
+}

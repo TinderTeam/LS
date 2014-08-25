@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using LotterySystem.Service.Login;
-using LotterySystem.Service;
+using LotterySystem.Service.User;
 
 namespace LotterySystem.Service
 {
@@ -16,7 +16,7 @@ namespace LotterySystem.Service
         private PlatService platService;
         private ConvertService convertService;
         private EntranceServcie entranceServcie;
-       
+        private UserService userService;
         private ServiceContext()
         {
 
@@ -32,6 +32,17 @@ namespace LotterySystem.Service
             return serviceContext;
         }
 
+        public UserService getUserService()
+        {
+
+            if (userService == null)
+            {
+                userService = new UserServiceImpl();
+            }
+            return userService;
+        }
+
+
         public LoginService getLoginService()
         {
 
@@ -41,6 +52,7 @@ namespace LotterySystem.Service
             }
             return loginService;
         }
+
         public PlatService getPlatService()
         {
 

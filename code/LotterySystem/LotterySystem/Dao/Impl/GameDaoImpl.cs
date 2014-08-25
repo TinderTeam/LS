@@ -16,5 +16,14 @@ namespace LotterySystem.Dao
         {
             return new Game();
         }
+        public void creatGame(Game game)
+        {
+        }
+        public void deleteGameByName(String gameName)
+        {
+        }
+        public void updateGame(Game game)
+        {
+        }
     }
 }

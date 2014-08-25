@@ -1,61 +1,58 @@
 ﻿@{
-    ViewBag.Title = "RoomList";
-    
+    ViewBag.Title = "TitleLogIn";
+    LotterySystem.Models.UserModel user = (LotterySystem.Models.UserModel)@Session["User"];
+
 }
+
+
+
 <!-- 房间列表 -->
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						房间列表
-					</div>
-					
-					<div class="panel-body" >
-						<div class="table-responsive">
-							<table class="table table-condensed">
-								<tr>
-								  <td>房间名称</td>
-								  <td>准入底分</td>
-								  <td>起投分值</td>
-								  <td>增幅</td>
-								  <td>上庄底值</td>
-								  <td>管理</td>
-                                  								  
-								</tr>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        房间列表
+    </div>
 
-                              
-								    <tr >
-								      
-								      <td>A</td>
-								      <td>150</td>
-								      <td>10</td>
-								      <td>1</td>
-								      <td>400</td>
-								     							     
-                                      <td> @Html.ActionLink("进入房间", "TabelList", "Game", null,  new { @class = "btn btn-primary" })
-                                          </td>
-								    </tr>
- 								    <tr >
-								      
-								      <td>B</td>
-								      <td>150</td>
-								      <td>10</td>
-								      <td>1</td>
-								      <td>400</td>
-								     							     
-                                      <td><button id="enter2" name="" class="btn btn-primary" type="submit">进入房间</button></td>
-								    </tr>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-condensed">
+                <tr>
+                    <td>房间名称</td>
+                    <td>准入底分</td>
+                    <td>起投分值</td>
+                    <td>增幅</td>
+                    <td>上庄底值</td>
+                    <td>管理</td>
+                </tr>
+                @if (@ViewBag.RoomList == null || @ViewBag.RoomListCount==0)
+                {
 
-                                     <tr >
-								      
-								      <td>C</td>
-								      <td>150</td>
-								      <td>10</td>
-								      <td>1</td>
-								      <td>400</td>
-								     							     
-                                      <td><button id="enter3" name="" class="btn btn-primary" type="submit">进入房间</button></td>
-								    </tr>                               
-							</table>
-						</div>
-						
-					</div>
-				</div>
+                }
+                else
+                {
+                    for(int i = 0;i<@ViewBag.RoomListCount;i++){
+                         <tr>
+                            <td>
+                                @Html.ActionLink((String)@ViewBag.RoomList[i].RoomName, "TabelList", "Game", new { roomname=@ViewBag.RoomList[i].RoomName},null)
+                            </td>
+                            <td>@ViewBag.RoomList[i].AccessAcountLimit</td>
+                            <td>@ViewBag.RoomList[i].BasicPoint</td>
+                            <td>@ViewBag.RoomList[i].amplification</td>
+                            <td>@ViewBag.RoomList[i].bankerPointLimited</td>
+                            <td>
+                                if (ViewBag.RoomList[i].RoomHost.Equals(user.UserName))
+                                {
+                                    @Html.ActionLink("进入房间", "TabelList", "Game", null, new { @class = "btn btn-primary" })
+                                }
+                                else
+                                {
+        
+                                }
+                                
+                            </td>
+                        </tr>
+                    }                  
+                }
+            </table>
+        </div>
+    </div>
+</div>

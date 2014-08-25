@@ -2,19 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using LotterySystem.Dao.Impl;
 namespace LotterySystem.Dao
 {
     public class DaoContext
     {
          static DaoContext daoContext;
-
-
         private UserDao userDao;
         private AccountDao accountDao;
         private RoomDao roomDao;
         private SysDao sysDao;
         private GameDao gameDao;
+        private DoorDao doorDao; 
 
         public static DaoContext getInstance()
         {
@@ -24,6 +23,16 @@ namespace LotterySystem.Dao
                 daoContext = new DaoContext();                
             }
             return daoContext;
+        }
+
+        public DoorDao getDoorDao()
+        {
+
+            if (doorDao == null)
+            {
+                doorDao = new DoorDaoImpl();
+            }
+            return doorDao;
         }
 
 

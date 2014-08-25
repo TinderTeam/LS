@@ -37,14 +37,14 @@
                                   								  
 								</tr>
 								@for (var i = 0; i < @ViewBag.GameListCount; i++)
-						               { 
-						               <tr>
-						               	    <td> @ViewBag.GameList[i]</td>
-								    <td> @Html.ActionLink("进入游戏", "RoomPage", "Game", new { gamename=@ViewBag.GameList[i].GameName},  new { @class="btn btn-primary btn-lg"})</td>
-							      </tr>
+						            { 
+                                    <tr>
+                                        <td>@ViewBag.GameList[i].GameName</td>
+                                        <td>@Html.ActionLink("进入游戏", "RoomPage", "Game", new { gamename=@ViewBag.GameList[i].GameName},  new { @class="btn btn-primary btn-lg"})</td>
+                                    </tr>
 							       }
-                              
-							</table>
+
+                            </table>
 						</div>
 						
 					</div>

@@ -31,5 +31,52 @@ namespace LotterySystem.Service
 
            return gameModel;
         }
+
+        public RoomModel toRoomModel(RoomForm form)
+        {
+            RoomModel room =  new RoomModel();
+            return room;
+        }
+
+        public Room toRoom(RoomForm form)
+        {
+            Room room = new Room();
+            room.GameName = form.GameName;
+            room.AccessAcountLimit = form.AccessAcountLimit;
+            room.Amplification = form.Amplification;
+            room.BankerLimit = form.BankerLimit;
+            room.BasicPoint = form.BasicPoint;
+            room.RoomName = form.RoomName;
+            room.RoomPassword = form.RoomPassword;
+            room.Status = form.Status;
+
+            return room;
+        }
+
+        public  List<Door> toDoor(RoomForm form)
+        {
+            List<Door> doorList = new List<Door>();
+            string[] writeNameArray = form.WriteNameStr.Split(',');
+            string[] blackNameArray = form.BlackNameStr.Split(',');
+
+            for (int i = 0; i < writeNameArray.Length; i++)
+            {
+                Door door = new Door();
+                door.GameName = form.GameName;
+                door.RoomName = form.RoomName;
+                door.UserName = writeNameArray[i];
+                doorList.Add(door);
+            }
+            for (int i = 0; i < blackNameArray.Length; i++)
+            {
+                Door door = new Door();
+                door.GameName = form.GameName;
+                door.RoomName = form.RoomName;
+                door.UserName = blackNameArray[i];
+                doorList.Add(door);
+            }
+
+            return doorList;
+        }
     }
 }

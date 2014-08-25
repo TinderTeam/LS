@@ -9,6 +9,10 @@ namespace LotterySystem.Dao
     {
         List<Game> getAll();
         Game getGameByName(String gameName);
+        void creatGame(Game game);
+        void deleteGameByName(String gameName);
+        void updateGame(Game game);
+
       
     }
 }

@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace LotterySystem.Domain
+namespace LotterySystem.Po
 {
     public class LoginLog
     {
-        private String userID;
+        private String userName;
         private DateTime loginTime;
         private String result;
         private String os;
         private String browser;
 
 
-        public String UserID
+
+        public String UserName
         {
-            get { return userID; }
-            set { userID = value; }
+            get { return userName; }
+            set { userName = value; }
         }
         public DateTime LoginTime
         {

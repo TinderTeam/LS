@@ -65,11 +65,11 @@ namespace LotterySystem.Service.Login
             UserModel userModel = new UserModel();
             LotterySystem.Po.User user = userDao.getSystemUserByID(userID);
             userModel.Permission = user.Permission;
-            //userModel.UserID = user.UserID;
+           
             userModel.UserName = user.UserName;
             userModel.Status = user.Status;
             userModel.UserInfor = new UserInforModel();
-            userModel.UserInfor.Points = accountDao.getAccountByUserID(userID);
+            userModel.UserInfor.Points = accountDao.getAccountByUserName(userID).AccountValue;
             userModel.UserInfor.Position = UserConstants.IN_THE_HALL;
             return userModel;
         }

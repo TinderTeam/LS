@@ -16,7 +16,9 @@ namespace LotterySystem.Service
         RoomDao roomDao = DaoContext.getInstance().getRoomDao();
         GameDao gameDao = DaoContext.getInstance().getGameDao();
         ConvertService converService = ServiceContext.getInstance().getConvertService();
-        EntranceServcie entranceService = ServiceContext.getInstance().getEntranceServcie();
+        DoorDao doorDao = DaoContext.getInstance().getDoorDao();
+        
+        
         ///GamblingPartyDao gamblingPartyDao = DaoContext.getInstance().getGamblingPartyDao();
 
         /// <summary>
@@ -93,5 +95,39 @@ namespace LotterySystem.Service
             return room;
         }
         
+        /// <summary>
+        /// 通过游戏和用户创建房间
+        /// </summary>
+        /// <param name="?"></param>
+        /// <param name="?"></param>
+        /// <returns></returns>
+        public string  createRoom(string  gameName,UserModel user,RoomForm form){
+            //校验游戏状态是否可以创建房间
+            GameModel game= getGameByName(gameName);
+            if (roomDao.getRoomByGame(gameName).Count + 1 > game.AllRoomLimit)
+            {
+                return RoomConstatns.ERR_ALLROOM_LIMIT;
+            }
+            if (roomDao.getRoomListByGameAndHoster(gameName, user.UserName).Count + 1 < game.OnePersonRoomLimit)
+            {
+                return RoomConstatns.ERR_USERROOM_LIMIT;
+            }
+
+            //准备Po
+            Room room = converService.toRoom(form); //RoomPo
+            room.RoomHost = user.UserName;
+            List<Door> doorList = converService.toDoor(form);
+
+
+            //校验
+            /*
+             * TODO
+             */
+            roomDao.createRoom(room);
+
+            return SysConstants.SUCCESS;
+        }
+
+     
     }
 }
