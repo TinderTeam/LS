@@ -1,0 +1,111 @@
+﻿@{
+    ViewBag.Title = "用户管理";
+    
+}
+<!--字体样式-->
+    <style type="text/css">
+
+    .font1
+    {
+        font-size: 16px;
+        font-family:'Microsoft YaHei UI';
+    }
+        .div1
+        {
+            margin-top:10px;
+            margin-bottom:10px;  
+        }
+        
+    </style>
+
+<!--字体样式-->
+
+<div id="head" >
+    @RenderPage("../Home/Nav.cshtml")
+</div>
+<!-- Nav bar-->
+
+<!-- operation menu-->
+<hr />
+<div class="row">
+   
+    <div class="col-lg-1">    
+
+    </div>
+
+    <div class="col-lg-8">
+
+          <div class="col-sm-2  font1" style="text-align:end">用户名</div>
+          <div class="col-sm-8"><input type="text"  class="form-control" placeholder="请输入你要查询的用户名" ></div>
+          <div class="col-sm-2"><button class="btn btn-primary" type="submit">查询</button></div>
+
+    </div>
+
+    <div class="col-lg-1">
+
+    </div>
+
+    <div class="col-lg-2">    
+        <div class="pull-right">
+             @Html.ActionLink("新增用户", "NewUser", "User", null, new { @class = "btn btn-success" })           
+             
+             
+        </div>
+    </div>
+
+</div>
+
+<!-- operation menu-->
+<hr />
+<!-- 用户管理列表 -->
+	<div class="panel panel-primary">
+		 <div class="panel-heading">
+						用户列表
+		 </div>
+					
+		<div class="panel-body"  >
+             <table class="table table-bordered" >
+                <thead>
+                    <tr>
+                            <th>用户名</th>
+                            <th>登录密码</th>
+                            <th>支付密码</th>
+                            <th>状态</th>
+                            <th>权限</th>
+                            <th>推荐人</th>
+                            <th>操作</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                            <th >A</th>
+                            <th >1234</th>
+                            <th >1234</th>
+                            <th>激活</th>
+                            <th>透支</th>
+                            <th >AAA</th>
+                            <th>@Html.ActionLink("修改用户", "UserEdit", "User", null, new { @class = "btn btn-primary" })</th>
+                    </tr>
+                    <tr>
+                            <th >B</th>
+                            <th >1234</th>
+                            <th >1234</th>
+                            <th>待审</th>
+                            <th>系统，用户</th>
+                            <th >BBB</th>
+                            <th><button  class="btn btn-primary" type="submit">修改用户</button></th>
+                    </tr>
+                    <tr>
+                            <th>C</th>
+                            <th >1234</th>
+                            <th >1234</th>
+                            <th>冻结</th>
+                            <th>积分</th>
+                            <th >CCC</th>
+                            <th><button  class="btn btn-primary" type="submit">修改用户</button></th>
+                    </tr>
+                </tbody>
+             </table>
+        </div>
+    </div>

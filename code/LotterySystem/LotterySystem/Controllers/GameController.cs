@@ -88,5 +88,17 @@ namespace LotterySystem.Controllers
         {
             return View();
         }
+        public ActionResult GameManage()
+        {
+            return View();
+        }
+        public ActionResult NewGame()
+        {
+            return View();
+        }
+        public ActionResult GameEdit()
+        {
+            return View();
+        }
     }
 }

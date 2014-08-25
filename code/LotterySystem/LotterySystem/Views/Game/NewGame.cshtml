@@ -1,0 +1,178 @@
+﻿@{
+    ViewBag.Title = "创建游戏";
+
+}
+
+<!--字体样式-->
+    <style type="text/css">
+
+    .font1
+    {
+        font-size: 16px;
+        font-family:'Microsoft YaHei UI';
+    }
+        .div1
+        {
+            margin-top:10px;
+            margin-bottom:10px;  
+        }
+        
+    </style>
+
+<!--字体样式-->
+<div id="head" >
+    @RenderPage("../Home/Nav.cshtml")
+</div>
+<!-- operation menu-->
+
+
+<hr />
+
+<div class="row">
+    <div class="col-lg-2">
+
+    </div>
+    <div class="col-lg-8">
+    <div class="panel panel-primary">
+         <div class="panel-heading">新建游戏信息</div>
+         <div class="panel-body">
+
+        <div class="row">
+
+            
+                <form class="form-horizontal" role="form">
+
+                    <div class="form-group">
+                        <label  class="col-sm-4 control-label font1">游戏名称</font></label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control"  value="test1">
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-4 control-label font1">游戏状态</label>
+                        <div class="col-sm-8">
+                            
+                            <select class="btn btn-default dropdown-toggle"  >
+                            <option value="" selected>开放中</option>
+                            <option value="">已关闭</option>
+                            <option value="">冻结</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="roomState" class="col-sm-4 control-label font1">OS支持</label>
+						<div class="controls">
+							<label class="checkbox-inline">
+							  <input type="checkbox" id="inlineCheckbox1" value=""> xp/win7
+							</label>
+							<label class="checkbox-inline">
+							  <input type="checkbox" id="inlineCheckbox2" value=""> Linux
+							</label>
+							<label class="checkbox-inline">
+							  <input type="checkbox" id="inlineCheckbox3" value="">Android
+							</label>
+							<label class="checkbox-inline">
+							  <input type="checkbox" id="inlineCheckbox3" value="">IOS
+							</label>
+						</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="roomState" class="col-sm-4 control-label font1">浏览器支持</label>
+						<div class="controls">
+							<label class="checkbox-inline">
+							  <input type="checkbox" id="inlineCheckbox1" value=""> IE
+							</label>
+							<label class="checkbox-inline">
+							  <input type="checkbox" id="inlineCheckbox2" value=""> 火狐
+							</label>
+							<label class="checkbox-inline">
+							  <input type="checkbox" id="inlineCheckbox3" value="">Google Chrome
+							</label>
+						</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="roomState" class="col-sm-4 control-label font1">设置税率</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="enterMin"value="200" >
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="enterMin" class="col-sm-4 control-label font1">总限房</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="enterMin"value="200">
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>  
+                    <div class="form-group">
+                        <label for="enterMin" class="col-sm-4 control-label font1">单人限房</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="enterMin"value="200" >
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>                    
+                   
+                    <div class="form-group">
+                        <label for="throwMin" class="col-sm-4 control-label font1">单房限桌</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="throwMin" value="20" >
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>    
+                    <div class="form-group">
+                        <label for="growth" class="col-sm-4 control-label font1">单桌限人</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="growth" value="5">
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>  
+					
+                    <div class="form-group">
+                        <label for="growth" class="col-sm-4 control-label font1">选号限秒</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control"  value="5">
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>  
+					
+                    <div class="form-group">
+                        <label for="growth" class="col-sm-4 control-label font1">投注限秒</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="growth" value="5">
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>  
+ 
+              </form>
+            
+
+
+
+ 
+       </div>
+        <!-- row -->
+        <hr/>
+
+        <!--操作栏-->
+		<div class="form-group">
+                    <!-- Button -->
+            <div class="control-group " style="text-align: center">
+				<div class="controls">
+                    <button id="newRoomSure" name="newRoomSure" class="btn btn-success" type="submit">创建游戏</button>  
+                    <button id="deleteRoom" name="deleteRoom" class="btn btn-danger" type="submit">重置信息</button>  
+                    <input type="button"  onclick="javascript: history.back(-1);" value="取消" class="btn btn-default">   
+					</div>
+                </div>
+			</div>
+        <!--操作栏-->
+		
+        </div> <!--body-->
+
+      </div><!--panel-->
+    </div>
+    
+    <div class="col-lg-2">
+
+    </div>
+</div>

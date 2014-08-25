@@ -1,0 +1,239 @@
+﻿@{
+    ViewBag.Title = "积分借贷";
+    
+}
+
+<div id="head" >
+    @RenderPage("../Home/Nav.cshtml")
+</div>
+
+<!--字体样式-->
+    <style type="text/css">
+
+    .font1
+    {
+        font-size: 16px;
+        font-family:'Microsoft YaHei UI';
+    }
+        .div1
+        {
+            margin-top:10px;
+            margin-bottom:10px;  
+        }
+        
+    </style>
+
+<!--字体样式-->
+<div style="text-align:right">
+<input type="button"  onclick="javascript: history.back(-1);" value="返回" class="btn btn-default">
+</div>
+<hr />
+<!-- 积分借贷 -->
+<div class="panel panel-primary">
+	<div class="panel-heading">
+						
+ <div class="row">
+     <div class="col-lg-1"></div>
+	<div class="col-lg-2 font1" style="text-align:left">
+        积分借贷
+	</div>
+  
+
+  
+	<div class="col-lg-6">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-8"><input type="text"  class="form-control" placeholder="请输入你要查询的用户ID号" ></div>
+          <div class="col-sm-2"><button class="btn btn-primary" type="submit">查询</button></div>
+    </div>
+	<div class="col-lg-3">
+     </div>
+  
+</div><!-- /.row -->
+
+					</div>
+					
+					<div class="panel-body" >
+						<div class="table-responsive">
+							<table class="table table-condensed">
+								<tr>
+								  <td>用户ID</td>
+								  <td>用户名</td>
+								  <td>借贷的积分</td>
+								</tr>
+
+                              
+								    <tr >  
+								      <td>ISO9001</td>
+								      <td>用户1</td>
+								      <td><input type="text" class="form-control" placeholder="积分" size="12"></td>
+
+								    </tr>
+								    <tr >
+								      
+								      <td>ISO9002</td>
+								      <td>用户2</td>
+								      <td><input type="text" class="form-control" placeholder="积分"></td>
+								    </tr>
+								    <tr >
+								      
+								      <td>ISO9001</td>
+								      <td>用户3</td>
+								      <td><input type="text" class="form-control" placeholder="积分"></td>
+								    </tr>                           
+							</table>
+						</div>
+						
+					</div>
+            <hr />
+			<div  class="pull-right">
+				 <button  name="" class="btn btn-success" type="submit">确认借贷</button>  
+			</div>
+				</div>
+
+				<hr/>
+				
+<!-- 积分还贷 -->
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+                        <div class="row">
+						     <div class="col-lg-1"></div>
+	                         <div class="col-lg-2 font1" style="text-align:left">
+                                   积分还贷
+	                         </div>
+                             <div class="col-lg-9"></div>
+                         </div>
+					</div>
+					
+					<div class="panel-body" >
+						<div class="table-responsive">
+							<table class="table table-condensed">
+								<tr>
+								  <td>用户ID</td>
+								  <td>用户名</td>
+								  <td>还贷的积分</td>							  
+								</tr>
+
+                              
+								    <tr >  
+								      <td>ISO9001</td>
+								      <td>用户1</td>
+								      <td><input type="text" class="form-control" placeholder="积分" size="12"></td>
+
+								    </tr>
+								    <tr >
+								      
+								      <td>ISO9002</td>
+								      <td>用户2</td>
+								      <td><input type="text" class="form-control" placeholder="积分"></td>
+								    </tr>
+								    <tr >
+								      
+								      <td>ISO9001</td>
+								      <td>用户3</td>
+								      <td><input type="text" class="form-control" placeholder="积分"></td>
+								    </tr>                             
+							</table>
+						</div>	
+					</div>
+                    <hr />
+					<div id="right1"  class="pull-right">
+						 <button id="enter3" name="" class="btn btn-success" type="submit">确认还贷</button>  
+					</div>
+				</div>
+
+				<hr/>
+
+<!-- 借贷请求处理 -->
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						借贷请求
+					</div>
+					
+					<div class="panel-body" >
+						<div class="table-responsive">
+							<table class="table table-condensed">
+								<tr>
+								  <td>用户ID</td>
+								  <td>用户名</td>
+								  <td>请求时间</td>	
+								  <td>处理</td>
+								</tr>
+
+                              
+								    <tr >  
+								      <td>ISO9001</td>
+								      <td>用户1</td>
+									  <td>2014-08-22 17:30</td>
+									  <td><button id="enter3" name="" class="btn btn-success" type="submit">同意</button>
+									  <button id="enter3" name="" class="btn btn-danger" type="submit">拒绝</button></td>
+								    </tr>
+								    <tr >
+								      
+								      <td>ISO9002</td>
+								      <td>用户2</td>
+									  <td>2014-08-22 17:30</td>
+									  <td><button id="enter3" name="" class="btn btn-success" type="submit">同意</button>
+									  <button id="enter3" name="" class="btn btn-danger" type="submit">拒绝</button></td>
+								    </tr>
+								    <tr >
+								      
+								      <td>ISO9001</td>
+								      <td>用户3</td>
+									  <td>2014-08-22 17:30</td>
+									  <td><button id="enter3" name="" class="btn btn-success" type="submit">同意</button>
+									  <button id="enter3" name="" class="btn btn-danger" type="submit">拒绝</button></td>
+								    </tr>                           
+							</table>
+						</div>
+						
+					</div>
+				</div>
+
+				<br/><hr/>
+
+
+<!-- 还贷记录 -->
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						还贷记录
+					</div>
+					
+					<div class="panel-body" >
+						<div class="table-responsive">
+							<table class="table table-condensed">
+								<tr>
+								  <td>用户ID</td>
+								  <td>用户名</td>
+								  <td>还贷时间</td>
+								  <td>还贷积分数</td>							  
+								</tr>
+
+                              
+								    <tr > 
+									  <td>ISO9001</td>
+								      <td>用户A</td>  
+								      <td>2014-08-22 17:30</td>  
+								      <td>2700</td>
+								    </tr>
+									
+								    <tr >  
+									  <td>ISO9001</td>
+								      <td>用户B</td>  
+								      <td>2014-08-22 17:30</td>  
+								      <td>2700</td>
+								    </tr>
+									
+								    <tr > 
+									  <td>ISO9001</td>
+								      <td>用户C</td>  
+								      <td>2014-08-22 17:30</td>  
+								      <td>2700</td>
+								    </tr>                           
+							</table>
+						</div>
+						
+					</div>
+				</div>
+
+					<br/><hr/>
+	</div>

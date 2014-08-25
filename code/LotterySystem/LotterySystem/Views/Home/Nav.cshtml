@@ -1,25 +1,35 @@
 ﻿@{
-    ViewBag.Title = "Nav";
+    ViewBag.Title = "导航栏";
    
 }
 
       <!-- nav navbar -->
       <div class="navbar navbar-default" role="navigation">
         
-          <div class="navbar-header">
+          <div class="navbar-header" style="text-align:center">
 
-            @Html.ActionLink("首页", "Hall", "Game", null, new { @class="navbar-brand"})
-          </div>
+          
+       @Html.ActionLink("游戏大厅", "Hall", "Game", null, new { @class="navbar-brand"})
+
+      
+           </div>
           <div class="navbar-collapse collapse">
 
             <ul class="nav navbar-nav navbar-right">
               <li >
-                   @Html.ActionLink("用户", "UserInfo", "User", null, null)
+                   @Html.ActionLink("修改密码", "UserInfo", "User", null, null)
                 </li>
-              <li>@Html.ActionLink("房间", "RoomEdit", "Game", null, null)
+              <li>
+                    @Html.ActionLink("系统管理", "SystemManage", "Home", null, null)
 
               </li>
-              <li>@Html.ActionLink("积分", "UserAccount", "User", null, null)
+              <li>@Html.ActionLink("用户管理", "UserManage", "User", null, null)
+
+              </li>
+              <li>@Html.ActionLink("游戏管理", "GameManage", "Game", null, null)
+
+              </li>
+              <li>@Html.ActionLink("积分管理", "UserAccount", "User", null, null)
 
               </li>
               <li> @Html.ActionLink("日志", "Loginlog", "Log", null, null)
