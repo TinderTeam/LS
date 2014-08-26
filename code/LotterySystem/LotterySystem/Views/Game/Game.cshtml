@@ -1,10 +1,9 @@
 ﻿@{
-    ViewBag.Title = "GamePage";
+    ViewBag.Title = "游戏";
     
 }
 <!--字体样式-->
     <style type="text/css">
-
     .font1
     {
         font-size: 16px;
@@ -15,195 +14,339 @@
             margin-top:10px;
             margin-bottom:10px;  
         }
-        
+
+        .header_pan
+        {
+             font-size:18px;           
+        }
+
+
+        .game_data_table td
+        {   
+            text-align:center;
+        }
+
+         .point
+        {   
+            font-size: 16px;
+            font-family:'Microsoft YaHei UI';
+        }
     </style>
 
+    <script type="text/javascript">
+        //增幅
+        var amplification = 10;
+
+        function addPoint() {
+            var i = $("#myPoint").text();
+            var result = parseInt(i) + amplification;
+            //增加校验
+
+            $("#myPoint").text(result);
+        }
+        function minusPoint() {
+            var i = $("#myPoint").text();
+            var result=i-amplification;
+
+            if (result < 0) {
+                result = 0;
+            }
+            $("#myPoint").text(result);
+        }
+    </script>
+    <script type="text/javascript">
+        //选择数字
+        var selectedNumber = new Array();
+        selectedNumber[0] = 0;
+        selectedNumber[1] = 0;
+        selectedNumber[2] = 0;
+
+       
+
+        //选中数字
+        function selected(ob) {
+            var num = ob.value;
+            if (num <= 6 && num >= 1) {
+                if (selectedNumber[0] == 0) {
+                    //首次选择
+                    changeNumCorlor(num, "RED");
+                    selectedNumber[0] = num;
+                } else if (selectedNumber[0] == num) {
+                    //取消首选
+                    cancelAllSelect();                   
+                } else {
+                    if (selectedNumber[1] == 0) {
+                        //二次选择
+                        changeNumCorlor(num, "GREEN");
+                        selectedNumber[1] = num;
+                    } else if (selectedNumber[1] == num) {
+                        //取消二次选择
+                        cancelSelect(num);
+                        if (selectedNumber[2] != 0) {
+                            cancelSelect(selectedNumber[2]);
+                        }
+                        selectedNumber[1] = 0;
+                        selectedNumber[2] = 0;
+                    } else {
+                        if (selectedNumber[2] == 0) {
+                            //三次选择
+                            changeNumCorlor(num, "GREEN");
+                            selectedNumber[2] = num;
+                        } else if (selectedNumber[2] == num) {
+                            //取消三次选择
+                            cancelSelect(num);
+                            selectedNumber[2] = 0;
+                        } else {
+                            //取消全部选择
+                            cancelAllSelect();
+                        }
+                    }
+                }
+               
+            }
+
+            if(selectedNumber[0] +selectedNumber[1] + selectedNumber[2] >0){
+                $("#addCathectic").removeAttr("disabled");//将按钮可用
+            }else{
+                $("#addCathectic").attr({ "disabled": "disabled" });
+            }
+        }
+
+        function changeNumCorlor(num, color) {
+            var classStr = "btn btn-lg btn-block";
+            var greenStr = " btn-success";
+            var redStr = " btn-danger";
+            var str="";
+            if (color == "GREEN") {
+                str = classStr + greenStr;
+            } else if (color == "RED") {
+                str = classStr + redStr;
+            }
+            $("#numBtn" + num).removeClass();
+            $("#numBtn" + num).addClass(str);
+        }
+
+        function cancelSelect(num){
+            var str = "btn btn-lg btn-block btn-default";
+            $("#numBtn" + num).removeClass();
+            $("#numBtn" + num).addClass(str);
+        }
+
+        function cancelAllSelect() {
+            for (var i = 0; i < 3; i++) {
+                cancelSelect(selectedNumber[i]);
+                selectedNumber[i] = 0;
+            }
+        }
+
+
+    </script>
 <!--字体样式-->
 <div id="head">
     @RenderPage("../Home/Nav.cshtml")
 </div>
 <!-- operation menu-->
 
-
 <hr />
 
 <!-- 游戏界面-->
 <div class="panel panel-primary" >
     <div class="panel-heading" style="height:60px">
-        <span style="font-size:25px">当前牌局</span>
-        <span class="pull-right"> <input type="button"  onclick="javascript: history.back(-1);" value="返回" class="btn btn-default"></span>
+        <h5>
+            <span class="header_pan">当前牌局     <span class="pull-right"><input type="button"  onclick="javascript: history.back(-1);" value="返回" class="btn btn-default"></span></span>       
+        </h5>             
     </div>
 
     <div class="panel-body">
+        <div class="container-fluid">
+              <div class="row">
+                 <div class="col-lg-2 col-md-offset-1">
+                     <p>当前局号：<span>00023</span></p>
+                 </div>
+                <div class="col-lg-2">
+                     <p>当前轮号：第<span>3</span>轮</p>
+                 </div>
+                <div class="col-lg-2">
+                      <p>当前庄家：<span>A</span></p>
+                 </div>
+                <div class="col-lg-2 ">
+                    <p>庄家积分：<span>2700</span></p>
+                </div>
+                <div class="col-lg-2">
+                    <p>我的积分：<span>1200</span></p>
+                </div>
+             </div>
+     
+            <div class="row">
+                <div class="col-lg-2 col-md-offset-1">
+                     <p>
+                         <span style="text-align:left">当前闲家：</span>
+                        <span style="text-align:left" >B</span> 
+                        <span style="text-align:left" >C</span> 
+                        <span style="text-align:left" >D</span> 
+                        <span style="text-align:left" >E</span>
+                     </p>             
+                </div>
+                 <div class="col-lg-2 ">
+                    <span >倒计时：</span>
+                    <span>03</span>
+                </div>                            
+             </div>
 
-        <div class="row">
-            <div class="col-lg-1 "></div>
-            <div class="col-lg-2 ">
-                <span style="text-align:left">当前局号：</span>
-                <span style="text-align:left" id="currentTableNum">00023</span> 
-            </div>
-            <div class="col-lg-2">
-                <span>当前轮号：</span>
-                <span style="text-align:left" >第<span id="currentTableNum">3</span>轮</span>
-            </div>
-            <div class="col-lg-2">
-                <span>当前庄家：</span>
-                <span>A</span>
-            </div>
-            <div class="col-lg-2">
-                <span>庄家积分：</span>
-                <span>2700</span>
-            </div>
-            <div class="col-lg-2">
-                <span>我的积分：</span>
-                <span>1200</span>
-            </div>
-            <div class="col-lg-1 "></div>
-        </div>
+            <div class="row">            
+                <div class="col-lg-8 col-md-offset-1">
+                    <p>
+                        当前游戏状态：                      
+                        <span>庄家选号</span>
+                    </p>
+                </div>
 
-        <div class="row">
-            <div class="col-lg-1 "></div>
-            <div class="col-lg-6 ">
-                <span style="text-align:left">当前闲家：</span>
-                <span style="text-align:left" >B</span> 
-                <span style="text-align:left" >C</span> 
-                <span style="text-align:left" >D</span> 
-                <span style="text-align:left" >E</span> 
+                <div class="col-lg-2">
+                    <p>
+                        系统开号： 
+                        <span>32</span>
+                    </p>
+                </div>           
             </div>
-             <div class="col-lg-2 ">
-                <span >倒计时：</span>
-                <span>03</span>
-            </div> 
-              <div class="col-lg-2 ">
-                
-            </div>  
-           <div class="col-lg-1 "></div>
-                    
-        </div>
-
-        <div class="row">
-            <div class="col-lg-1 ">
-                
-            </div>
-            <div class="col-lg-3">
-             <p style="text-align:left">
-            <span>当前游戏状态：</span>
-                       
-            <span>庄家选号</span>
-            </p>
- 
-            </div>
-            <div class="col-lg-6">
-                
-                <p style="text-align:left">系统开号： <span>32</span></p>
-            </div>
-             <div class="col-lg-1">   
-             </div>               
-             <div class="col-lg-1">   
-             </div>        
-        </div>
-
-        <hr />
-        <div class="row">
-            <div class="col-lg-1"></div>
-            <div class="col-lg-10">
-                <div class="bs-example">
-                    <table class="table table-bordered">
+           
+            <!----Game Table--->
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1" >
+                    <h5>游戏数据：</h5>
+                    <table class="table table-bordered game_data_table">
                         <thead>
                             <tr>
-                                <th></th>
-                                <th style="text-align:center;width:140px"><button type="button" class="btn btn-default">1</button></th>
-                                <th style="text-align:center;width:140px"><button type="button" class="btn btn-danger">2</button></th>
-                                <th style="text-align:center;width:140px"><button type="button" class="btn btn-default">3</button></th>
-                                <th style="text-align:center;width:140px"><button type="button" class="btn btn-success">4</button></th>
-                                <th style="text-align:center;width:140px"><button type="button" class="btn btn-success">5</button></th>
-                                <th style="text-align:center;width:140px"><button type="button" class="btn btn-default">6</button></th>
-                            </tr>
+                                <td>投注号码</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td>6</td>
+                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>总投注</td>
                                 <td>20</td>
                                 <td>70</td>
-                                <td></td>
+                                <td>10</td>
                                 <td>15</td>
                                 <td>10</td>
                                 <td>40</td>
                             </tr>
                             <tr>
                                 <td>我的投注</td>
-                                <td></td>
+                                <td>0</td>
                                 <td>15</td>
-                                <td></td>
+                                <td>1</td>
                                 <td>10</td>
                                 <td>10</td>
                                 <td></td>
-                            </tr>
-                            <tr>
-                                <td>请投注</td>
-                                <td colspan="6">
-
-                                   <span><button id="decrease" name="decrease" class="btn btn-primary " type="submit">-</button></span>
-                                      【<span>35</span>】分
-                                    <span><button id="increase" name="increase" class="btn btn-primary " type="submit">+</button></span>
-                                   
-                                    <span>均投<input type="checkbox"/></span> 
-
-                                    <span ><button id="addThrow" name="addThrow" class="btn btn-primary " type="submit">添加投注 </button></span> 
-                                    <span><button id="endThrow" name="endThrow" class="btn btn-primary " type="submit">结束投注</button></span>
-
-                                </td>
                             </tr>
                         </tbody>
                     </table>
-
                 </div>
-
-            </div>
-           <div class="col-lg-1"></div>
-        </div>
-<!--操作区-->
-          
-          
-                <div class="panel panel-primary" style="width:500px;margin-left:auto;margin-right:auto"  >
-                    <h4>投注记录</h4>
-                    <hr />
-                    <div class="row div1" >
-                                   <div class="col-lg-1"></div>
-                                   <div class="col-lg-6">
-                                        【单投】【50分】2
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <button id="deleteThrow1" name="deleteThrow1" class="btn btn-default" type="submit">删除该笔</button>
-                                    </div>
-                                <div class="col-lg-1"></div>
-                     </div>
-                    <div class="row div1">
-                                    <div class="col-lg-1"></div>
-                                    <div class="col-lg-6">
-                                        【带二】【75分】2（3，5）
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <button id="deleteThrow2" name="deleteThrow2" class="btn btn-default" type="submit">删除该笔</button>
-                                    </div>
-                                    <div class="col-lg-1"></div>
-                     </div>                                    
-                    <div class="row div1">
-            
-                               <div class="col-lg-1"></div>
-                                    <div class="col-lg-6">
-                                        【均投】【30分】2，4，5
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <button id="deleteThrow3" name="deleteThrow3" class="btn btn-default" type="submit">删除该笔</button>
-                                    </div>
-                               <div class="col-lg-1"></div>
-                     </div>              
-
-                    
+            </div>  <!----Game Table--->
+          <hr/>
+             <!----Game Button--->         
+             <div class="row">             
+                <div class="col-lg-2 col-lg-offset-1">
+                         <h5>号码选择：</h5>
                 </div>
+                <div class="col-lg-1 ">
+                    <button  class="btn btn-default  btn-lg btn-block" onclick="selected(this);" id="numBtn1" value="1">1</button>
+                </div>
+                <div class="col-lg-1">
+                    <button class="btn btn-default  btn-lg btn-block" onclick="selected(this);" id="numBtn2" value="2">2</button>
+                </div>
+                <div class="col-lg-1">
+                    <button class="btn btn-default  btn-lg btn-block" onclick="selected(this);" id="numBtn3" value="3">3</button>
+                </div>
+                  <div class="col-lg-1">
+                    <button class="btn btn-default  btn-lg btn-block" onclick="selected(this);" id="numBtn4" value="4">4</button>
+                </div>
+                  <div class="col-lg-1">
+                    <button class="btn btn-default  btn-lg btn-block" onclick="selected(this);" id="numBtn5" value="5">5</button>
+                </div>
+                  <div class="col-lg-1">
+                    <button class="btn btn-default  btn-lg btn-block" onclick="selected(this);" id="numBtn6" value="6">6</button>
+                </div>
+            </div> <!----Game Button--->  
+              
+                  
+             <div class="row">             
+                <p></p>
+             </div>  
 
-<!--操作区-->
+          <hr/>
+             <!----Game Button--->         
+             <div class="row">             
+                <div class="col-lg-2 col-lg-offset-1">
+                    <h5>请投注：</h5>
+                </div>             
+                <div class="col-lg-2">
+                    <div class="form-inline" role="form">
+                        <div class="form-group">                       
+                            <button class="btn btn-success btn-sm" onclick="minusPoint()"><span class="glyphicon glyphicon-minus"></span></button>
+                            <label ><span class="point" id="myPoint">30</span>分</label>
+                            <button class="btn btn-danger btn-sm" onclick="addPoint()"><span class="glyphicon glyphicon-plus"></span></button>
+                        </div>                        
+                    </div>
+                </div>
+                     <div class="col-lg-2">
+                        <div class="form-inline" role="form">
+                            <div class="form-group">                       
+                                <label>
+                                    <input type="checkbox"> 均投
+                                </label>
+                            </div>                        
+                        </div>
+                    </div>
+                   <div class="col-lg-3">
+                             <button class="btn btn-primary" id="addCathectic" disabled="disabled">添加投注</button>
+                             <button class="btn btn-primary" >结束投注</button>                     
+                   </div>
+              </div>
+
+          <hr/>
+          <div class="row"><!----投注记录---> 
+                <div class="col-lg-2 col-lg-offset-1">
+                    <h5>投注记录：</h5>
+                </div>   
+                <div class="col-lg-9" >
+                    <table class="table .table-striped game_data_table">
+                        <thead>
+                            <tr>
+                                <td>投注方式</td>
+                                <td>投注分值</td>
+                                <td>选择数字</td>
+                                <td>操作</td>
+                             </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>【<span>单投</span>】</td>
+                                <td>【<span>50</span>分】</td>
+                                <td><span>2</span></td>
+                                <td><button class="btn btn-danger btn-xs">删除该笔</button></td>
+                             </tr>
+                             <tr>
+                                <td>【<span>带二</span>】</td>
+                                <td>【<span>50</span>分】</td>
+                                <td><span>2(3,5)</span></td>
+                                <td><button class="btn btn-danger btn-xs">删除该笔</button></td>
+                             </tr>
+                             <tr>
+                                <td>【<span>均投</span>】</td>
+                                <td>【<span>50</span>分】</td>
+                                <td><span>2,4,5</span></td>
+                                <td><button class="btn btn-danger btn-xs">删除该笔</button></td>
+                             </tr>
+                        </tbody>
+                    </table>
+                </div>
+          </div><!----投注记录---> 
 
 <!--图标分析区-->
         <div class="well">

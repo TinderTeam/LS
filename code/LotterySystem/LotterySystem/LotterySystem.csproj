@@ -254,7 +254,37 @@
     <Content Include="Content\bootstrap\css\unicorn.main.css" />
     <Content Include="Content\bootstrap\css\unicorn.red.css" />
     <Content Include="Content\bootstrap\css\uniform.css" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\bootstrap\js\bootstrap-colorpicker.js" />
+    <Content Include="Content\bootstrap\js\bootstrap-datepicker.js" />
+    <Content Include="Content\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\bootstrap\js\Chart.js" />
+    <Content Include="Content\bootstrap\js\excanvas.min.js" />
+    <Content Include="Content\bootstrap\js\fullcalendar.min.js" />
+    <Content Include="Content\bootstrap\js\jquery.dataTables.min.js" />
+    <Content Include="Content\bootstrap\js\jquery.dataTables.min_ch.js" />
+    <Content Include="Content\bootstrap\js\jquery.flot.min.js" />
+    <Content Include="Content\bootstrap\js\jquery.flot.pie.min.js" />
+    <Content Include="Content\bootstrap\js\jquery.flot.resize.min.js" />
+    <Content Include="Content\bootstrap\js\jquery.gritter.min.js" />
+    <Content Include="Content\bootstrap\js\jquery.min.js" />
+    <Content Include="Content\bootstrap\js\jquery.min_74e92c4.js" />
+    <Content Include="Content\bootstrap\js\jquery.peity.min.js" />
+    <Content Include="Content\bootstrap\js\jquery.ui.custom.js" />
+    <Content Include="Content\bootstrap\js\jquery.ui.custom_a3d4650c.js" />
+    <Content Include="Content\bootstrap\js\jquery.uniform.js" />
+    <Content Include="Content\bootstrap\js\jquery.validate.js" />
+    <Content Include="Content\bootstrap\js\jquery.wizard.js" />
+    <Content Include="Content\bootstrap\js\line-charts.js" />
+    <Content Include="Content\bootstrap\js\select2.min.js" />
+    <Content Include="Content\bootstrap\js\smooth-sliding-menu.js" />
     <Content Include="Content\icon\icon.ico" />
+    <Content Include="Content\img\3.jpg" />
+    <Content Include="Content\img\gallery-photo\1.png" />
+    <Content Include="Content\img\gallery-photo\2.png" />
+    <Content Include="Content\img\gallery-photo\3.png" />
+    <Content Include="Content\resource\icon.ico" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -316,6 +346,9 @@
     <EmbeddedResource Include="log4Net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Properties\PublishProfiles\config.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <EmbeddedResource Include="Po\User.hbm.xml">

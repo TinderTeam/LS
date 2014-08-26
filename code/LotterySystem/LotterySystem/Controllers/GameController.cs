@@ -174,7 +174,10 @@ namespace LotterySystem.Controllers
         {
             return View();
         }
-
+        public ActionResult Game()
+        {
+            return View();
+        }
         public ActionResult AddGame()
         {
             return RedirectToAction("Game", "Game");
