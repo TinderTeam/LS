@@ -233,6 +233,7 @@
     <Compile Include="Service\User\UserServiceImpl.cs" />
     <Compile Include="Test\Stub\DBStub.cs" />
     <Compile Include="Test\Stub\Stub.cs" />
+    <Compile Include="Util\DataConvert.cs" />
     <Compile Include="Util\DateTimeServcie.cs" />
     <Compile Include="Util\RandomService.cs" />
   </ItemGroup>
@@ -354,6 +355,9 @@
     <EmbeddedResource Include="Po\User.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Po\Game.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -446,7 +450,7 @@
     <Content Include="Views\Game\GameEdit.cshtml" />
     <Content Include="Views\User\AccountBorrow.cshtml" />
     <Content Include="Views\User\UserEdit.cshtml" />
-        <Content Include="Views\Game\TablePage.cshtml" />
+    <Content Include="Views\Game\TablePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
