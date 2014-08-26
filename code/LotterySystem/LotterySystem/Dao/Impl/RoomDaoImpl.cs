@@ -5,74 +5,210 @@ using System.Web;
 using LotterySystem.Po;
 using LotterySystem.Test.Stub;
 using LotterySystem.Models;
+using NHibernate;
+using NHibernate.Criterion;
+using LotterySystem.Util;
+
 namespace LotterySystem.Dao
 {
     public class RoomDaoImpl :RoomDao
     {
+        private static log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public Room getRoomByName(String roomName)
         {
-            List<Room> roomList = DBStub.getDBStub().getRoomList();
-            for (int i=0;i < roomList.Count; i++)
-            {
-                if (roomList[i].RoomName.Equals(roomName))
-                {
-                    return roomList[i];
-                }
-            }
             return null;
         }
 
 
         public List<Room> getRoomListByGameAndHoster(string gameName, String hoster)
         {
-            List<Room> roomList = DBStub.getDBStub().getRoomList();
-            List<Room> list = new List<Room>();
-            for (int i = 0; i < roomList.Count; i++)
+            List<Room> roomList = new List<Room>();
+            ISession session = null;
+            try
             {
-                if (roomList[i].GameName.Equals(gameName) && roomList[i].RoomHost.Equals(hoster))
+
+                session = SessionManager.getInstance().GetSession();
+                ITransaction tx = session.BeginTransaction();
+
+
+                ICriteria criteria = session.CreateCriteria<Room>();
+                criteria.Add(Restrictions.Eq("GameName", gameName));
+                criteria.Add(Restrictions.Eq("RoomHost", hoster));
+                var queryList = criteria.List<Room>();
+                foreach (var result in queryList)
                 {
-                    list.Add(roomList[i]);
+                    roomList.Add(result);
+                }
+
+
+                tx.Commit();
+
+
+            }
+            catch (System.Exception ex)
+            {
+
+                log.Error("create user error", ex);
+                throw ex;
+            }
+            finally
+            {
+                if (null != session)
+                {
+                    session.Close();
                 }
             }
-            return list;
+            return roomList;
         }
        public  List<Room> getRoomByGame(string gameName)
         {
-            List<Room> roomList = DBStub.getDBStub().getRoomList();
-            List<Room> list = new List<Room>();
-            for (int i = 0; i < roomList.Count; i++)
+            List<Room> roomList = new List<Room>();
+            ISession session = null;
+            try
             {
-                if (roomList[i].GameName.Equals(gameName))
+
+                session = SessionManager.getInstance().GetSession();
+                ITransaction tx = session.BeginTransaction();
+
+
+                ICriteria criteria = session.CreateCriteria<Room>();
+                criteria.Add(Restrictions.Eq("GameName", gameName));
+        
+                var queryList = criteria.List<Room>();
+                foreach (var result in queryList)
                 {
-                    list.Add(roomList[i]);
+                    roomList.Add(result);
+                }
+
+
+                tx.Commit();
+
+
+            }
+            catch (System.Exception ex)
+            {
+
+                log.Error("create user error", ex);
+                throw ex;
+            }
+            finally
+            {
+                if (null != session)
+                {
+                    session.Close();
                 }
             }
-            return list;
+            return roomList;
         }
 
         public List<Room> getRoomByGameNameAndStatus(string gameName,string status)
         {
-            List<Room> roomList= DBStub.getDBStub().getRoomList();
-            List<Room> list = new List<Room>();
-            for (int i = 0; i < roomList.Count; i++)
+            List<Room> roomList = new List<Room>();
+            ISession session = null;
+            try
             {
-                if (roomList[i].GameName.Equals(gameName) && roomList[i].Status.Equals(RoomConstatns.STATUS_OPEN))
+
+                session = SessionManager.getInstance().GetSession();
+                ITransaction tx = session.BeginTransaction();
+
+
+                ICriteria criteria = session.CreateCriteria<Room>();
+                criteria.Add(Restrictions.Eq("GameName", gameName));
+                criteria.Add(Restrictions.Eq("Status", status));
+                var queryList = criteria.List<Room>();
+                foreach (var result in queryList)
                 {
-                    list.Add(roomList[i]);
+                    roomList.Add(result);
+                }
+
+
+                tx.Commit();
+
+
+            }
+            catch (System.Exception ex)
+            {
+
+                log.Error("create user error", ex);
+                throw ex;
+            }
+            finally
+            {
+                if (null != session)
+                {
+                    session.Close();
                 }
             }
-            return list;
+            return roomList;
         }
 
         public List<Room> getAll()
         {
-            return null;
-        }
+           List<Room> roomList = new List<Room>();
+            ISession session = null;
+            try
+            {
 
+                session = SessionManager.getInstance().GetSession();
+                ITransaction tx = session.BeginTransaction();
+
+                var queryList = session.CreateCriteria<Room>().List<Room>();
+ 
+                foreach (var result in queryList)
+                {
+                    roomList.Add(result);
+                }
+
+ 
+                tx.Commit();
+
+
+            }
+            catch (System.Exception ex)
+            {
+
+                log.Error("create user error", ex);
+                throw ex;
+            }
+            finally
+            {
+                if (null != session)
+                {
+                    session.Close();
+                }
+            }
+            return roomList;
+        }
+       
         public void createRoom(Room room)
         {
-            List<Room> roomList = DBStub.getDBStub().getRoomList();
-            roomList.Add(room);
+            ISession session = null;
+            try
+            {
+
+                session = SessionManager.getInstance().GetSession();
+                ITransaction tx = session.BeginTransaction();
+
+                session.Save(room);
+
+                tx.Commit();
+
+
+            }
+            catch (System.Exception ex)
+            {
+
+                log.Error("create user error", ex);
+                throw ex;
+            }
+            finally
+            {
+                if (null != session)
+                {
+                    session.Close();
+                }
+            }
         }
         public void deleteRoomByRoomName(String roomName)
         {

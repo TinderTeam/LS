@@ -1,36 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" >
-  <class name="LotterySystem.Po.User,LotterySystem" table="t_user" lazy="true" >
+  <class name="LotterySystem.Po.User,LotterySystem" table="t_user"  >
 
-
-    <id name="userID" column ="USER_ID">
-      <generator class ="native"/>
+    
+ 
+    <id name="UserID" column ="USER_ID" >
+      <generator class ="increment"/>
     </id>
 
-    <property name="userName" type="string">
-      <column name="USER_NAME" length="50"/>
+    <property name="UserName" type="string">
+      <column name="USER_NAME" length="50" unique="true"/>
     </property>
 
-    <property name="password" type="string">
+    <property name="Password" type="string">
       <column name="PASSWORD" length="50"/>
     </property>
 
-    <property name="payPassword" type="string">
+    <property name="PayPassword" type="string">
       <column name="PAY_PASSWORD" length="50"/>
     </property>
 
-    <property name="permission" type="string">
+    <property name="Permission" type="string">
       <column name="PERMISSION" length="50"/>
     </property>
 
 
-    <property name="status" type="string">
+    <property name="Status" type="string">
       <column name="STATUS" length="50"/>
     </property>
 
-    <property name="recommendUserName" type="string">
-      <column name="RCD_USER_NAME" length="50"/>
+    <property name="RecommendUserName" type="string">
+      <column name="RECOMMEND_USER_NAME" length="50"/>
     </property>
 
 

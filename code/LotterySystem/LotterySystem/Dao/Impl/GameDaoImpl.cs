@@ -8,7 +8,9 @@ namespace LotterySystem.Dao
 {
     public class GameDaoImpl:GameDao
     {
-        public List<Game> getAll(){
+        public List<Game> getAll()
+        {
+
 
             return DBStub.getDBStub().getGameList();
         }
@@ -16,7 +18,8 @@ namespace LotterySystem.Dao
         {
             for (int i = 0; i < DBStub.getDBStub().getGameList().Count; i++)
             { 
-                if(DBStub.getDBStub().getGameList()[i].GameName.Equals(gameName)){
+                if(DBStub.getDBStub().getGameList()[i].GameName.Equals(gameName))
+                {
                     return DBStub.getDBStub().getGameList()[i];
                 }
             }

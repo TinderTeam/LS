@@ -9,11 +9,12 @@ namespace LotterySystem.Dao
 {
     public interface UserDao
     {
-        User getSystemUserByName(string userName);
 
-        void createUser(User user);
-       
-
+         void createUser(User user);
+         void deleteUserByUserName(String userName);
+         void updateUser(User user);
+         User getSystemUserByName(string userName);
 
     }
+
 }
