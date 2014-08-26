@@ -49,7 +49,6 @@ namespace LotterySystem.Service
         public GameModel getGameByName(string gameName)
         {
             GameModel gameModel = converService.toGameModel( gameDao.getGameByName(gameName));
-           
             return gameModel;
         }
 
