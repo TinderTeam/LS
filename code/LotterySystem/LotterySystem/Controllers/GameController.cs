@@ -36,8 +36,6 @@ namespace LotterySystem.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public ActionResult CreateRoom(RoomForm model, string returnUrl) 
         {
             UserModel user = (UserModel)Session["SystemUser"];
@@ -48,7 +46,8 @@ namespace LotterySystem.Controllers
                 String result = platService.createRoom(game.GameName, user, model);
                 if (result.Equals(SysConstants.SUCCESS))
                 {
-                    return RedirectToAction("RoomPage", "Game");
+                      return RedirectToAction("RoomPage", "Game");
+                   // return RedirectToAction("TablePage", "Game");
                 }
                 else
                 {
@@ -85,15 +84,29 @@ namespace LotterySystem.Controllers
         /// </summary>
         /// <param name="gameName"></param>
         /// <returns></returns>
-        public ActionResult RoomPage(String gameName)
-        {    //将Game放入Session
-            Session["CurrentGame"] = platService.getGameByName(gameName);
+        public ActionResult RoomPage(String gameNameArg)
+
+        {
+            string gameName;
+            //将Game放入Session
+            if (gameNameArg != null)
+            {
+                Session["CurrentGame"] = platService.getGameByName(gameNameArg);
+                gameName = gameNameArg;
+            }
+            else
+            {
+                GameModel game = (GameModel)Session["CurrentGame"];
+                gameName = game.GameName;
+            }
+
+ 
             //获取当前登录用户
             UserModel user = (UserModel)Session["SystemUser"];
 
             //显示房间
             List<RoomModel> roomList = platService.getOpenRoomListByGameName(gameName);
-            ViewBag.roomSize = roomList.Count;
+            ViewBag.roomListCount = roomList.Count;
             ViewBag.roomList = roomList;
             return View();
         }

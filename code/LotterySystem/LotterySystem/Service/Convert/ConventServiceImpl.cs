@@ -11,25 +11,42 @@ namespace LotterySystem.Service
     {
         public RoomModel toRoomModel(Room room)
         {
-            return new RoomModel();
+            RoomModel roomModel= new RoomModel();
+            roomModel.AccessAcountLimit=room.AccessAcountLimit;
+            roomModel.Amplification =room.Amplification;
+            roomModel.BankerLimit = room.BankerLimit;
+            roomModel.BankerPointLimited=room.BasicPoint;
+            roomModel.BasicPoint=room.BasicPoint;
+            roomModel.GameName=room.GameName;
+            roomModel.RoomHost=room.RoomHost;
+            roomModel.RoomName=room.RoomName;
+            roomModel.RoomPassword=room.RoomPassword;
+            return roomModel;
         }
 
         public GameModel toGameModel(LotterySystem.Po.Game game)
         {
-           GameModel gameModel=  new GameModel();
-           gameModel.AllRoomLimit = game.PlayerSelectNumTimeLimit;
-           gameModel.BankerSelectNumTimeLimit = game.BankerSelectNumTimeLimit;
-           gameModel.Browser = game.Browser;
-           gameModel.GameName = game.GameName;
-           gameModel.GameStatus = game.GameStatus;
-           gameModel.OnePersonRoomLimit = game.OnePersonRoomLimit;
-           gameModel.OneRoomTableLimit = game.OneRoomTableLimit;
-           gameModel.OneTablePersonLimit = game.OneTablePersonLimit;
-           gameModel.Os = game.Os;
-           gameModel.PlayerSelectNumTimeLimit = game.PlayerSelectNumTimeLimit;
-           gameModel.TaxRate = game.TaxRate;
-
-           return gameModel;
+            if (game != null)
+            {
+                GameModel gameModel = new GameModel();
+                gameModel.AllRoomLimit = game.PlayerSelectNumTimeLimit;
+                gameModel.BankerSelectNumTimeLimit = game.BankerSelectNumTimeLimit;
+                gameModel.Browser = game.Browser;
+                gameModel.GameName = game.GameName;
+                gameModel.GameStatus = game.GameStatus;
+                gameModel.OnePersonRoomLimit = game.OnePersonRoomLimit;
+                gameModel.OneRoomTableLimit = game.OneRoomTableLimit;
+                gameModel.OneTablePersonLimit = game.OneTablePersonLimit;
+                gameModel.Os = game.Os;
+                gameModel.PlayerSelectNumTimeLimit = game.PlayerSelectNumTimeLimit;
+                gameModel.TaxRate = game.TaxRate;
+                return gameModel;
+            }
+            else
+            {
+                return null;
+            }
+         
         }
 
         public RoomModel toRoomModel(RoomForm form)
@@ -56,26 +73,32 @@ namespace LotterySystem.Service
         public  List<Door> toDoor(RoomForm form)
         {
             List<Door> doorList = new List<Door>();
-            string[] writeNameArray = form.WriteNameStr.Split(',');
-            string[] blackNameArray = form.BlackNameStr.Split(',');
 
-            for (int i = 0; i < writeNameArray.Length; i++)
+            if (form.WriteNameStr != null && !form.WriteNameStr.Equals(""))
             {
-                Door door = new Door();
-                door.GameName = form.GameName;
-                door.RoomName = form.RoomName;
-                door.UserName = writeNameArray[i];
-                doorList.Add(door);
-            }
-            for (int i = 0; i < blackNameArray.Length; i++)
-            {
-                Door door = new Door();
-                door.GameName = form.GameName;
-                door.RoomName = form.RoomName;
-                door.UserName = blackNameArray[i];
-                doorList.Add(door);
+                string[] writeNameArray = form.WriteNameStr.Split(',');
+                for (int i = 0; i < writeNameArray.Length; i++)
+                {
+                    Door door = new Door();
+                    door.GameName = form.GameName;
+                    door.RoomName = form.RoomName;
+                    door.UserName = writeNameArray[i];
+                    doorList.Add(door);
+                }
             }
 
+            if (form.BlackNameStr != null && !form.BlackNameStr.Equals(""))
+            {
+                string[] blackNameArray = form.BlackNameStr.Split(',');
+                for (int i = 0; i < blackNameArray.Length; i++)
+                {
+                    Door door = new Door();
+                    door.GameName = form.GameName;
+                    door.RoomName = form.RoomName;
+                    door.UserName = blackNameArray[i];
+                    doorList.Add(door);
+                }
+            }
             return doorList;
         }
     }

@@ -36,10 +36,10 @@
                             </td>
                             <td>@ViewBag.RoomList[i].AccessAcountLimit</td>
                             <td>@ViewBag.RoomList[i].BasicPoint</td>
-                            <td>@ViewBag.RoomList[i].amplification</td>
-                            <td>@ViewBag.RoomList[i].bankerPointLimited</td>
+                            <td>@ViewBag.RoomList[i].Amplification</td>
+                            <td>@ViewBag.RoomList[i].BankerPointLimited</td>
                             <td>
-                                if (ViewBag.RoomList[i].RoomHost.Equals(user.UserName))
+                                @if (ViewBag.RoomList[i].RoomHost.Equals(user.UserName))
                                 {
                                     @Html.ActionLink("进入房间", "TabelList", "Game", null, new { @class = "btn btn-primary" })
                                 }

@@ -32,7 +32,11 @@ namespace LotterySystem.Service
             for (int i = 0; i < gameList.Count; i++)
             {
                 GameModel gameModel = converService.toGameModel(gameList[i]);
-                gameModelList.Add(gameModel);            
+                if (gameModel != null)
+                {
+                    gameModelList.Add(gameModel);  
+                }
+          
             }
             return gameModelList;
         }
@@ -45,6 +49,7 @@ namespace LotterySystem.Service
         public GameModel getGameByName(string gameName)
         {
             GameModel gameModel = converService.toGameModel( gameDao.getGameByName(gameName));
+           
             return gameModel;
         }
 
@@ -108,7 +113,7 @@ namespace LotterySystem.Service
             {
                 return RoomConstatns.ERR_ALLROOM_LIMIT;
             }
-            if (roomDao.getRoomListByGameAndHoster(gameName, user.UserName).Count + 1 < game.OnePersonRoomLimit)
+            if (roomDao.getRoomListByGameAndHoster(gameName, user.UserName).Count + 1 > game.OnePersonRoomLimit)
             {
                 return RoomConstatns.ERR_USERROOM_LIMIT;
             }
@@ -116,8 +121,9 @@ namespace LotterySystem.Service
             //准备Po
             Room room = converService.toRoom(form); //RoomPo
             room.RoomHost = user.UserName;
+            room.GameName = gameName;
+            room.Status = RoomConstatns.STATUS_OPEN;
             List<Door> doorList = converService.toDoor(form);
-
 
             //校验
             /*

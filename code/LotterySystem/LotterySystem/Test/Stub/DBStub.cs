@@ -13,10 +13,10 @@ namespace LotterySystem.Test.Stub
     {
         private static  DBStub dbStub;
 
-        private Sys sys;
-        private List<Game> gameList;
-        private List<Account> accountList;
-        private List<Room> roomList;
+        private static Sys sys;
+        private static List<Game> gameList;
+        private static List<Account> accountList;
+        private static List<Room> roomList;
 
       
         public static DBStub getDBStub()

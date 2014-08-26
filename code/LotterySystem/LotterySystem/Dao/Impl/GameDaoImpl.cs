@@ -14,7 +14,13 @@ namespace LotterySystem.Dao
         }
         public Game getGameByName(String gameName)
         {
-            return new Game();
+            for (int i = 0; i < DBStub.getDBStub().getGameList().Count; i++)
+            { 
+                if(DBStub.getDBStub().getGameList()[i].GameName.Equals(gameName)){
+                    return DBStub.getDBStub().getGameList()[i];
+                }
+            }
+            return null;
         }
         public void creatGame(Game game)
         {
