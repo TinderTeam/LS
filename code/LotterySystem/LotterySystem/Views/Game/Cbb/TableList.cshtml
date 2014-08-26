@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "游戏房间";
+   
+}
+
+<!-- 牌局列表-->
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        牌局列表
+    </div>
+
+    <div class="panel-body" >
+        <div class="table-responsive">
+            <table class="table table-condensed">
+                <tr>
+                    <td>桌号</td>
+                    <td>牌局ID</td>
+                    <td>庄家</td>
+                    <td>上庄时间</td>
+                    <td>牌局人数</td>
+                    <td>加入</td>
+                </tr>
+                 
+
+                @for (var i = 0; i < @ViewBag.TableListCount; i++)
+                {
+                   <tr>
+                        <td>@ViewBag.TableList[i].TabelNo</td>
+                        <td>@ViewBag.TableList[i].GamblingPartyID</td>
+                        <td>@ViewBag.TableList[i].Banker</td>
+                        <td>@ViewBag.TableList[i].BankerStartTimeStr</td>
+                        <td>@ViewBag.TableList[i].PlayerNum</td>
+                        <td>
+                            @if (@ViewBag.TableList[i].PlayerNum==0)
+                            {
+                               @Html.ActionLink("上庄", "NewGame", "Game", new {tableNum=@ViewBag.TableList[i].TabelNo}, new { @class = "btn btn-primary" })
+                            }else{
+                               @Html.ActionLink("加入", "AddGame", "Game", new {tableNum=@ViewBag.TableList[i].TabelNo}, new { @class = "btn btn-primary" })
+                            }
+                    </tr>
+                }             
+            </table>
+        </div>
+
+    </div>
+</div>
+<!-- 牌局列表-->

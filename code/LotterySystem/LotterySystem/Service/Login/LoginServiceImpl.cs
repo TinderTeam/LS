@@ -42,9 +42,9 @@ namespace LotterySystem.Service.Login
         /// <param name="userID"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public bool Login(string userID, string password)
+        public bool Login(string userName, string password)
         {
-            LotterySystem.Po.User user = userDao.getSystemUserByID(userID);
+            LotterySystem.Po.User user = userDao.getSystemUserByName(userName);
             if (user.Password.Equals(password))
             {
                 return true;
@@ -60,16 +60,16 @@ namespace LotterySystem.Service.Login
         /// </summary>
         /// <param name="userID"></param>
         /// <returns></returns>
-        public UserModel getLoginUser(string userID)
+        public UserModel getLoginUser(string userName)
         {
             UserModel userModel = new UserModel();
-            LotterySystem.Po.User user = userDao.getSystemUserByID(userID);
+            LotterySystem.Po.User user = userDao.getSystemUserByName(userName);
             userModel.Permission = user.Permission;
            
             userModel.UserName = user.UserName;
             userModel.Status = user.Status;
             userModel.UserInfor = new UserInforModel();
-            userModel.UserInfor.Points = accountDao.getAccountByUserName(userID).AccountValue;
+            userModel.UserInfor.Points = accountDao.getAccountByUserName(userName).AccountValue;
             userModel.UserInfor.Position = UserConstants.IN_THE_HALL;
             return userModel;
         }

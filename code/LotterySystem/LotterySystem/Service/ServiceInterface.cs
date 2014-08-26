@@ -37,8 +37,8 @@ namespace LotterySystem.Service
 
     public interface LoginService
     { 
-        bool Login(string userID ,string password);
-        UserModel getLoginUser(string userID);
+        bool Login(string userName ,string password);
+        UserModel getLoginUser(string userName);
         bool LoginCheck();
     }
     public interface UserService

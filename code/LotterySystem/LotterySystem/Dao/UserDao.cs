@@ -7,17 +7,12 @@ using LotterySystem.Test.Stub;
 using NHibernate;
 namespace LotterySystem.Dao
 {
-    public class UserDao
+    public interface UserDao
     {
-        public User getSystemUserByID(string id)
-        {
-           
-            return UserStub.getStubUser() ;
-        }
-        public void createUser(User user)
-        {
-           
-        }
+        User getSystemUserByName(string userName);
+
+        void createUser(User user);
+       
 
 
     }

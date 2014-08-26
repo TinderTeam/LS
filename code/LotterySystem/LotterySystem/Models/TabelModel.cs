@@ -7,78 +7,96 @@ namespace LotterySystem.Models
 {
     public class TableModel
     {
-        private int gameID;
+
+        private String gamblingPartyID;
         private String gameName;
         private String roomName;
         private int tabelNo;
-        private String bankerID;
-        private String bankerName;
-        private DateTime startTime;
-        private DateTime endTime;
+        private String banker;
+        private DateTime bankerStartTime;
+        private String bankerStartTimeStr;     
+        private DateTime bankerEndTime;
+        private String bankerEndTimeStr;     
+        private int playerNum;
 
-
-
-        public String StartTimeStr
+        public String BankerStartTimeStr
         {
-            get { return DateTimeServcie.getShotTimeStr(StartTime); }
-           
+            get { return bankerStartTimeStr; }
+            set { bankerStartTimeStr = value; }
         }
-       
-
-        public String EndTimeStr
+        public String BankerEndTimeStr
         {
-            get { return DateTimeServcie.getShotTimeStr(EndTime); }
-           
+            get { return bankerEndTimeStr; }
+            set { bankerEndTimeStr = value; }
         }
-
-
-
-        public String BankerName
+        public DateTime BankerStartTime
         {
-            get { return bankerName; }
-            set { bankerName = value; }
+            get { return bankerStartTime; }
+            set 
+            {
+                bankerStartTime = value;
+                String timeStr;
+                if (bankerStartTime.Year < 2000)
+                {
+                    timeStr = "";
+                }
+                else
+                {
+                    timeStr = DateTimeServcie.getShotTimeStr(bankerStartTime);
+                }
+                BankerStartTimeStr = timeStr;
+            }
         }
-        public int GameID
+        public DateTime BankerEndTime
         {
-            get { return gameID; }
-            set { gameID = value; }
+            get { return bankerEndTime; }
+            set {
+                bankerEndTime = value;
+                String timeStr;
+                if (bankerEndTime.Year < 2000)
+                {
+                    timeStr = "";
+                }
+                else
+                {
+                    timeStr = DateTimeServcie.getShotTimeStr(bankerEndTime);
+                }
+                BankerEndTimeStr = timeStr;
+            }
         }
 
+        public String GamblingPartyID
+        {
+            get { return gamblingPartyID; }
+            set { gamblingPartyID = value; }
+        }
         public String GameName
         {
             get { return gameName; }
             set { gameName = value; }
         }
-
         public String RoomName
         {
             get { return roomName; }
             set { roomName = value; }
         }
-
         public int TabelNo
         {
             get { return tabelNo; }
             set { tabelNo = value; }
         }
-
-        public String BankerID
+        public String Banker
         {
-            get { return bankerID; }
-            set { bankerID = value; }
+            get { return banker; }
+            set { banker = value; }
         }
 
-        public DateTime StartTime
+        public int PlayerNum
         {
-            get { return startTime; }
-            set { startTime = value; }
+            get { return playerNum; }
+            set { playerNum = value; }
         }
 
-
-        public DateTime EndTime
-        {
-            get { return endTime; }
-            set { endTime = value; }
-        }
+    
     }
 }

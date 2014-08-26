@@ -2,11 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
-namespace LotterySystem.Dao.Impl
+using LotterySystem.Po;
+using LotterySystem.Test.Stub;
+namespace LotterySystem.Dao
 {
-    public class UserDaoImpl
+    public class UserDaoImpl:UserDao
     {
+        public User getSystemUserByName(string userName)
+        {
 
+            return UserStub.getStubUser();
+        }
+        public void createUser(User user)
+        {
+
+        }
     }
 }

@@ -13,6 +13,6 @@ namespace LotterySystem.Dao
         void creatGamblingParty(GamblingParty gamblingParty);
         void deleteGamblingPartyByGamblingPartyID(String gamblingPartyID);
         void updateGamblingParty(GamblingParty gamblingParty);
-
+        List<GamblingParty>  getGamblingPartyByGameAndRoom(String game,String  room);
     }
 }

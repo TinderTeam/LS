@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using LotterySystem.Dao;
 using LotterySystem.Dao.Impl;
 namespace LotterySystem.Dao
 {
@@ -13,7 +14,8 @@ namespace LotterySystem.Dao
         private RoomDao roomDao;
         private SysDao sysDao;
         private GameDao gameDao;
-        private DoorDao doorDao; 
+        private DoorDao doorDao;
+        private GamblingPartyDao gamblingPartyDao; 
 
         public static DaoContext getInstance()
         {
@@ -23,6 +25,17 @@ namespace LotterySystem.Dao
                 daoContext = new DaoContext();                
             }
             return daoContext;
+        }
+
+
+        public GamblingPartyDao getGamblingPartyDao()
+        {
+
+            if (gamblingPartyDao == null)
+            {
+                gamblingPartyDao = new GamblingPartyDaoImpl();
+            }
+            return gamblingPartyDao;
         }
 
         public DoorDao getDoorDao()
@@ -51,7 +64,7 @@ namespace LotterySystem.Dao
 
             if (userDao == null)
             {
-                userDao = new UserDao();
+                userDao = new UserDaoImpl();
             }
             return userDao;
         }

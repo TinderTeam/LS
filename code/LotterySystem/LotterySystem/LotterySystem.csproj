@@ -189,6 +189,7 @@
     <Compile Include="Dao\GameDao.cs" />
     <Compile Include="Dao\Impl\AccountDaoImpl.cs" />
     <Compile Include="Dao\Impl\DoorDaoImpl.cs" />
+    <Compile Include="Dao\Impl\GamblingPartyDaoImpl.cs" />
     <Compile Include="Dao\Impl\GameDaoImpl.cs" />
     <Compile Include="Dao\Impl\RoomDaoImpl.cs" />
     <Compile Include="Dao\Impl\SysDaoImpl.cs" />
@@ -218,6 +219,7 @@
     <Compile Include="Po\Room.cs" />
     <Compile Include="Po\Sys.cs" />
     <Compile Include="Po\User.cs" />
+    <Compile Include="Po\UserPosition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\Catch.cs" />
     <Compile Include="Service\Convert\ConventServiceImpl.cs" />
@@ -388,7 +390,7 @@
     <Content Include="Views\Cbb\Footer.cshtml" />
     <Content Include="Views\Cbb\Ad.cshtml" />
     <Content Include="Views\Game\Hall.cshtml" />
-    <Content Include="Views\Game\Cbb\TabelList.cshtml" />
+    <Content Include="Views\Game\Cbb\TableList.cshtml" />
     <Content Include="Views\Game\Game.cshtml" />
     <Content Include="Views\User\UserAccount.cshtml" />
     <Content Include="Views\Log\LoginLog.cshtml" />

@@ -48,28 +48,8 @@ namespace LotterySystem.Test.Stub
 
     public static class TabelStub
     {
-       
-        public static TableModel getTabelModel(int i)
-        {
-            TableModel tabel = new TableModel();
-            tabel.StartTime = DateTime.Now;
-            tabel.EndTime = DateTime.Now;
-            tabel.BankerID = "admin@123.com";
-            tabel.BankerName = "admin";
+ 
 
-            return tabel;
-        }
-
-        public static List<TableModel> getStubTabelModelLsit()
-        {
-            List<TableModel> list = new List<TableModel>();
-            for (int i = 0; i < 10; i++)
-            {
-                TableModel tabel = getTabelModel(i);
-                list.Add(tabel);
-            }
-            return list;
-        }
 
 
     }

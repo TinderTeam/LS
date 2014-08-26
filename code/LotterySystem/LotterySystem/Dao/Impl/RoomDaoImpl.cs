@@ -11,6 +11,14 @@ namespace LotterySystem.Dao
     {
         public Room getRoomByName(String roomName)
         {
+            List<Room> roomList = DBStub.getDBStub().getRoomList();
+            for (int i=0;i < roomList.Count; i++)
+            {
+                if (roomList[i].RoomName.Equals(roomName))
+                {
+                    return roomList[i];
+                }
+            }
             return null;
         }
 

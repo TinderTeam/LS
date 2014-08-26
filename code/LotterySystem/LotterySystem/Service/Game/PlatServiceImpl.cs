@@ -6,8 +6,9 @@ using LotterySystem.Test.Stub;
 using LotterySystem.Service;
 using LotterySystem.Models;
 using LotterySystem.Dao;
+using LotterySystem.Dao.Impl;
 using LotterySystem.Po;
-
+using LotterySystem.Service.Game;
 namespace LotterySystem.Service
 {
 
@@ -17,8 +18,9 @@ namespace LotterySystem.Service
         GameDao gameDao = DaoContext.getInstance().getGameDao();
         ConvertService converService = ServiceContext.getInstance().getConvertService();
         DoorDao doorDao = DaoContext.getInstance().getDoorDao();
+        GamblingPartyDao gamblingPartyDao = DaoContext.getInstance().getGamblingPartyDao();
         
-        
+
         ///GamblingPartyDao gamblingPartyDao = DaoContext.getInstance().getGamblingPartyDao();
 
         /// <summary>
@@ -49,6 +51,7 @@ namespace LotterySystem.Service
         public GameModel getGameByName(string gameName)
         {
             GameModel gameModel = converService.toGameModel( gameDao.getGameByName(gameName));
+           
             return gameModel;
         }
 
@@ -76,17 +79,43 @@ namespace LotterySystem.Service
         /// <param name="room"></param>
         /// <param name="game"></param>
         /// <returns></returns>
-        public List<TableModel> getAllTableByGameAndRoom(string room, string game)
+        public List<TableModel> getAllTableByGameAndRoom(string game, string room)
         {
             List<TableModel> tableList = new List<TableModel>();
+            List<GamblingParty> gamblingParty = gamblingPartyDao.getGamblingPartyByGameAndRoom(game, room);
             
-            ///尚未实现
-            ///List<GamblingParty> gamblingParty = gamblingPartyDao.getGamblingPartyByGameAndRoom(game, room);
-            ///
+            //新建所有桌子
+
+            for (int i = 0; i <getGameByName(game).OneRoomTableLimit ; i++)
+            {
+                TableModel tableModel = new TableModel();
+                tableModel.GamblingPartyID = RoomConstatns.NULL;
+                tableModel.TabelNo = i+1;
+                tableModel.GameName = game;
+                tableModel.Banker = RoomConstatns.NULL;
+                tableModel.PlayerNum = 0;
+                tableModel.RoomName = room;
+                tableList.Add(tableModel);
+            }
+
+            //更新已有桌子
+            for (int i = 0; i < gamblingParty.Count;i++ )
+            {
+                GamblingParty gp= gamblingParty[i];
+
+                TableModel tableModel = tableList[gp.TableNum];
+                tableModel.GamblingPartyID = gp.GamblingPartyID.ToString();
+                tableModel.Banker = gp.Banker;
+                tableModel.BankerEndTime = gp.BankerEndTime;
+                tableModel.BankerStartTime = gp.BankerStartTime;
+                //TODO
+                tableModel.PlayerNum = 10;
+
+            }
             return tableList;
         }
 
-
+        
 
         /// <summary>
         /// 通过名称获取房间

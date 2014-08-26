@@ -26,9 +26,6 @@ namespace LotterySystem.Controllers
                 return View();                   
         }
 
-
-
-
         /// <summary>
         /// 新建房间
         /// 1.检查用户是否有房间创建权限
@@ -126,28 +123,51 @@ namespace LotterySystem.Controllers
             return View();
         }
 
-        public ActionResult TablePage()
+
+        /// <summary>
+        /// 桌子列表界面
+        /// </summary>
+        /// <param name="roomName"></param>
+        /// <returns></returns>
+        public ActionResult TablePage(String roomName)
         {
-            return View();
-        }
 
-
-
-        public ActionResult TableList(String roomName)
-        {
-            //将Room放入Session
-            Session["CurrentRoom"] = platService.getRoomByName(roomName);
             //获取Session信息
             UserModel user = (UserModel)Session["SystemUser"];
-            String gameName = (String)Session["CurrentGame"];
+            RoomModel game;
+            string roomNameArg;
+            //将Game放入Session
+            if (roomName != null)
+            {
+
+                game = platService.getRoomByName(roomName);
+                Session["CurrentRoom"] = game;
+                roomNameArg = roomName;
+            }
+            else
+            {
+                game = (RoomModel)Session["CurrentGame"];
+                roomNameArg = game.RoomName;
+            }
+            //将Room放入Session
 
             //显示桌子
-            List<TableModel> tableModelList = platService.getAllTableByGameAndRoom(roomName, gameName);
-            ViewBag.roomSize = tableModelList.Count;
-            ViewBag.roomList = tableModelList;
+            List<TableModel> tableModelList = platService.getAllTableByGameAndRoom(game.GameName, roomNameArg);
+            ViewBag.tableListCount = tableModelList.Count;
+            ViewBag.tableList = tableModelList;
             return View();
         }
 
+
+        /// <summary>
+        /// 显示桌子列表
+        /// </summary>
+        /// <param name="roomName"></param>
+        /// <returns></returns>
+        public ActionResult TableList()
+        {           
+            return View();
+        }
 
 
         public ActionResult RoomEdit()
@@ -155,20 +175,22 @@ namespace LotterySystem.Controllers
             return View();
         }
 
-
-
-        public ActionResult Game()
+        public ActionResult AddGame()
         {
-            return View();
+            return RedirectToAction("Game", "Game");
         }
+
+        public ActionResult NewGame()
+        {
+            return RedirectToAction("Game", "Game");
+        }
+
         public ActionResult GameManage()
         {
             return View();
         }
-        public ActionResult NewGame()
-        {
-            return View();
-        }
+
+
         public ActionResult GameEdit()
         {
             return View();

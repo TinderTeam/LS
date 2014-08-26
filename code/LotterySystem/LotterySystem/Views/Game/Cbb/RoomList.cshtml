@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "TitleLogIn";
-    LotterySystem.Models.UserModel user = (LotterySystem.Models.UserModel)@Session["User"];
+    LotterySystem.Models.UserModel user = (LotterySystem.Models.UserModel)@Session["SystemUser"];
 
 }
 
@@ -40,16 +40,14 @@
                             <td>@ViewBag.RoomList[i].BasicPoint</td>
                             <td>@ViewBag.RoomList[i].Amplification</td>
                             <td>@ViewBag.RoomList[i].BankerPointLimited</td>			    
-			    <td> 
-			    	@Html.ActionLink("进入房间", "TabelList", "Game",  new { roomname=@ViewBag.RoomList[i].RoomName},  new { @class = "btn btn-primary" })
+			                <td> 
+			    	            @Html.ActionLink("进入房间", "TablePage", "Game",  new { roomName=@ViewBag.RoomList[i].RoomName},  new { @class = "btn btn-primary" })
                             </td>
                            
                             <td>
                                 @if (ViewBag.RoomList[i].RoomHost.Equals(user.UserName))
-                                {
-			    		<td> 
-						@Html.ActionLink("房间管理", "RoomEdit", "Game", null,  new { @class = "btn btn-primary" })
-		                	</td>
+                                {   	
+						            @Html.ActionLink("房间管理", "RoomEdit", "Game", null,  new { @class = "btn btn-primary" })
                                 }
                                 else
                                 {
