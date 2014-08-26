@@ -18,6 +18,9 @@ namespace LotterySystem.Controllers
             return View();
         }
 
-       
+       public ActionResult SystemManage()
+       {
+           return View();
+       }
     }
 }

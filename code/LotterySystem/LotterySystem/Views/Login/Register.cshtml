@@ -74,7 +74,7 @@
                     <div class="controls">
                         <button id="accountSure" name="accountSure" class="btn btn-success" type="submit">确认</button>
 						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                         @Html.ActionLink("取消", "Index", "Home", null, new { @class = "btn btn-default" })
+                         <input type="button"  onclick="javascript: history.back(-1);" value="取消" class="btn btn-default">
 	                    
                     </div>
                 </div>

@@ -21,6 +21,7 @@
                     <td>起投分值</td>
                     <td>增幅</td>
                     <td>上庄底值</td>
+		    <td>操作</td>
                     <td>管理</td>
                 </tr>
                 @if (@ViewBag.RoomList == null || @ViewBag.RoomListCount==0)
@@ -32,16 +33,22 @@
                     for(int i = 0;i<@ViewBag.RoomListCount;i++){
                          <tr>
                             <td>
-                                @Html.ActionLink((String)@ViewBag.RoomList[i].RoomName, "TabelList", "Game", new { roomname=@ViewBag.RoomList[i].RoomName},null)
+                              @ViewBag.RoomList[i].RoomName
                             </td>
                             <td>@ViewBag.RoomList[i].AccessAcountLimit</td>
                             <td>@ViewBag.RoomList[i].BasicPoint</td>
                             <td>@ViewBag.RoomList[i].Amplification</td>
-                            <td>@ViewBag.RoomList[i].BankerPointLimited</td>
+                            <td>@ViewBag.RoomList[i].BankerPointLimited</td>			    
+			    <td> 
+			    	@Html.ActionLink("进入房间", "TabelList", "Game",  new { roomname=@ViewBag.RoomList[i].RoomName},  new { @class = "btn btn-primary" })
+                            </td>
+                           
                             <td>
                                 @if (ViewBag.RoomList[i].RoomHost.Equals(user.UserName))
                                 {
-                                    @Html.ActionLink("进入房间", "TabelList", "Game", null, new { @class = "btn btn-primary" })
+			    		<td> 
+						@Html.ActionLink("房间管理", "RoomEdit", "Game", null,  new { @class = "btn btn-primary" })
+		                	</td>
                                 }
                                 else
                                 {

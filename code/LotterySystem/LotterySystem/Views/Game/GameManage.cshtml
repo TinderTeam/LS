@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "游戏管理";
+   
+}
+<div id="head" >
+    @RenderPage("../Home/Nav.cshtml")
+</div>
+
+<div class="row">
+    <!-- Left-->
+    <div class="col-lg-3">
+
+        <div id="left1">
+        </div>
+
+
+    </div>
+    <!-- Left-->
+
+    <!-- Center-->
+    <div class="col-lg-5">
+
+    </div>
+    <!-- Center-->
+
+    <!--right-->
+    <div class="col-lg-4">
+        <div id="right1"  class="pull-right">
+            @Html.ActionLink("创建游戏", "NewGame", "Game", null, new { @class = "btn btn-success" })
+             
+        </div>
+
+    </div>
+    <!--right-->
+</div>	
+	
+	<br/>		
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						游戏列表
+					</div>
+					
+					<div class="panel-body" >
+						<div class="table-responsive">
+														<table class="table table-condensed">
+								<tr>
+								  <td>游戏名称</td>
+								  <td>游戏状态</td>
+								  <td>OS支持</td>
+								  <td>浏览器支持</td>
+								  <td>税率</td>
+								  <td>总限房</td>
+								  <td>单人限房</td>
+								  <td>单房限桌</td>
+								  <td>单桌限人</td>
+								  <td>选号限秒</td>
+								  <td>投注限秒</td>
+
+                                  								  
+								</tr>
+                              
+								    <tr >
+								      
+								  <td>在线竞猜</td>
+								  <td>已开通</td>
+								  <td>XP/win7</td>
+								  <td>IE/火狐</td>
+								  <td>50%</td>
+								  <td>500</td>
+								  <td>1</td>
+								  <td>400</td>
+								  <td>20</td>
+								  <td>20</td>
+								  <td>20</td>
+								  <td> @Html.ActionLink("修改游戏", "GameEdit", "Game", null, new { @class = "btn btn-primary" })</td>
+								     							            
+								    </tr>
+ 								    <tr >
+								      
+								  <td>十三水</td>
+								  <td>已开通</td>
+								  <td>XP/win7</td>
+								  <td>IE/火狐</td>
+								  <td>50%</td>
+								  <td>500</td>
+								  <td>1</td>
+								  <td>400</td>
+								  <td>20</td>
+								  <td>20</td>
+								  <td>20</td>
+								     							     
+                                  <td><button id="enter2" name="" class="btn btn-primary" type="submit">修改游戏</button></td>
+								    </tr>
+
+                                     <tr >
+								      
+								  <td>德州扑克</td>
+								  <td>已开通</td>
+								  <td>xp/win7</td>
+								  <td>IE/火狐</td>
+								  <td>50%</td>
+								  <td>500</td>
+								  <td>1</td>
+								  <td>400</td>
+								  <td>20</td>
+								  <td>20</td>
+								  <td>20</td>
+								     							     
+                                      <td><button id="enter3" name="" class="btn btn-primary" type="submit">修改游戏</button></td>
+								    </tr>                               
+							</table>
+						</div>
+						
+					</div>
+				</div>

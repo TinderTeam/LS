@@ -185,6 +185,7 @@
     <Compile Include="Dao\GamblingPartyDao.cs" />
     <Compile Include="Dao\GameDao.cs" />
     <Compile Include="Dao\Impl\AccountDaoImpl.cs" />
+    <Compile Include="Dao\Impl\DoorDaoImpl.cs" />
     <Compile Include="Dao\Impl\GameDaoImpl.cs" />
     <Compile Include="Dao\Impl\RoomDaoImpl.cs" />
     <Compile Include="Dao\Impl\SysDaoImpl.cs" />
@@ -223,7 +224,7 @@
     <Compile Include="Service\Login\LoginServiceImpl.cs" />
     <Compile Include="Service\ServiceInterface.cs" />
     <Compile Include="Service\ServiceContext.cs" />
-    <Compile Include="Service\User\UserService.cs" />
+    <Compile Include="Service\User\UserServiceImpl.cs" />
     <Compile Include="Test\Stub\DBStub.cs" />
     <Compile Include="Test\Stub\Stub.cs" />
     <Compile Include="Util\DateTimeServcie.cs" />
@@ -378,7 +379,7 @@
     <Content Include="Views\Cbb\Footer.cshtml" />
     <Content Include="Views\Cbb\Ad.cshtml" />
     <Content Include="Views\Game\Hall.cshtml" />
-    <Content Include="Views\Game\TabelList.cshtml" />
+    <Content Include="Views\Game\Cbb\TabelList.cshtml" />
     <Content Include="Views\Game\Game.cshtml" />
     <Content Include="Views\User\UserAccount.cshtml" />
     <Content Include="Views\Log\LoginLog.cshtml" />
@@ -392,6 +393,16 @@
     <Content Include="Views\Game\Cbb\GameSelect.cshtml" />
     <Content Include="Views\Home\Nav.cshtml" />
     <Content Include="Views\Game\NewRoom.cshtml" />
+    <Content Include="Views\Game\RoomEdit.cshtml" />
+    <Content Include="Views\User\UserManage.cshtml" />
+    <Content Include="Views\Home\SystemManage.cshtml" />
+    <Content Include="Views\Game\GameManage.cshtml" />
+    <Content Include="Views\User\NewUser.cshtml" />
+    <Content Include="Views\Game\NewGame.cshtml" />
+    <Content Include="Views\Game\GameEdit.cshtml" />
+    <Content Include="Views\User\AccountBorrow.cshtml" />
+    <Content Include="Views\User\UserEdit.cshtml" />
+        <Content Include="Views\Game\TablePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
