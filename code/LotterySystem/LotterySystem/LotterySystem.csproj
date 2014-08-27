@@ -440,6 +440,7 @@
     <Content Include="Views\User\PasswordSet.cshtml" />
     <Content Include="Views\Cbb\Menu.cshtml" />
     <Content Include="Views\User\UserPassword.cshtml" />
+    <Content Include="Views\User\UserInfo.cshtml" />
     <Content Include="Views\Cbb\Footer.cshtml" />
     <Content Include="Views\Cbb\Ad.cshtml" />
     <Content Include="Views\Game\Hall.cshtml" />

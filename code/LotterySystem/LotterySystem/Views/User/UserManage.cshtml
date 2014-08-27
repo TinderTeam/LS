@@ -25,50 +25,93 @@
 </div>
 <!-- Nav bar-->
 
-<!-- operation menu-->
-<hr />
-<div class="row">
-   
-    <div class="col-lg-1">    
 
-    </div>
 
-    <div class="col-lg-8">
+<!-- 用户待审核列表 -->
+<div class="panel panel-primary">
+	<div class="panel-heading">
+						
+        <div class="row">
+            <div class="col-lg-1"></div>
+	        <div class="col-lg-2 font1" style="text-align:left">
+                  待审核列表
+	        </div>
 
-          <div class="col-sm-2  font1" style="text-align:end">用户名</div>
-          <div class="col-sm-8"><input type="text"  class="form-control" placeholder="请输入你要查询的用户名" ></div>
-          <div class="col-sm-2"><button class="btn btn-primary" type="submit">查询</button></div>
+	       <div class="col-lg-6">
+ 
+           </div>
+	       <div class="col-lg-3"></div>
+  
+        </div><!-- /.row -->
 
-    </div>
+	 </div><!--head-->
+					
+					<div class="panel-body" >
+						<div class="table-responsive">
+							<table class="table table-bordered">
+								<tr>
+                                   <th>用户名</th>
+                                   <th>权限</th>
+                                   <th>状态</th>
+                                   <th>审批</th>
+                            
+								</tr>
 
-    <div class="col-lg-1">
-
-    </div>
-
-    <div class="col-lg-2">    
-        <div class="pull-right">
-             @Html.ActionLink("新增用户", "UserInfo", "User", new { userName = "",operate = "create"}, new { @class = "btn btn-success" })           
-             
-             
-        </div>
-    </div>
+                              
+								<tr >  
+                                   <td>A</td>
+                                   <td>玩家</td>
+                                   <td>待审批</td>
+                                   <td><button  name="" class="btn btn-primary" type="submit">同意</button></td>
+								</tr>
+								<tr >  
+                                   <td>B</td>
+                                   <td>玩家</td>
+                                   <td>待审批</td>
+                                   <td><button  name="" class="btn btn-primary" type="submit">同意</button></td>
+								</tr>
+								<tr >  
+                                   <td>C</td>
+                                   <td>玩家</td>
+                                   <td>待审批</td>
+                                   <td><button  name="" class="btn btn-primary" type="submit">同意</button></td>
+								</tr>                           
+							</table>
+						</div>
+						
+					</div>
 
 </div>
-
-<!-- operation menu-->
-<hr />
 <!-- 用户管理列表 -->
 	<div class="panel panel-primary">
-		 <div class="panel-heading">
-						用户列表
-		 </div>
+		<div class="panel-heading">
+         <div class="row">
+            <div class="col-lg-1"></div>
+	        <div class="col-lg-2 font1" style="text-align:left">
+                 用户列表
+	        </div>
+  
+	       <div class="col-lg-6">
+               <div class="col-sm-2"></div>
+               <div class="col-sm-8"><input type="text"  class="form-control" placeholder="请输入你要查询的用户ID号" ></div>
+               <div class="col-sm-2"><button class="btn btn-success" type="submit">查询</button></div>
+           </div>
+	       <div class="col-lg-3">
+                <div class="pull-right">
+                     @Html.ActionLink("新增用户", "NewUser", "User", null, new { @class = "btn btn-success" })           
+ 
+                </div>
+          </div>
+  
+        </div><!-- /.row -->
+						
+	  </div><!-- /head-->
 					
 		<div class="panel-body"  >
              <table class="table table-bordered" >
                 <thead>
                     <tr>
                             <th>用户名</th>
- 
                             <th>状态</th>
                             <th>权限</th>
                             <th>推荐人</th>

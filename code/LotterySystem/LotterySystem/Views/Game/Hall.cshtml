@@ -1,7 +1,22 @@
 ﻿@{
     ViewBag.Title = "游戏大厅";
 }
+<!--字体样式-->
+    <style type="text/css">
+        .font1
+        {
+            font-size: 16px;
+            font-family: 'Microsoft YaHei UI';
+        }
 
+        .div1
+        {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+
+<!--字体样式-->
 
 <div id="head" >
     @RenderPage("../Home/Nav.cshtml")
@@ -34,8 +49,8 @@
 								@for (var i = 0; i < @ViewBag.GameListCount; i++)
 						            { 
                                     <tr>
-                                        <td>@ViewBag.GameList[i].GameName</td>
-                                        <td>@Html.ActionLink("进入游戏", "RoomPage", "Game", new { gameNameArg = @ViewBag.GameList[i].GameName},  new { @class="btn btn-primary btn-lg"})</td>
+                                        <td class="font1">@ViewBag.GameList[i].GameName</td>
+                                        <td>@Html.ActionLink("进入游戏", "RoomPage", "Game", new { gameNameArg = @ViewBag.GameList[i].GameName},  new { @class="btn btn-primary"})</td>
                                     </tr>
 							       }
 
