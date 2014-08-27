@@ -78,4 +78,10 @@ namespace LotterySystem.Service
         SystemInfoModel loadSysInfo();
         void saveSysInfo(SystemInfoModel sysInfo);
     }
+
+    public interface ScoreManageService
+    {
+        List<ScoreLog> getApprovalScoreList(String userName);
+        List<ScoreLog> getRepayScoreList(String userName);
+    }
 }

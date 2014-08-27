@@ -180,6 +180,7 @@
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\ScoreController.cs" />
     <Compile Include="Dao\AccountDao.cs" />
     <Compile Include="Dao\BetRecDao.cs" />
     <Compile Include="Dao\ChoiceDao.cs" />
@@ -207,6 +208,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ApproveModel.cs" />
     <Compile Include="Models\AttributeModel.cs" />
     <Compile Include="Models\Constants\Constants.cs" />
     <Compile Include="Models\GameModel.cs" />
@@ -239,6 +241,7 @@
     <Compile Include="Service\LogServiceImpl.cs" />
     <Compile Include="Service\SysInfo\SysInfoServiceImpl.cs" />
     <Compile Include="Service\UserManage\UserServiceImpl.cs" />
+    <Compile Include="Service\ScoreManageServiceImpl.cs" />
     <Compile Include="Test\Stub\DBStub.cs" />
     <Compile Include="Test\Stub\Stub.cs" />
     <Compile Include="Util\DataConvert.cs" />
@@ -382,6 +385,7 @@
     <EmbeddedResource Include="Po\Sys.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <Content Include="Po\ScoreLog.hbm.xml" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -474,6 +478,7 @@
     <Content Include="Views\User\AccountBorrow.cshtml" />
     <Content Include="Views\User\UserInfo.cshtml" />
     <Content Include="Views\Game\TablePage.cshtml" />
+    <Content Include="Views\Score\ScoreManage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

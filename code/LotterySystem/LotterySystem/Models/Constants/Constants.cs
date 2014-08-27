@@ -39,6 +39,20 @@ namespace LotterySystem.Models
         public const string REG_TYPE_0 = "方式0";
         public const string REG_TYPE_1 = "方式1";
         public const string REG_TYPE_2 = "方式2";
+
+        public const string SCORE_USER_OPEN = "开户";
+        public const string SCORE_BANK_WIN = "庄胜";
+        public const string SCORE_BANK_LOSE = "庄负";
+        public const string SCORE_PLAYER_WIN = "闲胜";
+        public const string SCORE_PLAYER_LOSE = "闲负";
+        public const string SCORE_LEND_OUT = "借出";
+        public const string SCORE_BORROW_IN = "借进";
+        //public const string SCORE_MODE_OPEN = "还款";
+        public const string SCORE_APPROVE_IN = "申借";
+        public const string SCORE_SEND_OUT = "划出";
+        public const string SCORE_REVC_IN = "划入";
+        public const string SCORE_REVE_TAX = "收税";
+        public const string SCORE_SEND_TAX = "缴税";
       
     }
 }

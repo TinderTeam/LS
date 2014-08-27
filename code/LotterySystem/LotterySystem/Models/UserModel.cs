@@ -18,7 +18,13 @@ namespace LotterySystem.Models
         private String status;
         private String permission;
         private String recommendUserName;
+        private int balanceScore;
 
+        public int BalanceScore
+        {
+            get { return balanceScore; }
+            set { balanceScore = value; }
+        }
 
         private UserInforModel userInfor;
 

@@ -8,6 +8,7 @@ using NHibernate.Cfg;
 using log4net;
 using NHibernate.Criterion;
 using LotterySystem.Util;
+using LotterySystem.Models;
 
 namespace LotterySystem.Dao
 {
@@ -179,7 +180,54 @@ namespace LotterySystem.Dao
             }
             return roomList;
         }
+        public List<User> getApprovalUserListByRecomName(String recomName)
+        {
 
+            List<User> roomList = new List<User>();
+            if (!ValidatorUtil.isEmpty(recomName))
+            {
+                return roomList;
+            }
+            ISession session = null;
+            try
+            {
+
+                session = SessionManager.getInstance().GetSession();
+                ITransaction tx = session.BeginTransaction();
+
+
+                ICriteria criteria = session.CreateCriteria<User>();
+                criteria.Add(Restrictions.Eq("UserName", recomName));
+                criteria.Add(Restrictions.Eq("status", UserConstants.STATUS_WAIT));
+                
+
+
+                var queryList = criteria.List<User>();
+                foreach (var result in queryList)
+                {
+                    roomList.Add(result);
+                }
+
+
+                tx.Commit();
+
+
+            }
+            catch (System.Exception ex)
+            {
+
+                log.Error("create user error", ex);
+                throw ex;
+            }
+            finally
+            {
+                if (null != session)
+                {
+                    session.Close();
+                }
+            }
+            return roomList;
+        }
 	
 
         

@@ -10,19 +10,19 @@
     </id>
 
     <property name="UserName" type="string">
-      <column name="USER_NAME" length="50" unique="true"/>
+      <column name="USER_NAME"   />
     </property>
     
-    <property name="RecordTime" type="recordTime">
-      <column name="RECORD_TIME" length="50" />
+    <property name="RecordTime" type="DateTime">
+      <column name="RECORD_TIME" />
     </property>
     
     <property name="Value" type="int">
-      <column name="VALUE" length="50"/>
+      <column name="VALUE"  />
     </property>
     
     <property name="Balance" type="int">
-      <column name="BALANCE" length="50"/>
+      <column name="BALANCE"  />
     </property>  
     
     <property name="Mode" type="string">
@@ -30,16 +30,16 @@
     </property>
 
     <property name="GamblingPartyID" type="long">
-      <column name="GAMBLING_PARTY_ID" length="50"/>
+      <column name="GAMBLING_PARTY_ID" />
     </property>
 
     <property name="RoundID" type="long">
-      <column name="ROUND_ID" length="50"/>
+      <column name="ROUND_ID"  />
     </property>
 
 
     <property name="OtherName" type="string">
-      <column name="OTHER_NAME" length="50"/>
+      <column name="OTHER_NAME" />
     </property>
 
 

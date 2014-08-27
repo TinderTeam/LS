@@ -17,48 +17,48 @@ namespace LotterySystem.Po
         private long roundID;
         private String otherName;
 
-        public long LogID
+        public virtual long LogID
         {
             get { return logID; }
             set { logID = value; }
         }
 
-        public String UserName
+        public virtual String UserName
         {
             get { return userName; }
             set { userName = value; }
         }
-        public DateTime RecordTime
+        public virtual DateTime RecordTime
         {
             get { return recordTime; }
             set { recordTime = value; }
         }
 
-        public int Value
+        public virtual int Value
         {
             get { return this.value; }
             set { this.value = value; }
         }
 
-        public int Balance
+        public virtual int Balance
         {
             get { return balance; }
             set { balance = value; }
         }
 
-        public String Mode
+        public virtual String Mode
         {
             get { return mode; }
             set { mode = value; }
         }
 
-        public long GamblingPartyID
+        public virtual long GamblingPartyID
         {
             get { return gamblingPartyID; }
             set { gamblingPartyID = value; }
         }
 
-        public long RoundID
+        public virtual long RoundID
         {
             get { return roundID; }
             set { roundID = value; }
@@ -66,7 +66,7 @@ namespace LotterySystem.Po
 
 
 
-        public String OtherName
+        public virtual String OtherName
         {
             get { return otherName; }
             set { otherName = value; }

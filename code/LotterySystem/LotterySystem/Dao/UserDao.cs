@@ -14,6 +14,7 @@ namespace LotterySystem.Dao
          void deleteUserByUserName(String userName);
          void updateUser(User user);
          User getSystemUserByName(string userName);
+         List<User> getApprovalUserListByRecomName(String recomName);
          List<User> getSystemUserByFilter(string userName);
 
     }

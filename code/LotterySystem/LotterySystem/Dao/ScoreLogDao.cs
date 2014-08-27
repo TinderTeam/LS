@@ -10,6 +10,9 @@ namespace LotterySystem.Dao
     {
         List<ScoreLog> getAll();
 
+        List<ScoreLog> getApprovalScoreByUser(String userName);
+        List<ScoreLog> getRepayScoreByUser(String userName);
+     
         void creatScoreLog(ScoreLog log);
  
         

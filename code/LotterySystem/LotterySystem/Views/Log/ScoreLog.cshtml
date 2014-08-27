@@ -58,16 +58,20 @@
                                   <td>轮次号</td>
                                   <td>对方用户</td>								  
 								</tr>
-
+ 
                               
-								   @for (var i = 0; i < @ViewBag.LoginLogListCount; i++)
+								   @foreach (var p in @ViewBag.ScoreLogList)
 						            { 
                                        <tr >
-                                      <td>@ViewBag.LoginLogList[i].UserName</td>
-								      <td>@ViewBag.LoginLogList[i].LoginTime</td>
-								      <td>@ViewBag.LoginLogList[i].Result</td>
-								      <td>@ViewBag.LoginLogList[i].Os</td>
-								      <td>@ViewBag.LoginLogList[i].Browser</td>
+                                           <td>p.LogID</td>
+								           <td>p.UserName</td>
+                                           <td>p.RecordTime</td>
+                                           <td>p.Value</td>
+                                           <td>p.Balance</td>
+                                           <td>p.Mode</td>
+                                           <td>p.GamblingPartyID</td>
+                                           <td>p.RoundID</td>
+                                           <td>p.OtherName</td>
 	                                   </tr>	
  							         }                       
 							</table>

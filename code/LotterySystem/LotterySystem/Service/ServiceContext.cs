@@ -20,6 +20,7 @@ namespace LotterySystem.Service
         private LogService logService;
         private GameManageService gameManageService;
         private SysInfoService sysInfoService;
+        private ScoreManageService scoreManageService;
         private ServiceContext()
         {
 
@@ -107,6 +108,14 @@ namespace LotterySystem.Service
                 gameManageService = new GameManageServiceImpl();
             }
             return gameManageService;
+        }
+        public ScoreManageService getScoreManageService()
+        {
+            if (scoreManageService == null)
+            {
+                scoreManageService = new ScoreManageServiceImpl();
+            }
+            return scoreManageService;
         }
 
     }

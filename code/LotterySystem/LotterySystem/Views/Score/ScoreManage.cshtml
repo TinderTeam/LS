@@ -1,0 +1,183 @@
+﻿@{
+    ViewBag.Title = "积分借贷";
+    
+}
+
+<div id="head" >
+    @RenderPage("../Home/Nav.cshtml")
+</div>
+
+<!--字体样式-->
+    <style type="text/css">
+
+    .font1
+    {
+        font-size: 16px;
+        font-family:'Microsoft YaHei UI';
+    }
+        .div1
+        {
+            margin-top:10px;
+            margin-bottom:10px;  
+        }
+        
+    </style>
+
+<!--字体样式-->
+<div style="text-align:right">
+<input type="button"  onclick="javascript: history.back(-1);" value="返回" class="btn btn-default">
+</div>
+<hr />
+<!-- 积分借贷 -->
+<div class="panel panel-primary">
+	<div class="panel-heading">
+						
+      <div class="row">
+     <div class="col-lg-1"></div>
+	<div class="col-lg-2 font1" style="text-align:left">
+        积分借贷
+	</div>
+  
+
+  
+	<div class="col-lg-6">
+
+    </div>
+	<div class="col-lg-3">
+     </div>
+  
+</div><!-- /.row -->
+
+	</div>				
+	  
+    <div class="panel-body" >
+          @using (Html.BeginForm("ApproveScore", "Score", FormMethod.Post))
+          {
+               <div class="form-horizontal" role="form">
+                <div class="row">
+                  
+	        
+		                  <div class="col-lg-1">
+                              <div style="text-align:right">用户ID</div>
+                          </div>
+		                  <div class="col-lg-3">
+                              <input type="text" name="userID" class="form-control" placeholder="请输入您借贷的用户ID号" />
+                          </div>
+		                  <div class="col-lg-1">
+                            <div style="text-align:right">用户名</div>
+                          </div>
+		                  <div class="col-lg-3">
+                            <input type="text"  name="userName" class="form-control" placeholder="请输入您借贷的用户名" />
+                          </div>
+		                  <div class="col-lg-1">
+                            <div style="text-align:right">借贷积分</div>
+                          </div>
+		                  <div class="col-lg-3">
+                            <input type="text" name="scoreValue" class="form-control" placeholder="请输入您借贷的积分额" />
+                          </div>
+                </div> 
+			<div  class="pull-right">
+				 <button  name="" class="btn btn-success" type="submit">确认借贷</button>  
+			</div>
+             </div>
+          }
+						
+	</div><!--panel-body-->
+  </div>
+
+		
+
+				<hr/>
+				
+<!-- 积分还贷 -->
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+                        <div class="row">
+						     <div class="col-lg-1"></div>
+	                         <div class="col-lg-2 font1" style="text-align:left">
+                                   积分还贷
+	                         </div>
+                             <div class="col-lg-9"></div>
+                         </div>
+					</div>
+					
+					<div class="panel-body" >
+						<div class="table-responsive">
+							<table class="table table-condensed">
+								<tr>
+								  <td>用户名</td>
+								  <td>请求时间</td>	
+                                  <td>积分</td>	
+								  <td>处理</td>						  
+								</tr>
+
+                               @foreach (var p in @ViewBag.ScoreLogList)
+                               { 
+                                       <tr >
+                                           <td>@p.LogID</td>
+								           <td>@p.UserName</td>
+                                           <td>@p.RecordTime</td>
+                                           <td>@p.Value</td>
+                                            <td>
+                                                @Html.ActionLink("还款", "Repay", "Score", new { logID = @p.LogID }, new { @class = "btn btn-primary" })
+                                             </td>
+					            
+                                          <td><button id="enter3" name="" class="btn btn-success" type="submit">同意</button>
+									      <button id="enter3" name="" class="btn btn-danger" type="submit">拒绝</button></td>
+	                                   </tr>	
+                               }   
+								                                  
+							</table>
+						</div>	
+                    <hr />
+					 
+					</div>
+
+				</div>
+
+				<hr/>
+
+<!-- 借贷请求处理 -->
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						借贷请求
+					</div>
+					
+					<div class="panel-body" >
+						<div class="table-responsive">
+							<table class="table table-condensed">
+								<tr>
+								  <td>用户名</td>
+								  <td>请求时间</td>	
+                                  <td>积分</td>	
+								  <td>处理</td>
+								</tr>
+
+                                @foreach (var p in @ViewBag.ScoreLogList)
+                                { 
+                                       <tr >
+                                           <td>@p.LogID</td>
+								           <td>@p.UserName</td>
+                                           <td>@p.RecordTime</td>
+                                           <td>@p.Value</td>
+                                            <td>
+                                                @Html.ActionLink("拒绝", "Refuse", "Score", new { logID = @p.LogID }, new { @class = "btn btn-primary" })
+                                                @Html.ActionLink("同意", "Agree", "Score", new { logID = @p.LogID }, new { @class = "btn btn-primary" })
+                                            </td>
+					            
+                                          <td><button id="enter3" name="" class="btn btn-success" type="submit">同意</button>
+									      <button id="enter3" name="" class="btn btn-danger" type="submit">拒绝</button></td>
+	                                   </tr>	
+ 							         }  
+								                           
+							</table>
+						</div>
+						
+					</div>
+				</div>
+
+				<br/><hr/>
+ 
+
+					<br/><hr/>
+	</div>
