@@ -10,6 +10,7 @@ namespace LotterySystem.Controllers
 {
     public class GameController : Controller
     {
+        private static log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         PlatService platService = ServiceContext.getInstance().getPlatService();
         UserService userService = ServiceContext.getInstance().getUserService();
 
@@ -32,86 +33,67 @@ namespace LotterySystem.Controllers
         /// 2.检查当前游戏房间总数是否到上限
         /// </summary>
         /// <returns></returns>
-        
+
         [HttpPost]
-        public ActionResult RoomEdit(RoomForm model, string returnUrl, string pageType) 
+        public ActionResult NewRoom(RoomForm model)
         {
             UserModel user = (UserModel)Session["SystemUser"];
             GameModel game = (GameModel)Session["CurrentGame"];
+            //创建房间
+            String result = platService.createRoom(game.GameName, user, model);
+            if (result.Equals(SysConstants.SUCCESS))
+            {
+                return RedirectToAction("RoomPage", "Game");
+                // return RedirectToAction("TablePage", "Game");
+            }
+            else
+            {
+                @ViewBag.Msg = result;
+                @ViewBag.Model = model;
+                return View();
+            }
+        }
 
+
+
+        [HttpPost]
+        public ActionResult RoomEdit(RoomForm model) 
+        {
+            log.Debug("[RoomEdit] Submit model="+model);
+            UserModel user = (UserModel)Session["SystemUser"];
+            GameModel game = (GameModel)Session["CurrentGame"];
             @ViewBag.User = user;
             @ViewBag.Game = game;
-            @ViewBag.PageType = pageType;
 
             if (ModelState.IsValid)
             {
-                if (pageType.Equals(RoomConstatns.PAGE_CREATE))
+                //修改房间内容
+                string result = platService.editRoomInfo(model);
+                if (result.Equals(SysConstants.SUCCESS))
                 {
-                    //创建房间
-                    String result = platService.createRoom(game.GameName, user, model);
-                    if (result.Equals(SysConstants.SUCCESS))
-                    {
-                        return RedirectToAction("RoomPage", "Game");
-                        // return RedirectToAction("TablePage", "Game");
-                    }
-                    else
-                    {
-                        @ViewBag.Msg = result;
-                        @ViewBag.Model = model;
-                        return View();
-                    }
-                }
-                else if (pageType.Equals(RoomConstatns.PAGE_EDIT))
-                {
-                    //修改房间内容
-                    string result = platService.editRoomInfo(model);
-                    if (result.Equals(SysConstants.SUCCESS))
-                    {
-                        @ViewBag.Msg = RoomConstatns.CREATE_ROOM_SUCCESS;
-                        return View();
-
-                    }else{
-                        @ViewBag.Msg = result;
-                        return View();
-                    }
-                }
-                    
+                    @ViewBag.Msg = RoomConstatns.CREATE_ROOM_SUCCESS;
+                    return RedirectToAction("RoomPage", "Game");
+                }else{
+                    @ViewBag.Msg = result;
+                    return View();
+                } 
             }
-            return RedirectToAction("GameManage", "Game");
+            return RedirectToAction("RoomPage", "Game");
         }
 
         /// <summary>
         /// 房间管理
         /// </summary>
         /// <returns></returns>
-        public ActionResult RoomEdit(string PageType, string roomName)
+        public ActionResult RoomEdit(string roomName)
         {
-            UserModel user = (UserModel)Session["SystemUser"];
-            GameModel game = (GameModel)Session["CurrentGame"];
-            @ViewBag.User = user;
+            log.Debug("Enter [RoomEdit]Page， roomName= "+roomName);
+            GameModel game = (GameModel)Session["CurrentGame"];          
+            RoomModel room =platService.getRoomByGameAndName(game.GameName, roomName);
+       
+            @ViewBag.Room = room;
             @ViewBag.Game = game;
-            @ViewBag.PageType = PageType;
-            if(PageType!=null){
-                if (PageType.Equals(RoomConstatns.PAGE_CREATE))
-                {
-                    if (userService.CreateRoomCheck(user))
-                    {
-                        return View();
-                    }
-                    else
-                    {
-                        @ViewBag.Msg = "无用户创建权限";
-                        return RedirectToAction("Hall", "Game");
-                    }
-                }
-                else if (PageType.Equals(RoomConstatns.PAGE_EDIT))
-                {
-                    platService.getAllTableByGameAndRoom(game.GameName, roomName);
-                    return View();
-                }               
-            }
-            //TODO
-            return RedirectToAction("Index", "Home");
+            return View();
         }
 
         /// <summary>
@@ -241,14 +223,6 @@ namespace LotterySystem.Controllers
         public ActionResult AddGame()
         {
             return RedirectToAction("Game", "Game");
-        }
-		public ActionResult GameManage()
-        {
-            //验证用户
-            ViewBag.GameList = platService.getGameList();
-            ViewBag.GameListCount = platService.getGameList().Count;
-            return View();             
- 
         }
 
         public ActionResult NewGame()

@@ -21,6 +21,7 @@ namespace LotterySystem.Service
             roomModel.RoomHost=room.RoomHost;
             roomModel.RoomName=room.RoomName;
             roomModel.RoomPassword=room.RoomPassword;
+            roomModel.Status = room.Status;
             return roomModel;
         }
 

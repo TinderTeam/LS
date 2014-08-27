@@ -11,8 +11,6 @@ namespace LotterySystem.Models
         private String roomName;
         private String roomPassword;
         private String roomHost;
-
-      
         private String status;
         private int accessAcountLimit;
         private int basicPoint;

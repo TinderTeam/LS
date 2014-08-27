@@ -58,11 +58,7 @@ namespace LotterySystem.Controllers
             return View();
         }
 
-        //
-        // POST: /Account/LogOff
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             Session["SystemUser"] = null;
