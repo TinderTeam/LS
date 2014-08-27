@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using LotterySystem.Service.Login;
 using LotterySystem.Service.UserManage;
-
+using LotterySystem.Service.GameManage;
 namespace LotterySystem.Service
 {
     public class ServiceContext
@@ -17,6 +17,7 @@ namespace LotterySystem.Service
         private EntranceServcie entranceServcie;
         private UserService userService;
         private LogService logService;
+        private GameManageService gameManageService;
         private ServiceContext()
         {
 
@@ -83,6 +84,17 @@ namespace LotterySystem.Service
                 logService = new LogServiceImpl();
             }
             return logService;
+        }
+
+
+        public GameManageService getGameManageService()
+        {
+
+            if (gameManageService == null)
+            {
+                gameManageService = new GameManageServiceImpl();
+            }
+            return gameManageService;
         }
 
     }

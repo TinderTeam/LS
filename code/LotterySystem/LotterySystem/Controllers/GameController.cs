@@ -218,13 +218,30 @@ namespace LotterySystem.Controllers
         }
 
 
-        public ActionResult Game()
+        public ActionResult GameInfo(String gameName)
         {
+            GameModel game = platService.getGameByName(gameName);
+            if (null == game)
+            {
+                log.Error("can not get the game by game name. " + gameName);
+                game = new GameModel();
+            }
+            ViewBag.Game = game;
             return View();
         }
-        public ActionResult AddGame()
+        [HttpPost]
+        public ActionResult modifyGame(GameModel game)
         {
-            return RedirectToAction("Game", "Game");
+            try
+            {
+                ServiceContext.getInstance().getGameManageService().modifyGame(game);
+            }
+            catch(SystemException ex)
+            {
+                log.Error("modify game error, the game is "+game,ex);
+            }
+
+            return RedirectToAction("GameManage", "Game");
         }
 
         public ActionResult GameManage()

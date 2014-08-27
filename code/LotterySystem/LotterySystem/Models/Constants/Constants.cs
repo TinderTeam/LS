@@ -30,6 +30,11 @@ namespace LotterySystem.Models
     public class SysConstants
     {
         public static string SUCCESS = "success";
+
+        public static char OS_BROWSER_SPLIT = ',';
+
+        public static string[] OS_LIST = new string[]{"All","Linux","xp/win7","IOS"};
+        public static string[] BROWSER_LIST = new string[] { "All", "Google", "IEs" };
       
     }
 }

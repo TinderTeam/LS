@@ -22,5 +22,34 @@ namespace LotterySystem.Util
             }
             return null;
         }
+
+        public static List<string> ConvertArrayToList(string[] arrays)  
+        {
+            List<string> list = new List<string>();
+            if (arrays != null )
+            {
+                
+                for (int i = 0; i < arrays.Length; i++)
+                {
+                    list.Add(arrays[i]);
+                }
+             
+            }
+            return list;
+        }
+
+        public static List<string> splitWithFlag(string str, char split)
+        {
+            List<string> strList = new List<string>();
+            if (null != str)
+            {
+                strList = DataConvert.ConvertArrayToList(str.Split(split));
+            }
+            return strList;
+    
+            
+        }
     }
+
+
 }

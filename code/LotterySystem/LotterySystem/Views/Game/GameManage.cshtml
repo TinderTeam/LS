@@ -74,7 +74,7 @@
 								      <td>@ViewBag.GameList[i].OneTablePersonLimit</td>
 								      <td>@ViewBag.GameList[i].BankerSelectNumTimeLimit</td>
 								      <td>@ViewBag.GameList[i].PlayerSelectNumTimeLimit</td>
-								      <td>@Html.ActionLink("修改游戏", "GameEdit", "Game", null, new { @class = "btn btn-primary" })</td>
+								      <td>@Html.ActionLink("修改", "GameInfo", "Game", new {gameName = @ViewBag.GameList[i].GameName}, new { @class = "btn btn-primary" })</td>
 							         }  
                                 </tr>							            
 								                        

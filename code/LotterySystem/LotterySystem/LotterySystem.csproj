@@ -205,6 +205,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\AttributeModel.cs" />
     <Compile Include="Models\Constants\Constants.cs" />
     <Compile Include="Models\GameModel.cs" />
     <Compile Include="Models\LoginLogModel.cs" />
@@ -226,9 +227,9 @@
     <Compile Include="Service\Catch.cs" />
     <Compile Include="Service\Convert\ConventServiceImpl.cs" />
     <Compile Include="Service\Entrance\EntranceServcieImpl.cs" />
-    <Compile Include="Service\Game\AccountServcie.cs" />
-    <Compile Include="Service\Game\GameService.cs" />
-    <Compile Include="Service\Game\PlatServiceImpl.cs" />
+    <Compile Include="Service\GameManage\AccountServcie.cs" />
+    <Compile Include="Service\GameManage\GameManageServiceImpl.cs" />
+    <Compile Include="Service\GameManage\PlatServiceImpl.cs" />
     <Compile Include="Service\Login\LoginServiceImpl.cs" />
     <Compile Include="Service\ServiceInterface.cs" />
     <Compile Include="Service\ServiceContext.cs" />
@@ -440,7 +441,6 @@
     <Content Include="Views\User\PasswordSet.cshtml" />
     <Content Include="Views\Cbb\Menu.cshtml" />
     <Content Include="Views\User\UserPassword.cshtml" />
-    <Content Include="Views\User\UserInfo.cshtml" />
     <Content Include="Views\Cbb\Footer.cshtml" />
     <Content Include="Views\Cbb\Ad.cshtml" />
     <Content Include="Views\Game\Hall.cshtml" />
@@ -463,7 +463,7 @@
     <Content Include="Views\Home\SystemManage.cshtml" />
     <Content Include="Views\Game\GameManage.cshtml" />
     <Content Include="Views\Game\NewGame.cshtml" />
-    <Content Include="Views\Game\GameEdit.cshtml" />
+    <Content Include="Views\Game\GameInfo.cshtml" />
     <Content Include="Views\User\AccountBorrow.cshtml" />
     <Content Include="Views\User\UserInfo.cshtml" />
     <Content Include="Views\Game\TablePage.cshtml" />

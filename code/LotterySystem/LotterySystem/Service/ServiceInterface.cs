@@ -32,6 +32,11 @@ namespace LotterySystem.Service
 
     }
 
+    public interface GameManageService
+    {
+        void modifyGame(GameModel game);
+    }
+
     public interface EntranceServcie
     {
         bool enterRoomCheck(UserModel user, RoomModel room);

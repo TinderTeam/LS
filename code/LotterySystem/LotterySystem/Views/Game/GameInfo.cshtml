@@ -1,0 +1,204 @@
+﻿@{
+    ViewBag.Title = "GameEdit";
+ 
+ }
+
+
+<div id="head" >
+    @RenderPage("../Home/Nav.cshtml")
+</div>
+
+<!--字体样式-->
+    <style type="text/css">
+
+    .font1
+    {
+        font-size: 16px;
+        font-family:'Microsoft YaHei UI';
+    }
+        .div1
+        {
+            margin-top:10px;
+            margin-bottom:10px;  
+        }
+        
+    </style>
+@using (Html.BeginForm("modifyGame", "Game", FormMethod.Post))
+{   
+<!--字体样式-->
+<div class="row">
+        <div class="col-lg-2">
+
+    </div>
+        <div class="col-lg-8">
+<div class="panel panel-primary">
+    <div class="panel-heading">修改游戏信息</div>
+    <div class="panel-body">
+
+        <div class="row">
+       
+  
+
+                <div class="form-horizontal" role="form">
+      
+                    <div class="form-group">
+                        <label for="roomName" class="col-sm-4 control-label font1">游戏名称</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="gameName" class="form-control" id="roomName" value="@ViewBag.Game.GameName" readonly="true"/>
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>
+                  <div class="form-group">
+                  <label class="col-sm-4  control-label font1">状态</label>
+                    <div class="col-sm-8">
+                            <select class="btn btn-default dropdown-toggle" name="gameStatus">
+
+                                @if ("开放".Equals(@ViewBag.Game.GameStatus))
+                                {
+                                   <option value="开放" selected >开放</option>
+                                }
+                                else
+                                {
+                                   <option value="开放">开放</option>
+                                } 
+                                @if ("关闭".Equals(@ViewBag.Game.GameStatus))
+                                {
+                                   <option value="关闭" selected >关闭</option>
+                                }
+                                else
+                                {
+                                   <option value="关闭">关闭</option>
+                                }
+                                @if ("冻结".Equals(@ViewBag.Game.GameStatus))
+                                {
+                                   <option value="冻结" selected >冻结</option>
+                                }
+                                else
+                                {
+                                   <option value="冻结">冻结</option>
+                                }
+                            </select>
+                    </div>
+                  </div>
+
+                
+                    <div class="form-group">
+                        <label for="roomState" class="col-sm-4 control-label"><font face="微软雅黑" size="3px"  class="pull-right">OS支持</font></label>
+						<div class="controls">                                                    
+                                @foreach (var p in @ViewBag.Game.OsList)
+                                {
+                                    <label class="checkbox-inline">
+                                        @if ("checked".Equals(@p.AttrValue))
+                                        {
+                                           <input type="checkbox" name="selectOSList" checked="@p.AttrValue"  value="@p.AttrKey"/>@p.AttrKey	
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox"  name="selectOSList"  value="@p.AttrKey"/>@p.AttrKey
+                                        }
+                                       		      
+							       </label>
+                                }
+						</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="roomState" class="col-sm-4 control-label"><font face="微软雅黑" size="3px"  class="pull-right">浏览器支持</font></label>
+						<div class="controls">
+							    @foreach (var p in @ViewBag.Game.BrowserList)
+           {
+                                   <label class="checkbox-inline">
+                                        @if ("checked".Equals(@p.AttrValue))
+                                        {
+                                           <input type="checkbox" name="selectBrowserList" checked="@p.AttrValue"  value="@p.AttrKey"/>@p.AttrKey	
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" name="selectBrowserList"   value="@p.AttrKey"/>@p.AttrKey
+                                        }
+                                       		      
+							       </label>
+           }
+						</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="roomState" class="col-sm-4 control-label"><font face="微软雅黑" size="3px"  class="pull-right">修改税率</font></label>
+                        <div class="col-sm-6">
+                            <input type="text" name="taxRate" class="form-control"  value="@ViewBag.Game.TaxRate" />
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="enterMin" class="col-sm-4 control-label"><font face="微软雅黑" size="3px" style="vertical-align: auto" class="pull-right">总限房</font></label>
+                        <div class="col-sm-6">
+                            <input type="text" name="allRoomLimit" class="form-control"   value="@ViewBag.Game.AllRoomLimit" />
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>  
+                    <div class="form-group">
+                        <label for="enterMin" class="col-sm-4 control-label"><font face="微软雅黑" size="3px" style="vertical-align: auto" class="pull-right">单人限房</font></label>
+                        <div class="col-sm-6">
+                            <input type="text" name="onePersonRoomLimit" class="form-control"  value="@ViewBag.Game.OnePersonRoomLimit" />
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>                    
+                          
+      
+ 
+                    <div class="form-group">
+                        <label for="throwMin" class="col-sm-4 control-label"><font face="微软雅黑" size="3px" style="vertical-align: auto" class="pull-right">单房限桌</font></label>
+                        <div class="col-sm-6">
+                            <input type="text" name="oneRoomTableLimit" class="form-control" id="throwMin" value="@ViewBag.Game.OneRoomTableLimit"/>
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>    
+                    <div class="form-group">
+                        <label for="growth" class="col-sm-4 control-label"><font face="微软雅黑" size="3px" style="vertical-align: auto" class="pull-right">单桌限人</font></label>
+                        <div class="col-sm-6">
+                            <input type="text" name="oneTablePersonLimit" class="form-control"  value="@ViewBag.Game.OneTablePersonLimit" />
+                       </div>
+                        <div class="col-sm-2"></div>
+                    </div>  
+ 
+                    <div class="form-group">
+                        <label for="growth" class="col-sm-4 control-label"><font face="微软雅黑" size="3px" style="vertical-align: auto" class="pull-right">选号限秒</font></label>
+                        <div class="col-sm-6">
+                            <input type="text" name="bankerSelectNumTimeLimit" class="form-control"  value="@ViewBag.Game.BankerSelectNumTimeLimit" />
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>  
+					
+                    <div class="form-group">
+                        <label for="growth" class="col-sm-4 control-label"><font face="微软雅黑" size="3px" style="vertical-align: auto" class="pull-right">投注限秒</font></label>
+                        <div class="col-sm-6">
+                              <input type="text" name="playerSelectNumTimeLimit" class="form-control"  value="@ViewBag.Game.PlayerSelectNumTimeLimit" />
+                       </div>
+                        <div class="col-sm-2"></div>
+                    </div>  
+ 
+              </div>
+         </div>
+        <!-- row -->
+        <hr/>
+
+        <!--操作栏-->
+		<div class="form-group">
+                    <!-- Button -->
+            <div class="control-group " style="text-align: center">
+				<div class="controls">
+                    <input type="submit"  name="submit" class="btn btn-success"  value="修改"/>  
+                     <input type="button"  onclick="javascript: history.back(-1);" value="取消" class="btn btn-default"/>    
+					</div>
+                </div>
+			</div>
+        <!--操作栏-->
+
+      </div>
+
+</div>
+ </div>
+        <div class="col-lg-2">
+
+       </div>
+</div>
+}
+

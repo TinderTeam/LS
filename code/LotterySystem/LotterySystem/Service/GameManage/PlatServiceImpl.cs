@@ -8,8 +8,8 @@ using LotterySystem.Models;
 using LotterySystem.Dao;
 using LotterySystem.Dao.Impl;
 using LotterySystem.Po;
-using LotterySystem.Service.Game;
-namespace LotterySystem.Service
+
+namespace LotterySystem.Service.GameManage
 {
 
     public class PlatServiceImpl : PlatService
@@ -18,7 +18,6 @@ namespace LotterySystem.Service
         private static log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         RoomDao roomDao = DaoContext.getInstance().getRoomDao();
         GameDao gameDao = DaoContext.getInstance().getGameDao();
-
         DoorDao doorDao = DaoContext.getInstance().getDoorDao();
         GamblingPartyDao gamblingPartyDao = DaoContext.getInstance().getGamblingPartyDao();
 

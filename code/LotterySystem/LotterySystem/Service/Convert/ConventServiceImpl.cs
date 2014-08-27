@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using LotterySystem.Po;
 using LotterySystem.Models;
+using LotterySystem.Util;
 namespace LotterySystem.Service
 {
 
@@ -39,6 +40,8 @@ namespace LotterySystem.Service
                 gameModel.OneRoomTableLimit = game.OneRoomTableLimit;
                 gameModel.OneTablePersonLimit = game.OneTablePersonLimit;
                 gameModel.Os = game.Os;
+                gameModel.setBrowserList();
+                gameModel.setOSList();
                 gameModel.PlayerSelectNumTimeLimit = game.PlayerSelectNumTimeLimit;
                 gameModel.TaxRate = game.TaxRate;
                 return gameModel;
@@ -143,6 +146,5 @@ namespace LotterySystem.Service
             }
             return userModelList;
         }
-
     }
 }
