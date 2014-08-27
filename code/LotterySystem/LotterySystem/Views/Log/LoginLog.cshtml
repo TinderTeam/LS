@@ -27,34 +27,20 @@
                                   								  
 								</tr>
 
-                              
-								    <tr >
-								      
-								      <td>A</td>
-								      <td>2014-08-22 17:30</td>
-								      <td>成功</td>
-								      <td>win8.1</td>
-								      <td>Google Chrome</td>
-
-								    </tr>
-								    <tr >
-								      
-								      <td>B</td>
-								      <td>2014-08-22 14:55</td>
-								      <td>失败</td>
-								      <td>win XP</td>
-								      <td>360安全浏览器</td>
-
-								    </tr>
-								    <tr >
-								      
-								      <td>C</td>
-								      <td>2014-08-22 13:30</td>
-								      <td>成功</td>
-								      <td>OS X</td>
-								      <td>Safari</td>
-
-								    </tr>                             
+    
+								 
+								     @for (var i = 0; i < @ViewBag.LoginLogListCount; i++)
+						            { 
+                                       <tr >
+                                      <td>@ViewBag.LoginLogList[i].UserName</td>
+								      <td>@ViewBag.LoginLogList[i].LoginTime</td>
+								      <td>@ViewBag.LoginLogList[i].Result</td>
+								      <td>@ViewBag.LoginLogList[i].Os</td>
+								      <td>@ViewBag.LoginLogList[i].Browser</td>
+	                                   </tr>	
+ 							         }  
+                                
+								                   
 							</table>
 						</div>
 						

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" >
+  <class name="LotterySystem.Po.LoginLog,LotterySystem" table="login_log"  >
+
+    
+ 
+    <id name="LogID" column ="LOG_ID" >
+      <generator class ="increment"/>
+    </id>
+
+    <property name="UserName" type="string">
+      <column name="USER_NAME" />
+    </property>
+
+    <property name="LoginTime" type="DateTime">
+      <column name="LOGIN_TIME" />
+    </property>
+
+    <property name="Result" type="string">
+      <column name="RESULT" length="50"/>
+    </property>
+
+    <property name="Os" type="string">
+      <column name="OS" length="50"/>
+    </property>
+
+
+    <property name="Browser" type="string">
+      <column name="BROWSER" length="50"/>
+    </property>
+ 
+  </class>
+</hibernate-mapping>

@@ -15,7 +15,7 @@ namespace LotterySystem.Dao
 
         Room getRoomByGameAndRoom(string gameName,string roomName);
         void createRoom(Room room);
-        void deleteRoomByRoomName(String roomName);
+        void deleteRoomByRoomName(string gameName,string roomName);
         void updateRoom(Room room);
        
 

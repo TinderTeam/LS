@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "RoomPage";
+    LotterySystem.Models.GameModel CurrentGame = (LotterySystem.Models.GameModel)Session["CurrentGame"];
 }
 
 <div id="head" >
@@ -15,7 +16,7 @@
 
         <div id="left1">
           <span>当前游戏</span>
-          <span class="label label-primary">在线竞猜</span>
+          <span class="label label-primary">@CurrentGame.GameName</span>
         </div>
 
     </div>

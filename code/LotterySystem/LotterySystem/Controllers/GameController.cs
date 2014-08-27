@@ -23,7 +23,7 @@ namespace LotterySystem.Controllers
         {
             log.Debug("Page: [Hall]");
             //验证用户
-
+            
             ViewBag.GameList = platService.getGameList();
             ViewBag.GameListCount = platService.getGameList().Count;
             log.Debug("Page: [Hall] --- GameNumber = " + ViewBag.GameListCount);
@@ -209,6 +209,13 @@ namespace LotterySystem.Controllers
             return View();
         }
 
+        public ActionResult DeleteRoom(string roomName)
+        {
+            GameModel game = (GameModel)Session["CurrentGame"];
+
+            platService.deleteRoom( game.GameName,roomName);
+            return RedirectToAction("RoomPage", "Game");
+        }
 
 
         public ActionResult Game()
@@ -222,6 +229,9 @@ namespace LotterySystem.Controllers
 
         public ActionResult GameManage()
         {
+            List<GameModel> gameList = platService.getGameList();
+            ViewBag.GameList = gameList;
+            ViewBag.GameListCount = gameList.Count;
             return View();
         }
         public ActionResult NewGame()

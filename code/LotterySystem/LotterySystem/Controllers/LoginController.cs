@@ -10,6 +10,9 @@ namespace LotterySystem.Controllers
 {
     public  class LoginController : Controller
     {
+
+        private static log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         LoginService loginSerivce = ServiceContext.getInstance().getLoginService();
 
         //
@@ -24,33 +27,27 @@ namespace LotterySystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-                                         
-            if (ModelState.IsValid )
+
+
+            try
             {
-                if (loginSerivce.LoginCheck())
-                {
-                    if (loginSerivce.Login(model.UserName, model.Password))
-                    {
-                        //Session中保存User
-                        Session["SystemUser"] = loginSerivce.getLoginUser(model.UserName);
 
-                        return RedirectToAction("Hall", "Game");
-                    }
-                    else
-                    {
-                        // 如果我们进行到这一步时某个地方出错，则重新显示表单
-                        return RedirectToAction("Index", "Home", new { msg = "用户名或密码错误" });
-                    }
-                }
-                else
-                {
-                    // 如果我们进行到这一步时某个地方出错，则重新显示表单
-                    return RedirectToAction("Index", "Home", new { msg = "服务器已经满员，请稍后再尝试" });
-                }
+                loginSerivce.Login(model.UserName, model.Password);
+                Session["SystemUser"] = loginSerivce.getLoginUser(model.UserName);
 
-            }// 如果我们进行到这一步时某个地方出错，则重新显示表单
-            return RedirectToAction("Index", "Home", new { msg = "信息填写有误" });
+                ServiceContext.getInstance().getLogService().recordLoginLog(model.UserName, "成功", "os", "browser");
+
+            }
+            catch (SystemException ex)
+            {
+                log.Error("login failed", ex);
+                ServiceContext.getInstance().getLogService().recordLoginLog(model.UserName, "失败", "os", "browser");
+                return RedirectToAction("Index", "Home", new { msg = ex.Message });
+            }
+
+            return RedirectToAction("Hall", "Game");
         }
+               
 
 
         public ActionResult Register()

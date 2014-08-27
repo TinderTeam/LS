@@ -55,6 +55,7 @@
 								  <td>单桌限人</td>
 								  <td>选号限秒</td>
 								  <td>投注限秒</td>
+                                  <td>操作</td>
 
                                   								  
 								</tr>
@@ -63,16 +64,16 @@
 								     @for (var i = 0; i < @ViewBag.GameListCount; i++)
 						            { 
                                       <td>@ViewBag.GameList[i].GameName</td>
-								      <td>@ViewBag.GameList[i].gameStatus</td>
-								      <td>@ViewBag.GameList[i].os</td>
-								      <td>@ViewBag.GameList[i].browser</td>
-								      <td>@ViewBag.GameList[i].taxRate</td>
-								      <td>@ViewBag.GameList[i].allRoomLimit</td>
-								      <td>@ViewBag.GameList[i].onePersonRoomLimit</td>
-								      <td>@ViewBag.GameList[i].oneRoomTableLimit</td>
-								      <td>@ViewBag.GameList[i].oneTablePersonLimit</td>
-								      <td>@ViewBag.GameList[i].bankerSelectNumTimeLimit</td>
-								      <td>@ViewBag.GameList[i].playerSelectNumTimeLimit</td>
+								      <td>@ViewBag.GameList[i].GameStatus</td>
+								      <td>@ViewBag.GameList[i].Os</td>
+								      <td>@ViewBag.GameList[i].Browser</td>
+								      <td>@ViewBag.GameList[i].TaxRate</td>
+								      <td>@ViewBag.GameList[i].AllRoomLimit</td>
+								      <td>@ViewBag.GameList[i].OnePersonRoomLimit</td>
+								      <td>@ViewBag.GameList[i].OneRoomTableLimit</td>
+								      <td>@ViewBag.GameList[i].OneTablePersonLimit</td>
+								      <td>@ViewBag.GameList[i].BankerSelectNumTimeLimit</td>
+								      <td>@ViewBag.GameList[i].PlayerSelectNumTimeLimit</td>
 								      <td>@Html.ActionLink("修改游戏", "GameEdit", "Game", null, new { @class = "btn btn-primary" })</td>
 							         }  
                                 </tr>							            

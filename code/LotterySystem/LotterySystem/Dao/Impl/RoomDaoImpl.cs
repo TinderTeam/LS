@@ -242,11 +242,64 @@ namespace LotterySystem.Dao
                 }
             }
         }
-        public void deleteRoomByRoomName(String roomName)
+        public void deleteRoomByRoomName(string gameName,string roomName)
         {
+            ISession session = null;
+            try
+            {
+                session = SessionManager.getInstance().GetSession();
+                ITransaction tx = session.BeginTransaction();
+                var sql = "Delete from room Where  GAME_NAME=? and ROOM_NAME = ?";
+                ISQLQuery query = session.CreateSQLQuery(sql);
+                query.SetAnsiString(0, gameName);
+                query.SetAnsiString(1, roomName);
+                query.ExecuteUpdate();
+                tx.Commit();
+
+            }
+            catch (System.Exception ex)
+            {
+
+                log.Error("delete room error", ex);
+                throw ex;
+            }
+            finally
+            {
+                if (null != session)
+                {
+                    session.Close();
+                }
+            }
         }
+
+
         public void updateRoom(Room room)
         {
+            ISession session = null;
+            try
+            {
+                session = SessionManager.getInstance().GetSession();
+                ITransaction tx = session.BeginTransaction();
+
+                session.SaveOrUpdate(room);
+
+                tx.Commit();
+
+            }
+            catch (System.Exception ex)
+            {
+
+                log.Error("update room error", ex);
+                throw ex;
+            }
+            finally
+            {
+                if (null != session)
+                {
+                    session.Close();
+                }
+            }
+
         }
     }
 }

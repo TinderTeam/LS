@@ -44,23 +44,28 @@ namespace LotterySystem.Service.Login
         /// <param name="userID"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public bool Login(string userName, string password)
+        public void Login(string userName, string password)
         {
+            if (!LoginCheck())
+            {
+                log.Error("the login user number is max");
+
+                throw new SystemException("服务器已经满员，请稍后再尝试");
+            }
+
+
             LotterySystem.Po.User user = userDao.getSystemUserByName(userName);
             if (null == user)
             {
                 log.Error("login failed, the user is not exist. user name is " + userName);
-                return false;
+                throw new SystemException("用户名或密码错误");
             }
             if (!user.Password.Equals(password))
             {
                 log.Error("login failed, the password is not right. user name is " + userName);
-                return false;
+                throw new SystemException("用户名或密码错误");
             }
-            else
-            {
-                return true;
-            }
+            
         }
 
         /// <summary>

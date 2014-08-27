@@ -191,6 +191,7 @@
     <Compile Include="Dao\Impl\DoorDaoImpl.cs" />
     <Compile Include="Dao\Impl\GamblingPartyDaoImpl.cs" />
     <Compile Include="Dao\Impl\GameDaoImpl.cs" />
+    <Compile Include="Dao\Impl\LoginLogDaoImpl.cs" />
     <Compile Include="Dao\Impl\RoomDaoImpl.cs" />
     <Compile Include="Dao\Impl\SysDaoImpl.cs" />
     <Compile Include="Dao\Impl\UserDaoImpl.cs" />
@@ -230,6 +231,7 @@
     <Compile Include="Service\Login\LoginServiceImpl.cs" />
     <Compile Include="Service\ServiceInterface.cs" />
     <Compile Include="Service\ServiceContext.cs" />
+    <Compile Include="Service\LogServiceImpl.cs" />
     <Compile Include="Service\UserManage\UserServiceImpl.cs" />
     <Compile Include="Test\Stub\DBStub.cs" />
     <Compile Include="Test\Stub\Stub.cs" />
@@ -366,6 +368,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Po\Game.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Po\LoginLog.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="Scripts\bootstrap.min.js" />

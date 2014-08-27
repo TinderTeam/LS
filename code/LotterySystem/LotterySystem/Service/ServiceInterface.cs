@@ -18,6 +18,7 @@ namespace LotterySystem.Service
 
         String createRoom(String gameName, UserModel user,RoomForm model);
         String editRoomInfo(RoomForm model);
+        void deleteRoom(string gameName, string roomName);
     }
 
     public interface ConvertService
@@ -38,10 +39,18 @@ namespace LotterySystem.Service
 
     public interface LoginService
     { 
-        bool Login(string userName ,string password);
+        void Login(string userName ,string password);
         UserModel getLoginUser(string userName);
         bool LoginCheck();
     }
+
+    public interface LogService
+    {
+        List<LoginLog> getLoginLogList();
+        void recordLoginLog(String userName,String result,String os, String browser);
+    }
+
+
     public interface UserService
     {
         bool CreateRoomCheck(UserModel user);

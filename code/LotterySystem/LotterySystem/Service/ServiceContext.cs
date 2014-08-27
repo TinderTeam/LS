@@ -17,6 +17,7 @@ namespace LotterySystem.Service
         private ConvertService convertService;
         private EntranceServcie entranceServcie;
         private UserService userService;
+        private LogService logService;
         private ServiceContext()
         {
 
@@ -81,6 +82,16 @@ namespace LotterySystem.Service
                 entranceServcie = new EntranceServcieImpl();
             }
             return entranceServcie;
+        }
+
+        public LogService getLogService()
+        {
+
+            if (logService == null)
+            {
+                logService = new LogServiceImpl();
+            }
+            return logService;
         }
 
     }

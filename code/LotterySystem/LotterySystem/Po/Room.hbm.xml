@@ -7,9 +7,7 @@
       <key-property name="RoomName" column="ROOM_NAME" type="string" ></key-property>
       <key-property name="GameName" column="GAME_NAME" type="string" ></key-property>
     </composite-id>
- 
- 
-     
+
     <property name="RoomPassword" type="string">
       <column name="ROOM_PASSWORD" length="50"/>
     </property>
@@ -35,6 +33,8 @@
     <property name="Amplification" type="int">
       <column name="AMPLIFICATION" length="50"/>
     </property>
-    
-  </class>
+      <property name="BankerLimit" type="int">
+        <column name="BANKERLIMIT" length="50"/>
+      </property>
+    </class>
 </hibernate-mapping>

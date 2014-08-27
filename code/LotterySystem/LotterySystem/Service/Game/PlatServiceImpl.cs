@@ -21,7 +21,12 @@ namespace LotterySystem.Service
         ConvertService converService = ServiceContext.getInstance().getConvertService();
         DoorDao doorDao = DaoContext.getInstance().getDoorDao();
         GamblingPartyDao gamblingPartyDao = DaoContext.getInstance().getGamblingPartyDao();
-        
+
+
+        public void deleteRoom(string gameName,string roomName)
+        {
+            roomDao.deleteRoomByRoomName(gameName,roomName);
+        }
 
         /// <summary>
         /// 获得游戏列表
@@ -173,7 +178,14 @@ namespace LotterySystem.Service
         /// <returns></returns>
         public string editRoomInfo(RoomForm form)
         {
-            Room room = converService.toRoom(form); //RoomPo
+            Room room = roomDao.getRoomByGameAndRoom(form.GameName, form.RoomName);
+            room.RoomPassword = form.RoomPassword;
+            room.Status = form.Status;
+            room.AccessAcountLimit = form.AccessAcountLimit;
+            room.Amplification = form.Amplification;
+            room.BankerLimit = form.BankerLimit;
+            room.BasicPoint = form.BasicPoint;
+
             string result = checkRoomInfo(room);
             if (result.Equals(SysConstants.SUCCESS))
             {

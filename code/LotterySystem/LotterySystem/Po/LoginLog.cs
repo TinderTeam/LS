@@ -7,35 +7,41 @@ namespace LotterySystem.Po
 {
     public class LoginLog
     {
+        private int logID;
+ 
         private String userName;
         private DateTime loginTime;
         private String result;
         private String os;
         private String browser;
 
+        public virtual int LogID
+        {
+            get { return logID; }
+            set { logID = value; }
+        }
 
-
-        public String UserName
+        public virtual String UserName
         {
             get { return userName; }
             set { userName = value; }
         }
-        public DateTime LoginTime
+        public virtual DateTime LoginTime
         {
             get { return loginTime; }
             set { loginTime = value; }
         }
-        public String Result
+        public virtual String Result
         {
             get { return result; }
             set { result = value; }
         }
-        public String Os
+        public virtual String Os
         {
             get { return os; }
             set { os = value; }
         }
-        public String Browser
+        public virtual String Browser
         {
             get { return browser; }
             set { browser = value; }

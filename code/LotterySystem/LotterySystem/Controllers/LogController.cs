@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using LotterySystem.Service;
+using LotterySystem.Po;
 namespace LotterySystem.Controllers
 {
     public class LogController : Controller
     {
+
+        LogService manageService = ServiceContext.getInstance().getLogService();
+
         //
         // GET: /Log/
 
@@ -103,8 +107,9 @@ namespace LotterySystem.Controllers
         }
         public ActionResult Loginlog()
         {
-            //ViewBag.GameList = platService.getGameList();
-            //ViewBag.GameListCount = platService.getGameList().Count;
+            List<LoginLog> logList = manageService.getLoginLogList();
+            ViewBag.LoginLogList = logList;
+            ViewBag.LoginLogListCount = logList.Count;
             return View();     
         }
     }
