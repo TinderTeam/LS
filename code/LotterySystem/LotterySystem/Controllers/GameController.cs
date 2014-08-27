@@ -20,11 +20,14 @@ namespace LotterySystem.Controllers
         /// <param name="gameID"></param>
         /// <returns></returns>
         public ActionResult Hall()
-        {     
-                //验证用户
-                ViewBag.GameList = platService.getGameList();
-                ViewBag.GameListCount = platService.getGameList().Count;
-                return View();                   
+        {
+            log.Debug("Page: [Hall]");
+            //验证用户
+            ViewBag.GameList = platService.getGameList();
+            ViewBag.GameListCount = platService.getGameList().Count;
+            log.Debug("Page: [Hall] --- GameNumber = " + ViewBag.GameListCount);
+            return View();   
+                
         }
 
         /// <summary>
@@ -155,15 +158,6 @@ namespace LotterySystem.Controllers
 
         public ActionResult RoomList(String gameName)
         {
-            //将Game放入Session
-            Session["CurrentGame"] = platService.getGameByName(gameName);
-            //获取当前登录用户
-            UserModel user = (UserModel)Session["SystemUser"];
-
-            //显示房间
-            List<RoomModel> roomList = platService.getOpenRoomListByGameName(gameName);
-            ViewBag.roomSize = roomList.Count;
-            ViewBag.roomList = roomList;
             return View();
         }
 

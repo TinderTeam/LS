@@ -14,6 +14,8 @@ namespace LotterySystem.Service
 
     public class PlatServiceImpl : PlatService
     {
+
+        private static log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         RoomDao roomDao = DaoContext.getInstance().getRoomDao();
         GameDao gameDao = DaoContext.getInstance().getGameDao();
         ConvertService converService = ServiceContext.getInstance().getConvertService();
@@ -27,6 +29,7 @@ namespace LotterySystem.Service
         /// <returns></returns>
         public List<GameModel> getGameList()
         {
+            log.Debug("Serivce: [PlatService] --- getAllGame");
             List<GameModel> gameModelList = new List<GameModel>();
             List<LotterySystem.Po.Game> gameList = gameDao.getAll();
             for (int i = 0; i < gameList.Count; i++)
@@ -35,9 +38,9 @@ namespace LotterySystem.Service
                 if (gameModel != null)
                 {
                     gameModelList.Add(gameModel);  
-                }
-          
+                }         
             }
+            log.Debug("Serivce: [PlatService] --- getGameList: " +gameModelList.ToString());
             return gameModelList;
         }
 
@@ -48,8 +51,7 @@ namespace LotterySystem.Service
         /// <returns></returns>
         public GameModel getGameByName(string gameName)
         {
-            GameModel gameModel = converService.toGameModel( gameDao.getGameByName(gameName));
-           
+            GameModel gameModel = converService.toGameModel( gameDao.getGameByName(gameName));         
             return gameModel;
         }
 

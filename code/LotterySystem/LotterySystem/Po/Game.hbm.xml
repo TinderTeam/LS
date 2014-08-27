@@ -36,6 +36,10 @@
       <column name="ONE_TABLE_PERSON_LIMIT" length="50"/>
     </property>
 
+    <property name="OneRoomTableLimit" type="int">
+      <column name="ONE_ROOM_TABLE_LIMIT" length="50"/>
+    </property>
+    
     <property name="BankerSelectNumTimeLimit" type="int">
       <column name="BANKER_SELECT_NUM_TIME_LIMIT" length="50"/>
     </property>

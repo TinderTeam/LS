@@ -47,9 +47,7 @@ namespace LotterySystem.Dao.Impl
             }
             return gamblingList;
             
-            
-           /* List<GamblingParty> list = DBStub.getDBStub().getGamblingPartyList();
-            return list;*/
+
         }
         public GamblingParty getGamblingPartyByGamblingPartyID(String gamblingPartyID)
         {
@@ -93,17 +91,40 @@ namespace LotterySystem.Dao.Impl
 
         public  List<GamblingParty> getGamblingPartyByGameAndRoom(String game, String room)
         {
-            List<GamblingParty> gamblingParty = new List<GamblingParty>();
-            List<GamblingParty> list = DBStub.getDBStub().getGamblingPartyList();
-            for (int i = 0; i < list.Count; i++)
+            List<GamblingParty> gamblingList = new List<GamblingParty>();
+            ISession session = null;
+            try
             {
-                if (list[i].GameName.Equals(game) && list[i].RoomName.Equals(room))
+                session = SessionManager.getInstance().GetSession();
+                ITransaction tx = session.BeginTransaction();
+
+
+                ICriteria criteria = session.CreateCriteria<GamblingParty>();
+                criteria.Add(Restrictions.Eq("GameName", game));
+                criteria.Add(Restrictions.Eq("RoomName", room));
+
+                var queryList = session.CreateCriteria<GamblingParty>().List<GamblingParty>();
+                foreach (var result in queryList)
                 {
-                    gamblingParty.Add(list[i]);
+                    gamblingList.Add(result);
                 }
-                
+                tx.Commit();
             }
-            return gamblingParty;
+
+            catch (System.Exception ex)
+            {
+
+                log.Error("create gamblingList error", ex);
+                throw ex;
+            }
+            finally
+            {
+                if (null != session)
+                {
+                    session.Close();
+                }
+            }
+            return gamblingList;
         }
      }
 }
