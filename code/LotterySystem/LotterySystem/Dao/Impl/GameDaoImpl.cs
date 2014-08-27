@@ -33,7 +33,7 @@ namespace LotterySystem.Dao
           catch (System.Exception ex)
             {
 
-                log.Error("create game error", ex);
+                log.Error("getall game error", ex);
                 throw ex;
             }
             finally

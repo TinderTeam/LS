@@ -23,67 +23,67 @@ namespace LotterySystem.Po
         private int bankerSelectNumTimeLimit;
         private int playerSelectNumTimeLimit;
 
-        public string GameStatus
+        public virtual string GameStatus
         {
             get { return gameStatus; }
             set { gameStatus = value; }
         }
 
 
-        public string GameName
+        public virtual string GameName
         {
             get { return gameName; }
             set { gameName = value; }
         }
-        public string Os
+        public virtual string Os
         {
             get { return os; }
             set { os = value; }
         }
 
-        public string Browser
+        public virtual string Browser
         {
             get { return browser; }
             set { browser = value; }
         }
-     
-        public float TaxRate
+
+        public virtual float TaxRate
         {
             get { return taxRate; }
             set { taxRate = value; }
         }
-   
-        public int AllRoomLimit
+
+        public virtual int AllRoomLimit
         {
             get { return allRoomLimit; }
             set { allRoomLimit = value; }
         }
-    
-        public int OnePersonRoomLimit
+
+        public virtual int OnePersonRoomLimit
         {
             get { return onePersonRoomLimit; }
             set { onePersonRoomLimit = value; }
         }
-  
-        public int OneRoomTableLimit
+
+        public virtual int OneRoomTableLimit
         {
             get { return oneRoomTableLimit; }
             set { oneRoomTableLimit = value; }
         }
-  
-        public int OneTablePersonLimit
+
+        public virtual int OneTablePersonLimit
         {
             get { return oneTablePersonLimit; }
             set { oneTablePersonLimit = value; }
         }
-   
-        public int BankerSelectNumTimeLimit
+
+        public virtual int BankerSelectNumTimeLimit
         {
             get { return bankerSelectNumTimeLimit; }
             set { bankerSelectNumTimeLimit = value; }
         }
 
-        public int PlayerSelectNumTimeLimit
+        public virtual int PlayerSelectNumTimeLimit
         {
             get { return playerSelectNumTimeLimit; }
             set { playerSelectNumTimeLimit = value; }

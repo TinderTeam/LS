@@ -1,40 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" >
-  <class name="LotterySystem.Po.Room,LotterySystem" table="room" lazy="true" >
-
-    <composite-id>
-      <key-property name="RoomName" column="ROOM_NAME" type="string" ></key-property>
-      <key-property name="GameName" column="GAME_NAME" type="string" ></key-property>
-    </composite-id>
- 
- 
-     
-    <property name="RoomPassword" type="string">
-      <column name="ROOM_PASSWORD" length="50"/>
-    </property>
-
-    <property name="RoomHost" type="string">
-      <column name="ROOM_HOST" length="50"/>
-    </property>
-
-    <property name="Status" type="string">
-      <column name="STATUS" length="50"/>
-    </property>
+  <class name="LotterySystem.Po.Game,LotterySystem" table="game" lazy="true" >
 
 
-    <property name="AccessAcountLimit" type="int">
-      <column name="ACCESS_ACOUNT_LIMIT" length="50"/>
-    </property>
- 
+    <id name="GameName" column ="GAME_NAME" >
+      
+    </id>
 
-    <property name="BasicPoint" type="int">
-      <column name="BASIC_POINT" length="50"/>
-    </property>
 
-    <property name="Amplification" type="int">
-      <column name="AMPLIFICATION" length="50"/>
+    <property name="GameStatus" type="string">
+      <column name="GAME_STATUS" length="50"/>
     </property>
     
+    <property name="Os" type="string">
+      <column name="OS" length="50"/>
+    </property>
+
+    <property name="Browser" type="string">
+      <column name="BROWSER" length="50"/>
+    </property>
+    
+    <property name="TaxRate" type="float">
+      <column name="TAX_RATE" length="50"/>
+    </property>
+
+    <property name="AllRoomLimit" type="int">
+      <column name="ALL_ROOM_LIMIT" length="50"/>
+    </property>
+
+    <property name="OnePersonRoomLimit" type="int">
+      <column name="ONE_PERSON_ROOM_LIMIT" length="50"/>
+    </property>
+
+    <property name="OneTablePersonLimit" type="int">
+      <column name="ONE_TABLE_PERSON_LIMIT" length="50"/>
+    </property>
+
+    <property name="BankerSelectNumTimeLimit" type="int">
+      <column name="BANKER_SELECT_NUM_TIME_LIMIT" length="50"/>
+    </property>
+    
+    <property name="PlayerSelectNumTimeLimit" type="int">
+      <column name="PLAYER_SELECT_NUM_TIME_LIMIT" length="50"/>
+    </property>
+
   </class>
 </hibernate-mapping>
