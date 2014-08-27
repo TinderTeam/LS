@@ -96,4 +96,35 @@ namespace LotterySystem.Models
 
 
     }
+    public class UserRigistForm
+    {
+        private String userName;
+        private String password;
+        private String payPassword;
+        private String recommendUserName;
+
+        public String RecommendUserName
+        {
+            get { return recommendUserName; }
+            set { recommendUserName = value; }
+        }
+
+        public String PayPassword
+        {
+            get { return payPassword; }
+            set { payPassword = value; }
+        }
+
+        public String Password
+        {
+            get { return password; }
+            set { password = value; }
+        }
+
+        public String UserName
+        {
+            get { return userName; }
+            set { userName = value; }
+        }
+    }
 }

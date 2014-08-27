@@ -8,6 +8,11 @@ namespace LotterySystem.Models
     public class UserConstants
     {
         public static string IN_THE_HALL = "游戏大厅";
+        public static string REGIST_NOT_OPEN = "系统目前未开放注册";
+        public static string USERNAME_EXIST = "该用户名已被注册";
+        public static string STATUS_ACTIVE = "激活";
+        public static string STATUS_FREEZE = "冻结";
+        public static string STATUS_WAIT = "待审";
     }
     public class RoomConstatns
     {

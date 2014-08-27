@@ -7,9 +7,9 @@ using LotterySystem.Models;
 namespace LotterySystem.Service
 {
 
-    public class ConventServiceImpl:ConvertService
+    public class ConventService
     {
-        public RoomModel toRoomModel(Room room)
+        public static RoomModel toRoomModel(Room room)
         {
             RoomModel roomModel= new RoomModel();
             roomModel.AccessAcountLimit=room.AccessAcountLimit;
@@ -25,7 +25,7 @@ namespace LotterySystem.Service
             return roomModel;
         }
 
-        public GameModel toGameModel(LotterySystem.Po.Game game)
+        public static GameModel toGameModel(LotterySystem.Po.Game game)
         {
             if (game != null)
             {
@@ -50,13 +50,13 @@ namespace LotterySystem.Service
          
         }
 
-        public RoomModel toRoomModel(RoomForm form)
+        public static RoomModel toRoomModel(RoomForm form)
         {
             RoomModel room =  new RoomModel();
             return room;
         }
 
-        public Room toRoom(RoomForm form)
+        public static Room toRoom(RoomForm form)
         {
             Room room = new Room();
             room.GameName = form.GameName;
@@ -71,7 +71,7 @@ namespace LotterySystem.Service
             return room;
         }
 
-        public  List<Door> toDoor(RoomForm form)
+        public static List<Door> toDoor(RoomForm form)
         {
             List<Door> doorList = new List<Door>();
 
@@ -111,6 +111,16 @@ namespace LotterySystem.Service
             userModel.Status = user.Status;
             userModel.RecommendUserName = user.RecommendUserName;
             return userModel;
+
+        }
+        public static User toUser(UserRigistForm model)
+        {
+            User user = new User();
+            user.UserName = model.UserName;
+            user.Password = model.Password;
+            user.PayPassword = model.PayPassword;
+            user.RecommendUserName = model.RecommendUserName;
+            return user;
 
         }
         public static List<UserModel> toUserModelList(List<User> userList)

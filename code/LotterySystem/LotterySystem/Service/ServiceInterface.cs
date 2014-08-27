@@ -40,6 +40,7 @@ namespace LotterySystem.Service
     public interface LoginService
     { 
         void Login(string userName ,string password);
+        string register(UserRigistForm user);
         UserModel getLoginUser(string userName);
         bool LoginCheck();
     }

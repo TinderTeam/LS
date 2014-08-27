@@ -14,7 +14,6 @@ namespace LotterySystem.Service
 
         private LoginService loginService;
         private PlatService platService;
-        private ConvertService convertService;
         private EntranceServcie entranceServcie;
         private UserService userService;
         private LogService logService;
@@ -64,15 +63,7 @@ namespace LotterySystem.Service
             return platService;
         }
 
-        public ConvertService getConvertService()
-        {
-
-            if (convertService == null)
-            {
-                convertService = new ConventServiceImpl();
-            }
-            return convertService;
-        }
+       
 
         public EntranceServcie getEntranceServcie()
         {

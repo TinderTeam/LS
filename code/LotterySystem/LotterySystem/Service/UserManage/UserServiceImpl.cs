@@ -23,7 +23,7 @@ namespace LotterySystem.Service.UserManage
         {
             List<User> userList = userDao.getSystemUserByFilter(userName);
 
-            return ConventServiceImpl.toUserModelList(userList);
+            return ConventService.toUserModelList(userList);
         }
         public UserModel getUserByName(String userName)
         {
@@ -33,7 +33,7 @@ namespace LotterySystem.Service.UserManage
                log.Error("can not get the user by " + userName);
                return null;
            }
-           return ConventServiceImpl.toUserModel(user);
+           return ConventService.toUserModel(user);
         }
 
         

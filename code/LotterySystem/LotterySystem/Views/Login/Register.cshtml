@@ -1,89 +1,96 @@
 ﻿@{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "用户注册";
+    
 }
 
+<!--字体样式-->
+<style type="text/css">
+    .font1
+    {
+        font-size: 16px;
+        font-family: 'Microsoft YaHei UI';
+    }
 
-      <div class="row-fluid">
-          <div class="row">
-              <div class="col-lg-3">
+    .div1
+    {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+</style>
 
-              </div>
-              <div class="col-lg-6">
+<!--字体样式-->
+<div id="head">
+    @RenderPage("../Home/Nav.cshtml")
+</div>
+<!-- operation menu-->
 
 
-
-           <form class="form-horizontal" role="form">
-               <div style="text-align:center">
-                     <font face="微软雅黑" color="blue" size="5px">会员注册</font>
-               </div>
-               <hr />
-               <div class="form-group">
-                   <label for="userName" class="col-sm-4 control-label"><font face="微软雅黑" size="3px" style="vertical-align:auto "class="pull-right">用户名</font></label>
-                   <div class="col-sm-8">
-                   <input type="text" class="form-control" id="userName" placeholder="请输入您的称号">
-                   </div>
-               </div>
-
-               <div class="form-group">
-                   <label for="logPD1"class="col-sm-4  control-label"><font face="微软雅黑" size="3px" class="pull-right">请输入登录密码</font></label>
-                   <div class="col-sm-8">
-                   <input type="password" class="form-control" id="logPD1" placeholder="请输入6~12位英文或数字">
+<hr />
+@using (Html.BeginForm("Register", "Login", FormMethod.Post))
+{
+    <!-- 新增用户-->
+    <div class="row-fluid">
+        <div class="row">
+            <div class="col-lg-3">
+            </div>
+            <div class="col-lg-6">
+                <div class="form-horizontal" role="form">
+                    <div style="text-align: center">
+                        <font face="微软雅黑" color="blue" size="5px">用户注册</font>
                     </div>
-               </div>
-               <div class="form-group">
-                  <label for="logPD2" class="col-sm-4  control-label"><font face="微软雅黑" size="3px" class="pull-right">再次确认登录密码</font></label>
-                   <div class="col-sm-8">
-                  <input type="password" class="form-control" id="logPD2" placeholder="检验两者是否一致">
+                    <hr />
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label font1">用户名</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="userName" class="form-control" />
+                        </div>
                     </div>
-              </div>
-                              <div class="form-group">
-                   <label for="payPD1"class="col-sm-4 control-label"><font face="微软雅黑" size="3px" class="pull-right">请输入支付密码</font></label>
-                   <div class="col-sm-8">
-                   <input type="password" class="form-control" id="payPD1" placeholder="请输入6~12位英文或数字">
-                    </div>
-               </div>
-               <div class="form-group">
-                  <label for="payPD2" class="col-sm-4  control-label"><font face="微软雅黑" size="3px" class="pull-right">再次确认支付密码</font></label>
-                   <div class="col-sm-8">
-                  <input type="password" class="form-control" id="payPD2" placeholder="检验两者是否一致">
-                    </div>
-              </div>
-               <div class="form-group">
-                   <label for="recommendName" class="col-sm-4 control-label"><font face="微软雅黑" size="3px" style="vertical-align:auto "class="pull-right">推荐人</font></label>
-                   <div class="col-sm-8">
-                   <input type="email" class="form-control" id="recommendName" placeholder="请输入您的推荐人的称号">
-                   </div>
-               </div>
-               <hr />
-               <div class="form-group">
-                    <div class="col-sm-4  " >
-                        <label class="checkbox control-label"><span class="pull-right"><input type="checkbox" id="readSure" ></span></label>
-                     </div>      
-                    <div class="col-sm-8" >
-                        <a><font face="微软雅黑" size="3px" class="pull-left" style="text-align:end"> 我已阅读相关协议</font></a>
 
-                     </div>
-                        
-                    
-               </div >
-  
-               <hr />
-            <!-- Button -->
-                <div class="control-group " style="text-align:center">
-                    <label class="control-label" for="accountSure"></label>
-                    <div class="controls">
-                        <button id="accountSure" name="accountSure" class="btn btn-success" type="submit">确认</button>
-						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                         <input type="button"  onclick="javascript: history.back(-1);" value="取消" class="btn btn-default">
-	                    
+                    <div class="form-group">
+                        <label class="col-sm-4  control-label font1">请输入登录密码</label>
+                        <div class="col-sm-8">
+                            <input type="password" name="password" class="form-control" placeholder="请输入6~12位英文或数字" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4  control-label font1">再次确认登录密码</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" placeholder="检验两者是否一致" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label font1">请输入支付密码</label>
+                        <div class="col-sm-8">
+                            <input type="password" name="payPassword" class="form-control" placeholder="请输入6~12位英文或数字" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4  control-label font1">再次确认支付密码</label>
+                        <div class="col-sm-8">
+                            <input type="password"  class="form-control" placeholder="检验两者是否一致" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label font1">推荐人</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="recommendUserName" class="form-control" />
+                        </div>
+                    </div>
+                    <hr />
+                    <!-- Button -->
+                    <div class="control-group " style="text-align: center">
+                        <label class="control-label"></label>
+                        <div class="controls">
+                            <input name="submit" class="btn btn-success" type="submit" value="确认">
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input type="button" onclick="javascript: history.back(-1);" value="取消" class="btn btn-default" />
+                        </div>
                     </div>
                 </div>
-                                   
-           </form>
-		   </div>
-              <div class="col-lg-3">
+            </div>
+        </div>
+    </div>
+    <!-- 新增用户 -->
 
-              </div>
-          </div>				
-					
-	</div><!-- row-fluid -->
+}

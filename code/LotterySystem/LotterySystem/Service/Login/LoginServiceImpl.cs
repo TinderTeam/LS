@@ -15,8 +15,7 @@ namespace LotterySystem.Service.Login
         UserDao userDao = DaoContext.getInstance().getUserDao();
         AccountDao accountDao = DaoContext.getInstance().getAccountDao();
         SysDao sysDao = DaoContext.getInstance().getSysDao();
-
-
+       
 
         /// <summary>
         /// 
@@ -87,6 +86,33 @@ namespace LotterySystem.Service.Login
             return userModel;
         }
 
+        public string register(UserRigistForm model)
+        {
+            int sysRigisterType =sysDao.getRegistType();
+            User user = ConventService.toUser(model);
+
+            switch(sysRigisterType){
+                case 0:
+                    return UserConstants.REGIST_NOT_OPEN;
+                case 1:
+                    user.Status = UserConstants.STATUS_WAIT;
+                    break;
+                case 2:
+                    user.Status = UserConstants.STATUS_ACTIVE;
+                    break;
+                default:
+                    break;
+            }
+
+            User userCheck = userDao.getSystemUserByName(model.UserName);
+            if (userCheck != null)
+            {
+                return UserConstants.USERNAME_EXIST;
+            }
+            
+            userDao.createUser(user);
+            return SysConstants.SUCCESS;
+        }
 
     }
 }

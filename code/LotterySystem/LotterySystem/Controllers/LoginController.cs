@@ -47,14 +47,19 @@ namespace LotterySystem.Controllers
 
             return RedirectToAction("Hall", "Game");
         }
-               
 
+
+        [HttpPost]
+        public ActionResult Register(UserRigistForm model)
+        {
+            string result = loginSerivce.register(model);
+            return RedirectToAction("Index", "Home");
+        }
 
         public ActionResult Register()
         {
             return View();
         }
-
 
         public ActionResult LogOff()
         {

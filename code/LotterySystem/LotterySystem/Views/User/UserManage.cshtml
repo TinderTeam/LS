@@ -112,6 +112,7 @@
                 <thead>
                     <tr>
                             <th>用户名</th>
+ 
                             <th>状态</th>
                             <th>权限</th>
                             <th>推荐人</th>
@@ -120,19 +121,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+               
   
 						 @for (var i = 0; i < @ViewBag.UserListCount; i++)
 						 { 
+						      <tr>
                                 <td>@ViewBag.UserList[i].UserName</td>
 								<td>@ViewBag.UserList[i].Status</td>
            			            <td>@ViewBag.UserList[i].Permission</td>
 								<td>@ViewBag.UserList[i].RecommendUserName</td>
                             
                                 <td>@Html.ActionLink("修改用户", "UserInfo", "User", new { userName = @ViewBag.UserList[i].UserName,operate = "modify"}, new { @class = "btn btn-primary" })</td>
+					                </tr>
 						 }  
                                  
-                    </tr>
+    
                    
                 </tbody>
              </table>

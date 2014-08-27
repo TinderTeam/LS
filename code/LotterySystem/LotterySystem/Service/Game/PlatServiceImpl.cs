@@ -18,7 +18,7 @@ namespace LotterySystem.Service
         private static log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         RoomDao roomDao = DaoContext.getInstance().getRoomDao();
         GameDao gameDao = DaoContext.getInstance().getGameDao();
-        ConvertService converService = ServiceContext.getInstance().getConvertService();
+
         DoorDao doorDao = DaoContext.getInstance().getDoorDao();
         GamblingPartyDao gamblingPartyDao = DaoContext.getInstance().getGamblingPartyDao();
 
@@ -39,7 +39,7 @@ namespace LotterySystem.Service
             List<LotterySystem.Po.Game> gameList = gameDao.getAll();
             for (int i = 0; i < gameList.Count; i++)
             {
-                GameModel gameModel = converService.toGameModel(gameList[i]);
+                GameModel gameModel = ConventService.toGameModel(gameList[i]);
                 if (gameModel != null)
                 {
                     gameModelList.Add(gameModel);  
@@ -56,7 +56,7 @@ namespace LotterySystem.Service
         /// <returns></returns>
         public GameModel getGameByName(string gameName)
         {
-            GameModel gameModel = converService.toGameModel( gameDao.getGameByName(gameName));         
+            GameModel gameModel = ConventService.toGameModel(gameDao.getGameByName(gameName));         
             return gameModel;
         }
 
@@ -71,7 +71,7 @@ namespace LotterySystem.Service
             List<Room> roomList = roomDao.getRoomByGameNameAndStatus(gameName,RoomConstatns.STATUS_OPEN);
             for (int i = 0; i < roomList.Count; i++)
             {
-                RoomModel roomModel = converService.toRoomModel(roomList[i]);
+                RoomModel roomModel = ConventService.toRoomModel(roomList[i]);
                 roomModelList.Add(roomModel);
             }
             return roomModelList;
@@ -129,7 +129,7 @@ namespace LotterySystem.Service
         /// <returns></returns>
         public RoomModel getRoomByGameAndName(string gameName,string roomName)
         {
-            RoomModel room = converService.toRoomModel(roomDao.getRoomByGameAndRoom(gameName,roomName));
+            RoomModel room = ConventService.toRoomModel(roomDao.getRoomByGameAndRoom(gameName, roomName));
             return room;
         }
         
@@ -152,11 +152,11 @@ namespace LotterySystem.Service
             }
 
             //准备Po
-            Room room = converService.toRoom(form); //RoomPo
+            Room room = ConventService.toRoom(form); //RoomPo
             room.RoomHost = user.UserName;
             room.GameName = gameName;
             room.Status = RoomConstatns.STATUS_OPEN;
-            List<Door> doorList = converService.toDoor(form);
+            List<Door> doorList = ConventService.toDoor(form);
 
             //校验
             /*
