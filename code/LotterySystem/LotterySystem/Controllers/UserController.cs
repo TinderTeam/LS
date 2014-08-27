@@ -59,5 +59,35 @@ namespace LotterySystem.Controllers
         {
             return View();
         }
+        public ActionResult PasswordSet(string result)
+        {
+            ViewBag.Result = result;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ModifyLoginPassword(PasswordForm form)
+        {
+            UserModel user = (UserModel)Session["SystemUser"];
+            string result=userService.modifyLoginPassword(user, form);
+            if (SysConstants.SUCCESS.Equals(result))
+            {
+                return RedirectToAction("LogOff", "Login");
+            }
+            return RedirectToAction("PasswordSet", "User", new { msg = result });
+        }
+
+        [HttpPost]
+        public ActionResult ModifyPayPassword(PasswordForm form)
+        {
+            UserModel user = (UserModel)Session["SystemUser"];
+            string result = userService.modifyPayPassword(user, form);
+            if (SysConstants.SUCCESS.Equals(result))
+            {
+
+                return RedirectToAction("LogOff", "Login");
+            }
+
+            return RedirectToAction("PasswordSet", "User", new { msg = result});
+        }
     }
 }

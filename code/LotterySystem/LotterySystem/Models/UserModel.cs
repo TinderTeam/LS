@@ -127,4 +127,24 @@ namespace LotterySystem.Models
             set { userName = value; }
         }
     }
+
+    public class PasswordForm
+    {
+        private string password;
+
+   
+        private string newPassword;
+
+        public string NewPassword
+        {
+            get { return newPassword; }
+            set { newPassword = value; }
+        }
+
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
+        }
+    }
 }

@@ -57,5 +57,7 @@ namespace LotterySystem.Service
         bool CreateRoomCheck(UserModel user);
         List<UserModel> getUserList(String userName);
         UserModel getUserByName(String userName);
+        string modifyLoginPassword(UserModel user, PasswordForm form);
+        string modifyPayPassword(UserModel user, PasswordForm form);
     }
 }

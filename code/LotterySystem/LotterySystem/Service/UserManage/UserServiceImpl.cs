@@ -36,6 +36,33 @@ namespace LotterySystem.Service.UserManage
            return ConventService.toUserModel(user);
         }
 
-        
+        public string modifyLoginPassword(UserModel model, PasswordForm form)
+        {
+            User user = userDao.getSystemUserByName(model.UserName);
+            if (user.Password.Equals(form.Password))
+            {
+                user.Password = form.NewPassword;
+                userDao.updateUser(user);
+                return SysConstants.SUCCESS;
+            }
+            else
+            {
+                return UserConstants.PASSWORD_ERR;
+            }
+        }
+        public string modifyPayPassword(UserModel model, PasswordForm form)
+        {
+            User user = userDao.getSystemUserByName(model.UserName);
+            if (user.PayPassword.Equals(form.Password))
+            {
+                user.PayPassword = form.NewPassword;
+                userDao.updateUser(user);
+                return SysConstants.SUCCESS;
+            }
+            else
+            {
+                return UserConstants.PASSWORD_ERR;
+            }
+        }
     }
 }

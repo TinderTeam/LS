@@ -13,6 +13,7 @@ namespace LotterySystem.Models
         public static string STATUS_ACTIVE = "激活";
         public static string STATUS_FREEZE = "冻结";
         public static string STATUS_WAIT = "待审";
+        public static string PASSWORD_ERR = "密码错误";
     }
     public class RoomConstatns
     {
