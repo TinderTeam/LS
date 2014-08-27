@@ -13,7 +13,7 @@ namespace LotterySystem.Dao
         List<Room> getRoomByGame(string gameName);
         List<Room> getRoomListByGameAndHoster(string gameName, String hoster);
 
-        Room getRoomByName(string roomName);
+        Room getRoomByGameAndRoom(string gameName,string roomName);
         void createRoom(Room room);
         void deleteRoomByRoomName(String roomName);
         void updateRoom(Room room);

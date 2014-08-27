@@ -19,9 +19,9 @@ namespace LotterySystem.Service
         ConvertService converService = ServiceContext.getInstance().getConvertService();
         DoorDao doorDao = DaoContext.getInstance().getDoorDao();
         GamblingPartyDao gamblingPartyDao = DaoContext.getInstance().getGamblingPartyDao();
-        
 
-        ///GamblingPartyDao gamblingPartyDao = DaoContext.getInstance().getGamblingPartyDao();
+
+      
 
         /// <summary>
         /// 获得游戏列表
@@ -122,9 +122,9 @@ namespace LotterySystem.Service
         /// </summary>
         /// <param name="roomName"></param>
         /// <returns></returns>
-        public RoomModel getRoomByName(string roomName)
+        public RoomModel getRoomByGameAndName(string gameName,string roomName)
         {
-            RoomModel room = converService.toRoomModel(roomDao.getRoomByName(roomName));
+            RoomModel room = converService.toRoomModel(roomDao.getRoomByGameAndRoom(gameName,roomName));
             return room;
         }
         
@@ -157,11 +157,39 @@ namespace LotterySystem.Service
             /*
              * TODO
              */
-            roomDao.createRoom(room);
-
-            return SysConstants.SUCCESS;
+            string result=checkRoomInfo(room);
+            if (result.Equals(SysConstants.SUCCESS))
+            {
+                roomDao.createRoom(room);
+            }
+            return result;
         }
 
-     
+        /// <summary>
+        /// 
+        /// 修改房间信息
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        public string editRoomInfo(RoomForm form)
+        {
+            Room room = converService.toRoom(form); //RoomPo
+            string result = checkRoomInfo(room);
+            if (result.Equals(SysConstants.SUCCESS))
+            {
+                roomDao.updateRoom(room);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 校验RoomInfo是否合法
+        /// </summary>
+        /// <param name="?"></param>
+        /// <returns></returns>
+        private string checkRoomInfo(Room room)
+        {
+            return SysConstants.SUCCESS;
+        }
     }
 }

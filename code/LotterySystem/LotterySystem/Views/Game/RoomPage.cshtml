@@ -33,7 +33,7 @@
     <div class="col-lg-4">
         <div id="right1"  class="pull-right">
             
-             @Html.ActionLink("创建房间", "NewRoom", "Game", null, new { @class = "btn btn-success" })
+             @Html.ActionLink("创建房间", "RoomEdit", "Game", new { pageType="create" , roomName=""}, new { @class = "btn btn-success" })
         </div>
 
         <div id="right2">

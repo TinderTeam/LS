@@ -47,7 +47,7 @@
                             <td>
                                 @if (ViewBag.RoomList[i].RoomHost.Equals(user.UserName))
                                 {   	
-						            @Html.ActionLink("房间管理", "RoomEdit", "Game", null,  new { @class = "btn btn-primary" })
+						            @Html.ActionLink("房间管理", "RoomEdit", "Game", new { pageType="edit" ,roomName = @ViewBag.RoomList[i].RoomName }, new { @class = "btn btn-primary" })
                                 }
                                 else
                                 {

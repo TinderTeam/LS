@@ -15,9 +15,41 @@ namespace LotterySystem.Dao
     {
         private static log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public Room getRoomByName(String roomName)
+
+
+        public Room getRoomByGameAndRoom(string gameName, string roomName)
         {
-            return null;
+            Room room = new Room();
+            ISession session = null;
+            try
+            {
+                session = SessionManager.getInstance().GetSession();
+                ITransaction tx = session.BeginTransaction();
+
+                ICriteria criteria = session.CreateCriteria<Room>();
+
+                criteria.Add(Restrictions.Eq("GameName", gameName));
+                criteria.Add(Restrictions.Eq("RoomName", roomName));
+
+                room = (Room)criteria.UniqueResult();
+
+                tx.Commit();
+
+            }
+            catch (System.Exception ex)
+            {
+
+                log.Error("search user error", ex);
+                throw ex;
+            }
+            finally
+            {
+                if (null != session)
+                {
+                    session.Close();
+                }
+            }
+            return room;
         }
 
 

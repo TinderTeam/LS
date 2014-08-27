@@ -32,27 +32,86 @@ namespace LotterySystem.Controllers
         /// 2.检查当前游戏房间总数是否到上限
         /// </summary>
         /// <returns></returns>
+        
         [HttpPost]
-        public ActionResult CreateRoom(RoomForm model, string returnUrl) 
+        public ActionResult RoomEdit(RoomForm model, string returnUrl, string pageType) 
         {
             UserModel user = (UserModel)Session["SystemUser"];
             GameModel game = (GameModel)Session["CurrentGame"];
+
+            @ViewBag.User = user;
+            @ViewBag.Game = game;
+            @ViewBag.PageType = pageType;
+
             if (ModelState.IsValid)
-            {            
-                //创建房间
-                String result = platService.createRoom(game.GameName, user, model);
-                if (result.Equals(SysConstants.SUCCESS))
+            {
+                if (pageType.Equals(RoomConstatns.PAGE_CREATE))
                 {
-                      return RedirectToAction("RoomPage", "Game");
-                   // return RedirectToAction("TablePage", "Game");
+                    //创建房间
+                    String result = platService.createRoom(game.GameName, user, model);
+                    if (result.Equals(SysConstants.SUCCESS))
+                    {
+                        return RedirectToAction("RoomPage", "Game");
+                        // return RedirectToAction("TablePage", "Game");
+                    }
+                    else
+                    {
+                        @ViewBag.Msg = result;
+                        @ViewBag.Model = model;
+                        return View();
+                    }
                 }
-                else
+                else if (pageType.Equals(RoomConstatns.PAGE_EDIT))
                 {
-                    @ViewBag.Msg = result;
-                    @ViewBag.Model = model;              
+                    //修改房间内容
+                    string result = platService.editRoomInfo(model);
+                    if (result.Equals(SysConstants.SUCCESS))
+                    {
+                        @ViewBag.Msg = RoomConstatns.CREATE_ROOM_SUCCESS;
+                        return View();
+
+                    }else{
+                        @ViewBag.Msg = result;
+                        return View();
+                    }
                 }
+                    
             }
-            return RedirectToAction("NewRoom", "Game");
+            return RedirectToAction("GameManage", "Game");
+        }
+
+        /// <summary>
+        /// 房间管理
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult RoomEdit(string PageType, string roomName)
+        {
+            UserModel user = (UserModel)Session["SystemUser"];
+            GameModel game = (GameModel)Session["CurrentGame"];
+            @ViewBag.User = user;
+            @ViewBag.Game = game;
+            @ViewBag.PageType = PageType;
+            if(PageType!=null){
+                if (PageType.Equals(RoomConstatns.PAGE_CREATE))
+                {
+                    if (userService.CreateRoomCheck(user))
+                    {
+                        return View();
+                    }
+                    else
+                    {
+                        @ViewBag.Msg = "无用户创建权限";
+                        return RedirectToAction("Hall", "Game");
+                    }
+                }
+                else if (PageType.Equals(RoomConstatns.PAGE_EDIT))
+                {
+                    platService.getAllTableByGameAndRoom(game.GameName, roomName);
+                    return View();
+                }               
+            }
+            //TODO
+            return RedirectToAction("Index", "Home");
         }
 
         /// <summary>
@@ -63,9 +122,12 @@ namespace LotterySystem.Controllers
         public ActionResult NewRoom()
         {
             UserModel user = (UserModel)Session["SystemUser"];
+            GameModel game= (GameModel)Session["CurrentGame"];
             //检查用户房间管理权限
             if (userService.CreateRoomCheck(user))
             {
+                @ViewBag.User = user;
+                @ViewBag.Game = game;
                 return View();
             }
             else
@@ -134,20 +196,21 @@ namespace LotterySystem.Controllers
 
             //获取Session信息
             UserModel user = (UserModel)Session["SystemUser"];
-            RoomModel game;
+            GameModel game = (GameModel)Session["CurrentGame"];
+            RoomModel room;
             string roomNameArg;
             //将Game放入Session
             if (roomName != null)
             {
 
-                game = platService.getRoomByName(roomName);
-                Session["CurrentRoom"] = game;
+                room = platService.getRoomByGameAndName(game.GameName,roomName);
+                Session["CurrentRoom"] = room;
                 roomNameArg = roomName;
             }
             else
             {
-                game = (RoomModel)Session["CurrentGame"];
-                roomNameArg = game.RoomName;
+                room = (RoomModel)Session["CurrentGame"];
+                roomNameArg = room.RoomName;
             }
             //将Room放入Session
 
@@ -170,10 +233,7 @@ namespace LotterySystem.Controllers
         }
 
 
-        public ActionResult RoomEdit()
-        {
-            return View();
-        }
+
         public ActionResult Game()
         {
             return View();
@@ -188,10 +248,7 @@ namespace LotterySystem.Controllers
             return RedirectToAction("Game", "Game");
         }
 
-        public ActionResult GameManage()
-        {
-            return View();
-        }
+
 
 
         public ActionResult GameEdit()
