@@ -60,38 +60,16 @@
 								</tr>
 
                               
-								    <tr >  
-								      <td>A</td>
-								      <td>2014-08-22 17:30</td>
-								      <td>+500</td>
-								      <td>2700</td>
-								      <td>庄胜</td>
-                                      <td>000021</td>
-                                      <td>第2轮</td>
-                                      <td>B</td>
-								    </tr>
-								    <tr >
-								      
-								      <td>A</td>
-								      <td>2014-08-22 17:25</td>
-								      <td>-200</td>
-								      <td>2200</td>
-								      <td>庄负</td>
-                                      <td>000021</td>
-                                      <td>第1轮</td>
-                                      <td>B</td>
-								    </tr>
-								    <tr >
-								      
-								      <td>A</td>
-								      <td>2014-08-21 12:35</td>
-								      <td>+100</td>
-								      <td>2400</td>
-								      <td>还款</td>
-                                      <td></td>
-                                      <td></td>
-                                      <td>C</td>
-								    </tr>                           
+								   @for (var i = 0; i < @ViewBag.LoginLogListCount; i++)
+						            { 
+                                       <tr >
+                                      <td>@ViewBag.LoginLogList[i].UserName</td>
+								      <td>@ViewBag.LoginLogList[i].LoginTime</td>
+								      <td>@ViewBag.LoginLogList[i].Result</td>
+								      <td>@ViewBag.LoginLogList[i].Os</td>
+								      <td>@ViewBag.LoginLogList[i].Browser</td>
+	                                   </tr>	
+ 							         }                       
 							</table>
 						</div>
 						

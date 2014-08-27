@@ -31,5 +31,16 @@ namespace LotterySystem.Service
 
 
         }
+
+        public List<ScoreLog> getScoreLogList()
+        {
+            List<ScoreLog> logList = DaoContext.getInstance().getScoreLogDao().getAll();
+            return logList;
+        }
+
+        public void recordScoreLog(ScoreLog log)
+        {
+
+        }
     }
 }

@@ -195,11 +195,13 @@
     <Compile Include="Dao\Impl\RoomDaoImpl.cs" />
     <Compile Include="Dao\Impl\SysDaoImpl.cs" />
     <Compile Include="Dao\Impl\UserDaoImpl.cs" />
+    <Compile Include="Dao\Impl\ScoreLogDaoImpl.cs" />
     <Compile Include="Dao\LoginLogDao.cs" />
     <Compile Include="Dao\RoomDao.cs" />
     <Compile Include="Dao\SessionManager.cs" />
     <Compile Include="Dao\SysDao.cs" />
     <Compile Include="Dao\UserDao.cs" />
+    <Compile Include="Dao\ScoreLogDao.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -215,6 +217,7 @@
     <Compile Include="Po\Account.cs" />
     <Compile Include="Po\BetRec.cs" />
     <Compile Include="Po\Choice.cs" />
+    <Compile Include="Po\ScoreLog.cs" />
     <Compile Include="Po\Door.cs" />
     <Compile Include="Po\GamblingParty.cs" />
     <Compile Include="Po\Game.cs" />
@@ -446,7 +449,7 @@
     <Content Include="Views\Game\Hall.cshtml" />
     <Content Include="Views\Game\Cbb\TableList.cshtml" />
     <Content Include="Views\Game\Game.cshtml" />
-    <Content Include="Views\User\UserAccount.cshtml" />
+    <Content Include="Views\Log\ScoreLog.cshtml" />
     <Content Include="Views\Log\LoginLog.cshtml" />
     <Content Include="Views\Log\UserGameLog.cshtml" />
     <Content Include="Views\Home\IndexInfo.cshtml" />

@@ -80,7 +80,7 @@ namespace LotterySystem.Dao
                 session = SessionManager.getInstance().GetSession();
                 ITransaction tx = session.BeginTransaction();
 
-                session.SaveOrUpdate(user);
+                session.Update(user);
 
                 tx.Commit();
 

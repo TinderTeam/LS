@@ -16,8 +16,8 @@ namespace LotterySystem.Dao
         private GameDao gameDao;
         private DoorDao doorDao;
         private GamblingPartyDao gamblingPartyDao;
-        private LoginLogDao loginLogDao; 
-
+        private LoginLogDao loginLogDao;
+        private ScoreLogDao scoreLogDao;
         public static DaoContext getInstance()
         {
 
@@ -108,6 +108,16 @@ namespace LotterySystem.Dao
                 loginLogDao = new LoginLogDaoImpl();
             }
             return loginLogDao;
+        }
+
+        public ScoreLogDao getScoreLogDao()
+        {
+
+            if (scoreLogDao == null)
+            {
+                scoreLogDao = new ScoreLogDaoImpl();
+            }
+            return scoreLogDao;
         }
     }
 }

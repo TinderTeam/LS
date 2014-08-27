@@ -54,6 +54,10 @@ namespace LotterySystem.Service
     {
         List<LoginLog> getLoginLogList();
         void recordLoginLog(String userName,String result,String os, String browser);
+
+        List<ScoreLog> getScoreLogList();
+        void recordScoreLog(ScoreLog log);
+
     }
 
 
