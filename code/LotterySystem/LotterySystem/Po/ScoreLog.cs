@@ -15,7 +15,62 @@ namespace LotterySystem.Po
         private String mode;
         private long gamblingPartyID;
         private long roundID;
-        private String otherName;     
+        private String otherName;
+
+        public long LogID
+        {
+            get { return logID; }
+            set { logID = value; }
+        }
+
+        public String UserName
+        {
+            get { return userName; }
+            set { userName = value; }
+        }
+        public DateTime RecordTime
+        {
+            get { return recordTime; }
+            set { recordTime = value; }
+        }
+
+        public int Value
+        {
+            get { return this.value; }
+            set { this.value = value; }
+        }
+
+        public int Balance
+        {
+            get { return balance; }
+            set { balance = value; }
+        }
+
+        public String Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
+
+        public long GamblingPartyID
+        {
+            get { return gamblingPartyID; }
+            set { gamblingPartyID = value; }
+        }
+
+        public long RoundID
+        {
+            get { return roundID; }
+            set { roundID = value; }
+        }
+
+
+
+        public String OtherName
+        {
+            get { return otherName; }
+            set { otherName = value; }
+        }     
 
     }
 }

@@ -5,6 +5,7 @@ using System.Web;
 using LotterySystem.Service.Login;
 using LotterySystem.Service.UserManage;
 using LotterySystem.Service.GameManage;
+using LotterySystem.Service.SysInfo;
 namespace LotterySystem.Service
 {
     public class ServiceContext
@@ -18,6 +19,7 @@ namespace LotterySystem.Service
         private UserService userService;
         private LogService logService;
         private GameManageService gameManageService;
+        private SysInfoService sysInfoService;
         private ServiceContext()
         {
 
@@ -84,6 +86,16 @@ namespace LotterySystem.Service
                 logService = new LogServiceImpl();
             }
             return logService;
+        }
+
+        public SysInfoService getSysInfoService()
+        {
+
+            if (sysInfoService == null)
+            {
+                sysInfoService = new SysInfoServiceImpl();
+            }
+            return sysInfoService;
         }
 
 

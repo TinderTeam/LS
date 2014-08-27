@@ -25,7 +25,7 @@ namespace LotterySystem.Service.Login
         /// <returns></returns>
         public bool LoginCheck()
         {
-            Sys sysInfo = sysDao.getall();
+            Sys sysInfo = sysDao.getFirst();
             if(null == sysInfo)
             {
                 return false;
@@ -96,16 +96,17 @@ namespace LotterySystem.Service.Login
 
         public string register(UserRigistForm model)
         {
-            int sysRigisterType =sysDao.getRegistType();
+            string sysRigisterType = sysDao.getFirst().RegistType;
             User user = ConventService.toUser(model);
 
-            switch(sysRigisterType){
-                case 0:
+            switch(sysRigisterType)
+            {
+                case SysConstants.REG_TYPE_0:
                     return UserConstants.REGIST_NOT_OPEN;
-                case 1:
+                case SysConstants.REG_TYPE_1:
                     user.Status = UserConstants.STATUS_WAIT;
                     break;
-                case 2:
+                case SysConstants.REG_TYPE_2:
                     user.Status = UserConstants.STATUS_ACTIVE;
                     break;
                 default:

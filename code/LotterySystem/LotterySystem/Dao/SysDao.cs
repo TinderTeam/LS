@@ -10,7 +10,7 @@ namespace LotterySystem.Dao
 {
     public interface SysDao
     {
-        Sys getall();
+        Sys getFirst();
         void updateSys(Sys sysInfo);
 
     }

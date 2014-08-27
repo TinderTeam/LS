@@ -13,7 +13,7 @@ namespace LotterySystem.Dao
     public class SysDaoImpl : SysDao
     {
         private static log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);       
-        public Sys getall()
+        public Sys getFirst()
         {
             Sys sys = new Sys();
             ISession session = null;

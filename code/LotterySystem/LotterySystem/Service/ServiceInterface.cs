@@ -72,4 +72,10 @@ namespace LotterySystem.Service
         string modifyUser(UserForm form);
         string createNewUser(UserForm form);
     }
+
+    public interface SysInfoService
+    {
+        SystemInfoModel loadSysInfo();
+        void saveSysInfo(SystemInfoModel sysInfo);
+    }
 }

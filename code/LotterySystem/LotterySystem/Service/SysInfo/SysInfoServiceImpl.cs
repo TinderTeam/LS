@@ -6,7 +6,7 @@ using LotterySystem.Models;
 using LotterySystem.Po;
 using LotterySystem.Dao;
 using LotterySystem.Service;
-
+using LotterySystem.Service.SysInfo;
 namespace LotterySystem.Service.SysInfo
 {
   
@@ -15,8 +15,8 @@ namespace LotterySystem.Service.SysInfo
         SysDao sysDao = DaoContext.getInstance().getSysDao();
         public SystemInfoModel loadSysInfo()
        {
-           Sys sysInfo = sysDao.getall();
-           return ConventServiceImpl.toSysInfoModel(sysInfo);
+           Sys sysInfo = sysDao.getFirst();
+           return ConventService.toSysInfoModel(sysInfo);
        }
             
        public void saveSysInfo(SystemInfoModel sysInfo)

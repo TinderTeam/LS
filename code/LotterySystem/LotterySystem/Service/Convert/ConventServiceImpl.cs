@@ -146,5 +146,13 @@ namespace LotterySystem.Service
             }
             return userModelList;
         }
+        public static SystemInfoModel toSysInfoModel(Sys sysInfo)
+        {
+            SystemInfoModel systemInfoModel = new SystemInfoModel();
+            systemInfoModel.MaxPlayer = sysInfo.MaxPlayer;
+            systemInfoModel.RegistType = sysInfo.RegistType;
+
+            return systemInfoModel;
+        }
     }
 }

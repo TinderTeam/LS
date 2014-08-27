@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" >
+  <class name="LotterySystem.Po.ScoreLog,LotterySystem" table="score_log"  >
+
+    
+ 
+    <id name="LogID" column ="LOG_ID" >
+      <generator class ="increment"/>
+    </id>
+
+    <property name="UserName" type="string">
+      <column name="USER_NAME" length="50" unique="true"/>
+    </property>
+    
+    <property name="RecordTime" type="recordTime">
+      <column name="RECORD_TIME" length="50" />
+    </property>
+    
+    <property name="Value" type="int">
+      <column name="VALUE" length="50"/>
+    </property>
+    
+    <property name="Balance" type="int">
+      <column name="BALANCE" length="50"/>
+    </property>  
+    
+    <property name="Mode" type="string">
+      <column name="MODE" length="50"/>
+    </property>
+
+    <property name="GamblingPartyID" type="long">
+      <column name="GAMBLING_PARTY_ID" length="50"/>
+    </property>
+
+    <property name="RoundID" type="long">
+      <column name="ROUND_ID" length="50"/>
+    </property>
+
+
+    <property name="OtherName" type="string">
+      <column name="OTHER_NAME" length="50"/>
+    </property>
+
+
+
+
+  </class>
+</hibernate-mapping>

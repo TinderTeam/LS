@@ -8,6 +8,23 @@ namespace LotterySystem.Models
 {
     public class SystemInfoModel
     {
+        private int maxPlayer;
+
+
+        private string registType;
+
+        public int MaxPlayer
+        {
+            get { return maxPlayer; }
+            set { maxPlayer = value; }
+        }
+
+        public string RegistType
+        {
+            get { return registType; }
+            set { registType = value; }
+        }
+
     }
 
     public class GameModel
