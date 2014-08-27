@@ -55,5 +55,6 @@ namespace LotterySystem.Service
     {
         bool CreateRoomCheck(UserModel user);
         List<UserModel> getUserList(String userName);
+        UserModel getUserByName(String userName);
     }
 }

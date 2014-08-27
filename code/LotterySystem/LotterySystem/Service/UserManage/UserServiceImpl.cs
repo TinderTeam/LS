@@ -25,6 +25,16 @@ namespace LotterySystem.Service.UserManage
 
             return ConventServiceImpl.toUserModelList(userList);
         }
+        public UserModel getUserByName(String userName)
+        {
+           User user =  userDao.getSystemUserByName(userName);
+           if (null == user)
+           {
+               log.Error("can not get the user by " + userName);
+               return null;
+           }
+           return ConventServiceImpl.toUserModel(user);
+        }
 
         
     }

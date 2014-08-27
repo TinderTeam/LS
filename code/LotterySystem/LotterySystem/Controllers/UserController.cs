@@ -23,14 +23,21 @@ namespace LotterySystem.Controllers
         {
             return View();
         }
-        public ActionResult UserInfo()
+        public ActionResult UserInfo(String userName,String operate)
         {
+            UserModel user = userService.getUserByName(userName);
+            if(null == user)
+            {
+                user = new UserModel();
+            }
+            ViewBag.User = user;
+            ViewBag.Operate = operate;
             return View();
         }
 
-        public ActionResult UserManage()
+        public ActionResult UserManage(String userName)
         {
-            List<UserModel> userList =  userService.getUserList("");
+            List<UserModel> userList = userService.getUserList(userName);
             ViewBag.UserList = userList;
             ViewBag.UserListCount = userList.Count;
                  

@@ -207,6 +207,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Constants\Constants.cs" />
     <Compile Include="Models\GameModel.cs" />
+    <Compile Include="Models\LoginLogModel.cs" />
     <Compile Include="Models\RoomModel.cs" />
     <Compile Include="Models\TabelModel.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -438,7 +439,7 @@
     <Content Include="Views\Login\Manager.cshtml" />
     <Content Include="Views\User\PasswordSet.cshtml" />
     <Content Include="Views\Cbb\Menu.cshtml" />
-    <Content Include="Views\User\UserInfo.cshtml" />
+    <Content Include="Views\User\UserPassword.cshtml" />
     <Content Include="Views\Cbb\Footer.cshtml" />
     <Content Include="Views\Cbb\Ad.cshtml" />
     <Content Include="Views\Game\Hall.cshtml" />
@@ -464,7 +465,7 @@
     <Content Include="Views\Game\NewGame.cshtml" />
     <Content Include="Views\Game\GameEdit.cshtml" />
     <Content Include="Views\User\AccountBorrow.cshtml" />
-    <Content Include="Views\User\UserEdit.cshtml" />
+    <Content Include="Views\User\UserInfo.cshtml" />
     <Content Include="Views\Game\TablePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
