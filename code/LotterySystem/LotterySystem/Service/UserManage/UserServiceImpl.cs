@@ -64,5 +64,29 @@ namespace LotterySystem.Service.UserManage
                 return UserConstants.PASSWORD_ERR;
             }
         }
+
+        public string modifyUser(UserForm model)
+        {
+            User user = userDao.getSystemUserByName(model.UserName);
+            user.Password = model.Password;
+            user.PayPassword = model.PayPassword;
+            user.RecommendUserName = model.RecommendUserName;
+            user.Status = model.Status;
+            
+            userDao.updateUser(user);
+            return SysConstants.SUCCESS;          
+        }
+        public string createNewUser(UserForm model)
+        {
+            User user = new User();
+            user.UserName = model.UserName;
+            user.Password = model.Password;
+            user.PayPassword = model.PayPassword;
+            user.RecommendUserName = model.RecommendUserName;
+            user.Status = model.Status;
+            userDao.createUser(user);
+
+            return SysConstants.SUCCESS;  
+        }
     }
 }

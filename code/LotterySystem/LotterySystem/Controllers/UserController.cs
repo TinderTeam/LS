@@ -89,5 +89,26 @@ namespace LotterySystem.Controllers
 
             return RedirectToAction("PasswordSet", "User", new { msg = result});
         }
+
+        [HttpPost]
+        public ActionResult ModifyUser(UserForm form)
+        {
+            string result;
+            UserModel modelUser = userService.getUserByName(form.UserName);
+            if (modelUser != null)
+            {
+                result=userService.modifyUser( form);
+            }else{
+                result=userService.createNewUser( form);
+            }
+
+            if (SysConstants.SUCCESS.Equals(result))
+            {
+                return RedirectToAction("UserManage", "User");
+            }
+
+            return RedirectToAction("UserInfo", "User", new { msg = result });
+        }
+
     }
 }

@@ -123,6 +123,17 @@ namespace LotterySystem.Service
             return user;
 
         }
+
+        public static User toUser(UserForm model)
+        {
+            User user = new User();
+            user.Password = model.Password;
+            user.PayPassword = model.PayPassword;
+            user.RecommendUserName = model.RecommendUserName;
+            user.Status = model.Status;
+            return user;
+
+        }
         public static List<UserModel> toUserModelList(List<User> userList)
         {
             List<UserModel> userModelList = new List<UserModel>();
@@ -132,5 +143,6 @@ namespace LotterySystem.Service
             }
             return userModelList;
         }
+
     }
 }
