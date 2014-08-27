@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" >
+  <class name="LotterySystem.Po.Sys,LotterySystem" table="sys"  >
+
+    <id name="RegistType" column ="REGIST_TYPE" >
+
+    </id>
+    
+    <property name="MaxPlayer" type="int">
+      <column name="MAX_PLAYER" length="50"/>
+    </property>
+
+
+
+  </class>
+</hibernate-mapping>

@@ -100,10 +100,10 @@ namespace LotterySystem.Test.Stub
             if (sys == null)
             {
                 sys = new Sys();
-                sys.Browser = "";
+                
                 sys.MaxPlayer = 10;
-                sys.Os = "";
-                sys.RegistType = 2;
+               
+                sys.RegistType = "方式2";
             }
             return sys;
         }

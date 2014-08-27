@@ -15,26 +15,50 @@
 				<div class="panel-heading">系统管理</div>
 				<div class="panel-body" >
 					<div class="table-responsive">
+                       @using (Html.BeginForm("modifySysInfo", "Home", FormMethod.Post))
+                       {
 						<div class="input-group">	
 							<span class="input-group-addon">修改最大在线人数</span>
-							<input type="text" class="form-control" placeholder="4000">
+							<input type="text" name="maxPlayer" class="form-control" value="@ViewBag.SysInfo.MaxPlayer">
 						</div>
 								    
  						<br/>		    
 						<div class="input-group">	      
 							<span class="input-group-addon">修改用户注册方式</span>			     
 							<div class="btn-group">
-                            <select class="btn btn-default dropdown-toggle"data-toggle="dropdown" >
-                            <option value="" selected>选择方式</option>
-                            <option value="">方式1</option>
-                            <option value="">方式2</option>
+                           
+
+                             <select class="btn btn-default dropdown-toggle" name="registType">
+                                @if("方式0".Equals(@ViewBag.SysInfo.RegistType))
+                                {
+                                   <option value="方式0" selected >方式0</option>
+                                }
+                                else
+                                {
+                                   <option value="方式0">方式0</option>
+                                } 
+
+                                @if ("方式1".Equals(@ViewBag.SysInfo.RegistType))
+                                {
+                                   <option value="方式1" selected >方式1</option>
+                                }else{
+                                   <option value="方式1">方式1</option>
+                                }
+                                @if ("方式2".Equals(@ViewBag.SysInfo.RegistType))
+                                {
+                                   <option value="方式2" selected >方式2</option>
+                                }
+                                else
+                                {
+                                   <option value="方式2">方式2</option>
+                                }
                             </select>
 							</div>
 						</div>	
 						<br/>						
 						<button   class="btn btn-primary" type="submit">保存</button>
                         <input type="button"  onclick="javascript: history.back(-1);" value="取消" class="btn btn-default">
-
+                      }
 				</div>
 				</div>
 			</div>

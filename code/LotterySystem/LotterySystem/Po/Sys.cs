@@ -7,34 +7,23 @@ namespace LotterySystem.Po
 {
     public class Sys
     {
-        private long maxPlayer;
-        private String os;
-        private String browser;
-        private int registType;
+        private int maxPlayer;
 
-        public long MaxPlayer
+        private string registType;
+
+        public  virtual int MaxPlayer
         {
             get { return maxPlayer; }
             set { maxPlayer = value; }
         }
 
-        public String Os
-        {
-            get { return os; }
-            set { os = value; }
-        }
-
-        public String Browser
-        {
-            get { return browser; }
-            set { browser = value; }
-        }
-  
-        public int RegistType
+        public virtual string RegistType
         {
             get { return registType; }
             set { registType = value; }
         }
+
+        
 
 
     }

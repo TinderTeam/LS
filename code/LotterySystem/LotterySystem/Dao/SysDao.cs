@@ -3,21 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using LotterySystem.Po;
+using LotterySystem.Test.Stub;
+using NHibernate;
 
 namespace LotterySystem.Dao
 {
     public interface SysDao
     {
-        long getMaxPlayer();
-        void setMaxPlayer(long i);
+        Sys getall();
+        void updateSys(Sys sysInfo);
 
-        String getOS();
-        void setOS(String os);
-
-        String getBorowser();
-        void setBorowser(String borowser);
-
-        int getRegistType();
-        void setRegistType(int type);
     }
 }

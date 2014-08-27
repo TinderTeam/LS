@@ -15,7 +15,8 @@ namespace LotterySystem.Service.Login
         UserDao userDao = DaoContext.getInstance().getUserDao();
         AccountDao accountDao = DaoContext.getInstance().getAccountDao();
         SysDao sysDao = DaoContext.getInstance().getSysDao();
-       
+
+
 
         /// <summary>
         /// 
@@ -24,7 +25,13 @@ namespace LotterySystem.Service.Login
         /// <returns></returns>
         public bool LoginCheck()
         {
-            long getMaxPlayer = sysDao.getMaxPlayer();
+            Sys sysInfo = sysDao.getall();
+            if(null == sysInfo)
+            {
+                return false;
+            }
+
+            long getMaxPlayer = sysInfo.MaxPlayer;
             //检查系统状态
             if (SysCatch.OnlinePlayerNum + 1 <= getMaxPlayer)
             {
@@ -59,7 +66,8 @@ namespace LotterySystem.Service.Login
                 log.Error("login failed, the user is not exist. user name is " + userName);
                 throw new SystemException("用户名或密码错误");
             }
-            if (!user.Password.Equals(password))
+            
+            if (null == user.Password || !user.Password.Equals(password))
             {
                 log.Error("login failed, the password is not right. user name is " + userName);
                 throw new SystemException("用户名或密码错误");

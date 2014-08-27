@@ -237,6 +237,7 @@
     <Compile Include="Service\ServiceInterface.cs" />
     <Compile Include="Service\ServiceContext.cs" />
     <Compile Include="Service\LogServiceImpl.cs" />
+    <Compile Include="Service\SysInfo\SysInfoServiceImpl.cs" />
     <Compile Include="Service\UserManage\UserServiceImpl.cs" />
     <Compile Include="Test\Stub\DBStub.cs" />
     <Compile Include="Test\Stub\Stub.cs" />
@@ -376,6 +377,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Po\LoginLog.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Po\Sys.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="Scripts\bootstrap.min.js" />
