@@ -205,8 +205,8 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Constants\Constants.cs" />
+    <Compile Include="Models\GameModel.cs" />
     <Compile Include="Models\RoomModel.cs" />
-    <Compile Include="Models\SystemInfoModel.cs" />
     <Compile Include="Models\TabelModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Po\Account.cs" />
@@ -230,12 +230,13 @@
     <Compile Include="Service\Login\LoginServiceImpl.cs" />
     <Compile Include="Service\ServiceInterface.cs" />
     <Compile Include="Service\ServiceContext.cs" />
-    <Compile Include="Service\User\UserServiceImpl.cs" />
+    <Compile Include="Service\UserManage\UserServiceImpl.cs" />
     <Compile Include="Test\Stub\DBStub.cs" />
     <Compile Include="Test\Stub\Stub.cs" />
     <Compile Include="Util\DataConvert.cs" />
     <Compile Include="Util\DateTimeServcie.cs" />
     <Compile Include="Util\RandomService.cs" />
+    <Compile Include="Util\ValidatorUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap\css\bootstrap-responsive.min.css" />

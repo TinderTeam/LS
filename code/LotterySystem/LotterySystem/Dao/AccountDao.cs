@@ -14,5 +14,6 @@ namespace LotterySystem.Dao
         void deleteAccountByUserName(String userName);
         void updateAccount(Account account);
 
+
     }
 }

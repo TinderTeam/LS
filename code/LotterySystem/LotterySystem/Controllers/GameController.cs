@@ -23,6 +23,7 @@ namespace LotterySystem.Controllers
         {
             log.Debug("Page: [Hall]");
             //验证用户
+
             ViewBag.GameList = platService.getGameList();
             ViewBag.GameListCount = platService.getGameList().Count;
             log.Debug("Page: [Hall] --- GameNumber = " + ViewBag.GameListCount);
@@ -219,6 +220,10 @@ namespace LotterySystem.Controllers
             return RedirectToAction("Game", "Game");
         }
 
+        public ActionResult GameManage()
+        {
+            return View();
+        }
         public ActionResult NewGame()
         {
             return RedirectToAction("Game", "Game");

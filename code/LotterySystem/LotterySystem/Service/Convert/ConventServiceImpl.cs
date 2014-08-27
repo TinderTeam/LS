@@ -102,5 +102,25 @@ namespace LotterySystem.Service
             }
             return doorList;
         }
+        public static UserModel toUserModel(User user)
+        {
+            UserModel userModel = new UserModel();
+            userModel.UserID = user.UserID;
+            userModel.UserName = user.UserName;
+            userModel.Permission = user.Permission;
+            userModel.Status = user.Status;
+            userModel.RecommendUserName = user.RecommendUserName;
+            return userModel;
+
+        }
+        public static List<UserModel> toUserModelList(List<User> userList)
+        {
+            List<UserModel> userModelList = new List<UserModel>();
+            for (int i = 0; i < userList.Count; i++)
+            {
+                userModelList.Add(toUserModel(userList[i]));
+            }
+            return userModelList;
+        }
     }
 }

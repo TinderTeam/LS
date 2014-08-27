@@ -13,10 +13,13 @@ namespace LotterySystem.Models
 {
     public class UserModel
     {
-        private String userID;
+        private int userID;
         private String userName;
         private String status;
         private String permission;
+        private String recommendUserName;
+
+
         private UserInforModel userInfor;
 
         public UserInforModel UserInfor
@@ -33,7 +36,7 @@ namespace LotterySystem.Models
         }
        
 
-        public String UserID
+        public int UserID
         {
             get { return userID; }
             set { userID = value; }
@@ -52,7 +55,11 @@ namespace LotterySystem.Models
             get { return status; }
             set { status = value; }
         }
-
+        public String RecommendUserName
+        {
+            get { return recommendUserName; }
+            set { recommendUserName = value; }
+        }
        
     }
     public class LoginModel

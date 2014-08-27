@@ -7,6 +7,7 @@ using NHibernate;
 using NHibernate.Cfg;
 using log4net;
 using NHibernate.Criterion;
+using LotterySystem.Util;
 
 namespace LotterySystem.Dao
 {
@@ -99,42 +100,85 @@ namespace LotterySystem.Dao
             }
 
         }
-           public User getSystemUserByName(string userName)
-           {
-               User sysUser = new User();
-               ISession session = null;
-               try
+               public User getSystemUserByName(string userName)
                {
-                   session = SessionManager.getInstance().GetSession();
-                   ITransaction tx = session.BeginTransaction();
+                   User sysUser = new User();
+                   ISession session = null;
+                   try
+                   {
+                       session = SessionManager.getInstance().GetSession();
+                       ITransaction tx = session.BeginTransaction();
 
-                   ICriteria criteria = session.CreateCriteria<User>();
+                       ICriteria criteria = session.CreateCriteria<User>();
 
                   
-                   criteria.Add(Restrictions.Eq("UserName", userName));
+                       criteria.Add(Restrictions.Eq("UserName", userName));
 
-                   sysUser =(User) criteria.UniqueResult();
+                       sysUser =(User) criteria.UniqueResult();
                    
-                   tx.Commit();
+                       tx.Commit();
 
-               }
-               catch (System.Exception ex)
-               {
-
-                   log.Error("search user error", ex);
-                   throw ex;
-               }
-               finally
-               {
-                   if (null != session)
-                   {
-                       session.Close();
                    }
-               }
-               return sysUser;
-           }
+                   catch (System.Exception ex)
+                   {
 
-          	
+                       log.Error("search user error", ex);
+                       throw ex;
+                   }
+                   finally
+                   {
+                       if (null != session)
+                       {
+                           session.Close();
+                       }
+                   }
+                   return sysUser;
+               }
+
+        public List<User> getSystemUserByFilter(string userName)
+        {
+            List<User> roomList = new List<User>();
+            ISession session = null;
+            try
+            {
+
+                session = SessionManager.getInstance().GetSession();
+                ITransaction tx = session.BeginTransaction();
+
+
+                ICriteria criteria = session.CreateCriteria<User>();
+                if (!ValidatorUtil.isEmpty(userName))
+                {
+                    criteria.Add(Restrictions.Like("UserName", "%"+userName+"%"));
+                }
+
+
+                var queryList = criteria.List<User>();
+                foreach (var result in queryList)
+                {
+                    roomList.Add(result);
+                }
+
+
+                tx.Commit();
+
+
+            }
+            catch (System.Exception ex)
+            {
+
+                log.Error("create user error", ex);
+                throw ex;
+            }
+            finally
+            {
+                if (null != session)
+                {
+                    session.Close();
+                }
+            }
+            return roomList;
+        }
 
 	
 

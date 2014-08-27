@@ -68,8 +68,7 @@
                 <thead>
                     <tr>
                             <th>用户名</th>
-                            <th>登录密码</th>
-                            <th>支付密码</th>
+ 
                             <th>状态</th>
                             <th>权限</th>
                             <th>推荐人</th>
@@ -79,32 +78,19 @@
                 </thead>
                 <tbody>
                     <tr>
-                            <th >A</th>
-                            <th >1234</th>
-                            <th >1234</th>
-                            <th>激活</th>
-                            <th>透支</th>
-                            <th >AAA</th>
-                            <th>@Html.ActionLink("修改用户", "UserEdit", "User", null, new { @class = "btn btn-primary" })</th>
+  
+						 @for (var i = 0; i < @ViewBag.UserListCount; i++)
+						 { 
+                                <td>@ViewBag.UserList[i].UserName</td>
+								<td>@ViewBag.UserList[i].Status</td>
+           			            <td>@ViewBag.UserList[i].Permission</td>
+								<td>@ViewBag.UserList[i].RecommendUserName</td>
+                            
+                                <td>@Html.ActionLink("修改用户", "UserEdit", "User", null, new { @class = "btn btn-primary" })</td>
+						 }  
+                                 
                     </tr>
-                    <tr>
-                            <th >B</th>
-                            <th >1234</th>
-                            <th >1234</th>
-                            <th>待审</th>
-                            <th>系统，用户</th>
-                            <th >BBB</th>
-                            <th><button  class="btn btn-primary" type="submit">修改用户</button></th>
-                    </tr>
-                    <tr>
-                            <th>C</th>
-                            <th >1234</th>
-                            <th >1234</th>
-                            <th>冻结</th>
-                            <th>积分</th>
-                            <th >CCC</th>
-                            <th><button  class="btn btn-primary" type="submit">修改用户</button></th>
-                    </tr>
+                   
                 </tbody>
              </table>
         </div>
