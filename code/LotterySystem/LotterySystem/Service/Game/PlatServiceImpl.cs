@@ -19,9 +19,7 @@ namespace LotterySystem.Service
         ConvertService converService = ServiceContext.getInstance().getConvertService();
         DoorDao doorDao = DaoContext.getInstance().getDoorDao();
         GamblingPartyDao gamblingPartyDao = DaoContext.getInstance().getGamblingPartyDao();
-
-
-      
+        
 
         /// <summary>
         /// 获得游戏列表

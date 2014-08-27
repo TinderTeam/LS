@@ -242,6 +242,14 @@ namespace LotterySystem.Controllers
         {
             return RedirectToAction("Game", "Game");
         }
+		public ActionResult GameManage()
+        {
+            //验证用户
+            ViewBag.GameList = platService.getGameList();
+            ViewBag.GameListCount = platService.getGameList().Count;
+            return View();             
+ 
+        }
 
         public ActionResult NewGame()
         {

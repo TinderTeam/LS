@@ -355,7 +355,13 @@
     <EmbeddedResource Include="Po\User.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Po\Game.hbm.xml">
+    <EmbeddedResource Include="Po\Room.hbm.xml">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+       <EmbeddedResource Include="Po\GamblingParty.hbm.xml">
+       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Po\Door.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="Scripts\bootstrap.min.js" />

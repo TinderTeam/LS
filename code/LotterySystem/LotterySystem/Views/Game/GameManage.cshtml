@@ -59,55 +59,24 @@
                                   								  
 								</tr>
                               
-								    <tr >
-								      
-								  <td>在线竞猜</td>
-								  <td>已开通</td>
-								  <td>XP/win7</td>
-								  <td>IE/火狐</td>
-								  <td>50%</td>
-								  <td>500</td>
-								  <td>1</td>
-								  <td>400</td>
-								  <td>20</td>
-								  <td>20</td>
-								  <td>20</td>
-								  <td> @Html.ActionLink("修改游戏", "GameEdit", "Game", null, new { @class = "btn btn-primary" })</td>
-								     							            
-								    </tr>
- 								    <tr >
-								      
-								  <td>十三水</td>
-								  <td>已开通</td>
-								  <td>XP/win7</td>
-								  <td>IE/火狐</td>
-								  <td>50%</td>
-								  <td>500</td>
-								  <td>1</td>
-								  <td>400</td>
-								  <td>20</td>
-								  <td>20</td>
-								  <td>20</td>
-								     							     
-                                  <td><button id="enter2" name="" class="btn btn-primary" type="submit">修改游戏</button></td>
-								    </tr>
-
-                                     <tr >
-								      
-								  <td>德州扑克</td>
-								  <td>已开通</td>
-								  <td>xp/win7</td>
-								  <td>IE/火狐</td>
-								  <td>50%</td>
-								  <td>500</td>
-								  <td>1</td>
-								  <td>400</td>
-								  <td>20</td>
-								  <td>20</td>
-								  <td>20</td>
-								     							     
-                                      <td><button id="enter3" name="" class="btn btn-primary" type="submit">修改游戏</button></td>
-								    </tr>                               
+							    <tr >
+								     @for (var i = 0; i < @ViewBag.GameListCount; i++)
+						            { 
+                                      <td>@ViewBag.GameList[i].GameName</td>
+								      <td>@ViewBag.GameList[i].gameStatus</td>
+								      <td>@ViewBag.GameList[i].os</td>
+								      <td>@ViewBag.GameList[i].browser</td>
+								      <td>@ViewBag.GameList[i].taxRate</td>
+								      <td>@ViewBag.GameList[i].allRoomLimit</td>
+								      <td>@ViewBag.GameList[i].onePersonRoomLimit</td>
+								      <td>@ViewBag.GameList[i].oneRoomTableLimit</td>
+								      <td>@ViewBag.GameList[i].oneTablePersonLimit</td>
+								      <td>@ViewBag.GameList[i].bankerSelectNumTimeLimit</td>
+								      <td>@ViewBag.GameList[i].playerSelectNumTimeLimit</td>
+								      <td>@Html.ActionLink("修改游戏", "GameEdit", "Game", null, new { @class = "btn btn-primary" })</td>
+							         }  
+                                </tr>							            
+								                        
 							</table>
 						</div>
 						

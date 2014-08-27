@@ -10,6 +10,8 @@ namespace LotterySystem.Service.Login
 {
     public class LoginServiceImpl : LoginService
     {
+        private static log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         UserDao userDao = DaoContext.getInstance().getUserDao();
         AccountDao accountDao = DaoContext.getInstance().getAccountDao();
         SysDao sysDao = DaoContext.getInstance().getSysDao();
@@ -45,13 +47,19 @@ namespace LotterySystem.Service.Login
         public bool Login(string userName, string password)
         {
             LotterySystem.Po.User user = userDao.getSystemUserByName(userName);
-            if (user.Password.Equals(password))
+            if (null == user)
             {
-                return true;
+                log.Error("login failed, the user is not exist. user name is " + userName);
+                return false;
+            }
+            if (!user.Password.Equals(password))
+            {
+                log.Error("login failed, the password is not right. user name is " + userName);
+                return false;
             }
             else
             {
-                return false;
+                return true;
             }
         }
 
@@ -69,7 +77,7 @@ namespace LotterySystem.Service.Login
             userModel.UserName = user.UserName;
             userModel.Status = user.Status;
             userModel.UserInfor = new UserInforModel();
-            userModel.UserInfor.Points = accountDao.getAccountByUserName(userName).AccountValue;
+            userModel.UserInfor.Points = user.Account;
             userModel.UserInfor.Position = UserConstants.IN_THE_HALL;
             return userModel;
         }

@@ -33,7 +33,10 @@
     <property name="RecommendUserName" type="string">
       <column name="RECOMMEND_USER_NAME" length="50"/>
     </property>
-
+    
+    <property name="Account" type="int">
+      <column name="ACCOUNT" length="50"/>
+    </property>
 
 
   </class>

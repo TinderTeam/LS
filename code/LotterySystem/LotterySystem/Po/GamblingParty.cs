@@ -16,37 +16,37 @@ namespace LotterySystem.Po
         private DateTime bankerStartTime;
         private DateTime bankerEndTime;
 
-        public long GamblingPartyID
+        public virtual long GamblingPartyID
         {
             get { return gamblingPartyID; }
             set { gamblingPartyID = value; }
         }
-        public String GameName
+        public virtual String GameName
         {
             get { return gameName; }
             set { gameName = value; }
         }
-        public String RoomName
+        public virtual String RoomName
         {
             get { return roomName; }
             set { roomName = value; }
         }
-        public int TableNum
+        public virtual int TableNum
         {
             get { return tableNum; }
             set { tableNum = value; }
         }
-        public String Banker
+        public virtual String Banker
         {
             get { return banker; }
             set { banker = value; }
         }
-        public DateTime BankerStartTime
+        public virtual DateTime BankerStartTime
         {
             get { return bankerStartTime; }
             set { bankerStartTime = value; }
         }
-        public DateTime BankerEndTime
+        public virtual DateTime BankerEndTime
         {
             get { return bankerEndTime; }
             set { bankerEndTime = value; }

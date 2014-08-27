@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" >
+  <class name="LotterySystem.Po.GamblingParty,LotterySystem" table="gambling_party" lazy="true" >
+
+
+    <id name="GamblingPartyID" column ="GAMBLING_PARTY_ID" >
+      <generator class ="increment"/>
+    </id>
+
+
+
+
+    <property name="GameName" type="string">
+      <column name="GAME_NAME" length="50"/>
+    </property>
+
+    <property name="RoomName" type="string">
+      <column name="ROOM_NAME" length="50"/>
+    </property>
+
+    <property name="TableNum" type="int">
+      <column name="TABLE_NUM" length="50"/>
+    </property>
+    
+    <property name="Banker" type="string">
+      <column name="BANKER" length="50"/>
+    </property>
+
+    <property name="BankerStartTime" type="DateTime">
+      <column name="BANKER_START_TIME" />
+    </property>
+
+    <property name="BankerEndTime" type="DateTime">
+      <column name="BANKER_END_TIME" />
+    </property>
+
+
+  </class>
+</hibernate-mapping>

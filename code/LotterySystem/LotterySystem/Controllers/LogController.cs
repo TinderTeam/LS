@@ -103,7 +103,9 @@ namespace LotterySystem.Controllers
         }
         public ActionResult Loginlog()
         {
-            return View();
+            //ViewBag.GameList = platService.getGameList();
+            //ViewBag.GameListCount = platService.getGameList().Count;
+            return View();     
         }
     }
 }

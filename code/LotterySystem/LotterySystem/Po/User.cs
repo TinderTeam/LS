@@ -20,6 +20,13 @@ namespace LotterySystem.Po
         private String permission;
         private String status;
         private String recommendUserName;
+        private int account;
+
+        public virtual int Account
+        {
+            get { return account; }
+            set { account = value; }
+        }
 
 
 
