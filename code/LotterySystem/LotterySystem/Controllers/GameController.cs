@@ -234,6 +234,7 @@ namespace LotterySystem.Controllers
         [HttpPost]
         public ActionResult modifyGame(GameModel game)
         {
+            String errorMsg = null;
             try
             {
                 ServiceContext.getInstance().getGameManageService().modifyGame(game);
@@ -243,14 +244,16 @@ namespace LotterySystem.Controllers
                 log.Error("modify game error, the game is "+game,ex);
             }
 
-            return RedirectToAction("GameManage", "Game");
+            return RedirectToAction("GameManage", "Game" ,new { msg = errorMsg} );
         }
 
-        public ActionResult GameManage()
+        public ActionResult GameManage(string msg)
         {
             List<GameModel> gameList = platService.getGameList();
             ViewBag.GameList = gameList;
             ViewBag.GameListCount = gameList.Count;
+
+            ViewBag.ErrorMsg = msg;
             return View();
         }
         public ActionResult NewGame()

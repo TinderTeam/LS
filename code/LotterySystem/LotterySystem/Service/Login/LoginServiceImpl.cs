@@ -5,6 +5,7 @@ using System.Web;
 using LotterySystem.Models;
 using LotterySystem.Dao;
 using LotterySystem.Po;
+using LotterySystem.Util;
 
 namespace LotterySystem.Service.Login
 {
@@ -61,6 +62,17 @@ namespace LotterySystem.Service.Login
 
 
             LotterySystem.Po.User user = userDao.getSystemUserByName(userName);
+
+            if (user.Status.Equals(UserConstants.STATUS_FREEZE))
+            {
+                throw new SystemException(ErrorMsgConst.USER_IS_FREEZE);
+            }
+
+            if (user.Status.Equals(UserConstants.STATUS_WAIT))
+            {
+                throw new SystemException(ErrorMsgConst.USER_IS_WAIT);
+            }
+
             if (null == user)
             {
                 log.Error("login failed, the user is not exist. user name is " + userName);
@@ -72,9 +84,10 @@ namespace LotterySystem.Service.Login
                 log.Error("login failed, the password is not right. user name is " + userName);
                 throw new SystemException("用户名或密码错误");
             }
+            SysCatch.OnlinePlayerNum++;
             
         }
-
+ 
         /// <summary>
         /// 获取登陆用户
         /// </summary>
@@ -102,9 +115,16 @@ namespace LotterySystem.Service.Login
             switch(sysRigisterType)
             {
                 case SysConstants.REG_TYPE_0:
-                    return UserConstants.REGIST_NOT_OPEN;
+                    throw new SystemException(ErrorMsgConst.REGIST_NOT_OPEN);
                 case SysConstants.REG_TYPE_1:
                     user.Status = UserConstants.STATUS_WAIT;
+                    User remUser  = userDao.getSystemUserByName(model.UserName);
+
+                    if (null == remUser)
+                    {
+                        log.Error("register failed.user name is " + user.UserName);
+                        throw new SystemException(ErrorMsgConst.REM_USER_IS_NOT_EXISTED);
+                    }
                     break;
                 case SysConstants.REG_TYPE_2:
                     user.Status = UserConstants.STATUS_ACTIVE;
@@ -116,7 +136,8 @@ namespace LotterySystem.Service.Login
             User userCheck = userDao.getSystemUserByName(model.UserName);
             if (userCheck != null)
             {
-                return UserConstants.USERNAME_EXIST;
+                log.Error("the name is existed. user name is " + model.UserName);
+               throw new SystemException(ErrorMsgConst.USERNAME_EXIST);
             }
             
             userDao.createUser(user);

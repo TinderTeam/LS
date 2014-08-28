@@ -95,23 +95,23 @@
                   <label class="col-sm-4  control-label font1">状态</label>
                    <div class="col-sm-8">
                             <select class="btn btn-default dropdown-toggle" name="status">
-                                @if ("开放".Equals(@ViewBag.User.Status))
+                                @if ("激活".Equals(@ViewBag.User.Status))
                                 {
                                    <option value="激活" selected >激活</option>
                                 }
                                 else
                                 {
-                                   <option value="激活">开放</option>
+                                   <option value="激活">激活</option>
                                 } 
-                                @if ("关闭".Equals(@ViewBag.User.Status))
+                                @if ("待审".Equals(@ViewBag.User.Status))
                                 {
-                                   <option value="关闭" selected >关闭</option>
+                                   <option value="待审" selected >待审</option>
                                 }
                                 else
                                 {
-                                   <option value="关闭">关闭</option>
+                                   <option value="待审">待审</option>
                                 }
-                                @if ("关闭".Equals(@ViewBag.User.Status))
+                                @if ("冻结".Equals(@ViewBag.User.Status))
                                 {
                                    <option value="冻结" selected >冻结</option>
                                 }

@@ -52,7 +52,17 @@ namespace LotterySystem.Controllers
         [HttpPost]
         public ActionResult Register(UserRigistForm model)
         {
-            string result = loginSerivce.register(model);
+            try
+            {
+                string result = loginSerivce.register(model);
+            }
+            catch (Exception ex)
+            {
+                log.Error("register failed", ex);
+                ViewBag.ErrorMsg = ex.Message;
+                return View();
+            }
+            
             return RedirectToAction("Index", "Home");
         }
 

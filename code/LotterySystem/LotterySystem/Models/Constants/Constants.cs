@@ -8,8 +8,7 @@ namespace LotterySystem.Models
     public class UserConstants
     {
         public const string IN_THE_HALL = "游戏大厅";
-        public const string REGIST_NOT_OPEN = "系统目前未开放注册";
-        public const string USERNAME_EXIST = "该用户名已被注册";
+
         public const string STATUS_ACTIVE = "激活";
         public const string STATUS_FREEZE = "冻结";
         public const string STATUS_WAIT = "待审";
@@ -36,8 +35,19 @@ namespace LotterySystem.Models
         public const string BALANCE_NOT_ENOUGH = "积分不足";
         public const string OPERATE_FAILED = "操作失败";
         public const string OPERATE_SUCCESS = "操作成功";
+
+        public const string USER_NOT_SELF = "用户名不能为自己";
         public const string USER_NOT_EXITED = "用户不存在";
+
         public const string USER_NOT_MATCH = "用户信息不匹配";
+        public const string USER_IS_WAIT = "用户处于待审状态";
+        public const string USER_IS_FREEZE = "用户处于冻结状态";
+
+
+        public const string REM_USER_IS_NOT_EXISTED = "推荐人不存在";
+
+        public const string REGIST_NOT_OPEN = "系统目前未开放注册";
+        public const string USERNAME_EXIST = "该用户名已被注册";
 
    
     }

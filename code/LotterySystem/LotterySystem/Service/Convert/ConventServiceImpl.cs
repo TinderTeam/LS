@@ -31,7 +31,7 @@ namespace LotterySystem.Service
             if (game != null)
             {
                 GameModel gameModel = new GameModel();
-                gameModel.AllRoomLimit = game.PlayerSelectNumTimeLimit;
+                gameModel.AllRoomLimit = game.AllRoomLimit;
                 gameModel.BankerSelectNumTimeLimit = game.BankerSelectNumTimeLimit;
                 gameModel.Browser = game.Browser;
                 gameModel.GameName = game.GameName;

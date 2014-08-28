@@ -38,13 +38,20 @@ namespace LotterySystem.Service
                 log.Error("approve score is not right ");
                 throw new SystemException(ErrorMsgConst.OPERATE_FAILED);
             }
+            if(userName.Equals(model.UserName))
+            {
+                log.Error("user name is yourself ");
+                throw new SystemException(ErrorMsgConst.USER_NOT_SELF);
+            }
             User lendUser = userDao.getSystemUserByName(model.UserName);
             if (null == lendUser)
             {
+                log.Error("user name is not exist ");
                 throw new SystemException(ErrorMsgConst.USER_NOT_EXITED);
             }
             if (lendUser.UserID != model.UserID)
             {
+                log.Error("user name is match user id ");
                 throw new SystemException(ErrorMsgConst.USER_NOT_MATCH);
             }
 
