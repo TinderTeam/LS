@@ -41,7 +41,15 @@
 
            <div class="form-horizontal" role="form">
                <div style="text-align:center">
-                     <font face="微软雅黑" color="blue" size="5px">修改用户信息</font>
+                     
+                        @if ("modify".Equals(@ViewBag.Operate)){
+                             <font face="微软雅黑" color="blue" size="5px">修改用户信息</font>
+                        }
+                        else
+                        {
+                             <font face="微软雅黑" color="blue" size="5px">新增用户信息</font>
+                        }
+                     
                </div>
                <hr />
                <div class="form-group">

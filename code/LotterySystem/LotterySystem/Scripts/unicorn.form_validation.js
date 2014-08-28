@@ -69,12 +69,12 @@ $(document).ready(function(){
 			pwd:{
 				required: true,
 				minlength:6,
-				maxlength:20
+				maxlength:12
 			},
 			pwd2:{
 				required:true,
 				minlength:6,
-				maxlength:20,
+				maxlength:12,
 				equalTo:"#pwd"
 			}
 		},
