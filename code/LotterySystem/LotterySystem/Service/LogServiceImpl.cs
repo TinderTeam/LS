@@ -40,7 +40,7 @@ namespace LotterySystem.Service
 
         public void recordScoreLog(ScoreLog log)
         {
-
+            DaoContext.getInstance().getScoreLogDao().creatScoreLog(log);
         }
     }
 }

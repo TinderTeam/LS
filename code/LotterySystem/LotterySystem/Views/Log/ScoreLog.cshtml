@@ -28,7 +28,7 @@
 		<!--right-->
 		<div class="col-lg-4">
 			<div id="right1"  class="pull-right">
-				　@Html.ActionLink("借还贷管理", "AccountBorrow", "User", null, new { @class = "btn btn-success" })
+				　@Html.ActionLink("借还贷管理", "ScoreManage", "Score", null, new { @class = "btn btn-success" })
 				
 				 
 			</div>
@@ -63,15 +63,15 @@
 								   @foreach (var p in @ViewBag.ScoreLogList)
 						            { 
                                        <tr >
-                                           <td>p.LogID</td>
-								           <td>p.UserName</td>
-                                           <td>p.RecordTime</td>
-                                           <td>p.Value</td>
-                                           <td>p.Balance</td>
-                                           <td>p.Mode</td>
-                                           <td>p.GamblingPartyID</td>
-                                           <td>p.RoundID</td>
-                                           <td>p.OtherName</td>
+                                           <td>@p.LogID</td>
+								           <td>@p.UserName</td>
+                                           <td>@p.RecordTime</td>
+                                           <td>@p.Value</td>
+                                           <td>@p.Balance</td>
+                                           <td>@p.Mode</td>
+                                           <td>@p.GamblingPartyID</td>
+                                           <td>@p.RoundID</td>
+                                           <td>@p.OtherName</td>
 	                                   </tr>	
  							         }                       
 							</table>

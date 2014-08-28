@@ -34,22 +34,22 @@ namespace LotterySystem.Controllers
 
             log.OtherName = model.UserName;
             logService.recordScoreLog(log);
-            return View();
+            return RedirectToAction("ScoreManage", "Score");
         }
      
         public ActionResult Refuse(int logID)
         {
-            return View();
+            return RedirectToAction("ScoreManage", "Score");
         }
         [HttpPost]
         public ActionResult Agree(int logID)
         {
-            return View();
+            return RedirectToAction("ScoreManage", "Score");
         }
        
         public ActionResult Repay(int logID)
         {
-            return View();
+            return RedirectToAction("ScoreManage", "Score");
         }
        
 
