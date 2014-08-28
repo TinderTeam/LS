@@ -27,63 +27,11 @@
 
 
 
-<!-- 用户待审核列表 -->
-<div class="panel panel-primary">
-	<div class="panel-heading">
-						
-        <div class="row">
-            <div class="col-lg-1"></div>
-	        <div class="col-lg-2 font1" style="text-align:left">
-                  待审核列表
-	        </div>
-
-	       <div class="col-lg-6">
- 
-           </div>
-	       <div class="col-lg-3"></div>
-  
-        </div><!-- /.row -->
-
-	 </div><!--head-->
-					
-					<div class="panel-body" >
-						<div class="table-responsive">
-							<table class="table table-bordered">
-								<tr>
-                                   <th>用户名</th>
-                                   <th>权限</th>
-                                   <th>状态</th>
-                                   <th>审批</th>
-                            
-								</tr>
-
-                              
-								<tr >  
-                                   <td>A</td>
-                                   <td>玩家</td>
-                                   <td>待审批</td>
-                                   <td><button  name="" class="btn btn-primary" type="submit">同意</button></td>
-								</tr>
-								<tr >  
-                                   <td>B</td>
-                                   <td>玩家</td>
-                                   <td>待审批</td>
-                                   <td><button  name="" class="btn btn-primary" type="submit">同意</button></td>
-								</tr>
-								<tr >  
-                                   <td>C</td>
-                                   <td>玩家</td>
-                                   <td>待审批</td>
-                                   <td><button  name="" class="btn btn-primary" type="submit">同意</button></td>
-								</tr>                           
-							</table>
-						</div>
-						
-					</div>
-
-</div>
 <!-- 用户管理列表 -->
-	<div class="panel panel-primary">
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+<div class="panel panel-primary">
 		<div class="panel-heading">
          <div class="row">
             <div class="col-lg-1"></div>
@@ -91,19 +39,14 @@
                  用户列表
 	        </div>
   
-	       <div class="col-lg-6">
-               <div class="col-sm-2"></div>
-               @using (Html.BeginForm("UserManage", "User", FormMethod.Post))
-               {
-                <div class="form-horizontal" role="form">
-                <div class="col-sm-8"><input type="text" name="userName" class="form-control" placeholder="请输入你要查询的用户ID号" ></div>
-                <div class="col-sm-2"><input type="submit" class="btn btn-success" name="submit" value="查询" ></input></div>
-                </div>
-               }   
+	       <div class="col-lg-6" style="text-align:left">
+               <div class="col-sm-1"></div>
+               <div class="col-sm-8"><input type="text"  class="form-control" placeholder="请输入你要查询的用户ID号" ></div>
+               <div class="col-sm-1"><button class="btn btn-success" type="submit">查询</button></div>
            </div>
 	       <div class="col-lg-3">
                 <div class="pull-right">
-                     @Html.ActionLink("新增用户", "UserInfo", "User", new { userName="",oprate="create"}, new { @class = "btn btn-success" })           
+                     @Html.ActionLink("新增", "UserInfo", "User", new { userName="",oprate="create"}, new { @class = "btn btn-success" })           
  
                 </div>
           </div>
@@ -136,7 +79,7 @@
            			            <td>@ViewBag.UserList[i].Permission</td>
 								<td>@ViewBag.UserList[i].RecommendUserName</td>
                             
-                                <td>@Html.ActionLink("修改用户", "UserInfo", "User", new { userName = @ViewBag.UserList[i].UserName,operate = "modify"}, new { @class = "btn btn-primary" })</td>
+                                <td>@Html.ActionLink("修改", "UserInfo", "User", new { userName = @ViewBag.UserList[i].UserName,operate = "modify"}, new { @class = "btn btn-primary" })</td>
 					                </tr>
 						 }  
                                  
@@ -146,3 +89,8 @@
              </table>
         </div>
     </div>
+
+    </div>
+    <div class="col-lg-2"></div>
+</div>
+	

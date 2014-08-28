@@ -99,7 +99,11 @@ namespace LotterySystem.Test.Stub
         {
             if (sys == null)
             {
+                sys = new Sys();
                 
+                sys.MaxPlayer = 10;
+               
+                sys.RegistType = "方式2";
             }
             return sys;
         }

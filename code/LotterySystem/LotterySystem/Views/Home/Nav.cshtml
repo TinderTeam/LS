@@ -22,9 +22,17 @@
               <li>
                     @Html.ActionLink("系统管理", "SystemManage", "Home", null, null)
               </li>
-              <li>@Html.ActionLink("用户管理", "UserManage", "User", null, null)
+              <li class="dropdown">
+                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户</a>
+                       <ul class="dropdown-menu" role="menu">
+                           <li>@Html.ActionLink("用户审核", "UserApprove", "User", null, null)</li>
+                           <li>@Html.ActionLink("用户管理", "UserManage", "User", null, null)</li>
 
+                       </ul>
               </li>
+
+
+              
               <li>@Html.ActionLink("游戏管理", "GameManage", "Game", null, null)
 
               </li>

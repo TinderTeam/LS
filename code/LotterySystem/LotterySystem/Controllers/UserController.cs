@@ -110,5 +110,10 @@ namespace LotterySystem.Controllers
             return RedirectToAction("UserInfo", "User", new { msg = result });
         }
 
+        public ActionResult UserApprove()
+        {
+            return View();
+        }
+
     }
 }

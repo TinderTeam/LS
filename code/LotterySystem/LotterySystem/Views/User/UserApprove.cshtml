@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "用户审核";
+    
+}
+
+<!--字体样式-->
+    <style type="text/css">
+
+    .font1
+    {
+        font-size: 16px;
+        font-family:'Microsoft YaHei UI';
+    }
+        .div1
+        {
+            margin-top:10px;
+            margin-bottom:10px;  
+        }
+        
+    </style>
+
+<!--字体样式-->
+
+<div id="head" >
+    @RenderPage("../Home/Nav.cshtml")
+</div>
+<!-- Nav bar-->
+
+
+
+<!-- 用户待审核列表 -->
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+<div class="panel panel-primary">
+	<div class="panel-heading">
+						
+        <div class="row">
+            <div class="col-lg-1"></div>
+	        <div class="col-lg-2 font1" style="text-align:left">
+                  待审核列表
+	        </div>
+
+	       <div class="col-lg-6">
+ 
+           </div>
+	       <div class="col-lg-3"></div>
+  
+        </div><!-- /.row -->
+
+	 </div><!--head-->
+					
+					<div class="panel-body" >
+						<div class="table-responsive">
+							<table class="table table-bordered">
+								<tr>
+                                   <th>用户名</th>
+                                   <th>权限</th>
+                                   <th>状态</th>
+                                   <th>审批</th>
+                            
+								</tr>
+
+                              
+								<tr >  
+                                   <td>A</td>
+                                   <td>玩家</td>
+                                   <td>待审批</td>
+                                   <td><button  name="" class="btn btn-primary" type="submit">同意</button></td>
+								</tr>
+								<tr >  
+                                   <td>B</td>
+                                   <td>玩家</td>
+                                   <td>待审批</td>
+                                   <td><button  name="" class="btn btn-primary" type="submit">同意</button></td>
+								</tr>
+								<tr >  
+                                   <td>C</td>
+                                   <td>玩家</td>
+                                   <td>待审批</td>
+                                   <td><button  name="" class="btn btn-primary" type="submit">同意</button></td>
+								</tr>                           
+							</table>
+						</div>
+						
+					</div>
+
+</div>
+    </div>
+    <div class="col-lg-2"></div>
+</div><!-- 用户待审核列表 -->
+

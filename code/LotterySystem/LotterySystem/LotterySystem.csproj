@@ -386,6 +386,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="Po\ScoreLog.hbm.xml" />
+    <EmbeddedResource Include="Po\ScoreLog.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -408,6 +411,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <Content Include="Scripts\unicorn.form_validation.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -479,6 +483,7 @@
     <Content Include="Views\User\UserInfo.cshtml" />
     <Content Include="Views\Game\TablePage.cshtml" />
     <Content Include="Views\Score\ScoreManage.cshtml" />
+    <Content Include="Views\User\UserApprove.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
