@@ -297,6 +297,7 @@
     <Content Include="Content\img\gallery-photo\1.png" />
     <Content Include="Content\img\gallery-photo\2.png" />
     <Content Include="Content\img\gallery-photo\3.png" />
+    <Content Include="Content\js\util\browserInfo.js" />
     <Content Include="Content\resource\icon.ico" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />

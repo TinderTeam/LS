@@ -49,10 +49,14 @@ namespace LotterySystem.Dao
             }
             return doorList;
         }
-       public  Door getDoorByRoomID(String roomID)
-        {
-            return null;
-        }
+
+       public void creatDoor(List<Door> list)
+       {
+           foreach (Door door in list)
+           {
+               creatDoor(door);
+           }
+       }
        public void creatDoor(Door door)
         {
 
@@ -83,6 +87,48 @@ namespace LotterySystem.Dao
                 }
             }
         }
+
+       public List<Door> getDoorByGameAndRoomAndType(string game, string room, string type)
+       {
+           List<Door> lst = new List<Door>();
+           ISession session = null;
+           try
+           {
+
+
+               session = SessionManager.getInstance().GetSession();
+               ITransaction tx = session.BeginTransaction();
+
+
+               ICriteria criteria = session.CreateCriteria<Door>();
+               criteria.Add(Restrictions.Eq("RoomName", room));
+               criteria.Add(Restrictions.Eq("GameName", game));
+               criteria.Add(Restrictions.Eq("EntranceType", type));
+               var queryList = criteria.List<Door>();
+               foreach (var result in queryList)
+               {
+                   lst.Add(result);
+               }
+
+               tx.Commit();
+
+           }
+           catch (System.Exception ex)
+           {
+
+               log.Error("search door error", ex);
+               throw ex;
+           }
+           finally
+           {
+               if (null != session)
+               {
+                   session.Close();
+               }
+           }
+           return lst;
+       }
+
        public void deleteDoorByRoomID(String roomID)
         {
             

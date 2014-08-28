@@ -78,16 +78,19 @@ namespace LotterySystem.Service
         {
             List<Door> doorList = new List<Door>();
 
-            if (form.WriteNameStr != null && !form.WriteNameStr.Equals(""))
+            if (form.WhiteNameStr != null && !form.WhiteNameStr.Equals(""))
             {
-                string[] writeNameArray = form.WriteNameStr.Split(',');
+                string[] writeNameArray = form.WhiteNameStr.Split(',');
                 for (int i = 0; i < writeNameArray.Length; i++)
                 {
-                    Door door = new Door();
-                    door.GameName = form.GameName;
-                    door.RoomName = form.RoomName;
-                    door.UserName = writeNameArray[i];
-                    doorList.Add(door);
+                    if(writeNameArray[i]!=null && !writeNameArray[i].Equals("")){
+                         Door door = new Door();
+                        door.GameName = form.GameName;
+                        door.RoomName = form.RoomName;
+                        door.UserName = writeNameArray[i];
+                        door.EntranceType = UserConstants.ON;
+                        doorList.Add(door);
+                    }
                 }
             }
 
@@ -96,11 +99,14 @@ namespace LotterySystem.Service
                 string[] blackNameArray = form.BlackNameStr.Split(',');
                 for (int i = 0; i < blackNameArray.Length; i++)
                 {
-                    Door door = new Door();
-                    door.GameName = form.GameName;
-                    door.RoomName = form.RoomName;
-                    door.UserName = blackNameArray[i];
-                    doorList.Add(door);
+                    if(blackNameArray[i]!=null && !blackNameArray[i].Equals("")){
+                        Door door = new Door();
+                        door.GameName = form.GameName;
+                        door.RoomName = form.RoomName;
+                        door.UserName = blackNameArray[i];
+                        door.EntranceType = UserConstants.OFF;
+                        doorList.Add(door);
+                    }
                 }
             }
             return doorList;

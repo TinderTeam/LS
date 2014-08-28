@@ -94,7 +94,9 @@ namespace LotterySystem.Controllers
             log.Debug("Enter [RoomEdit]Page， roomName= "+roomName);
             GameModel game = (GameModel)Session["CurrentGame"];          
             RoomModel room =platService.getRoomByGameAndName(game.GameName, roomName);
-       
+            DoorListModel door = platService.getDoorByGameAndRoom(game.GameName, roomName);
+            @ViewBag.WhiteList = door.getWhiteListStr();
+            @ViewBag.BlackList = door.getBlackListStr();
             @ViewBag.Room = room;
             @ViewBag.Game = game;
             return View();

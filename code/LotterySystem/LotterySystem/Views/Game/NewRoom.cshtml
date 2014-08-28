@@ -25,43 +25,59 @@
 
     <script type="text/javascript">
 
+        var whiteListStr = "";
+        var blackListStr = "";
+
         function EditName(obj) {
-            if (obj == "writeAdd") {
-                if ($("#writeName").val() == "") {
-
-                } else {
-                    $("#writeList").html($("#writeList").html() +","+$("#writeName").val());
+            if (obj == "whiteAdd") {
+                if ($("#whiteName").val() != "" ) {            
+                    if (whiteListStr != "") {
+                        whiteListStr = whiteListStr + ",";
+                    }
+                    whiteListStr = whiteListStr + $("#whiteName").val();
                 }          
-            } else if (obj=="writeMin") {
-                if ($("#writeName").val() == "" || $("#writeList").html()=="") {
+            } else if (obj == "whiteMin") {
+                if ($("#whiteName").val() != "") {                   
+                    if (whiteListStr.split(",").length >1) {
+                        var value = ',' + $("#whiteName").val();
+                        whiteListStr = whiteListStr.replace(value, "");
+                        var value =  $("#whiteName").val()+',';
+                        whiteListStr = whiteListStr.replace(value, "");
 
-                } else {
-                    var str = $("#writeList").html();
-                    var value = ',' + $("#writeName").val();
-                    str = str.replace(value, "");
-                    $("#writeList").html(str);
+                    } else {
+                        whiteListStr=""
+                    }
                 }
             } else if (obj=="blackAdd") {
-                if ($("#blackName").val() == "") {
-
-                } else {
-                    $("#blackList").html($("#blackList").html() + "<span>," + $("#blackName").val() + "<span/>");
+                if ($("#blackName").val() != "") {
+                    if (blackListStr != "") {
+                        blackListStr = blackListStr + ",";
+                    }
+                    blackListStr = blackListStr + $("#blackName").val();
                 }
             } else if (obj=="blackMin") {
-                if ($("#blackName").val() == "" || $("#blackList").html() == "") {
-
-                } else {
-                    var str = $("#blackList").html();
-                    var value = ',' + $("#blackName").val();
-                    str = str.replace(value, "");
-                    $("#blackList").html(str);
+                if ($("#blackName").val() != "") {
+                    if (blackListStr.split(",").length > 1) {
+                        var value = ',' + $("#blackName").val();
+                        blackListStr = blackListStr.replace(value, "");
+                        var value = $("#blackName").val() + ',';
+                        blackListStr = blackListStr.replace(value, "");
+                    } else {
+                        blackListStr = ""
+                    }
                 }
             }
+
+            showList();
         }
 
+        function showList() {
+            $("#whiteList").html(whiteListStr);
+            $("#blackList").html(blackListStr);
 
-
-
+            $("#blackNameStr").val(blackListStr);
+            $("#whiteNameStr").val(whiteListStr);
+        }
     </script>
 
 <!--字体样式-->
@@ -74,8 +90,6 @@
 
     @using (Html.BeginForm("NewRoom", "Game", FormMethod.Post))
     {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
  
         <div class="row">
             <div class="col-lg-6">
@@ -138,7 +152,7 @@
                     <div class="form-group">
                         <label for="growth" class="col-sm-4 control-label"><span class="pull-right font1">增幅</span></label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="amplification">
+                            <input type="text" class="form-control" name="amplification" />
                         </div>
                     </div>
 		    
@@ -146,7 +160,7 @@
                     <div class="form-group">
                         <label  class="col-sm-4 control-label"><span class="pull-right font1">上庄底值</span></label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="bankerLimit">
+                            <input type="text" class="form-control" name="bankerLimit" />
                         </div>
                     </div>
                </div>
@@ -166,13 +180,13 @@
                                </label>                                                                                                                             
                           </div>
                           <div class ="col-sm-5  " >
-                                <input id="writeName" type="text" class="form-control"  placeholder="请输入准入用户名" > 
+                                <input id="whiteName" type="text" class="form-control"  placeholder="请输入准入用户名"  value="" /> 
                            </div> 
                           <div class="col-sm-2" >
-                                   <button id="writeAdd"class="btn btn-success pull-left"  type="button" onclick="EditName(this.id)">新增</button>
+                                   <button id="whiteAdd"class="btn btn-success pull-left"  type="button" onclick="EditName(this.id)">新增</button>
                            </div>
                           <div class="col-sm-2" >
-                                   <button  id="writeMin"   class="btn btn-inverse" type="button" onclick="EditName(this.id)">删除</button>
+                                   <button  id="whiteMin"   class="btn btn-inverse" type="button" onclick="EditName(this.id)">删除</button>
                           </div>    
                                         
                           <hr />
@@ -184,8 +198,9 @@
                                    <div class="panel-body">
                                       <h5 >准入名单列表</h5>
                                        <hr />
-                                      <p id="writeList">                                        
+                                      <p id="whiteList">                                        
                                       </p>
+                                       <input id="whiteNameStr" name="whiteNameStr" type="text" hidden="hidden" value ="" />
                                    </div>
                               </div>
           
@@ -221,7 +236,7 @@
                                       <p id="blackList">                                        
                                       </p>
                                    </div>
-                                    <input type="hidden" name="blackNameStr" />
+                                    <input id="blackNameStr" type="hidden" name="blackNameStr"  value ="" />
                               </div>
                            </div>                                              
 

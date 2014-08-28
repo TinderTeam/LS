@@ -1,238 +1,315 @@
 ﻿@{
   
-        ViewBag.Title = "房间管理";
-        ViewBag.TitleInfo = "修改房间信息";
+    ViewBag.Title = "房间管理";
+    ViewBag.TitleInfo = "修改房间信息";
+
+
 }
 
 
-<div id="head" >
+<div id="head">
     @RenderPage("../Home/Nav.cshtml")
 </div>
 
 <!--字体样式-->
-    <style type="text/css">
-
+<style type="text/css">
     .font1
     {
         font-size: 16px;
-        font-family:'Microsoft YaHei UI';
+        font-family: 'Microsoft YaHei UI';
     }
-        .div1
-        {
-            margin-top:10px;
-            margin-bottom:10px;  
+
+    .div1
+    {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<script type="text/javascript">
+
+    var whiteListStr = $("#blackNameStr").val();
+    var blackListStr = $("#whiteNameStr").val();
+
+    var pswC = true;
+    var num = new Array();
+    num[1] = false;
+    num[2] = false;
+    num[3] = false;
+    num[4] = false;
+
+
+    function EditName(obj) {
+        if (obj == "whiteAdd") {
+            if ($("#whiteName").val() != "") {
+                if (whiteListStr != "") {
+                    whiteListStr = whiteListStr + ",";
+                }
+                whiteListStr = whiteListStr + $("#whiteName").val();
+            }
+        } else if (obj == "whiteMin") {
+            if ($("#whiteName").val() != "") {
+                if (whiteListStr.split(",").length > 1) {
+                    var value = ',' + $("#whiteName").val();
+                    whiteListStr = whiteListStr.replace(value, "");
+                    var value = $("#whiteName").val() + ',';
+                    whiteListStr = whiteListStr.replace(value, "");
+
+                } else {
+                    whiteListStr = ""
+                }
+            }
+        } else if (obj == "blackAdd") {
+            if ($("#blackName").val() != "") {
+                if (blackListStr != "") {
+                    blackListStr = blackListStr + ",";
+                }
+                blackListStr = blackListStr + $("#blackName").val();
+            }
+        } else if (obj == "blackMin") {
+            if ($("#blackName").val() != "") {
+                if (blackListStr.split(",").length > 1) {
+                    var value = ',' + $("#blackName").val();
+                    blackListStr = blackListStr.replace(value, "");
+                    var value = $("#blackName").val() + ',';
+                    blackListStr = blackListStr.replace(value, "");
+                } else {
+                    blackListStr = ""
+                }
+            }
         }
-        
-    </style>
+
+        showList();
+    }
+
+    function showList() {
+        $("#whiteList").html(whiteListStr);
+        $("#blackList").html(blackListStr);
+        $("#blackNameStr").val(blackListStr);
+        $("#whiteNameStr").val(whiteListStr);
+    }
+
+
+
+</script>
 
 <!--字体样式-->
 
 <div class="panel panel-primary">
     <div class="panel-heading">@ViewBag.TitleInfo </div>
     <div class="panel-body">
-    @using (Html.BeginForm("RoomEdit", "Game", FormMethod.Post))
-    {
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="form-horizontal">
+        @using (Html.BeginForm("RoomEdit", "Game", FormMethod.Post))
+        {
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-horizontal">
 
-                    <div class="form-group">
-                        <label  class="col-sm-4 control-label"><span class="pull-right font1">房间名称</span></label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control"  value="@ViewBag.Room.RoomName" readonly="true" placeholder="请输入新建房间名称" name="RoomName">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label"><span class="pull-right font1">房间名称</span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control"  value="@ViewBag.Room.RoomName" readonly="true" placeholder="请输入新建房间名称" name="RoomName">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label"><span class="pull-right font1">所在游戏</span></label>
+                            <div class="col-sm-8">
+                                <input  type="text" class="form-control"  value="@ViewBag.Game.GameName" readonly="true" name="gameName">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4  control-label"><span class="pull-right font1">请输入准入密码</span></label>
+                            <div class="col-sm-8">
+                                <input id="psw" type="password" class="form-control" value="@ViewBag.Room.RoomPassword"  name="roomPassword" placeholder="请输入6~12位英文或数字"  onchange="password()">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4  control-label"><span class="pull-right font1">再次确认房间密码</span></label>
+                            <div class="col-sm-8">
+                                <input id="psw2" type="password" class="form-control"  placeholder="检验两者是否一致" name="roomPassword2" value="@ViewBag.Room.RoomPassword" onchange="password()">
+                               <span id="warning" class ="label label-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label"><span class="pull-right font1">房主</span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control"  value="@ViewBag.Room.RoomHost" readonly="true" disabled="disabled">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label"><span class="pull-right font1">房间状态</span></label>
+                            <div class="col-sm-8">
+
+                                <select class="btn btn-default dropdown-toggle" name="status">
+                                    @if (@ViewBag.Room.Status.Equals("开放"))
+                                    {
+                                        <option value="开放" selected>开放</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="开放">开放</option>
+                                    }
+                                    @if (@ViewBag.Room.Status.Equals("关闭"))
+                                    {
+                                        <option value="关闭" selected>关闭</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="关闭">关闭</option>
+                                    }
+                                    @if (@ViewBag.Room.Status.Equals("关闭"))
+                                    {
+                                        <option value="冻结" selected>冻结</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="冻结">冻结</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label"><span class="pull-right font1">准入底值</span></label>
+                            <div class="col-sm-8">
+                                <input id="num1" type="number" onchange="testNum(this.id,1)" class="form-control" value="@ViewBag.Room.AccessAcountLimit" name="accessAcountLimit">
+                                <span id="num1_w" class ="label label-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label"><span class="pull-right font1">起投分值</span></label>
+                            <div class="col-sm-8">
+                                <input id="num2" type="number "  onchange="testNum(this.id,2)"  class="form-control" value="@ViewBag.Room.BasicPoint" name="basicPoint" >
+                            <span id="num2_w" class ="label label-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label"><span class="pull-right font1">增幅</span></label>
+                            <div class="col-sm-8">
+                                <input id="num3" type="number " onchange="testNum(this.id,3)"  class ="form-control" value="@ViewBag.Room.Amplification" name="amplification" >
+                            <span id="num3_w" class ="label label-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label"><span class="pull-right font1">上庄底值</span></label>
+                            <div class="col-sm-8">
+                                <input id="num4" type="number "  onchange="testNum(this.id,4)" class="form-control"  value="@ViewBag.Room.BankerLimit" name="bankerLimit">
+                            <span id="num4_w" class ="label label-danger"></span>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label  class="col-sm-4 control-label"><span class="pull-right font1">所在游戏</span></label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control"  value="@ViewBag.Game.GameName" readonly="true" name="gameName">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label  class="col-sm-4  control-label"><span class="pull-right font1">请输入准入密码</span></label>
-                        <div class="col-sm-8">
-                            <input type="password" class="form-control" value="@ViewBag.Room.RoomPassword"  name="roomPassword" placeholder="请输入6~12位英文或数字">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label  class="col-sm-4  control-label"><span class="pull-right font1">再次确认房间密码</span></label>
-                        <div class="col-sm-8">
-                            <input type="password" class="form-control"  placeholder="检验两者是否一致" name="roomPassword2" value="@ViewBag.Room.RoomPassword">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label  class="col-sm-4 control-label"><span class="pull-right font1">房主</span></label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control"  value="@ViewBag.Room.RoomHost" readonly="true" disabled="disabled">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label"><span class="pull-right font1">房间状态</span></label>
-                        <div class="col-sm-8">
-                            
-                            <select class="btn btn-default dropdown-toggle" name="status">
-                                @if (@ViewBag.Room.Status.Equals("开放")) {
-                                   <option value="开放" selected >开放</option>
-                                }else{
-                                   <option value="开放">开放</option>
-                                } 
-                                @if (@ViewBag.Room.Status.Equals("关闭"))
-                                {
-                                   <option value="关闭" selected >关闭</option>
-                                }else{
-                                   <option value="关闭">关闭</option>
-                                }
-                                @if (@ViewBag.Room.Status.Equals("关闭"))
-                                {
-                                   <option value="冻结" selected >冻结</option>
-                                }else{
-                                   <option value="冻结">冻结</option>
-                                }
-                            </select>
-                        </div>
-                    </div>  
-                    <div class="form-group">
-                        <label  class="col-sm-4 control-label"><span class="pull-right font1">准入底值</span></label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" value="@ViewBag.Room.AccessAcountLimit" name="accessAcountLimit">
-                        </div>
-                    </div>                    
-                   
-                    <div class="form-group">
-                        <label  class="col-sm-4 control-label"><span class="pull-right font1">起投分值</span></label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" value="@ViewBag.Room.BasicPoint" name="basicPoint" >
-                        </div>
-                    </div>    
-                    <div class="form-group">
-                        <label  class="col-sm-4 control-label"><span class="pull-right font1">增幅</span></label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" value="@ViewBag.Room.Amplification" name="amplification" >
-                        </div>
-                    </div>  
-                    <div class="form-group">
-                        <label  class="col-sm-4 control-label"><span class="pull-right font1">上庄底值</span></label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control"  value="@ViewBag.Room.BankerLimit" name="bankerLimit">
-                        </div>
-                    </div>   
-              </div>
-            </div><!--左边信息-->
-
-
-
-            <div class="col-lg-6">
-                 
-                  <div class="form-horizontal" role="form">  
-                      <!--准入名单-->              
-                    <div class="form-group">
-                       <div >
-                           <span class ="col-sm-3" style="text-align:center">
-                              
-                                   <label class="control-label" ><span class="pull-right font1">准入名单</span></label>
-                                                                                                                             
-                          </span>
-                          <span class ="col-sm-5  " >
-                                    <input type="text" class="form-control"  placeholder="请输入你要管理的用户名" > 
-                           </span> 
-                          <span class="col-sm-2" >
-                                   <button name="newEnter" class="btn btn-success pull-left" type="submit">新增</button>
-                           </span>
-                          <span class="col-sm-2" >
-                                   <button  name="deleteEnter" class="btn btn-inverse" type="submit">删除</button>
-                          </span>
-                          
-                       </div>
-                         <hr />
-                       <div >
-                           <div class="col-sm-3 "></div>
-                           <div class="col-sm-9">
-                                <div class="panel panel-primary div1">
-                                   <div class="panel-body">
-                                      <h5 >准入名单列表</h5>
-                                       <hr />
-                                      <p>
-                                         
-                                      </p>
-                                   </div>
-                              </div>
-                           </div>
-                                                
-                        </div>
-                                                
-                       
-                            
-
-                    </div>  
-                     
-<!--准入名单-->
-                    <hr />                     
-                      <!--禁入名单-->
-                    <div class="form-group">
-                       <div >
-                           <span class ="col-sm-3 " style="text-align:center">
-                              
-                                   <label class="control-label font1" >禁入名单</label>
-                                                                                                                             
-                          </span>
-                          <span class ="col-sm-5  " >
-                                    <input type="text" class="form-control" id="enter1" placeholder="请输入你要管理的用户名" > 
-                           </span> 
-                          <span class="col-sm-2" >
-                                <input name="submit" type="submit" class="btn btn-success" value="确认修改" />                               
-                           </span>
-                          <span class="col-sm-2" >
-                                <input type="button"  onclick="javascript: history.back(-1);" value="取消" class="btn btn-default">
-                                <button id="deleteEnter" name="deleteEnter" class="btn btn-inverse" type="submit">删除</button>
-                          </span>
-                          
-                       </div>
-                         <hr />
-                       <div >
-                           <div class="col-sm-3 "></div>
-                           <div class="col-sm-9">
-                                <div class="panel panel-primary div1">
-                                   <div class="panel-body">
-                                      <h5 >禁入名单列表</h5>
-                                       <hr />
-                                      <p>
-                                          
-                                      </p>
-                                   </div>
-                              </div>
-                           </div>
-                                                
-                        </div>
-                    </div> 
-
-                <!--禁入名单-->
-
                 </div>
-            </div>
+                <!--左边信息-->
 
-        </div>
 
-        <!-- row -->
-        <hr />
 
-        <!--操作栏-->
-        <div class="row">
-            <div class="col-lg-4">
-            </div>
-            <div class="col-lg-4">
-                    <!-- Button -->
-                    <div class="control-group " style="text-align: center">                       
-                        <div class="controls">
-                            <input name="submit" type="submit" class="btn btn-success" value="保存信息" />         
-                            @Html.ActionLink("删除房间", "DeleteRoom", "Game", new { roomName=@ViewBag.Room.RoomName }, new { @class = "btn btn-danger" })
-                            <input type="button"  onclick="javascript: history.back(-1);" value="取消" class="btn btn-default">	                        
-                        </div>                 
+                <div class="col-lg-6">
+
+                    <div class="form-horizontal" role="form">
+                        <!--准入名单-->
+                        <div class="form-group">
+                            <div>
+                                <span class="col-sm-3" style="text-align: center">
+
+                                    <label class="control-label"><span class="pull-right font1">准入名单</span></label>
+
+                                </span>
+                                <div class="col-sm-5  ">
+                                    <input id="whiteName" type="text" class="form-control" placeholder="请输入准入用户名" value="" />
+                                </div>
+                                <div class="col-sm-2">
+                                    <button id="whiteAdd" class="btn btn-success pull-left" type="button" onclick="EditName(this.id)">新增</button>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button id="whiteMin" class="btn btn-inverse" type="button" onclick="EditName(this.id)">删除</button>
+                                </div>
+
+                                <hr />
+
+
+                                <div class="col-sm-3 "></div>
+                                <div class="col-sm-9">
+                                    <div class="panel panel-primary div1">
+                                        <div class="panel-body">
+                                            <h5>准入名单列表</h5>
+                                            <hr />
+                                            <p id="whiteList">
+                                                @ViewBag.WhiteList
+                                            </p>
+                                            <input id="whiteNameStr" name="whiteNameStr" type="text" hidden="hidden" value="@ViewBag.WhiteList" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--准入名单-->
+                        <hr />
+                        <!--禁入名单-->
+                        <div class="form-group">
+                            <div>
+                                <span class="col-sm-3 " style="text-align: center">
+
+                                    <label class="control-label font1">禁入名单</label>
+
+                                </span>
+                                <div class="col-sm-5  ">
+                                    <input id="blackName" type="text" class="form-control" placeholder="请输入禁入的用户名">
+                                </div>
+                                <div class="col-sm-2">
+                                    <button id="blackAdd" class="btn btn-success pull-left" type="button" onclick="EditName(this.id)">新增</button>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button id="blackMin" name="deleteEnter" class="btn btn-inverse" type="button" onclick="EditName(this.id)">删除</button>
+                                </div>
+
+                            </div>
+                            <hr />
+                            <div>
+                                <div class="col-sm-3 "></div>
+                                <div class="col-sm-9">
+                                    <div class="panel panel-primary div1">
+                                        <div class="panel-body">
+                                            <h5>禁入名单列表</h5>
+                                            <hr />
+                                            <p id="blackList">
+                                                @ViewBag.BlackList
+                                            </p>
+                                        </div>
+                                        <input id="blackNameStr" type="hidden" name="blackNameStr" value="@ViewBag.BlackList" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!--禁入名单-->
+
                     </div>
+                </div>
+
             </div>
 
-        </div>
-        <!--操作栏-->
-    }
+            <!-- row -->
+            <hr />
+
+            <!--操作栏-->
+            <div class="row">
+                <div class="col-lg-4">
+                </div>
+                <div class="col-lg-4">
+                    <!-- Button -->
+                    <div class="control-group " style="text-align: center">
+                        <div class="controls">
+                            <input name="submit" type="submit" class="btn btn-success" value="保存信息" id="submitBtn" disabled="disabled"  />
+                            @Html.ActionLink("删除房间", "DeleteRoom", "Game", new { roomName = @ViewBag.Room.RoomName }, new { @class = "btn btn-danger" })
+                            <input type="button" onclick="javascript: history.back(-1);" value="取消" class="btn btn-default">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--操作栏-->
+        }
     </div>
 </div>
 

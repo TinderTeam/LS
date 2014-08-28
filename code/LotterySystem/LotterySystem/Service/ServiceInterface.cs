@@ -12,13 +12,15 @@ namespace LotterySystem.Service
         List<RoomModel>  getOpenRoomListByGameName(string gameID);
         List<GameModel>  getGameList();
         List<TableModel> getAllTableByGameAndRoom(string room, string game);
-
+        DoorListModel getDoorByGameAndRoom(string game,string room);
         RoomModel getRoomByGameAndName(string gameName,string roomName);
         GameModel getGameByName(string gameName);
 
         String createRoom(String gameName, UserModel user,RoomForm model);
         String editRoomInfo(RoomForm model);
         void deleteRoom(string gameName, string roomName);
+
+      
     }
 
     public interface ConvertService

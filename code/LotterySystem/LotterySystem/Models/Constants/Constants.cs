@@ -14,6 +14,8 @@ namespace LotterySystem.Models
         public const string STATUS_FREEZE = "冻结";
         public const string STATUS_WAIT = "待审";
         public const string PASSWORD_ERR = "密码错误";
+        public const string ON="准入";
+        public const string OFF="禁入";
     }
     public class RoomConstatns
     {

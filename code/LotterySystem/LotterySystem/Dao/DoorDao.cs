@@ -9,10 +9,10 @@ namespace LotterySystem.Dao
     public interface DoorDao
     {
         List<Door> getAll();
-        Door getDoorByRoomID(String roomID);
         void creatDoor(Door door);
         void deleteDoorByRoomID(String roomID);
         void updateDoor(Door door);
-
+        void creatDoor(List<Door> list);
+        List<Door> getDoorByGameAndRoomAndType(string game, string room, string type);
     }
 }

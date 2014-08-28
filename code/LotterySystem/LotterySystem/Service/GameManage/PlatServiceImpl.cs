@@ -155,7 +155,10 @@ namespace LotterySystem.Service.GameManage
             room.RoomHost = user.UserName;
             room.GameName = gameName;
             room.Status = RoomConstatns.STATUS_OPEN;
+            form.GameName = gameName;
             List<Door> doorList = ConventService.toDoor(form);
+            doorDao.creatDoor(doorList);
+
 
             //校验
             /*
@@ -167,6 +170,37 @@ namespace LotterySystem.Service.GameManage
                 roomDao.createRoom(room);
             }
             return result;
+        }
+
+        public DoorListModel getDoorByGameAndRoom(string game, string room)
+        {
+            DoorListModel doolList = new DoorListModel();
+            doolList.WhiteList = new List<DoorModel>();
+            doolList.BlackList = new List<DoorModel>();
+
+            List<Door> wlist = doorDao.getDoorByGameAndRoomAndType( game,room,UserConstants.ON);
+            List<Door> blist = doorDao.getDoorByGameAndRoomAndType(game, room, UserConstants.OFF);
+
+            foreach (Door door in wlist){
+                DoorModel doorModel = new DoorModel();
+                doorModel.GameName = door.GameName;
+                doorModel.RoomName = door.RoomName;
+                doorModel.UserName = door.UserName;
+                doorModel.EntranceType = door.EntranceType;
+                doolList.WhiteList.Add(doorModel);
+            }
+
+            foreach (Door door in blist)
+            {
+                DoorModel doorModel = new DoorModel();
+                doorModel.GameName = door.GameName;
+                doorModel.RoomName = door.RoomName;
+                doorModel.UserName = door.UserName;
+                doorModel.EntranceType = door.EntranceType;
+                doolList.BlackList.Add(doorModel);
+            }
+
+            return doolList;
         }
 
         /// <summary>

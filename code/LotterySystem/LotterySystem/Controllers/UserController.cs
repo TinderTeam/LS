@@ -59,9 +59,9 @@ namespace LotterySystem.Controllers
         {
             return View();
         }
-        public ActionResult PasswordSet(string result)
+        public ActionResult PasswordSet(string msg)
         {
-            ViewBag.Result = result;
+            ViewBag.ErrorMsg = msg;
             return View();
         }
         [HttpPost]

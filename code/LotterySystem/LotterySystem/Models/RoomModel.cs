@@ -94,7 +94,7 @@ namespace LotterySystem.Models
         private int bankerPointLimited;
         private int basicPoint;
         private int amplification;
-        private String writeNameStr;
+        private String whiteNameStr;
         private String blackNameStr;
         private int bankerLimit;
 
@@ -152,11 +152,11 @@ namespace LotterySystem.Models
             get { return bankerPointLimited; }
             set { bankerPointLimited = value; }
         }
-     
-        public String WriteNameStr
+
+        public String WhiteNameStr
         {
-            get { return writeNameStr; }
-            set { writeNameStr = value; }
+            get { return whiteNameStr; }
+            set { whiteNameStr = value; }
         }
     
         public String BlackNameStr
@@ -167,5 +167,70 @@ namespace LotterySystem.Models
 
 
 
+    }
+
+    public class DoorListModel
+    {
+        List<DoorModel> whiteList;
+        List<DoorModel> blackList;
+
+        public List<DoorModel> WhiteList
+        {
+            get { return whiteList; }
+            set { whiteList = value; }
+        }
+
+        public List<DoorModel> BlackList
+        {
+            get { return blackList; }
+            set { blackList = value; }
+        }
+
+        public string getWhiteListStr(){
+           string str=whiteList[0].UserName;
+           for(int i=1;i<whiteList.Count;i++)
+           {
+               str = str +","+ whiteList[i].UserName;
+           }
+           return str;
+        }
+        public string getBlackListStr()
+        {
+            string str = blackList[0].UserName;
+            for (int i = 1; i < blackList.Count; i++)
+            {
+                str = str + "," + blackList[i].UserName;
+            }
+            return str;
+        }
+
+        
+    }
+    public class DoorModel
+    {
+        private String roomName;
+        private String gameName;
+        private String userName;
+        private String entranceType;
+        public virtual String RoomName
+        {
+            get { return roomName; }
+            set { roomName = value; }
+        }
+        public virtual String GameName
+        {
+            get { return gameName; }
+            set { gameName = value; }
+        }
+        public virtual String UserName
+        {
+            get { return userName; }
+            set { userName = value; }
+        }
+        public virtual String EntranceType
+        {
+            get { return entranceType; }
+            set { entranceType = value; }
+        }
     }
 }
