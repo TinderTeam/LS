@@ -364,6 +364,7 @@
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Properties\PublishProfiles\config.pubxml" />
+    <None Include="Properties\PublishProfiles\LSin.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <EmbeddedResource Include="Po\User.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
