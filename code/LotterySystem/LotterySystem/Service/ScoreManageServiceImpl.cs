@@ -67,36 +67,42 @@ namespace LotterySystem.Service
                 return;
             }
 
-            User user = userDao.getSystemUserByName(score.OtherName);
+            User lendOutUser = userDao.getSystemUserByName(score.OtherName);
             int scoreValue = 0;
             if (isAgree)
             {
                 scoreValue = score.Value;
-                if (score.Value > user.Account)
+                if (score.Value > lendOutUser.Account)
                 {
                     throw new SystemException(ErrorMsgConst.BALANCE_NOT_ENOUGH);
                 }
             }
-            
+
+            lendOutUser.Account -= scoreValue;
 
             ScoreLog lendOut = new ScoreLog();
 
-            lendOut.Balance -= scoreValue;
+            lendOut.Balance = lendOutUser.Account;
             lendOut.Value = scoreValue;
             lendOut.UserName = score.OtherName;
             lendOut.OtherName = score.UserName;
             lendOut.Mode = SysConstants.SCORE_LEND_OUT;
             lendOut.RecordTime = DateTime.Now;
-            lendOut.RoundID = Convert.ToString(score.LogID);
 
+
+            User borrowInUser = userDao.getSystemUserByName(score.UserName);
+            borrowInUser.Account += scoreValue;
             ScoreLog borrowIn = new ScoreLog();
-            borrowIn.Balance += scoreValue;
+            borrowIn.Balance = borrowInUser.Account;
             borrowIn.Value = scoreValue;
             borrowIn.UserName = score.UserName;
             borrowIn.OtherName = score.OtherName;
             borrowIn.Mode = SysConstants.SCORE_BORROW_IN;
             borrowIn.RecordTime = DateTime.Now;
- 
+
+
+            userDao.updateUser(borrowInUser);
+            userDao.updateUser(lendOutUser);
  
             scoreLogDao.creatScoreLog(lendOut);
             scoreLogDao.creatScoreLog(borrowIn);
@@ -120,30 +126,38 @@ namespace LotterySystem.Service
 
             int scoreValue = score.Value;
 
-            User user = userDao.getSystemUserByName(score.OtherName);
-            if (score.Value > user.Account)
+            User repayOutUser = userDao.getSystemUserByName(score.OtherName);
+            if (score.Value > repayOutUser.Account)
             {
                 throw new SystemException(ErrorMsgConst.BALANCE_NOT_ENOUGH);
             }
-  
+
+            repayOutUser.Account -= scoreValue;
+
+
             ScoreLog repayOut = new ScoreLog();
 
-            repayOut.Balance -= scoreValue;
+            repayOut.Balance = repayOutUser.Account;
             repayOut.Value = scoreValue;
             repayOut.UserName = score.OtherName;
             repayOut.OtherName = score.UserName;
             repayOut.Mode = SysConstants.SCORE_REPAY_OUT;
             repayOut.RecordTime = DateTime.Now;
-            repayOut.RoundID = Convert.ToString(score.LogID);
 
+
+            User repayIntUser = userDao.getSystemUserByName(score.UserName);
+            repayIntUser.Account += scoreValue;
             ScoreLog repayIn = new ScoreLog();
-            repayIn.Balance += scoreValue;
+            repayIn.Balance = repayIntUser.Account;
             repayIn.Value = scoreValue;
             repayIn.UserName = score.UserName;
             repayIn.OtherName = score.OtherName;
             repayIn.Mode = SysConstants.SCORE_REPAY_IN;
             repayIn.RecordTime = DateTime.Now;
 
+
+            userDao.updateUser(repayOutUser);
+            userDao.updateUser(repayIntUser);
 
             scoreLogDao.creatScoreLog(repayOut);
             scoreLogDao.creatScoreLog(repayIn);
