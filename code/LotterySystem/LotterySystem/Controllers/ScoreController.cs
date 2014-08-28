@@ -15,6 +15,15 @@ namespace LotterySystem.Controllers
         LogService logService = ServiceContext.getInstance().getLogService();
         private static log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private String errorMsg = null;
+
+        public ActionResult ScoreRecord(String msg)
+        {
+            UserModel user = (UserModel)Session["SystemUser"];
+            ViewBag.ScoreLogList = userService.getScoreList(user.UserName);
+  
+            return View();
+        }
+
         public ActionResult ScoreManage(String msg)
         {
             UserModel user = (UserModel)Session["SystemUser"];

@@ -35,13 +35,13 @@ namespace LotterySystem.Controllers
                 loginSerivce.Login(model.UserName, model.Password);
                 Session["SystemUser"] = loginSerivce.getLoginUser(model.UserName);
 
-                ServiceContext.getInstance().getLogService().recordLoginLog(model.UserName, "成功", "os", "browser");
+                ServiceContext.getInstance().getLogService().recordLoginLog(model.UserName, "成功", model.Os, model.Broswer);
 
             }
             catch (SystemException ex)
             {
                 log.Error("login failed", ex);
-                ServiceContext.getInstance().getLogService().recordLoginLog(model.UserName, "失败", "os", "browser");
+                ServiceContext.getInstance().getLogService().recordLoginLog(model.UserName, "失败", model.Os, model.Broswer);
                 return RedirectToAction("Index", "Home", new { msg = ex.Message });
             }
 

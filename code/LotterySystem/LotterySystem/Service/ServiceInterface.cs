@@ -88,6 +88,7 @@ namespace LotterySystem.Service
     {
         List<ScoreLog> getApprovalScoreList(String userName);
         List<ScoreLog> getRepayScoreList(String userName);
+        List<ScoreLog> getScoreList(String userName);
         void ApproveScore(ApproveScoreModel model, String userName);
         void handleLendScore(int logID, bool isAgree);
         void handleRepayScore(int logID);

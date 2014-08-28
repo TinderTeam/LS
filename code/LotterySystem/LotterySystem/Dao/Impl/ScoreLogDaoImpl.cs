@@ -49,7 +49,45 @@ namespace LotterySystem.Dao.Impl
             }
             return logList;
         }
+        public  List<ScoreLog> getScoreListByUser(String userName)
+        {
+            List<ScoreLog> logList = new List<ScoreLog>();
+            ISession session = null;
+            try
+            {
 
+                session = SessionManager.getInstance().GetSession();
+                ITransaction tx = session.BeginTransaction();
+                ICriteria criteria = session.CreateCriteria<ScoreLog>();
+                criteria.Add(Restrictions.Or(Restrictions.Eq("UserName", userName), Restrictions.Eq("OtherName", userName)));
+
+                var queryList = criteria.List<ScoreLog>();
+
+
+                foreach (var result in queryList)
+                {
+                    logList.Add(result);
+                }
+
+                tx.Commit();
+
+
+            }
+            catch (System.Exception ex)
+            {
+
+                log.Error("get doors error", ex);
+                throw ex;
+            }
+            finally
+            {
+                if (null != session)
+                {
+                    session.Close();
+                }
+            }
+            return logList;
+        }
         public List<ScoreLog> getApprovalScoreByUser(String userName,String mode)
         {
             List<ScoreLog> logList = new List<ScoreLog>();
@@ -61,8 +99,9 @@ namespace LotterySystem.Dao.Impl
                 ITransaction tx = session.BeginTransaction();
                 ICriteria criteria = session.CreateCriteria<ScoreLog>();
                 criteria.Add(Restrictions.Eq("OtherName", userName));
-                criteria.Add(Restrictions.IsNull("RoundID"));
+                criteria.Add(Restrictions.IsNull("GamblingPartyID"));
                 criteria.Add(Restrictions.Eq("Mode", mode));
+                criteria.Add(Restrictions.Gt("Value", 0));
 
                 var queryList = criteria.List<ScoreLog>();
 
@@ -122,6 +161,7 @@ namespace LotterySystem.Dao.Impl
                 }
             }
         }
+
         public ScoreLog getScoreByID(long logID)
         {
             ScoreLog score = new ScoreLog();

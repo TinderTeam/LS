@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "UserAccount";
+}
+
+<div id="head" >
+    @RenderPage("../Home/Nav.cshtml")
+</div>
+<!-- operation menu-->
+
+
+<hr />
+<!-- 积分表 -->
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						积分列表
+					</div>
+					
+					<div class="panel-body" >
+						<div class="table-responsive">
+							<table class="table table-condensed">
+								<tr>
+                                                                  <td>编号</td>
+								  <td>用户名</td>
+								  <td>发生时间</td>
+								  <td>发生额度</td>
+								  <td>当前余额</td>
+								  <td>方式</td>
+								  <td>牌局编号</td>	
+                                  <td>轮次号</td>
+                                  <td>对方用户</td>								  
+								</tr>
+ 
+                              
+								   @foreach (var p in @ViewBag.ScoreLogList)
+						            { 
+                                       <tr >
+                                           <td>@p.LogID</td>
+								           <td>@p.UserName</td>
+                                           <td>@p.RecordTime</td>
+                                           <td>@p.Value</td>
+                                           <td>@p.Balance</td>
+                                           <td>@p.Mode</td>
+                                           <td>@p.GamblingPartyID</td>
+                                           <td>@p.RoundID</td>
+                                           <td>@p.OtherName</td>
+	                                   </tr>	
+ 							         }                       
+							</table>
+						</div>
+						
+					</div>
+				</div>
+<!--积分表-->

@@ -51,8 +51,8 @@ namespace LotterySystem.Models
         public static string[] BROWSER_LIST = new string[] { "All", "Google", "IEs" };
 
         public const string REG_TYPE_0 = "停止注册";
-        public const string REG_TYPE_1 = "自由注册";
-        public const string REG_TYPE_2 = "引荐注册";
+        public const string REG_TYPE_2 = "自由注册";
+        public const string REG_TYPE_1 = "引荐注册";
 
         public const string SCORE_USER_OPEN = "开户";
         public const string SCORE_BANK_WIN = "庄胜";

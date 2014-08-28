@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using LotterySystem.Util;
 
 namespace LotterySystem.Models
 {
@@ -187,19 +188,29 @@ namespace LotterySystem.Models
         }
 
         public string getWhiteListStr(){
-           string str=whiteList[0].UserName;
-           for(int i=1;i<whiteList.Count;i++)
-           {
-               str = str +","+ whiteList[i].UserName;
-           }
+
+            string str = "";
+            if ((null != whiteList) && (0 == whiteList.Count))
+            {
+                str = whiteList[0].UserName;
+                for (int i = 1; i < whiteList.Count; i++)
+                {
+                    str = str + "," + whiteList[i].UserName;
+                }
+            }
+
            return str;
         }
         public string getBlackListStr()
         {
-            string str = blackList[0].UserName;
-            for (int i = 1; i < blackList.Count; i++)
+            string str = "";
+            if ((null != blackList) && (0 == blackList.Count))
             {
-                str = str + "," + blackList[i].UserName;
+                str = blackList[0].UserName;
+                for (int i = 1; i < blackList.Count; i++)
+                {
+                    str = str + "," + blackList[i].UserName;
+                }
             }
             return str;
         }

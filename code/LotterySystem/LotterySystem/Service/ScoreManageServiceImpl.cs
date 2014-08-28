@@ -25,6 +25,12 @@ namespace LotterySystem.Service
             return logList;
         }
 
+        public List<ScoreLog> getScoreList(String userName)
+        {
+            List<ScoreLog> logList = scoreLogDao.getScoreListByUser(userName);
+
+            return logList;
+        }
         public void ApproveScore(ApproveScoreModel model,String userName)
         {
             if (null == model)
@@ -107,7 +113,7 @@ namespace LotterySystem.Service
             scoreLogDao.creatScoreLog(lendOut);
             scoreLogDao.creatScoreLog(borrowIn);
 
-            score.RoundID = Convert.ToString(lendOut.LogID);
+            score.GamblingPartyID = Convert.ToString(lendOut.LogID);
             scoreLogDao.updateScoreLog(score);
             
 
@@ -162,7 +168,7 @@ namespace LotterySystem.Service
             scoreLogDao.creatScoreLog(repayOut);
             scoreLogDao.creatScoreLog(repayIn);
 
-            score.RoundID = Convert.ToString(repayOut.LogID);
+            score.GamblingPartyID = Convert.ToString(repayOut.LogID);
             scoreLogDao.updateScoreLog(score);
 
 
