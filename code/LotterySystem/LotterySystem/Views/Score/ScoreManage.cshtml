@@ -114,7 +114,7 @@
                                @foreach (var p in @ViewBag.ApproveScoreList)
                                { 
                                        <tr >
-                                           <td>@p.LogID</td>
+                                           
 								           <td>@p.UserName</td>
                                            <td>@p.RecordTime</td>
                                            <td>@p.Value</td>
@@ -156,17 +156,15 @@
                                 @foreach (var p in @ViewBag.RepayScoreList)
                                 { 
                                        <tr >
-                                           <td>@p.LogID</td>
+                                           
 								           <td>@p.UserName</td>
                                            <td>@p.RecordTime</td>
                                            <td>@p.Value</td>
                                             <td>
-                                                @Html.ActionLink("拒绝", "Refuse", "Score", new { logID = @p.LogID }, new { @class = "btn btn-primary" })
-                                                @Html.ActionLink("同意", "Agree", "Score", new { logID = @p.LogID }, new { @class = "btn btn-primary" })
+                                                @Html.ActionLink("拒绝", "Refuse", "Score", new { logID = @p.LogID }, new { @class = "btn btn-danger" })
+                                                @Html.ActionLink("同意", "Agree", "Score", new { logID = @p.LogID }, new { @class = "btn btn-success" })
                                             </td>
 					            
-                                          <td><button id="enter3" name="" class="btn btn-success" type="submit">同意</button>
-									      <button id="enter3" name="" class="btn btn-danger" type="submit">拒绝</button></td>
 	                                   </tr>	
  							         }  
 								                           
