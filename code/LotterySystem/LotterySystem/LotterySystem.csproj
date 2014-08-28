@@ -486,6 +486,7 @@
     <Content Include="Views\Game\TablePage.cshtml" />
     <Content Include="Views\Score\ScoreManage.cshtml" />
     <Content Include="Views\User\UserApprove.cshtml" />
+    <Content Include="Views\Score\ScoreRecord.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
