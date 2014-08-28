@@ -14,16 +14,14 @@ namespace LotterySystem.Controllers
         private ScoreManageService userService = ServiceContext.getInstance().getScoreManageService();
         LogService logService = ServiceContext.getInstance().getLogService();
         private static log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private String errorMsg = "";
-        private String succussMsg = "";
-        public ActionResult ScoreManage()
+        private String errorMsg = null;
+        public ActionResult ScoreManage(String msg)
         {
             UserModel user = (UserModel)Session["SystemUser"];
             ViewBag.ApproveScoreList = userService.getApprovalScoreList(user.UserName);
             ViewBag.RepayScoreList = userService.getRepayScoreList(user.UserName);
 
-            ViewBag.ErrorMsg = this.errorMsg;
-            ViewBag.SuccessMsg = this.succussMsg;
+            ViewBag.ErrorMsg = msg;
             return View();
         }
         [HttpPost]
@@ -33,15 +31,15 @@ namespace LotterySystem.Controllers
             try
             {
                 userService.ApproveScore(model, user.UserName);
-                this.succussMsg = ErrorMsgConst.OPERATE_SUCCESS;
+                this.errorMsg = ErrorMsgConst.OPERATE_SUCCESS;
             }
             catch (SystemException ex)
             {
                 log.Error("agree lend failed ", ex);
                 this.errorMsg = ex.Message;
             }
- 
-            return RedirectToAction("ScoreManage", "Score");
+
+            return RedirectToAction("ScoreManage", "Score", new { msg = this.errorMsg });
         }
      
         public ActionResult Refuse(int logID)
@@ -49,7 +47,7 @@ namespace LotterySystem.Controllers
             try
             {
                 userService.handleLendScore(logID, false);
-                this.succussMsg = ErrorMsgConst.OPERATE_SUCCESS;
+                this.errorMsg = ErrorMsgConst.OPERATE_SUCCESS;
             }
             catch (SystemException ex)
             {
@@ -57,7 +55,7 @@ namespace LotterySystem.Controllers
                 this.errorMsg = ex.Message;
             }
 
-            return RedirectToAction("ScoreManage", "Score");
+            return RedirectToAction("ScoreManage", "Score", new { msg = this.errorMsg });
         }
          
         public ActionResult Agree(int logID)
@@ -65,7 +63,7 @@ namespace LotterySystem.Controllers
             try
             {
                 userService.handleLendScore(logID, true);
-                this.succussMsg = ErrorMsgConst.OPERATE_SUCCESS;
+                this.errorMsg = ErrorMsgConst.OPERATE_SUCCESS;
             }
             catch (SystemException ex)
             {
@@ -73,7 +71,7 @@ namespace LotterySystem.Controllers
                 this.errorMsg = ex.Message;
             }
 
-            return RedirectToAction("ScoreManage", "Score");
+            return RedirectToAction("ScoreManage", "Score", new { msg = this.errorMsg });
         }
        
         public ActionResult Repay(int logID)
@@ -81,7 +79,7 @@ namespace LotterySystem.Controllers
             try
             {
                 userService.handleRepayScore(logID);
-                this.succussMsg = ErrorMsgConst.OPERATE_SUCCESS;
+                this.errorMsg = ErrorMsgConst.OPERATE_SUCCESS;
             }
             catch (SystemException ex)
             {
@@ -89,7 +87,7 @@ namespace LotterySystem.Controllers
                 this.errorMsg = ex.Message;
             }
 
-            return RedirectToAction("ScoreManage", "Score");
+            return RedirectToAction("ScoreManage", "Score", new { msg = this.errorMsg });
         }
        
 
