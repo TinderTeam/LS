@@ -1,6 +1,5 @@
 ﻿function getBrowserInfo() {
     var agent = navigator.userAgent.toLowerCase();
-
     var regStr_ie = /msie [\d.]+;/gi;
     var regStr_ff = /firefox\/[\d.]+/gi
     var regStr_chrome = /chrome\/[\d.]+/gi;

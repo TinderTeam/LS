@@ -76,6 +76,9 @@ namespace LotterySystem.Models
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        public string Broswer { get; set; }
+        public string Os { get; set; }
     }
     public class UserInforModel
     {
