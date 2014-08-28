@@ -17,15 +17,24 @@
         @Scripts.Render("~/Scripts/jquery-1.8.3.min.js")
         @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
         @Scripts.Render("~/Scripts/bootstrap.min.js")
-        @Scripts.Render("~/Scripts/unicorn.form_validation.js")
+       
+        @Scripts.Render("~/Scripts/jquery.metadata.js") 
         @Scripts.Render("~/Scripts/jquery.validate.min.js")
-        @Scripts.Render("~/Scripts/select2.min.js")
+        @Scripts.Render("~/Scripts/jquery.validate.messages_cn.js")
         <style type="text/css">  
           .align-center{  
               margin-top:50px;      /* 居中 这个是必须的，，其它的属性非必须 */      
              text-align:center;  /* 文字等内容居中 */  
             }  
-         </style>  
+         </style> 
+
+       <script type="text/javascript">
+        $(function(){
+            $("#myform").validate();
+            $("#myform1").validate();
+            $("#myform2").validate();
+        });
+        </script> 
 
     </head>
     <body>

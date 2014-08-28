@@ -5,18 +5,27 @@
      
 }
 
-<!-- nav navbar -->
-<div class="navbar navbar-default" role="navigation">
 
-    <div class="navbar-header" style="text-align: center">
-        @Html.ActionLink("游戏大厅", "Hall", "Game", null, new { @class = "navbar-brand" })
+
+<!--navbar--->
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a> @Html.ActionLink("游戏大厅", "Hall", "Game", null, new { @class = "navbar-brand" })</a>
     </div>
 
-    <div class="navbar-collapse collapse">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-        <ul class="nav navbar-nav navbar-right">
-
-            <li>
+      <ul class="nav navbar-nav navbar-right">
+             <li>
                 @Html.ActionLink("修改密码", "PasswordSet", "User", null, null)
             </li>
 
@@ -69,7 +78,7 @@
                 @Html.ActionLink("退出", "LogOff", "Login", null, null)
             </li>
         </ul>
-    </div>
-</div>
 
-<!--navbar--->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

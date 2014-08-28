@@ -24,9 +24,7 @@
     </style>
 
 <!--字体样式-->
-<div style="text-align:right">
-<input type="button"  onclick="javascript: history.back(-1);" value="返回" class="btn btn-default">
-</div>
+
 <hr />
 <!-- 积分借贷 -->
 <div class="panel panel-primary">
@@ -76,6 +74,7 @@
                             <input type="text" name="scoreValue" class="form-control" placeholder="请输入您借贷的积分额" />
                           </div>
                 </div> 
+           <hr />
 			<div  class="pull-right">
 				 <input  name="submit" class="btn btn-success" type="submit" value="确认借贷"></input>  
 			</div>
@@ -121,9 +120,7 @@
                                             <td>
                                                 @Html.ActionLink("还款", "Repay", "Score", new { logID = @p.LogID }, new { @class = "btn btn-primary" })
                                              </td>
-					            
-                                          <td><button id="enter3" name="" class="btn btn-success" type="submit">同意</button>
-									      <button id="enter3" name="" class="btn btn-danger" type="submit">拒绝</button></td>
+
 	                                   </tr>	
                                }   
 								                                  
