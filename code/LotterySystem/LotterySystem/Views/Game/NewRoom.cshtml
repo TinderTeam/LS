@@ -23,6 +23,47 @@
         }
     </style>
 
+    <script type="text/javascript">
+
+        function EditName(obj) {
+            if (obj == "writeAdd") {
+                if ($("#writeName").val() == "") {
+
+                } else {
+                    $("#writeList").html($("#writeList").html() +","+$("#writeName").val());
+                }          
+            } else if (obj=="writeMin") {
+                if ($("#writeName").val() == "" || $("#writeList").html()=="") {
+
+                } else {
+                    var str = $("#writeList").html();
+                    var value = ',' + $("#writeName").val();
+                    str = str.replace(value, "");
+                    $("#writeList").html(str);
+                }
+            } else if (obj=="blackAdd") {
+                if ($("#blackName").val() == "") {
+
+                } else {
+                    $("#blackList").html($("#blackList").html() + "<span>," + $("#blackName").val() + "<span/>");
+                }
+            } else if (obj=="blackMin") {
+                if ($("#blackName").val() == "" || $("#blackList").html() == "") {
+
+                } else {
+                    var str = $("#blackList").html();
+                    var value = ',' + $("#blackName").val();
+                    str = str.replace(value, "");
+                    $("#blackList").html(str);
+                }
+            }
+        }
+
+
+
+
+    </script>
+
 <!--字体样式-->
 
 <div class="panel panel-primary">
@@ -125,13 +166,13 @@
                                </label>                                                                                                                             
                           </div>
                           <div class ="col-sm-5  " >
-                                    <input type="text" class="form-control"  placeholder="请输入你要管理的用户名" > 
+                                <input id="writeName" type="text" class="form-control"  placeholder="请输入准入用户名" > 
                            </div> 
                           <div class="col-sm-2" >
-                                   <button name="newEnter" class="btn btn-success pull-left" type="submit">新增</button>
+                                   <button id="writeAdd"class="btn btn-success pull-left"  type="button" onclick="EditName(this.id)">新增</button>
                            </div>
                           <div class="col-sm-2" >
-                                   <button  name="deleteEnter" class="btn btn-inverse" type="submit">删除</button>
+                                   <button  id="writeMin"   class="btn btn-inverse" type="button" onclick="EditName(this.id)">删除</button>
                           </div>    
                                         
                           <hr />
@@ -143,7 +184,7 @@
                                    <div class="panel-body">
                                       <h5 >准入名单列表</h5>
                                        <hr />
-                                      <p>                                        
+                                      <p id="writeList">                                        
                                       </p>
                                    </div>
                               </div>
@@ -160,13 +201,13 @@
                                 <label class="control-label font1" >禁入名单</label>                                                                                                                          
                           </div>
                           <div class ="col-sm-5  " >
-                                <input type="text" class="form-control" id="enter1" placeholder="请输入你要管理的用户名" > 
+                                <input id="blackName" type="text" class="form-control"  placeholder="请输入禁入的用户名" > 
                            </div> 
                           <div class="col-sm-2" >
-                                <button name="newEnter" class="btn btn-success pull-left" type="submit">新增</button>
+                                <button id="blackAdd" class="btn btn-success pull-left" type="button" onclick="EditName(this.id)">新增</button>
                            </div>
                           <div class="col-sm-2" >
-                                <button  name="deleteEnter" class="btn btn-inverse" type="submit">删除</button>
+                                <button id="blackMin"  name="deleteEnter" class="btn btn-inverse" type="button" onclick="EditName(this.id)" >删除</button>
                           </div>
  
                          <hr />
@@ -177,7 +218,7 @@
                                    <div class="panel-body">
                                       <h5 >禁入名单列表</h5>
                                        <hr />
-                                      <p>                                        
+                                      <p id="blackList">                                        
                                       </p>
                                    </div>
                                     <input type="hidden" name="blackNameStr" />

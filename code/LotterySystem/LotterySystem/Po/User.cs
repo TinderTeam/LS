@@ -17,7 +17,7 @@ namespace LotterySystem.Po
         private String userName;
         private String password;
         private String payPassword;
-        private String permission;
+        private String permission="普通,";
         private String status;
         private String recommendUserName;
         private int account;
