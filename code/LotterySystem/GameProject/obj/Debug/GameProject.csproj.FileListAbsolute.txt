@@ -38,3 +38,25 @@ F:\WorkPlace\VS WorkSpace\LotterySystem\GameProject\bin\NHibernate.xml
 F:\WorkPlace\VS WorkSpace\LotterySystem\GameProject\obj\Debug\GameProject.csprojResolveAssemblyReference.cache
 F:\WorkPlace\VS WorkSpace\LotterySystem\GameProject\obj\Debug\GameProject.dll
 F:\WorkPlace\VS WorkSpace\LotterySystem\GameProject\obj\Debug\GameProject.pdb
+F:\Github\Project\LS\code\LotterySystem\GameProject\bin\GameProject.dll
+F:\Github\Project\LS\code\LotterySystem\GameProject\bin\GameProject.pdb
+F:\Github\Project\LS\code\LotterySystem\GameProject\bin\Iesi.Collections.dll
+F:\Github\Project\LS\code\LotterySystem\GameProject\bin\Microsoft.AspNet.SignalR.Core.dll
+F:\Github\Project\LS\code\LotterySystem\GameProject\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+F:\Github\Project\LS\code\LotterySystem\GameProject\bin\Microsoft.Owin.dll
+F:\Github\Project\LS\code\LotterySystem\GameProject\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\Github\Project\LS\code\LotterySystem\GameProject\bin\Microsoft.Owin.Security.dll
+F:\Github\Project\LS\code\LotterySystem\GameProject\bin\Newtonsoft.Json.dll
+F:\Github\Project\LS\code\LotterySystem\GameProject\bin\NHibernate.dll
+F:\Github\Project\LS\code\LotterySystem\GameProject\bin\Owin.dll
+F:\Github\Project\LS\code\LotterySystem\GameProject\bin\Iesi.Collections.xml
+F:\Github\Project\LS\code\LotterySystem\GameProject\bin\Microsoft.AspNet.SignalR.Core.xml
+F:\Github\Project\LS\code\LotterySystem\GameProject\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+F:\Github\Project\LS\code\LotterySystem\GameProject\bin\Microsoft.Owin.xml
+F:\Github\Project\LS\code\LotterySystem\GameProject\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\Github\Project\LS\code\LotterySystem\GameProject\bin\Microsoft.Owin.Security.xml
+F:\Github\Project\LS\code\LotterySystem\GameProject\bin\Newtonsoft.Json.xml
+F:\Github\Project\LS\code\LotterySystem\GameProject\bin\NHibernate.xml
+F:\Github\Project\LS\code\LotterySystem\GameProject\obj\Debug\GameProject.csprojResolveAssemblyReference.cache
+F:\Github\Project\LS\code\LotterySystem\GameProject\obj\Debug\GameProject.dll
+F:\Github\Project\LS\code\LotterySystem\GameProject\obj\Debug\GameProject.pdb

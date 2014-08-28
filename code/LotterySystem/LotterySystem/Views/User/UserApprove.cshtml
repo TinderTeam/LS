@@ -48,8 +48,7 @@
   
         </div><!-- /.row -->
 
-	 </div><!--head-->
-					
+	 </div><!--head-->					
 					<div class="panel-body" >
 						<div class="table-responsive">
 							<table class="table table-bordered">
@@ -57,29 +56,23 @@
                                    <th>用户名</th>
                                    <th>权限</th>
                                    <th>状态</th>
-                                   <th>审批</th>
-                            
+                                   <th>审批</th>                           
 								</tr>
 
-                              
-								<tr >  
-                                   <td>A</td>
-                                   <td>玩家</td>
-                                   <td>待审批</td>
-                                   <td><button  name="" class="btn btn-primary" type="submit">同意</button></td>
-								</tr>
-								<tr >  
-                                   <td>B</td>
-                                   <td>玩家</td>
-                                   <td>待审批</td>
-                                   <td><button  name="" class="btn btn-primary" type="submit">同意</button></td>
-								</tr>
-								<tr >  
-                                   <td>C</td>
-                                   <td>玩家</td>
-                                   <td>待审批</td>
-                                   <td><button  name="" class="btn btn-primary" type="submit">同意</button></td>
-								</tr>                           
+                                @foreach (var l in @ViewBag.UserList)
+                                {
+                                    <tr >  
+                                       <td>@l.UserName</td>
+                                       <td>@l.Permission</td>
+                                       <td>@l.Status</td>
+                                       <td>
+                                           @if(l.Status.Equals("待审")){
+                                               @Html.ActionLink("同意", "Approve", "User", new { userName = @l.UserName }, new { @class="btn btn-success btn-ex"})
+                                               
+                                           }
+                                       </td>
+								    </tr>
+                                }				                        
 							</table>
 						</div>
 						

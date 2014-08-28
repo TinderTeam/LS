@@ -1,51 +1,68 @@
 ﻿@{
     ViewBag.Title = "导航栏";
-   
+
+    LotterySystem.Models.UserModel user = (LotterySystem.Models.UserModel)Session["SystemUser"];
+     
 }
 
-      <!-- nav navbar -->
-      <div class="navbar navbar-default" role="navigation">
-        
-          <div class="navbar-header" style="text-align:center">
+<!-- nav navbar -->
+<div class="navbar navbar-default" role="navigation">
 
-          
-       @Html.ActionLink("游戏大厅", "Hall", "Game", null, new { @class="navbar-brand"})
+    <div class="navbar-header" style="text-align: center">
+        @Html.ActionLink("游戏大厅", "Hall", "Game", null, new { @class = "navbar-brand" })
+    </div>
 
-      
-           </div>
-          <div class="navbar-collapse collapse">
+    <div class="navbar-collapse collapse">
 
-            <ul class="nav navbar-nav navbar-right">
-              <li >
-                   @Html.ActionLink("修改密码", "PasswordSet", "User", null, null)
-              </li>
-              <li>
+        <ul class="nav navbar-nav navbar-right">
+
+            <li>
+                @Html.ActionLink("修改密码", "PasswordSet", "User", null, null)
+            </li>
+
+            @if (user.Permission.Contains("系统"))
+            {
+                <li>
                     @Html.ActionLink("系统管理", "SystemManage", "Home", null, null)
-              </li>
-              <li class="dropdown">
-                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户</a>
-                       <ul class="dropdown-menu" role="menu">
-                           <li>@Html.ActionLink("用户审核", "UserApprove", "User", null, null)</li>
-                           <li>@Html.ActionLink("用户管理", "UserManage", "User", null, null)</li>
+                </li>
+                
+                
+            }
+              @if (user.Permission.Contains("游戏"))
+            {
+                <li>
+                    @Html.ActionLink("游戏管理", "GameManage", "Game", null, null)
+                </li>
+            }
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>@Html.ActionLink("用户审核", "UserApprove", "User", null, null)</li>
+                        @if (user.Permission.Contains("用户"))
+                        {
+                            <li>@Html.ActionLink("用户管理", "UserManage", "User", null, null)</li>
+                        }
+                    </ul>
+                </li>
+               @if (user.Permission.Contains("积分"))
+            {
+                <li>
+                    @Html.ActionLink("积分管理", "ScoreLog", "Log", null, null)
+                </li>
+               }
 
-                       </ul>
-              </li>
+            @if (user.Permission.Contains("日志"))
+            {
+                <li>
+                    @Html.ActionLink("日志", "Loginlog", "Log", null, null)
+                </li>
+            }
 
+            <li>
+                @Html.ActionLink("退出", "LogOff", "Login", null, null)
+            </li>
+        </ul>
+    </div>
+</div>
 
-              
-              <li>@Html.ActionLink("游戏管理", "GameManage", "Game", null, null)
-
-              </li>
-              <li>@Html.ActionLink("积分管理", "ScoreLog", "Log", null, null)
-
-              </li>
-              <li> @Html.ActionLink("日志", "Loginlog", "Log", null, null)
-                 </li>
-              <li>
-                  @Html.ActionLink("退出", "LogOff","Login",null, null)
-                 </li>
-            </ul>
-          </div>
-        </div>
-     
- <!--navbar--->
+<!--navbar--->

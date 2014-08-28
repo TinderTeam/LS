@@ -14,6 +14,22 @@ namespace LotterySystem.Service.UserManage
 
         UserDao userDao = DaoContext.getInstance().getUserDao();
 
+
+
+
+
+
+
+        public List<UserModel> getApproveListByUser(UserModel user)
+        {
+            List<UserModel> list ;
+            List<User> userList= userDao.getApprovalUserListByRecomName(user.UserName);
+            list= ConventService.toUserModelList(userList);
+            return list;
+        }
+
+
+
         public bool CreateRoomCheck(UserModel user)
         {
             //To be Implement
@@ -87,6 +103,15 @@ namespace LotterySystem.Service.UserManage
             userDao.createUser(user);
 
             return SysConstants.SUCCESS;  
+        }
+
+        public string approve(string userName)
+        {
+            User user =userDao.getSystemUserByName(userName);
+            user.Status = UserConstants.STATUS_ACTIVE;
+            userDao.updateUser(user);
+
+            return SysConstants.SUCCESS;
         }
     }
 }

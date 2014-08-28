@@ -71,6 +71,9 @@ namespace LotterySystem.Service
         string modifyPayPassword(UserModel user, PasswordForm form);
         string modifyUser(UserForm form);
         string createNewUser(UserForm form);
+        string approve(string userName);
+
+        List<UserModel> getApproveListByUser( UserModel user);
     }
 
     public interface SysInfoService

@@ -23,8 +23,5 @@ namespace LotterySystem.Po
             set { registType = value; }
         }
 
-        
-
-
     }
 }

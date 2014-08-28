@@ -28,8 +28,6 @@ namespace LotterySystem.Po
             set { account = value; }
         }
 
-
-
         public virtual String RecommendUserName
         {
             get { return recommendUserName; }

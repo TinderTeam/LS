@@ -184,7 +184,7 @@ namespace LotterySystem.Dao
         {
 
             List<User> roomList = new List<User>();
-            if (!ValidatorUtil.isEmpty(recomName))
+            if (ValidatorUtil.isEmpty(recomName))
             {
                 return roomList;
             }
@@ -197,11 +197,9 @@ namespace LotterySystem.Dao
 
 
                 ICriteria criteria = session.CreateCriteria<User>();
-                criteria.Add(Restrictions.Eq("UserName", recomName));
-                criteria.Add(Restrictions.Eq("status", UserConstants.STATUS_WAIT));
+                criteria.Add(Restrictions.Eq("RecommendUserName", recomName));
+                criteria.Add(Restrictions.Eq("Status", UserConstants.STATUS_WAIT));
                 
-
-
                 var queryList = criteria.List<User>();
                 foreach (var result in queryList)
                 {

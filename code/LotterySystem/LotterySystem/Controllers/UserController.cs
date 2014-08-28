@@ -97,7 +97,7 @@ namespace LotterySystem.Controllers
             UserModel modelUser = userService.getUserByName(form.UserName);
             if (modelUser != null)
             {
-                result=userService.modifyUser( form);
+                result=userService.modifyUser(form);
             }else{
                 result=userService.createNewUser( form);
             }
@@ -112,7 +112,21 @@ namespace LotterySystem.Controllers
 
         public ActionResult UserApprove()
         {
+            UserModel user = (UserModel)Session["SystemUser"];
+            List<UserModel> list;
+
+            list = userService.getApproveListByUser(user);
+            ViewBag.UserList = list;
             return View();
+
+        
+        }
+
+
+        public ActionResult Approve(string userName)
+        {
+            userService.approve(userName);
+            return RedirectToAction("UserApprove", "User" );
         }
 
     }

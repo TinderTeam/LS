@@ -19,7 +19,5 @@ namespace LotterySystem.Util
             }
             return false;
         }
-
-
     }
 }

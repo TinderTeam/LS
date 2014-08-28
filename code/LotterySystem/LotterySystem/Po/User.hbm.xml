@@ -29,7 +29,7 @@
     <property name="Status" type="string">
       <column name="STATUS" length="50"/>
     </property>
-
+              
     <property name="RecommendUserName" type="string">
       <column name="RECOMMEND_USER_NAME" length="50"/>
     </property>
