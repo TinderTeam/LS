@@ -60,7 +60,6 @@
                     <ul class="dropdown-menu" role="menu">
                         <li> @Html.ActionLink("积分记录", "ScoreLog", "Log", null, null)</li>
                         <li> @Html.ActionLink("积分借还贷", "ScoreManage", "Score", null, null)</li>
-
 				
                     </ul>
 
@@ -82,3 +81,25 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-md-offset-3">
+            @if(@ViewBag.SuccessMsg!=null)
+            {
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <strong>成功</strong>@ViewBag.SuccessMsg
+                </div>
+            }
+             @if(@ViewBag.ErrorMsg!=null)
+            {
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <strong>失败</strong>@ViewBag.ErrorMsg
+                </div>
+            }
+        </div>
+    </div>
+        
+</div>
