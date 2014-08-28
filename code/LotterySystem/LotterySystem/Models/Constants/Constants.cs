@@ -29,6 +29,18 @@ namespace LotterySystem.Models
         public const string NULL = "无";
         public const string CREATE_ROOM_SUCCESS = "创建房间成功";
     }
+
+    public class ErrorMsgConst
+    {
+ 
+        public const string BALANCE_NOT_ENOUGH = "积分不足";
+        public const string OPERATE_FAILED = "操作失败";
+        public const string OPERATE_SUCCESS = "操作成功";
+        public const string USER_NOT_EXITED = "用户不存在";
+        public const string USER_NOT_MATCH = "用户信息不匹配";
+
+   
+    }
     public class SysConstants
     {
         public const string SUCCESS = "success";
@@ -38,9 +50,9 @@ namespace LotterySystem.Models
         public static string[] OS_LIST = new string[]{"All","Linux","xp/win7","IOS"};
         public static string[] BROWSER_LIST = new string[] { "All", "Google", "IEs" };
 
-        public const string REG_TYPE_0 = "方式0";
-        public const string REG_TYPE_1 = "方式1";
-        public const string REG_TYPE_2 = "方式2";
+        public const string REG_TYPE_0 = "停止注册";
+        public const string REG_TYPE_1 = "自由注册";
+        public const string REG_TYPE_2 = "引荐注册";
 
         public const string SCORE_USER_OPEN = "开户";
         public const string SCORE_BANK_WIN = "庄胜";
@@ -49,7 +61,8 @@ namespace LotterySystem.Models
         public const string SCORE_PLAYER_LOSE = "闲负";
         public const string SCORE_LEND_OUT = "借出";
         public const string SCORE_BORROW_IN = "借进";
-        //public const string SCORE_MODE_OPEN = "还款";
+        public const string SCORE_REPAY_OUT = "还款";
+        public const string SCORE_REPAY_IN = "收款";
         public const string SCORE_APPROVE_IN = "申借";
         public const string SCORE_SEND_OUT = "划出";
         public const string SCORE_REVC_IN = "划入";

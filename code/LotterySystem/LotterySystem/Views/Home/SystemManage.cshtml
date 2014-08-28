@@ -29,28 +29,28 @@
                            
 
                              <select class="btn btn-default dropdown-toggle" name="registType">
-                                @if("方式0".Equals(@ViewBag.SysInfo.RegistType))
+                                @if("停止注册".Equals(@ViewBag.SysInfo.RegistType))
                                 {
-                                   <option value="方式0" selected >方式0</option>
+                                   <option value="停止注册" selected >停止注册</option>
                                 }
                                 else
                                 {
-                                   <option value="方式0">方式0</option>
+                                   <option value="停止注册">停止注册</option>
                                 } 
 
-                                @if ("方式1".Equals(@ViewBag.SysInfo.RegistType))
+                                @if ("自由注册".Equals(@ViewBag.SysInfo.RegistType))
                                 {
-                                   <option value="方式1" selected >方式1</option>
+                                   <option value="自由注册" selected >自由注册</option>
                                 }else{
-                                   <option value="方式1">方式1</option>
+                                   <option value="自由注册">自由注册</option>
                                 }
-                                @if ("方式2".Equals(@ViewBag.SysInfo.RegistType))
+                                @if ("引荐注册".Equals(@ViewBag.SysInfo.RegistType))
                                 {
-                                   <option value="方式2" selected >方式2</option>
+                                   <option value="引荐注册" selected >引荐注册</option>
                                 }
                                 else
                                 {
-                                   <option value="方式2">方式2</option>
+                                   <option value="引荐注册">引荐注册</option>
                                 }
                             </select>
 							</div>

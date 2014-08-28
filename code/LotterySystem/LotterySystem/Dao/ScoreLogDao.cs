@@ -10,9 +10,10 @@ namespace LotterySystem.Dao
     {
         List<ScoreLog> getAll();
 
-        List<ScoreLog> getApprovalScoreByUser(String userName);
-        List<ScoreLog> getRepayScoreByUser(String userName);
-     
+        ScoreLog getScoreByID(long logID);
+        List<ScoreLog> getApprovalScoreByUser(String userName, String mode);
+    
+        void updateScoreLog(ScoreLog score);
         void creatScoreLog(ScoreLog log);
  
         

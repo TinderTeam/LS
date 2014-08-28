@@ -29,11 +29,11 @@
       <column name="MODE" length="50"/>
     </property>
 
-    <property name="GamblingPartyID" type="long">
+    <property name="GamblingPartyID" type="string">
       <column name="GAMBLING_PARTY_ID" />
     </property>
 
-    <property name="RoundID" type="long">
+    <property name="RoundID" type="string">
       <column name="ROUND_ID"  />
     </property>
 

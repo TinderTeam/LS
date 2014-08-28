@@ -50,7 +50,7 @@ namespace LotterySystem.Dao.Impl
             return logList;
         }
 
-        public List<ScoreLog> getApprovalScoreByUser(String userName)
+        public List<ScoreLog> getApprovalScoreByUser(String userName,String mode)
         {
             List<ScoreLog> logList = new List<ScoreLog>();
             ISession session = null;
@@ -61,6 +61,8 @@ namespace LotterySystem.Dao.Impl
                 ITransaction tx = session.BeginTransaction();
                 ICriteria criteria = session.CreateCriteria<ScoreLog>();
                 criteria.Add(Restrictions.Eq("OtherName", userName));
+                criteria.Add(Restrictions.IsNull("RoundID"));
+                criteria.Add(Restrictions.Eq("Mode", mode));
 
                 var queryList = criteria.List<ScoreLog>();
 
@@ -89,49 +91,7 @@ namespace LotterySystem.Dao.Impl
             }
             return logList;
         }
- 
-                 
-         
-        public List<ScoreLog> getRepayScoreByUser(String userName)
-        {
-            List<ScoreLog> logList = new List<ScoreLog>();
-            ISession session = null;
-            try
-            {
-
-                session = SessionManager.getInstance().GetSession();
-                ITransaction tx = session.BeginTransaction();
-                ICriteria criteria = session.CreateCriteria<ScoreLog>();
-                criteria.Add(Restrictions.Eq("UserName", userName));
-       
-                var queryList = criteria.List<ScoreLog>();
-          
-
-                foreach (var result in queryList)
-                {
-                    logList.Add(result);
-                }
-
-                tx.Commit();
-
-
-            }
-            catch (System.Exception ex)
-            {
-
-                log.Error("get doors error", ex);
-                throw ex;
-            }
-            finally
-            {
-                if (null != session)
-                {
-                    session.Close();
-                }
-            }
-            return logList;
-        }
-
+    
        
         public void creatScoreLog(ScoreLog ScoreLog)
         {
@@ -162,7 +122,68 @@ namespace LotterySystem.Dao.Impl
                 }
             }
         }
+        public ScoreLog getScoreByID(long logID)
+        {
+            ScoreLog score = new ScoreLog();
+            ISession session = null;
+            try
+            {
 
+                session = SessionManager.getInstance().GetSession();
+                ITransaction tx = session.BeginTransaction();
+                ICriteria criteria = session.CreateCriteria<ScoreLog>();
+                criteria.Add(Restrictions.Eq("LogID", logID));
+
+                score = (ScoreLog)criteria.UniqueResult();
+
+
+                tx.Commit();
+
+
+            }
+            catch (System.Exception ex)
+            {
+
+                log.Error("get doors error", ex);
+                throw ex;
+            }
+            finally
+            {
+                if (null != session)
+                {
+                    session.Close();
+                }
+            }
+            return score;
+        }
+        public void updateScoreLog(ScoreLog score)
+        {
+
+            ISession session = null;
+            try
+            {
+                session = SessionManager.getInstance().GetSession();
+                ITransaction tx = session.BeginTransaction();
+
+                session.Update(score);
+
+                tx.Commit();
+
+            }
+            catch (System.Exception ex)
+            {
+
+                log.Error("update score error", ex);
+                throw ex;
+            }
+            finally
+            {
+                if (null != session)
+                {
+                    session.Close();
+                }
+            }
+        }
  
     }
 }

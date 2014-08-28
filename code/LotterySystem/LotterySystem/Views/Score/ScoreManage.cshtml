@@ -104,17 +104,18 @@
 						<div class="table-responsive">
 							<table class="table table-condensed">
 								<tr>
+								  <td>编号</td>
 								  <td>用户名</td>
 								  <td>请求时间</td>	
-                                  <td>积分</td>	
+                                                                   <td>积分</td>	
 								  <td>处理</td>						  
 								</tr>
 
-                               @foreach (var p in @ViewBag.ApproveScoreList)
+                               @foreach (var p in @ViewBag.RepayScoreList)
                                { 
                                        <tr >
-                                           
-								           <td>@p.UserName</td>
+                                           <td>@p.LogID</td>
+					   <td>@p.UserName</td>
                                            <td>@p.RecordTime</td>
                                            <td>@p.Value</td>
                                             <td>
@@ -144,22 +145,23 @@
 						<div class="table-responsive">
 							<table class="table table-condensed">
 								<tr>
+								  <td>编号</td>
 								  <td>用户名</td>
 								  <td>请求时间</td>	
-                                  <td>积分</td>	
+                                                                  <td>积分</td>	
 								  <td>处理</td>
 								</tr>
 
-                                @foreach (var p in @ViewBag.RepayScoreList)
+                                @foreach (var p in @ViewBag.ApproveScoreList)
                                 { 
                                        <tr >
-                                           
+                                           <td>@p.LogID</td>
 								           <td>@p.UserName</td>
                                            <td>@p.RecordTime</td>
                                            <td>@p.Value</td>
                                             <td>
-                                                @Html.ActionLink("拒绝", "Refuse", "Score", new { logID = @p.LogID }, new { @class = "btn btn-danger" })
-                                                @Html.ActionLink("同意", "Agree", "Score", new { logID = @p.LogID }, new { @class = "btn btn-success" })
+                                                @Html.ActionLink("拒绝", "Refuse", "Score", new { logID = @p.LogID }, new { @class = "btn btn-primary" })
+                                                @Html.ActionLink("同意", "Agree", "Score", new { logID = @p.LogID }, new { @class = "btn btn-primary" })
                                             </td>
 					            
 	                                   </tr>	

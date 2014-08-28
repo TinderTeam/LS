@@ -89,14 +89,15 @@
             {
                 <div class="alert alert-success alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <strong>成功</strong>@ViewBag.SuccessMsg
+                    <strong>操作结果: </strong>@ViewBag.SuccessMsg
                 </div>
             }
+            shibais
              @if(@ViewBag.ErrorMsg!=null)
             {
                 <div class="alert alert-danger alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <strong>失败</strong>@ViewBag.ErrorMsg
+                    <strong>操作结果: </strong>@ViewBag.ErrorMsg
                 </div>
             }
         </div>

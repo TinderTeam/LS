@@ -13,8 +13,8 @@ namespace LotterySystem.Po
         private int value;
         private int balance;
         private String mode;
-        private long gamblingPartyID;
-        private long roundID;
+        private String gamblingPartyID;
+        private String roundID;
         private String otherName;
 
         public virtual long LogID
@@ -52,13 +52,13 @@ namespace LotterySystem.Po
             set { mode = value; }
         }
 
-        public virtual long GamblingPartyID
+        public virtual String GamblingPartyID
         {
             get { return gamblingPartyID; }
             set { gamblingPartyID = value; }
         }
 
-        public virtual long RoundID
+        public virtual String RoundID
         {
             get { return roundID; }
             set { roundID = value; }

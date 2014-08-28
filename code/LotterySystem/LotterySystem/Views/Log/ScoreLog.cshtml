@@ -19,7 +19,7 @@
 						<div class="table-responsive">
 							<table class="table table-condensed">
 								<tr>
-                                   
+                                                                  <td>编号</td>
 								  <td>用户名</td>
 								  <td>发生时间</td>
 								  <td>发生额度</td>
@@ -34,7 +34,7 @@
 								   @foreach (var p in @ViewBag.ScoreLogList)
 						            { 
                                        <tr >
-                                           
+                                           <td>@p.LogID</td>
 								           <td>@p.UserName</td>
                                            <td>@p.RecordTime</td>
                                            <td>@p.Value</td>
