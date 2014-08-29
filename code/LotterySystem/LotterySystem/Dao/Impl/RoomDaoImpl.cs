@@ -242,7 +242,7 @@ namespace LotterySystem.Dao
                 }
             }
         }
-        public void deleteRoomByRoomName(string gameName,string roomName)
+        public void deleteGameByRoomName(string gameName,string roomName)
         {
             ISession session = null;
             try

@@ -23,8 +23,6 @@ namespace LotterySystem.Controllers
         /// <returns></returns>
         ///   
         [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
 

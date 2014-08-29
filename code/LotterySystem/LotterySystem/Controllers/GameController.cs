@@ -44,26 +44,26 @@ namespace LotterySystem.Controllers
             UserModel user = (UserModel)Session["SystemUser"];
             GameModel game = (GameModel)Session["CurrentGame"];
             //创建房间
+           
             String result = platService.createRoom(game.GameName, user, model);
             if (result.Equals(SysConstants.SUCCESS))
             {
-                return RedirectToAction("RoomPage", "Game");
-                // return RedirectToAction("TablePage", "Game");
+                return RedirectToAction("RoomPage", "Game", new { gameName = model.GameName, msg = SysConstants.OK});       
             }
             else
             {
-                @ViewBag.Msg = result;
-                @ViewBag.Model = model;
-                return View();
+
+                @ViewBag.InfoMsg = result;
+                return RedirectToAction("RoomEdit", "Game", new { roomName=model.RoomName , msg=result});
             }
         }
 
 
 
         [HttpPost]
-        public ActionResult RoomEdit(RoomForm model) 
+        public ActionResult RoomEdit(RoomForm model)
         {
-            log.Debug("[RoomEdit] Submit model="+model);
+            log.Debug("[RoomEdit] Submit model=" + model);
             UserModel user = (UserModel)Session["SystemUser"];
             GameModel game = (GameModel)Session["CurrentGame"];
             @ViewBag.User = user;
@@ -75,30 +75,30 @@ namespace LotterySystem.Controllers
                 string result = platService.editRoomInfo(model);
                 if (result.Equals(SysConstants.SUCCESS))
                 {
-                    @ViewBag.Msg = RoomConstatns.CREATE_ROOM_SUCCESS;
-                    return RedirectToAction("RoomPage", "Game");
-                }else{
-                    @ViewBag.Msg = result;
-                    return View();
-                } 
+                    return RedirectToAction("RoomPage", "Game", new { gameName=model.GameName,msg = SysConstants.SUCCESS });
+                }
+                @ViewBag.InfoMsg = result;
+                return View();
             }
-            return RedirectToAction("RoomPage", "Game");
+            @ViewBag.InfoMsg = SysConstants.INFO_ERR;
+            return View();
         }
 
         /// <summary>
         /// 房间管理
         /// </summary>
         /// <returns></returns>
-        public ActionResult RoomEdit(string roomName)
+        public ActionResult RoomEdit(string roomName,string msg)
         {
             log.Debug("Enter [RoomEdit]Page， roomName= "+roomName);
             GameModel game = (GameModel)Session["CurrentGame"];          
             RoomModel room =platService.getRoomByGameAndName(game.GameName, roomName);
             DoorListModel door = platService.getDoorByGameAndRoom(game.GameName, roomName);
-            @ViewBag.WhiteList = door.getWhiteListStr();
-            @ViewBag.BlackList = door.getBlackListStr();
-            @ViewBag.Room = room;
-            @ViewBag.Game = game;
+            ViewBag.WhiteList = door.getWhiteListStr();
+            ViewBag.BlackList = door.getBlackListStr();
+            ViewBag.Room = room;
+            ViewBag.Game = game;
+            ViewBag.InfoMsg = msg;
             return View();
         }
 
@@ -131,7 +131,7 @@ namespace LotterySystem.Controllers
         /// </summary>
         /// <param name="gameName"></param>
         /// <returns></returns>
-        public ActionResult RoomPage(String gameNameArg)
+        public ActionResult RoomPage(String gameNameArg,string msg)
 
         {
             string gameName;
@@ -155,6 +155,8 @@ namespace LotterySystem.Controllers
             List<RoomModel> roomList = platService.getOpenRoomListByGameName(gameName);
             ViewBag.roomListCount = roomList.Count;
             ViewBag.roomList = roomList;
+            ViewBag.InfoMsg = msg;
+
             return View();
         }
 
@@ -193,6 +195,13 @@ namespace LotterySystem.Controllers
             }
             //将Room放入Session
 
+
+            if (!platService.enterRoom(game,room,user))
+            {
+                return RedirectToAction("RoomPage", "Game", new { gameName = game.GameName, msg = RoomConstatns.ENTER_ROOM_LIMIT });
+            }
+
+
             //显示桌子
             List<TableModel> tableModelList = platService.getAllTableByGameAndRoom(game.GameName, roomNameArg);
             ViewBag.tableListCount = tableModelList.Count;
@@ -211,12 +220,17 @@ namespace LotterySystem.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 删除房间
+        /// </summary>
+        /// <param name="roomName"></param>
+        /// <returns></returns>
         public ActionResult DeleteRoom(string roomName)
         {
             GameModel game = (GameModel)Session["CurrentGame"];
 
             platService.deleteRoom( game.GameName,roomName);
-            return RedirectToAction("RoomPage", "Game");
+            return RedirectToAction("RoomPage", "Game", new {gameName=game.GameName,msg=SysConstants.OK});
         }
 
 
@@ -245,6 +259,22 @@ namespace LotterySystem.Controllers
             }
 
             return RedirectToAction("GameManage", "Game" ,new { msg = errorMsg} );
+        }
+
+        [HttpPost]
+        public ActionResult RoomPassword(RoomPasswordForm form){
+
+            GameModel game = (GameModel)Session["CurrentGame"];
+
+            if (platService.checkRoomPassword(game.GameName, form.RoomName, form.Password))
+            {
+                return RedirectToAction("TablePage", "Game", new { roomName = form.RoomName });
+            }
+            else
+            {
+                return RedirectToAction("RoomPage", "Game", new { gameName = game.GameName, msg = RoomConstatns.PASSWORD_WRONG });
+            }
+            
         }
 
         public ActionResult GameManage(string msg)

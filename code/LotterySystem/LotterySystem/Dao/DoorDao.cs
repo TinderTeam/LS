@@ -14,5 +14,7 @@ namespace LotterySystem.Dao
         void updateDoor(Door door);
         void creatDoor(List<Door> list);
         List<Door> getDoorByGameAndRoomAndType(string game, string room, string type);
+        void deleteGameAndRoom(string game, string room);
+        Door getDoorByGameRoomUserType(string game, string room, string user,string type);
     }
 }

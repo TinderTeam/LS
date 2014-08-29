@@ -20,11 +20,61 @@ namespace LotterySystem.Service.GameManage
         GameDao gameDao = DaoContext.getInstance().getGameDao();
         DoorDao doorDao = DaoContext.getInstance().getDoorDao();
         GamblingPartyDao gamblingPartyDao = DaoContext.getInstance().getGamblingPartyDao();
+        UserDao userDao = DaoContext.getInstance().getUserDao();
 
 
+        /// <summary>
+        /// 进入房间
+        /// </summary>
+        /// <param name="game"></param>
+        /// <param name="room"></param>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public  bool enterRoom(GameModel game, RoomModel room, UserModel user)
+        {
+            Door blackName = doorDao.getDoorByGameRoomUserType(game.GameName,room.RoomName,user.UserName,UserConstants.OFF);
+            DoorListModel doorList = getDoorByGameAndRoom(game.GameName, room.RoomName);
+            bool inWhite=false;
+            
+            if (blackName!=null)
+            {
+                return false;
+            }
+            if (doorList.WhiteList != null && doorList.WhiteList.Count!=0)
+            {   
+                foreach (DoorModel door in doorList.WhiteList){
+                    if(door.GameName.Equals(user.UserName)){
+                        inWhite=true;
+                        break;
+                    }
+                }
+                if(!inWhite){
+                    return false;
+                }
+            }
+
+            //积分大于或等于准入底值
+            User userBalance = userDao.getSystemUserByName(user.UserName);
+            if (userBalance.Account < room.AccessAcountLimit)
+            {
+                return false;
+            }
+
+            //用户进入房间
+            
+
+            return true;
+        }
+
+        /// <summary>
+        /// 删除房间
+        /// </summary>
+        /// <param name="gameName"></param>
+        /// <param name="roomName"></param>
         public void deleteRoom(string gameName,string roomName)
         {
-            roomDao.deleteRoomByRoomName(gameName,roomName);
+            roomDao.deleteGameByRoomName(gameName,roomName);
+            doorDao.deleteGameAndRoom(gameName, roomName);
         }
 
         /// <summary>
@@ -89,8 +139,8 @@ namespace LotterySystem.Service.GameManage
             List<GamblingParty> gamblingParty = gamblingPartyDao.getGamblingPartyByGameAndRoom(game, room);
             
             //新建所有桌子
-
-            for (int i = 0; i <getGameByName(game).OneRoomTableLimit ; i++)
+            int num=getGameByName(game).OneRoomTableLimit;
+            for (int i = 0; i < num; i++)
             {
                 TableModel tableModel = new TableModel();
                 tableModel.GamblingPartyID = RoomConstatns.NULL;
@@ -118,8 +168,21 @@ namespace LotterySystem.Service.GameManage
             }
             return tableList;
         }
+        /// <summary>
+        /// 
+        /// 验证房间密码
+        /// </summary>
+        /// <param name="from"></param>
+        /// <returns></returns>
+        public  bool  checkRoomPassword(string gameName,string roomName, string pswd)
+        {
+            Room room = roomDao.getRoomByGameAndRoom(gameName,roomName);
+            if(room.RoomPassword.Equals(pswd)){
+                return true;
+            }
+            return false;
 
-        
+        }
 
         /// <summary>
         /// 通过名称获取房间
@@ -157,17 +220,18 @@ namespace LotterySystem.Service.GameManage
             room.Status = RoomConstatns.STATUS_OPEN;
             form.GameName = gameName;
             List<Door> doorList = ConventService.toDoor(form);
-            doorDao.creatDoor(doorList);
+           
 
 
             //校验
             /*
              * TODO
              */
-            string result=checkRoomInfo(room);
+            string result=checkRoomInfo(gameName,room);
             if (result.Equals(SysConstants.SUCCESS))
             {
                 roomDao.createRoom(room);
+                doorDao.creatDoor(doorList);
             }
             return result;
         }
@@ -219,7 +283,7 @@ namespace LotterySystem.Service.GameManage
             room.BankerLimit = form.BankerLimit;
             room.BasicPoint = form.BasicPoint;
 
-            string result = checkRoomInfo(room);
+            string result = checkRoomInfo(form.GameName,room);
             if (result.Equals(SysConstants.SUCCESS))
             {
                 roomDao.updateRoom(room);
@@ -232,9 +296,18 @@ namespace LotterySystem.Service.GameManage
         /// </summary>
         /// <param name="?"></param>
         /// <returns></returns>
-        private string checkRoomInfo(Room room)
+        private string checkRoomInfo(string gameName,Room room)
         {
-            return SysConstants.SUCCESS;
+            Room roomExist=roomDao.getRoomByGameAndRoom(gameName, room.RoomName);
+            if (roomExist != null)
+            {
+                return RoomConstatns.ROOM_EXIST;
+            }
+            else
+            {
+                return SysConstants.SUCCESS;
+            }
+           
         }
     }
 }

@@ -18,6 +18,9 @@ namespace LotterySystem.Models
     }
     public class RoomConstatns
     {
+
+        public const string PASSWORD_WRONG = "房间密码错误";
+        public const string ENTER_ROOM_LIMIT = "您不能进入该房间";
         public const string PAGE_CREATE = "create";
         public const string PAGE_EDIT = "edit";
         public const string STATUS_OPEN = "开放";
@@ -27,6 +30,8 @@ namespace LotterySystem.Models
         public const string ERR_USERROOM_LIMIT = "该用户在当前游戏中房间数达到上限，无法创建房间";
         public const string NULL = "无";
         public const string CREATE_ROOM_SUCCESS = "创建房间成功";
+        public const string ROOM_EXIST = "房间名已存在";
+        
     }
 
     public class ErrorMsgConst
@@ -54,7 +59,8 @@ namespace LotterySystem.Models
     public class SysConstants
     {
         public const string SUCCESS = "success";
-
+        public const string OK = "操作成功";
+        public const string INFO_ERR = "您填写的信息不完整";
         public const char OS_BROWSER_SPLIT = ',';
 
         public static string[] OS_LIST = new string[]{"All","Linux","xp/win7","IOS"};

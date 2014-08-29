@@ -19,8 +19,11 @@ namespace LotterySystem.Service
         String createRoom(String gameName, UserModel user,RoomForm model);
         String editRoomInfo(RoomForm model);
         void deleteRoom(string gameName, string roomName);
+        //进入房间
+        bool enterRoom(GameModel game,RoomModel room, UserModel user);
 
-      
+        bool checkRoomPassword(string gameName,string room, string pswd);
+
     }
 
     public interface ConvertService

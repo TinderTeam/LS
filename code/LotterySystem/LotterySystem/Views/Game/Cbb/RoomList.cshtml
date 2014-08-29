@@ -5,9 +5,22 @@
 }
 
 
-
+<script type="text/javascript">
+    var idValue;
+    function roomPswd(id) {
+        idValue = id
+        $("#roomNameInput").val(id);
+        $('#myModal').modal('show');
+    }
+</script>
+ <style type="text/css">
+       .game_data_table td
+        {   
+            text-align:center;
+        }
+    </style>
 <!-- 房间列表 -->
-				<div class="panel panel-primary">
+<div class="panel panel-primary">
     <div class="panel-heading" style="height:60px">
         <span style="font-size:25px">房间列表</span>
         <span class="pull-right"> <input type="button"  onclick="javascript: history.back(-1);" value="返回" class="btn btn-default"></span>
@@ -15,14 +28,14 @@
 
     <div class="panel-body">
         <div class="table-responsive">
-            <table class="table table-condensed">
+            <table class="table table-condensed game_data_table">
                 <tr>
                     <td>房间名称</td>
                     <td>准入底分</td>
                     <td>起投分值</td>
                     <td>增幅</td>
                     <td>上庄底值</td>
-		    <td>操作</td>
+		            <td>操作</td>
                     <td>管理</td>
                 </tr>
                 @if (@ViewBag.RoomList == null || @ViewBag.RoomListCount==0)
@@ -41,19 +54,25 @@
                             <td>@ViewBag.RoomList[i].Amplification</td>
                             <td>@ViewBag.RoomList[i].BankerPointLimited</td>			    
 			                <td> 
-			    	            @Html.ActionLink("进入房间", "TablePage", "Game",  new { roomName=@ViewBag.RoomList[i].RoomName},  new { @class = "btn btn-primary" })
+                                @if (@ViewBag.RoomList[i].RoomPassword!=null && !@ViewBag.RoomList[i].RoomPassword.Equals(""))
+                                {
+                                    <button  class="btn btn-primary"  onclick="roomPswd('@ViewBag.RoomList[i].RoomName')">进入</button>       
+                                }
+                                else{
+                                    @Html.ActionLink("进入", "TablePage", "Game",  new { roomName=@ViewBag.RoomList[i].RoomName},  new { @class = "btn btn-primary"})
+                                }
+			    	           
                             </td>
                            
                             <td>
                                 @if (ViewBag.RoomList[i].RoomHost.Equals(user.UserName))
                                 {   	
-						            @Html.ActionLink("房间管理", "RoomEdit", "Game", new {roomName = @ViewBag.RoomList[i].RoomName }, new { @class = "btn btn-primary" })
+						            @Html.ActionLink("管理", "RoomEdit", "Game", new {roomName = @ViewBag.RoomList[i].RoomName }, new { @class = "btn btn-primary" })
                                 }
                                 else
                                 {
         
-                                }
-                                
+                                }                            
                             </td>
                         </tr>
                     }                  
@@ -62,3 +81,37 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+<!-- Modal -->
+
+@using (Html.BeginForm("RoomPassword", "Game", FormMethod.Post))
+{
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">房间密码</h4>
+          </div>
+          <div class="modal-body">
+              <div role="form">
+                  <div class="form-group">
+                      <label for="exampleInputPassword1">请输入密码</label>
+                      <input type="password" class="form-control" placeholder="请输入房间密码" value="" name="password"/>
+                      <input type="hidden" class="form-control"  value="" name="roomName" id="roomNameInput"/>
+                  </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+           
+            <input name="submit" type="submit" class="btn btn-primary" />
+            <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+          </div>
+        </div>
+      </div>
+    </div>
+}

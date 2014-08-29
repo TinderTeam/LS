@@ -190,7 +190,7 @@ namespace LotterySystem.Models
         public string getWhiteListStr(){
 
             string str = "";
-            if ((null != whiteList) && (0 == whiteList.Count))
+            if ((null != whiteList) && (0 != whiteList.Count))
             {
                 str = whiteList[0].UserName;
                 for (int i = 1; i < whiteList.Count; i++)
@@ -204,7 +204,7 @@ namespace LotterySystem.Models
         public string getBlackListStr()
         {
             string str = "";
-            if ((null != blackList) && (0 == blackList.Count))
+            if ((null != blackList) && (0 != blackList.Count))
             {
                 str = blackList[0].UserName;
                 for (int i = 1; i < blackList.Count; i++)
@@ -242,6 +242,24 @@ namespace LotterySystem.Models
         {
             get { return entranceType; }
             set { entranceType = value; }
+        }
+    }
+
+    public class RoomPasswordForm
+    {
+        private String password;
+        private String roomName;
+
+        public String RoomName
+        {
+            get { return roomName; }
+            set { roomName = value; }
+        }
+
+        public String Password
+        {
+            get { return password; }
+            set { password = value; }
         }
     }
 }

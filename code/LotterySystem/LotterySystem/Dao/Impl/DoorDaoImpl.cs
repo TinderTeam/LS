@@ -13,6 +13,46 @@ namespace LotterySystem.Dao
     {
         private static log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+
+
+        public Door getDoorByGameRoomUserType(string game, string room, string user, string type)
+        {
+            Door door = new Door();
+            ISession session = null;
+            try
+            {
+                session = SessionManager.getInstance().GetSession();
+                ITransaction tx = session.BeginTransaction();
+
+                ICriteria criteria = session.CreateCriteria<Door>();
+
+
+                criteria.Add(Restrictions.Eq("UserName", user));
+                criteria.Add(Restrictions.Eq("RoomName", room));
+                criteria.Add(Restrictions.Eq("GameName", game));
+                criteria.Add(Restrictions.Eq("EntranceType", type));
+
+                door = (Door)criteria.UniqueResult();
+
+                tx.Commit();
+
+            }
+            catch (System.Exception ex)
+            {
+
+                log.Error("search user error", ex);
+                throw ex;
+            }
+            finally
+            {
+                if (null != session)
+                {
+                    session.Close();
+                }
+            }
+            return door;
+        }
+
         public List<Door> getAll()
         {
             List<Door> doorList = new List<Door>();
@@ -87,6 +127,35 @@ namespace LotterySystem.Dao
                 }
             }
         }
+
+       public void deleteGameAndRoom(string game, string room)
+       {
+           ISession session = null;
+           try
+           {
+               session = SessionManager.getInstance().GetSession();
+               ITransaction tx = session.BeginTransaction();
+               var sql = "Delete from door Where  GAME_NAME=? and ROOM_NAME = ?";
+               ISQLQuery query = session.CreateSQLQuery(sql);
+               query.SetAnsiString(0, game);
+               query.SetAnsiString(1, room);
+               query.ExecuteUpdate();
+               tx.Commit();
+           }
+           catch (System.Exception ex)
+           {
+
+               log.Error("delete room error", ex);
+               throw ex;
+           }
+           finally
+           {
+               if (null != session)
+               {
+                   session.Close();
+               }
+           }
+       }
 
        public List<Door> getDoorByGameAndRoomAndType(string game, string room, string type)
        {
