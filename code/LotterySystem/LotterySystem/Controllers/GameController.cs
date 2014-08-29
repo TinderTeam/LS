@@ -77,11 +77,9 @@ namespace LotterySystem.Controllers
                 {
                     return RedirectToAction("RoomPage", "Game", new { gameName=model.GameName,msg = SysConstants.SUCCESS });
                 }
-                @ViewBag.InfoMsg = result;
-                return View();
-            }
-            @ViewBag.InfoMsg = SysConstants.INFO_ERR;
-            return View();
+                return RedirectToAction("RoomPage", "Game", new { gameName = model.GameName, msg = result });
+            }       
+            return RedirectToAction("RoomPage", "Game", new { gameName = model.GameName, msg = SysConstants.INFO_ERR });
         }
 
         /// <summary>

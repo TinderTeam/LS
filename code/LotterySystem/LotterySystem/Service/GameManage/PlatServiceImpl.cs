@@ -283,12 +283,10 @@ namespace LotterySystem.Service.GameManage
             room.BankerLimit = form.BankerLimit;
             room.BasicPoint = form.BasicPoint;
 
-            string result = checkRoomInfo(form.GameName,room);
-            if (result.Equals(SysConstants.SUCCESS))
-            {
+
                 roomDao.updateRoom(room);
-            }
-            return result;
+
+            return SysConstants.SUCCESS;
         }
 
         /// <summary>
