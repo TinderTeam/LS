@@ -74,7 +74,8 @@ namespace LotterySystem.Controllers
             Session["SystemUser"] = null;
             Session["CurrentRoom"] = null;
             Session["CurrentGame"] = null;
-            
+            Session.Clear();
+            Session.Abandon();
             return RedirectToAction("Index", "Home");
         }
     }
