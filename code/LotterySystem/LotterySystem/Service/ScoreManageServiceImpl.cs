@@ -85,10 +85,22 @@ namespace LotterySystem.Service
             if (isAgree)
             {
                 scoreValue = score.Value;
-                if (score.Value > lendOutUser.Account)
+
+                if (!lendOutUser.Permission.Contains(SysConstants.PERSSION_OVER_DRAFT))
                 {
-                    throw new SystemException(ErrorMsgConst.BALANCE_NOT_ENOUGH);
+                    if (score.Value > lendOutUser.Account)
+                    {
+                        throw new SystemException(ErrorMsgConst.BALANCE_NOT_ENOUGH);
+                    }
                 }
+                else
+                {
+                    log.Info("the user have over draft function");
+                }
+            }
+            else
+            {
+                log.Info(" refuse apply ");
             }
 
             lendOutUser.Account -= scoreValue;
@@ -140,9 +152,17 @@ namespace LotterySystem.Service
             int scoreValue = score.Value;
 
             User repayOutUser = userDao.getSystemUserByName(score.OtherName);
-            if (score.Value > repayOutUser.Account)
+
+            if (!repayOutUser.Permission.Contains(SysConstants.PERSSION_OVER_DRAFT))
             {
-                throw new SystemException(ErrorMsgConst.BALANCE_NOT_ENOUGH);
+                if (score.Value > repayOutUser.Account)
+                {
+                    throw new SystemException(ErrorMsgConst.BALANCE_NOT_ENOUGH);
+                }
+            }
+            else
+            {
+                log.Info("the user have over draft function");
             }
 
             repayOutUser.Account -= scoreValue;

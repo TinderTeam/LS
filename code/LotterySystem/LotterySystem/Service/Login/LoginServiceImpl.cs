@@ -118,7 +118,7 @@ namespace LotterySystem.Service.Login
                     throw new SystemException(ErrorMsgConst.REGIST_NOT_OPEN);
                 case SysConstants.REG_TYPE_1:
                     user.Status = UserConstants.STATUS_WAIT;
-                    User remUser  = userDao.getSystemUserByName(model.UserName);
+                    User remUser  = userDao.getSystemUserByName(model.RecommendUserName);
 
                     if (null == remUser)
                     {

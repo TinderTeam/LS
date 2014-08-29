@@ -78,6 +78,8 @@ namespace LotterySystem.Models
         public const string SCORE_REVC_IN = "划入";
         public const string SCORE_REVE_TAX = "收税";
         public const string SCORE_SEND_TAX = "缴税";
+
+        public const string PERSSION_OVER_DRAFT = "透支";
       
     }
 }
