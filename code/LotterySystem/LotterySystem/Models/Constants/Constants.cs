@@ -86,6 +86,8 @@ namespace LotterySystem.Models
         public const string SCORE_SEND_TAX = "缴税";
 
         public const string PERSSION_OVER_DRAFT = "透支";
+
+        public const string SYS_ADMIN_USER = "sysadmin";
       
     }
 }

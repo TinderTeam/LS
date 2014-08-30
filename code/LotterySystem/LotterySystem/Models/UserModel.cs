@@ -18,8 +18,10 @@ namespace LotterySystem.Models
         private String status;
         private String permission;
         private String recommendUserName;
+
         private int balanceScore;
 
+    
         public int BalanceScore
         {
             get { return balanceScore; }
@@ -111,7 +113,12 @@ namespace LotterySystem.Models
         private String password;
         private String payPassword;
         private String recommendUserName;
-
+        private int recommendUserID;
+        public int RecommendUserID
+        {
+            get { return recommendUserID; }
+            set { recommendUserID = value; }
+        }
         public String RecommendUserName
         {
             get { return recommendUserName; }

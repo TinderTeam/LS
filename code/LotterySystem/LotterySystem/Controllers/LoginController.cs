@@ -66,6 +66,16 @@ namespace LotterySystem.Controllers
 
         public ActionResult Register()
         {
+            SystemInfoModel sysInfo = ServiceContext.getInstance().getSysInfoService().loadSysInfo();
+            if (null == sysInfo)
+            {
+                log.Error("can not get the system information");
+            }
+            else
+            {
+                ViewBag.RegistType = sysInfo.RegistType;
+            }
+            
             return View();
         }
 

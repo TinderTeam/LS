@@ -182,6 +182,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ScoreController.cs" />
+    <Compile Include="Controllers\SystemController.cs" />
     <Compile Include="Dao\AccountDao.cs" />
     <Compile Include="Dao\BetRecDao.cs" />
     <Compile Include="Dao\ChoiceDao.cs" />
@@ -488,6 +489,7 @@
     <Content Include="Views\Score\ScoreManage.cshtml" />
     <Content Include="Views\User\UserApprove.cshtml" />
     <Content Include="Views\Score\ScoreRecord.cshtml" />
+    <Content Include="Views\System\SystemManage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

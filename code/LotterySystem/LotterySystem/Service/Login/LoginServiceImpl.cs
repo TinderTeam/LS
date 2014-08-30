@@ -120,14 +120,11 @@ namespace LotterySystem.Service.Login
                     user.Status = UserConstants.STATUS_WAIT;
                     User remUser  = userDao.getSystemUserByName(model.RecommendUserName);
 
-                    if (null == remUser)
-                    {
-                        log.Error("register failed.user name is " + user.UserName);
-                        throw new SystemException(ErrorMsgConst.REM_USER_IS_NOT_EXISTED);
-                    }
+                    ServiceContext.getInstance().getUserService().isUserExist(model.RecommendUserID, model.RecommendUserName);
                     break;
                 case SysConstants.REG_TYPE_2:
                     user.Status = UserConstants.STATUS_ACTIVE;
+                    model.RecommendUserName = SysConstants.SYS_ADMIN_USER;
                     break;
                 default:
                     break;

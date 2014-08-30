@@ -10,6 +10,7 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using LotterySystem.Filters;
 using LotterySystem.Models;
+ 
 
 namespace LotterySystem.Controllers
 {
@@ -21,6 +22,7 @@ namespace LotterySystem.Controllers
         // GET: /Account/Login
 
         [AllowAnonymous]
+   
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;

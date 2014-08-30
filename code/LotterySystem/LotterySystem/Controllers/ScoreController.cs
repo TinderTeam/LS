@@ -24,6 +24,7 @@ namespace LotterySystem.Controllers
             return View();
         }
 
+
         public ActionResult ScoreManage(String msg)
         {
             UserModel user = (UserModel)Session["SystemUser"];
@@ -33,13 +34,22 @@ namespace LotterySystem.Controllers
             ViewBag.ErrorMsg = msg;
             return View();
         }
+
         [HttpPost]
-        public ActionResult ApproveScore(ApproveScoreModel model)
+        public ActionResult ApproveScore(ApproveScoreModel model, string submit)
         {
             UserModel user = (UserModel)Session["SystemUser"];
             try
             {
-                scoreService.approveScore(model, user.UserName);
+                if (SysConstants.SCORE_APPROVE_IN.Equals(submit))
+                {
+                    scoreService.approveScore(model, user.UserName);
+                }
+                else
+                {
+                    scoreService.sendScore(model, user.UserName);
+                }
+
                 this.errorMsg = ErrorMsgConst.OPERATE_SUCCESS;
             }
             catch (SystemException ex)
@@ -51,6 +61,7 @@ namespace LotterySystem.Controllers
             return RedirectToAction("ScoreManage", "Score", new { msg = this.errorMsg });
         }
         [HttpPost]
+ 
         public ActionResult SendScore(ApproveScoreModel model)
         {
             UserModel user = (UserModel)Session["SystemUser"];
