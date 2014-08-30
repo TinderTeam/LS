@@ -81,7 +81,7 @@ namespace LotterySystem.Models
         public const string SCORE_REPAY_IN = "收款";
         public const string SCORE_APPROVE_IN = "申借";
         public const string SCORE_SEND_OUT = "划出";
-        public const string SCORE_REVC_IN = "划入";
+        public const string SCORE_SEND_IN = "划入";
         public const string SCORE_REVE_TAX = "收税";
         public const string SCORE_SEND_TAX = "缴税";
 

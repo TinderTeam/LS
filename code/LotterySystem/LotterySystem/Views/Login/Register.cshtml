@@ -58,7 +58,12 @@
                             <input type="text" name="userName"  class="{required:true} form-control" placeholder="请输入您的用户名称" />
                         </div>
                     </div>
-
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label font1">推荐人</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="recommendUserName" class="form-control" placeholder="请输入您的推荐人名称"/>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label class="col-sm-4  control-label font1">请输入登录密码</label>
                         <div class="col-sm-8">
@@ -71,25 +76,8 @@
                             <input type="password" class="{required:true,minlength:6,maxlength:12,equalTo:'#newLogPassword'} form-control"  placeholder="请再次输入登录密码" />
                         </div>
                     </div>
-                        <div class="form-group" >
-                            <label  class="col-sm-4 control-label" >请输入支付密码</label>
-                            <div class="col-sm-7">
-                                <input  name="payPassword" type="password"  id="newPayPassword" class="form-control {required:true,minlength:6,maxlength:12}"  placeholder="请输入6~12英文或数字" >
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label" >确认支付密码</label>
-                            <div class="col-sm-7">
-                                <input name="confirm_password" type="password" class="{required:true,minlength:6,maxlength:12,equalTo:'#newPayPassword'} form-control"  placeholder="请再次输入支付密码"  >
-                            </div>
-                        </div>
+      
 
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label font1">推荐人</label>
-                        <div class="col-sm-8">
-                            <input type="text" name="recommendUserName" class="form-control" placeholder="请输入您的推荐人名称"/>
-                        </div>
-                    </div>
                     <hr />
                     <!-- Button -->
                     <div class="control-group " style="text-align: center">

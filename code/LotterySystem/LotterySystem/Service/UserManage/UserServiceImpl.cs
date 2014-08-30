@@ -102,6 +102,7 @@ namespace LotterySystem.Service.UserManage
             user.Status = model.Status;
             userDao.createUser(user);
 
+            ServiceContext.getInstance().getScoreManageService().openAccount(user.UserName);
             return SysConstants.SUCCESS;  
         }
 
@@ -112,6 +113,21 @@ namespace LotterySystem.Service.UserManage
             userDao.updateUser(user);
 
             return SysConstants.SUCCESS;
+        }
+
+        public void isUserExist(int userID,string userName)
+        {
+            User lendUser = userDao.getSystemUserByName(userName);
+            if (null == lendUser)
+            {
+                log.Error("user name is not exist ");
+                throw new SystemException(ErrorMsgConst.USER_NOT_EXITED);
+            }
+            if (lendUser.UserID != userID)
+            {
+                log.Error("user name is match user id ");
+                throw new SystemException(ErrorMsgConst.USER_NOT_MATCH);
+            }
         }
     }
 }

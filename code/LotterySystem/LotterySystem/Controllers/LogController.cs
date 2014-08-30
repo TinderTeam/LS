@@ -7,7 +7,7 @@ using LotterySystem.Service;
 using LotterySystem.Po;
 namespace LotterySystem.Controllers
 {
-    public class LogController : Controller
+    public class LogController : BaseController
     {
 
         LogService manageService = ServiceContext.getInstance().getLogService();

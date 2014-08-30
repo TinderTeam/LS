@@ -8,7 +8,7 @@ using LotterySystem.Service.Login;
 using LotterySystem.Service;
 namespace LotterySystem.Controllers
 {
-    public  class LoginController : Controller
+    public class LoginController : Controller
     {
 
         private static log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);

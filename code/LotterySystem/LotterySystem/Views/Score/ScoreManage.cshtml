@@ -71,12 +71,13 @@
                             <div style="text-align:right">申借积分</div>
                           </div>
 		                  <div class="col-lg-3">
-                            <input type="text" name="scoreValue" class="{required:true,min:1,max:1000000} form-control" placeholder="请输入您申借的积分额" />
+                            <input type="text" name="scoreValue" class="{required:true,min:1,max:1000000} form-control" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="请输入您申借的积分额" />
                           </div>
                 </div> 
            <hr />
 			<div  class="pull-right">
-				 <input  name="submit" class="btn btn-success" type="submit" value="确认"></input>  
+				 <input  name="submit" class="btn btn-success" type="submit" value="申借"/>
+                 <input  name="submit" class="btn btn-success" type="submit" value="划出"/> 
 			</div>
              </div>
           }

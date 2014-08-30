@@ -9,9 +9,9 @@ using LotterySystem.Po;
 
 namespace LotterySystem.Controllers
 {
-    public class ScoreController : Controller
+    public class ScoreController : BaseController
     {
-        private ScoreManageService userService = ServiceContext.getInstance().getScoreManageService();
+        private ScoreManageService scoreService = ServiceContext.getInstance().getScoreManageService();
         LogService logService = ServiceContext.getInstance().getLogService();
         private static log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private String errorMsg = null;
@@ -19,7 +19,7 @@ namespace LotterySystem.Controllers
         public ActionResult ScoreRecord(String msg)
         {
             UserModel user = (UserModel)Session["SystemUser"];
-            ViewBag.ScoreLogList = userService.getScoreList(user.UserName);
+            ViewBag.ScoreLogList = scoreService.getScoreList(user.UserName);
   
             return View();
         }
@@ -27,8 +27,8 @@ namespace LotterySystem.Controllers
         public ActionResult ScoreManage(String msg)
         {
             UserModel user = (UserModel)Session["SystemUser"];
-            ViewBag.ApproveScoreList = userService.getApprovalScoreList(user.UserName);
-            ViewBag.RepayScoreList = userService.getRepayScoreList(user.UserName);
+            ViewBag.ApproveScoreList = scoreService.getApprovalScoreList(user.UserName);
+            ViewBag.RepayScoreList = scoreService.getRepayScoreList(user.UserName);
 
             ViewBag.ErrorMsg = msg;
             return View();
@@ -39,7 +39,7 @@ namespace LotterySystem.Controllers
             UserModel user = (UserModel)Session["SystemUser"];
             try
             {
-                userService.ApproveScore(model, user.UserName);
+                scoreService.approveScore(model, user.UserName);
                 this.errorMsg = ErrorMsgConst.OPERATE_SUCCESS;
             }
             catch (SystemException ex)
@@ -50,12 +50,28 @@ namespace LotterySystem.Controllers
 
             return RedirectToAction("ScoreManage", "Score", new { msg = this.errorMsg });
         }
-     
+        [HttpPost]
+        public ActionResult SendScore(ApproveScoreModel model)
+        {
+            UserModel user = (UserModel)Session["SystemUser"];
+            try
+            {
+                scoreService.sendScore(model, user.UserName);
+                this.errorMsg = ErrorMsgConst.OPERATE_SUCCESS;
+            }
+            catch (SystemException ex)
+            {
+                log.Error("agree lend failed ", ex);
+                this.errorMsg = ex.Message;
+            }
+
+            return RedirectToAction("ScoreManage", "Score", new { msg = this.errorMsg });
+        }
         public ActionResult Refuse(int logID)
         {
             try
             {
-                userService.handleLendScore(logID, false);
+                scoreService.handleLendScore(logID, false);
                 this.errorMsg = ErrorMsgConst.OPERATE_SUCCESS;
             }
             catch (SystemException ex)
@@ -71,7 +87,7 @@ namespace LotterySystem.Controllers
         {
             try
             {
-                userService.handleLendScore(logID, true);
+                scoreService.handleLendScore(logID, true);
                 this.errorMsg = ErrorMsgConst.OPERATE_SUCCESS;
             }
             catch (SystemException ex)
@@ -87,7 +103,7 @@ namespace LotterySystem.Controllers
         {
             try
             {
-                userService.handleRepayScore(logID);
+                scoreService.handleRepayScore(logID);
                 this.errorMsg = ErrorMsgConst.OPERATE_SUCCESS;
             }
             catch (SystemException ex)

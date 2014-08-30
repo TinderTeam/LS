@@ -79,6 +79,8 @@
                   <input type="password" class="{required:true,minlength:6,maxlength:12,equalTo:'#newLogPassword'} form-control"  placeholder="请再次输入登录密码" >
                     </div>
               </div>
+               @if ("modify".Equals(@ViewBag.Operate))
+               {
                         <div class="form-group" >
                             <label  class="col-sm-4 control-label" >支付密码</label>
                             <div class="col-sm-8">
@@ -91,6 +93,7 @@
                                 <input  type="password" class="{required:true,minlength:6,maxlength:12,equalTo:'#newPayPassword'} form-control"  placeholder="请再次输入新密码"  >
                             </div>
                         </div>
+               }
                <div class="form-group">
                   <label class="col-sm-4  control-label font1">状态</label>
                    <div class="col-sm-8">

@@ -141,6 +141,9 @@ namespace LotterySystem.Service.Login
             }
             
             userDao.createUser(user);
+
+            ServiceContext.getInstance().getScoreManageService().openAccount(user.UserName);
+
             return SysConstants.SUCCESS;
         }
 

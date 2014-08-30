@@ -8,7 +8,7 @@ using LotterySystem.Models;
 
 namespace LotterySystem.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private UserService userService = ServiceContext.getInstance().getUserService();
 

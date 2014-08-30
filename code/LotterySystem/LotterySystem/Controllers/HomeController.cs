@@ -8,7 +8,7 @@ using LotterySystem.Service.SysInfo;
 using LotterySystem.Service;
 namespace LotterySystem.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         PlatService platService = ServiceContext.getInstance().getPlatService();
 

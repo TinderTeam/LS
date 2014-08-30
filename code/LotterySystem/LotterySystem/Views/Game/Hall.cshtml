@@ -50,8 +50,11 @@
 						            { 
                                     <tr>
                                         <td class="font1">@ViewBag.GameList[i].GameName</td>
-                                        <td>@Html.ActionLink("进入", "RoomPage", "Game", new { gameNameArg = @ViewBag.GameList[i].GameName},  new { @class="btn btn-primary"})</td>
-                                    </tr>
+                                        @if ("开放".Equals(@ViewBag.GameList[i].GameStatus))
+                                        {
+                                           <td>@Html.ActionLink("进入", "RoomPage", "Game", new { gameNameArg = @ViewBag.GameList[i].GameName},  new { @class="btn btn-primary"})</td>
+                                        }
+                                 </tr>
 							       }
 
                             </table>

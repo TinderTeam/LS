@@ -77,8 +77,9 @@ namespace LotterySystem.Service
         string modifyUser(UserForm form);
         string createNewUser(UserForm form);
         string approve(string userName);
-
+        void isUserExist(int userID,string userName);
         List<UserModel> getApproveListByUser( UserModel user);
+
     }
 
     public interface SysInfoService
@@ -92,8 +93,10 @@ namespace LotterySystem.Service
         List<ScoreLog> getApprovalScoreList(String userName);
         List<ScoreLog> getRepayScoreList(String userName);
         List<ScoreLog> getScoreList(String userName);
-        void ApproveScore(ApproveScoreModel model, String userName);
+        void approveScore(ApproveScoreModel model, String userName);
+        void sendScore(ApproveScoreModel model, String userName);
         void handleLendScore(int logID, bool isAgree);
         void handleRepayScore(int logID);
+        void openAccount(String userName);
     }
 }

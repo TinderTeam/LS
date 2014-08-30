@@ -31,29 +31,57 @@ namespace LotterySystem.Service
 
             return logList;
         }
-        public void ApproveScore(ApproveScoreModel model,String userName)
+        public void openAccount(String userName)
         {
-            if (null == model)
-            {
-                log.Error("approve score is not right ");
-                throw new SystemException(ErrorMsgConst.OPERATE_FAILED);
-            }
-            if(userName.Equals(model.UserName))
-            {
-                log.Error("user name is yourself ");
-                throw new SystemException(ErrorMsgConst.USER_NOT_SELF);
-            }
-            User lendUser = userDao.getSystemUserByName(model.UserName);
-            if (null == lendUser)
-            {
-                log.Error("user name is not exist ");
-                throw new SystemException(ErrorMsgConst.USER_NOT_EXITED);
-            }
-            if (lendUser.UserID != model.UserID)
-            {
-                log.Error("user name is match user id ");
-                throw new SystemException(ErrorMsgConst.USER_NOT_MATCH);
-            }
+            ScoreLog score = new ScoreLog();
+
+            User user = userDao.getSystemUserByName(userName);
+            score.UserName = user.UserName;
+            score.RecordTime = DateTime.Now;
+            score.Value = user.Account;
+            score.Balance = user.Account;
+            score.Mode = SysConstants.SCORE_USER_OPEN;
+ 
+            scoreLogDao.creatScoreLog(score);
+        }
+        public void sendScore(ApproveScoreModel model, String userName)
+        {
+            checkUser(model, userName);
+            User sendOutUser = userDao.getSystemUserByName(userName);
+            scoreEnough(model.ScoreValue, sendOutUser);
+
+            ScoreLog sendOutScore = new ScoreLog();
+            sendOutUser.Account -= model.ScoreValue;
+            sendOutScore.UserName = sendOutUser.UserName;
+            sendOutScore.RecordTime = DateTime.Now;
+            sendOutScore.Value = model.ScoreValue;
+            sendOutScore.Balance = sendOutUser.Account;
+            sendOutScore.Mode = SysConstants.SCORE_SEND_OUT;
+
+            sendOutScore.OtherName = model.UserName;
+
+            ScoreLog sendInScore = new ScoreLog();
+
+            User sendInUser = userDao.getSystemUserByName(model.UserName);
+            sendInUser.Account += model.ScoreValue;
+            sendInScore.UserName = model.UserName; 
+            sendInScore.RecordTime = DateTime.Now;
+            sendInScore.Value = model.ScoreValue;
+            sendInScore.Balance = sendInUser.Account;
+            sendInScore.Mode = SysConstants.SCORE_SEND_IN;
+
+            sendInScore.OtherName = sendInUser.UserName;
+
+            userDao.updateUser(sendOutUser);
+            userDao.updateUser(sendInUser);
+            scoreLogDao.creatScoreLog(sendInScore);
+            scoreLogDao.creatScoreLog(sendOutScore);
+
+
+        }
+        public void approveScore(ApproveScoreModel model,String userName)
+        {
+            checkUser(model, userName);
 
 
             ScoreLog score = new ScoreLog();
@@ -68,6 +96,22 @@ namespace LotterySystem.Service
             score.OtherName = model.UserName;
 
             scoreLogDao.creatScoreLog(score);
+        }
+
+        private static void checkUser(ApproveScoreModel model, String userName)
+        {
+            if (null == model)
+            {
+                log.Error("approve score is not right ");
+                throw new SystemException(ErrorMsgConst.OPERATE_FAILED);
+            }
+            if (userName.Equals(model.UserName))
+            {
+                log.Error("user name is yourself ");
+                throw new SystemException(ErrorMsgConst.USER_NOT_SELF);
+            }
+
+            ServiceContext.getInstance().getUserService().isUserExist(model.UserID, model.UserName);
         }
 
         public void handleLendScore(int logID,bool isAgree)
@@ -86,17 +130,7 @@ namespace LotterySystem.Service
             {
                 scoreValue = score.Value;
 
-                if (!lendOutUser.Permission.Contains(SysConstants.PERSSION_OVER_DRAFT))
-                {
-                    if (score.Value > lendOutUser.Account)
-                    {
-                        throw new SystemException(ErrorMsgConst.BALANCE_NOT_ENOUGH);
-                    }
-                }
-                else
-                {
-                    log.Info("the user have over draft function");
-                }
+                scoreEnough(scoreValue, lendOutUser);
             }
             else
             {
@@ -138,6 +172,21 @@ namespace LotterySystem.Service
 
         }
 
+        private static void scoreEnough(int needScore, User user)
+        {
+            if (!user.Permission.Contains(SysConstants.PERSSION_OVER_DRAFT))
+            {
+                if (needScore > user.Account)
+                {
+                    throw new SystemException(ErrorMsgConst.BALANCE_NOT_ENOUGH);
+                }
+            }
+            else
+            {
+                log.Info("the user have over draft function");
+            }
+        }
+
 
         public void handleRepayScore(int logID)
         {
@@ -153,17 +202,7 @@ namespace LotterySystem.Service
 
             User repayOutUser = userDao.getSystemUserByName(score.OtherName);
 
-            if (!repayOutUser.Permission.Contains(SysConstants.PERSSION_OVER_DRAFT))
-            {
-                if (score.Value > repayOutUser.Account)
-                {
-                    throw new SystemException(ErrorMsgConst.BALANCE_NOT_ENOUGH);
-                }
-            }
-            else
-            {
-                log.Info("the user have over draft function");
-            }
+            scoreEnough(scoreValue, repayOutUser);
 
             repayOutUser.Account -= scoreValue;
 
