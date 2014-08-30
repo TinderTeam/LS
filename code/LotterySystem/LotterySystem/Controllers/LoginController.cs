@@ -50,6 +50,16 @@ namespace LotterySystem.Controllers
         [HttpPost]
         public ActionResult Register(UserRigistForm model)
         {
+            SystemInfoModel sysInfo = ServiceContext.getInstance().getSysInfoService().loadSysInfo();
+            if (null == sysInfo)
+            {
+                log.Error("can not get the system information");
+            }
+            else
+            {
+                ViewBag.RegistType = sysInfo.RegistType;
+            }
+
             try
             {
                 string result = loginSerivce.register(model);

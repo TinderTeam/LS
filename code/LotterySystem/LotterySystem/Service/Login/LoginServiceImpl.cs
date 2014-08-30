@@ -125,6 +125,7 @@ namespace LotterySystem.Service.Login
                 case SysConstants.REG_TYPE_2:
                     user.Status = UserConstants.STATUS_ACTIVE;
                     model.RecommendUserName = SysConstants.SYS_ADMIN_USER;
+                    user.RecommendUserName = SysConstants.SYS_ADMIN_USER;
                     break;
                 default:
                     break;
