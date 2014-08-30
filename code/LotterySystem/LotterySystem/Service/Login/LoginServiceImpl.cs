@@ -63,6 +63,19 @@ namespace LotterySystem.Service.Login
 
             LotterySystem.Po.User user = userDao.getSystemUserByName(userName);
 
+            if (null == user)
+            {
+                log.Error("login failed, the user is not exist. user name is " + userName);
+                throw new SystemException("用户名或密码错误");
+            }
+
+            if (null == user.Password || !user.Password.Equals(password))
+            {
+                log.Error("login failed, the password is not right. user name is " + userName);
+                throw new SystemException("用户名或密码错误");
+            }
+
+
             if (user.Status.Equals(UserConstants.STATUS_FREEZE))
             {
                 throw new SystemException(ErrorMsgConst.USER_IS_FREEZE);
@@ -73,17 +86,7 @@ namespace LotterySystem.Service.Login
                 throw new SystemException(ErrorMsgConst.USER_IS_WAIT);
             }
 
-            if (null == user)
-            {
-                log.Error("login failed, the user is not exist. user name is " + userName);
-                throw new SystemException("用户名或密码错误");
-            }
-            
-            if (null == user.Password || !user.Password.Equals(password))
-            {
-                log.Error("login failed, the password is not right. user name is " + userName);
-                throw new SystemException("用户名或密码错误");
-            }
+
             SysCatch.OnlinePlayerNum++;
             
         }
