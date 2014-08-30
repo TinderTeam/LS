@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "系统管理";
+
+}
+<div id="head" >
+    @RenderPage("../Home/Nav.cshtml")
+</div>
+<!-- Nav bar-->
+<hr />
+	<div class="row">
+		<div class="col-lg-4"></div>
+		<div class="col-lg-4">
+		<!-- 房间列表 -->
+			<div class="panel panel-primary">
+				<div class="panel-heading">系统管理</div>
+				<div class="panel-body" >
+					<div class="table-responsive">
+                       @using (Html.BeginForm("modifySysInfo", "System", FormMethod.Post))
+                       {
+						<div class="input-group">	
+							<span class="input-group-addon">修改最大在线人数</span>
+							<input type="text" name="maxPlayer" class="form-control" value="@ViewBag.SysInfo.MaxPlayer">
+						</div>
+								    
+ 						<br/>		    
+						<div class="input-group">	      
+							<span class="input-group-addon">修改用户注册方式</span>			     
+							<div class="btn-group">
+                           
+
+                             <select class="btn btn-default dropdown-toggle" name="registType">
+                                @if("停止注册".Equals(@ViewBag.SysInfo.RegistType))
+                                {
+                                   <option value="停止注册" selected >停止注册</option>
+                                }
+                                else
+                                {
+                                   <option value="停止注册">停止注册</option>
+                                } 
+
+                                @if ("自由注册".Equals(@ViewBag.SysInfo.RegistType))
+                                {
+                                   <option value="自由注册" selected >自由注册</option>
+                                }else{
+                                   <option value="自由注册">自由注册</option>
+                                }
+                                @if ("引荐注册".Equals(@ViewBag.SysInfo.RegistType))
+                                {
+                                   <option value="引荐注册" selected >引荐注册</option>
+                                }
+                                else
+                                {
+                                   <option value="引荐注册">引荐注册</option>
+                                }
+                            </select>
+							</div>
+						</div>	
+						<br/>						
+						<button   class="btn btn-primary" type="submit">保存</button>
+                        <input type="button"  onclick="javascript: history.back(-1);" value="取消" class="btn btn-default">
+                      }
+				</div>
+				</div>
+			</div>
+		</div>
+        <div class="col-lg-4"></div>
+	</div>	
