@@ -64,6 +64,8 @@
              <table class="table table-bordered" >
                 <thead>
                     <tr>
+                            <th>用户编号</th>
+    
                             <th>用户名</th>
  
                             <th>状态</th>
@@ -79,6 +81,7 @@
 						 @for (var i = 0; i < @ViewBag.UserListCount; i++)
 						 { 
 						      <tr>
+                                <td>@ViewBag.UserList[i].UserID</td>
                                 <td>@ViewBag.UserList[i].UserName</td>
 								<td>@ViewBag.UserList[i].Status</td>
            			            <td>@ViewBag.UserList[i].Permission</td>
