@@ -43,7 +43,7 @@ namespace LotterySystem.Service.GameManage
             if (doorList.WhiteList != null && doorList.WhiteList.Count!=0)
             {   
                 foreach (DoorModel door in doorList.WhiteList){
-                    if(door.GameName.Equals(user.UserName)){
+                    if(door.UserName.Equals(user.UserName)){
                         inWhite=true;
                         break;
                     }
